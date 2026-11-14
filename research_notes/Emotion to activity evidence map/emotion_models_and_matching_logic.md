@@ -253,3 +253,86 @@ Last column: **tested** = the cited source tested this emotion–activity link d
 | R28 | Music chosen for any negative state | Start with a track matching current mood, move toward the target mood over 2–3 tracks; let the user choose the tracks | Jumping straight to very upbeat music when sad; staying on sad music | Iso principle; order of music affected mood after sadness induction (not all contrasts significant) | Heiderscheit & Madson 2015; Starcke et al. 2021 | https://doi.org/10.1093/mtp/miu042 ; https://doi.org/10.3390/ijerph182312486 | tested for sadness only; partly |
 | R29 | Personalisation, all rules | Rank options inside the allowed classes by likes/hobbies and past helpfulness; filter dislikes; show 2–3 choices; rotate for variety | Overriding the rule's "avoid" list because of a preference | Preference accommodation: outcome d = .15 to 0.28 and fewer dropouts (OR = 1.79); fit and variety moderate benefit; users want control | Lindhiem et al. 2014; Swift et al. 2018; Lyubomirsky & Layous 2013; Howe et al. 2022 | https://doi.org/10.1016/j.cpr.2014.06.002 ; https://pubmed.ncbi.nlm.nih.gov/30091140/ | partly (tested in therapy, not hobby-matched micro-activities) |
 | R30 | Safety gate: extreme or persistent severe negative scores, or self-harm cues | Supportive message, trusted-person prompt, localised crisis resources; optional grounding exercise | Any "fix it" activity list presented as sufficient; diagnostic wording | App effects are small and harms under-reported; face-based emotion inference is unreliable, so escalate cautiously and let the user correct | Linardon et al. 2024 (efficacy; adverse events); Barrett et al. 2019 | https://doi.org/10.1038/s41746-024-01388-y ; https://doi.org/10.1177/1529100619832930 | extrapolated (precautionary) |
+
+---
+
+## Verification log (PubMed pass)
+
+Method: NCBI E-utilities (esearch, esummary, efetch) were queried for every journal citation in these notes; abstracts were read for each record found. No publisher site or doi.org link was opened, so 'verified' means the PubMed record and abstract, not the full text. PubMed prints some older APA DOIs with a double slash and lower case (for example 10.1037//0022-3514.54.6.1063); these are the same DOIs as the single-slash links used in the notes. The machine-readable version of this log is `data/verification/emotion_models_and_matching_logic.csv`.
+
+Open item: the ranked strategy lists in Thayer, Newman & McClain (1994) could not be recovered — the abstract does not contain them and the paper is not in PMC.
+
+Counts: not_in_pubmed 21, verified_abstract 33, citation_exists_number_not_confirmed 3, corrected 8 (total 65 citations).
+
+**Corrected**
+- Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25 (PMID 7983582): Sample sizes corrected to N = 102 (Study 1), N = 308 (Studies 2 and 4, same sample), 26 psychotherapists (Study 3); recalled '128' removed as not confirmed. Ranked strategy lists and factor names are NOT in the abstract and the paper is not in PMC: still unverified.
+- Miles, Sheeran & Webb 2013 (reply to Augustine & Hemenover), Psychol Bull 139(3):730-4 (PMID 23607434): Author order corrected from 'Webb, Miles & Sheeran' to 'Miles, Sheeran & Webb'; critique identified as Augustine & Hemenover 2013, PMID 23607433.
+- Aldao, Nolen-Hoeksema & Schweizer 2010, Clin Psychol Rev 30(2):217-37 (PMID 20015584): Pattern corrected: large for rumination; medium to large for avoidance, problem solving and suppression; small to medium for reappraisal and acceptance (notes had problem solving in the small-to-medium group). Strategy-level r values not in abstract.
+- Fincham, Strauss, Montero-Marin & Cavanagh 2023, Sci Rep 13(1):432 (PMID 36624160): 'Slow breathing' corrected to breathwork in general; numbers added: g = -0.35 [-0.55, -0.14], k = 12, N = 785; anxiety g = -0.32, depression g = -0.40.
+- Swift, Callahan, Cooper & Parkin 2018, J Clin Psychol 74(11):1924-1937 (PMID 30091140): Corrected: 53 studies (not 51), over 16,000 clients, dropout OR = 1.79, outcome d = 0.28.
+- Ekkekakis, Parfitt & Petruzzello 2011, Sports Med 41(8):641-71 (PMID 21780850): Corrected: abstract says self-selected intensity 'appears to foster greater tolerance to higher intensity levels', not that affect is more positive; threshold finding confirmed; 33 articles reviewed.
+- Sheldon & Lyubomirsky 2012, Pers Soc Psychol Bull 38(5):670-80 (PMID 22361725): Reworded: study tests the Hedonic Adaptation Prevention model after positive life changes (481 students, 3 months); variety and appreciation are moderators; application to activity rotation flagged as extrapolation.
+- Mohr et al. 2017, J Med Internet Res 19(1):e10 (IntelliCare) (PMID 28057609): Corrected: single-arm coach-assisted 8-week pilot (99 started, 90 completed), 14 apps, not a 'field trial'; hub app not mentioned in abstract.
+
+**Citation exists, a stated detail not confirmed**
+- Lovibond & Lovibond 1995, Behav Res Ther 33(3):335-43 (DASS) (PMID 7726811): DASS inter-scale correlations are not in the abstract: marked not confirmed. Abstract gives only DASS-A/BAI r = 0.81 and DASS-D/BDI r = 0.74.
+- Sheppes, Scheibe, Suri, Radu, Blechert & Gross 2014, J Exp Psychol Gen 143(1):163-81 (PMID 23163767): Claim that reappraisal is costlier and less effective at high intensity is not in the abstract: marked not confirmed; mechanism wording re-attributed to the 2011 abstract.
+- Nahum-Shani et al. 2018, Ann Behav Med 52(6):446-462 (PMID 27663578): JITAI component list is not in the abstract: still from memory.
+
+**Verified against the abstract or full text**
+- Posner, Russell & Peterson 2005, Dev Psychopathol 17(3):715-34 — PMID 16262989; DOI on record: 10.1017/S0954579405050340. Abstract says 'two independent neurophysiological systems' without naming valence and arousal; caveat added.
+- Warriner, Kuperman & Brysbaert 2013, Behav Res Methods 45(4):1191-207 — PMID 23404613; DOI on record: 10.3758/s13428-012-0314-x. None; DOI tag upgraded from memory to confirmed.
+- Watson, Clark & Tellegen 1988, J Pers Soc Psychol 54(6):1063-70 (PANAS) — PMID 3397865; DOI on record: 10.1037//0022-3514.54.6.1063. None; high-PA/high-NA gloss is not in the abstract.
+- Cowen & Keltner 2017, Proc Natl Acad Sci U S A 114(38):E7900-E7909 — PMID 28874542; DOI on record: 10.1073/pnas.1702247114. None; numbers previously unverified are confirmed.
+- Berrios, Totterdell & Kellett 2015, Front Psychol 6:428 — PMID 25926805; DOI on record: 10.3389/fpsyg.2015.00428.
+- Larsen, McGraw & Cacioppo 2001, J Pers Soc Psychol 81(4):684-96 — PMID 11642354; DOI on record: none listed. PubMed lists no DOI for this record; DOI in notes (10.1037/0022-3514.81.4.684) flagged as unconfirmed.
+- Larsen & McGraw 2011, J Pers Soc Psychol 100(6):1095-110 — PMID 21219075; DOI on record: 10.1037/a0021846.
+- Trampe, Quoidbach & Taquet 2015, PLoS One 10(12):e0145450 — PMID 26698124; DOI on record: 10.1371/journal.pone.0145450. Caveat added: abstract does not say negative emotions cluster more than positive ones.
+- Clark & Watson 1991, J Abnorm Psychol 100(3):316-36 — PMID 1918611; DOI on record: 10.1037//0021-843x.100.3.316. Abstract wording added (general distress, physiological hyperarousal, anhedonia).
+- Webb, Miles & Sheeran 2012, Psychol Bull 138(4):775-808 — PMID 22582737; DOI on record: 10.1037/a0027600. None; DOI upgraded to confirmed.
+- Sheppes, Scheibe, Suri & Gross 2011, Psychol Sci 22(11):1391-6 — PMID 21960251; DOI on record: 10.1177/0956797611418350. None; DOI upgraded to confirmed.
+- Troy, Shallcross & Mauss 2013, Psychol Sci 24(12):2505-14 — PMID 24145331; DOI on record: 10.1177/0956797613496434. Erratum noted: Psychol Sci 2016;27(3):428-31, doi 10.1177/0956797615627417 (not opened).
+- Bonanno & Burton 2013, Perspect Psychol Sci 8(6):591-612 — PMID 26173226; DOI on record: 10.1177/1745691613504116.
+- Kjaervik & Bushman 2024, Clin Psychol Rev 109:102414 — PMID 38518585; DOI on record: 10.1016/j.cpr.2024.102414. Metric confirmed as 'g' (abstract does not spell out 'Hedges'). Jogging / ball sports / PE / yoga sub-results are not in the abstract: flagged as press-summary only. Example activities aligned with abstract.
+- Ekers et al. 2014, PLoS One 9(6):e100100 — PMID 24936656; DOI on record: 10.1371/journal.pone.0100100. Effect sizes added: 26 RCTs, 1,524 subjects; SMD -0.74 (CI -0.91 to -0.56) vs controls; SMD -0.42 vs medication.
+- Mazzucchelli, Kane & Rees 2010, J Posit Psychol 5(2):105-121 — PMID 20539837; DOI on record: 10.1080/17439760903569154. Numbers added: 20 studies, 1,353 participants, Hedges's g = 0.52.
+- Starcke, Mayr & von Georgi 2021, Int J Environ Res Public Health 18(23):12486 — PMID 34886210; DOI on record: 10.3390/ijerph182312486.
+- Thayer 1987, J Pers Soc Psychol 52(1):119-25 — PMID 3820066; DOI on record: 10.1037//0022-3514.52.1.119. Details added: 18 volunteers, 12 test days; previously unverified.
+- Gable, Reis, Impett & Asher 2004, J Pers Soc Psychol 87(2):228-45 — PMID 15301629; DOI on record: 10.1037/0022-3514.87.2.228. None; previously unverified.
+- Fredrickson 2001, Am Psychol 56(3):218-26 — PMID 11315248; DOI on record: 10.1037//0003-066x.56.3.218. Wording aligned with abstract ('thought-action repertoires'); noted as theory paper.
+- Masi, Chen, Hawkley & Cacioppo 2011, Pers Soc Psychol Rev 15(3):219-66 — PMID 20716644; DOI on record: 10.1177/1088868310377394. None; previously unverified.
+- Westgate & Wilson 2018, Psychol Rev 125(5):689-713 — PMID 29963873; DOI on record: 10.1037/rev0000097. None; previously unverified.
+- Eastwood, Frischen, Fenske & Smilek 2012, Perspect Psychol Sci 7(5):482-95 — PMID 26168505; DOI on record: 10.1177/1745691612456044. Exact quote inserted.
+- Sin & Lyubomirsky 2009, J Clin Psychol 65(5):467-87 — PMID 19301241; DOI on record: 10.1002/jclp.20593.
+- Lindhiem, Bennett, Trentacosta & McLear 2014, Clin Psychol Rev 34(6):506-17 — PMID 25189522; DOI on record: 10.1016/j.cpr.2014.06.002. Added: 34 articles / 32 trials; satisfaction ESd = .34; completion ESOR = 1.37 (ESd = .17).
+- Teixeira, Carraca, Markland, Silva & Ryan 2012, Int J Behav Nutr Phys Act 9:78 — PMID 22726453; DOI on record: 10.1186/1479-5868-9-78.
+- Baumel, Fleming & Schueller 2020, J Med Internet Res 22(10):e20631 — PMID 33118946; DOI on record: 10.2196/20631. Wording replaced with abstract quote; 'events' / 'proximal goal' wording not in abstract.
+- Barrett, Adolphs, Marsella, Martinez & Pollak 2019, Psychol Sci Public Interest 20(1):1-68 — PMID 31313636; DOI on record: 10.1177/1529100619832930.
+- Linardon et al. 2024, World Psychiatry 23(1):139-149 — PMID 38214614; DOI on record: 10.1002/wps.21183. DOI upgraded to confirmed; N values added.
+- Linardon et al. 2019, World Psychiatry 18(3):325-336 — PMID 31496095; DOI on record: 10.1002/wps.20673. Added: 66 RCTs; depression g = 0.28, generalized anxiety g = 0.30, stress g = 0.35.
+- Linardon et al. 2024, NPJ Digit Med 7(1):363 — PMID 39695173; DOI on record: 10.1038/s41746-024-01388-y. CI (4.3, 10.1) and OR = 0.79 (0.62-1.01) added.
+- Martinengo et al. 2019, BMC Med 17(1):231 — PMID 31852455; DOI on record: 10.1186/s12916-019-1461-z. Numbers added: 69 apps; 5/69 with all six strategies; 6/69 with erroneous helpline number.
+- Torous et al. 2021, World Psychiatry 20(3):318-335 — PMID 34505369; DOI on record: 10.1002/wps.20883. None; previously unverified.
+
+**Not in PubMed (status unchanged from the original notes)**
+- Russell 1980, A circumplex model of affect, J Pers Soc Psychol 39:1161-1178 — PubMed author/title/year searches returned no record.
+- Russell & Mehrabian 1977, J Res Pers 11:273-294 — PubMed author and title searches returned no record.
+- Ekman 1992, An argument for basic emotions, Cogn Emot 6:169-200 — Title and author searches; PubMed has only a different 1992 Ekman paper (Psychol Rev 99:550-3, PMID 1344638).
+- Plutchik 1980, Emotion: A Psychoevolutionary Synthesis (book) — Book; not a PubMed-indexed item, no search run.
+- McNair, Lorr & Droppleman 1971, POMS manual — Test manual; not a PubMed-indexed item, no search run.
+- Thayer 1989, The Biopsychology of Mood and Arousal (book) — Book; not a PubMed-indexed item, no search run.
+- Kashdan, Barrett & McKnight 2015, Curr Dir Psychol Sci 24:10-16 — Author and title searches returned no record.
+- Barrett, Gross, Christensen & Benvenuto 2001, Cogn Emot 15:713-724 — Author and title searches returned no record.
+- Gross 1998, Rev Gen Psychol 2:271-299 — Author/journal/title searches returned no record.
+- Gross 2015, Psychol Inq 26:1-26 — Author/journal/title searches returned no record.
+- Aldao, Sheppes & Gross 2015, Cogn Ther Res 39:263-278 — Author and title searches returned no record.
+- Bushman 2002, Pers Soc Psychol Bull 28:724-731 — Author/journal/title searches returned no record.
+- Linehan 2015, DBT Skills Training Manual, 2nd ed. (book) — Book; not a PubMed-indexed item, no search run.
+- Heiderscheit & Madson 2015, Music Ther Perspect 33:45-52 — Author/journal and 'iso principle' title searches returned no record.
+- Parkinson & Totterdell 1999, Cogn Emot 13:277-303 — Author and title searches returned no record (only a different 1999 Totterdell & Parkinson paper, PMID 10431282).
+- Howe et al. 2022, CHI '22 — Title and author searches; only a 2024 secondary analysis by the same group is indexed (Suh et al., JMIR Ment Health, PMID 39264703).
+- Lyubomirsky & Layous 2013, Curr Dir Psychol Sci 22:57-62 — Author and title searches returned no record.
+- Schueller 2011, J Posit Psychol 6:300-313 — Author/title searches returned no record.
+- Schueller 2010, J Posit Psychol 5:192-203 — Author/title searches returned no record.
+- Liljestrom, Juslin & Vastfjall 2013, Psychol Music 41:579-599 — Author and title searches returned no record.
+- Paredes et al. 2014, PervasiveHealth '14 (PopTherapy) — Title search returned no record.
