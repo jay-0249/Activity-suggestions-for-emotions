@@ -1,7 +1,7 @@
 {
   "meta": {
-    "source": "research_notes/Emotion to activity evidence map/emotion_models_and_matching_logic.md (## Matching rules)",
-    "warning": "MOST COMBINATION RULES ARE EXTRAPOLATIONS. Of 30 rules, 18 are 'extrapolated', 9 'partly' tested and only 3 'directly_tested' (none of which is a pair rule). The notes state that no meta-analysis compares activity classes by emotion combination.",
+    "source": "research_notes/Emotion to activity evidence map/emotion_models_and_matching_logic.md (## Matching rules) for R01-R30; research_notes/Emotion combination evidence map/mixed_state_interventions.md (## Rule review) for review verdicts and revisions; data/curation/rules_curated.json for R31-R38 (IDs as proposed in reports/Emotion combination evidence map.md)",
+    "warning": "MANY COMBINATION RULES ARE STILL EXTRAPOLATIONS. Of 38 rules: {'partly': 9, 'directly_tested': 3, 'extrapolated': 10, 'direct_combination_evidence': 8, 'same_sample_evidence': 8} after combination evidence (before: {'partly': 9, 'directly_tested': 3, 'extrapolated': 26}). 'same_sample_evidence' / 'direct_combination_evidence' mean that at least one recommended activity has a both-improved row for the rule's combination (combination_evidence.csv); the rest of the rule is still composed. Most combination evidence is programme-level, not a 5-30 min session.",
     "thresholds": {
       "moderate_gte": 0.4,
       "high_gte": 0.75,
@@ -12,11 +12,28 @@
       "all / any": "list of sub-conditions; all must hold / at least one must hold",
       "{emotion, gte, lt}": "score of that emotion id is >= gte and (if given) < lt",
       "{group, gte, lt}": "max score over the emotion group (see emotions.json groups) is >= gte / < lt",
+      "{count_of, min_count, gte}": "at least min_count of the listed emotion ids score >= gte (cluster rule R31)",
       "{signal}": "boolean supplied by the app (persistent_severe_negative, self_harm_cue, severe_self_report)",
       "{selected_class}": "true when the user picked an activity of that rule class",
       "{always}": "always true"
     },
-    "evaluation_order": "Highest priority first: R30 safety gate (100) > R01 intensity gate (90) > pair rules (60) > R27 mixed valence (50) > single-emotion rules (40) > R02 (10) > R28 (5) > R29 (1, always).",
+    "evaluation_order": "Highest priority first: R30 safety gate (100) > R01 intensity gate (90) > triple rules R32-R36 (72) > tense-distress cluster R31 (70) > pair rules incl. R37 (60) > R27 mixed valence (50) > R38 blend modifier (49, appended to any mixed-valence plan) > single-emotion rules (40) > R02 (10) > R28 (5) > R29 (1, always). Triple and cluster rules apply only when a third emotion is kept (within third_emotion_margin of the second).",
+    "evidence_basis_values": {
+      "directly_tested": "the notes' rule table says tested (single-emotion rules only)",
+      "direct_combination_evidence": "a recommended activity has a both-improved row tested directly on the combination (mixed-state sample or induced blend)",
+      "same_sample_evidence": "a recommended activity improved every emotion of the combination in the same participants",
+      "partly": "the notes' rule table says partly tested",
+      "extrapolated": "composed from single-emotion evidence"
+    },
+    "review_verdict_values": [
+      "confirm",
+      "confirm_with_additions",
+      "refine",
+      "partly_contradict",
+      "no_new_evidence",
+      "not_reviewed",
+      "new_rule"
+    ],
     "label_aliases": {
       "happy": "content",
       "excited": "energetic"
@@ -130,7 +147,8 @@
         "send_message",
         "weak_tie_chat",
         "share_good_news",
-        "affectionate_touch"
+        "affectionate_touch",
+        "empathy_phone_call"
       ],
       "REAPPRAISE": [
         "journaling",
@@ -246,6 +264,7 @@
       "angry+sad": "R13",
       "angry+stressed": "R14",
       "anxious+lonely": "R12",
+      "anxious+restless": "R37",
       "anxious+sad": "R17",
       "anxious+stressed": "R11",
       "anxious+tired": "R21",
@@ -260,6 +279,24 @@
       "sad+stressed": "R22",
       "sad+tired": "R15",
       "stressed+tired": "R10"
+    },
+    "triple_index": {
+      "angry+anxious+sad": "R33",
+      "anxious+lonely+sad": "R34",
+      "anxious+sad+tired": "R32",
+      "bored+lonely+sad": "R35",
+      "sad+stressed+tired": "R36"
+    },
+    "cluster_rules": {
+      "R31": {
+        "cluster": [
+          "stressed",
+          "anxious",
+          "angry",
+          "sad"
+        ],
+        "min_count": 3
+      }
     },
     "restless_fallback": {
       "recommend_classes": [
@@ -281,6 +318,7 @@
       "rule_id": "R01",
       "rule_type": "intensity_modifier",
       "priority": 90,
+      "source": "notes_rule_table",
       "condition_text": "Any negative emotion, high intensity",
       "condition": {
         "any": [
@@ -359,7 +397,8 @@
         "group_singing",
         "shared_meal",
         "board_games",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call"
       ],
       "avoid_text": "REAPPRAISE as the first step; focusing on the feeling",
       "avoid_classes": [],
@@ -394,14 +433,24 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly (lab stimuli, not real-life stress)",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Restricts the FIRST suggestion to these classes; cognitive or social options are offered as the follow-up."
     },
     {
       "rule_id": "R02",
       "rule_type": "intensity_modifier",
       "priority": 10,
+      "source": "notes_rule_table",
       "condition_text": "Any negative emotion, low-to-moderate intensity",
       "condition": {
         "all": [
@@ -457,8 +506,17 @@
         }
       ],
       "evidence_basis": "directly_tested",
+      "evidence_basis_original": "directly_tested",
       "evidence_basis_text": "tested (lab)",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": false,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Adds REAPPRAISE and PLAN to whatever the emotion's own rule allows. 'Suppressing the feeling' has no activity id; never prompt it."
     },
     {
@@ -466,6 +524,7 @@
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "angry",
+      "source": "notes_rule_table",
       "condition_text": "Angry (alone)",
       "condition": {
         "all": [
@@ -552,14 +611,24 @@
         }
       ],
       "evidence_basis": "directly_tested",
+      "evidence_basis_original": "directly_tested",
       "evidence_basis_text": "tested",
-      "is_extrapolation": false
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": false,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R04",
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "stressed",
+      "source": "notes_rule_table",
       "condition_text": "Stressed (alone), moderate",
       "condition": {
         "all": [
@@ -670,8 +739,17 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly (survey + correlational)",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "At stressed >= 0.75 the single-emotion lookup still uses this rule, with R01 gating the first suggestion. Comfort eating and alcohol are never suggested."
     },
     {
@@ -679,6 +757,7 @@
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "anxious",
+      "source": "notes_rule_table",
       "condition_text": "Anxious (alone)",
       "condition": {
         "all": [
@@ -767,14 +846,24 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R06",
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "sad",
+      "source": "notes_rule_table",
       "condition_text": "Sad (alone)",
       "condition": {
         "all": [
@@ -827,7 +916,8 @@
         "group_singing",
         "shared_meal",
         "board_games",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call"
       ],
       "follow_up_activity_ids": [],
       "avoid_text": "Withdrawal, long passive TV, sad-only music loops, rumination",
@@ -873,14 +963,24 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly (BA tested in depression, not momentary sadness)",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R07",
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "tired",
+      "source": "notes_rule_table",
       "condition_text": "Tired (alone)",
       "condition": {
         "all": [
@@ -963,14 +1063,24 @@
         }
       ],
       "evidence_basis": "directly_tested",
+      "evidence_basis_original": "directly_tested",
       "evidence_basis_text": "tested (single old study, n = 18; abstract verified in the PubMed pass)",
-      "is_extrapolation": false
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": false,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R08",
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "bored",
+      "source": "notes_rule_table",
       "condition_text": "Bored (alone)",
       "condition": {
         "all": [
@@ -1014,7 +1124,8 @@
         "dance_programme",
         "group_singing",
         "shared_meal",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call"
       ],
       "follow_up_activity_ids": [],
       "avoid_text": "Passive scrolling",
@@ -1043,14 +1154,24 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R09",
       "rule_type": "single",
       "priority": 40,
       "single_emotion": "lonely",
+      "source": "notes_rule_table",
       "condition_text": "Lonely (alone)",
       "condition": {
         "all": [
@@ -1093,6 +1214,7 @@
         "shared_meal",
         "board_games",
         "laughter_exercises",
+        "empathy_phone_call",
         "volunteering"
       ],
       "follow_up_activity_ids": [],
@@ -1120,8 +1242,17 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R10",
@@ -1131,6 +1262,7 @@
         "stressed",
         "tired"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Stressed + tired** (tense-tiredness)",
       "condition": {
         "all": [
@@ -1147,19 +1279,21 @@
       "recommended_text": "BREATHE, MOVE-LOW (stretch, slow walk), SENSORY (warm shower), MUSIC (calm), REST; defer PLAN to \"later, one small step\"",
       "recommend_classes": [
         "BREATHE",
-        "MOVE-LOW",
+        "REST",
         "SENSORY",
-        "MUSIC",
-        "REST"
+        "MOVE-LOW",
+        "PLEASANT",
+        "MUSIC"
       ],
       "follow_up_classes": [
         "PLAN"
       ],
       "recommend_categories": [
         "mind-body",
-        "physical",
         "rest",
-        "creative"
+        "physical",
+        "creative",
+        "cognitive"
       ],
       "recommend_activity_ids": [
         "slow_breathing",
@@ -1167,22 +1301,30 @@
         "box_breathing",
         "progressive_muscle_relaxation",
         "time_out_counting",
-        "brisk_walk_10min",
         "movement_breaks",
-        "yoga",
-        "stretching",
-        "nature_walk",
-        "cold_face_water",
-        "warm_bath_shower",
-        "lavender_aromatherapy",
-        "grounding_54321",
-        "pet_animal",
-        "music_listening_calming",
-        "playing_instrument",
-        "singing_solo",
         "nature_sitting",
         "nap_short",
         "micro_break",
+        "warm_bath_shower",
+        "cold_face_water",
+        "lavender_aromatherapy",
+        "grounding_54321",
+        "pet_animal",
+        "brisk_walk_10min",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy",
+        "music_listening_calming",
+        "playing_instrument",
+        "singing_solo",
         "tai_chi",
         "qigong"
       ],
@@ -1202,11 +1344,13 @@
       "avoid_categories": [],
       "avoid_activity_ids_explicit": [
         "caffeine_nap",
-        "upbeat_music_listening"
+        "upbeat_music_listening",
+        "free_dancing"
       ],
       "avoid_activity_ids": [
         "caffeine_nap",
         "upbeat_music_listening",
+        "free_dancing",
         "dance_programme",
         "poetry",
         "moderate_exercise",
@@ -1237,10 +1381,111 @@
           "verification_status": "not_in_pubmed"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true,
-      "app_note": "Defer PLAN to 'later, one small step'. Music should be calm."
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "stressed+tired",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.711,
+          "direct": true,
+          "n_studies": 2,
+          "best_evidence_id": "CCS019_s_stressed+tired_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "stressed+tired",
+          "activity_id": "nature_sitting",
+          "combo_score": 0.398,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN001_s_stressed+tired_nature_sitting"
+        },
+        {
+          "combo_key": "stressed+tired",
+          "activity_id": "yoga",
+          "combo_score": 0.6,
+          "direct": false,
+          "n_studies": 3,
+          "best_evidence_id": "CPN048_s_stressed+tired_yoga"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "refine",
+      "review_verdict_text": "refine",
+      "review_text": "Recovery evidence supports detachment, relaxation and rest ([Karabinski 2021](https://doi.org/10.1037/ocp0000280); [Sonnentag 2008](https://doi.org/10.1037/0021-9010.93.3.674); [Albulescu 2022](https://doi.org/10.1371/journal.pone.0272460)). Three changes. (a) A short walk raises energy, but fatigue falls only after low-to-moderate exercise lasting more than 20 min ([Loy 2013](https://doi.org/10.1080/21641846.2013.843266), web), and in fatigued people only after *low* intensity ([Dishman 2010](https://doi.org/10.1111/j.1469-8986.2010.01014.x)). (b) If sleep-deprived, nap 10–20 min, not 30 ([Brooks & Lack 2006](https://doi.org/10.1093/sleep/29.6.831)). (c) Add a low-effort pleasurable activity, because exhaustion erodes detachment unless pleasurable leisure is present ([Sonnentag 2014](https://doi.org/10.1037/a0035760)).",
+      "review_citations": [
+        {
+          "citation": "Karabinski 2021",
+          "doi_or_url": "https://doi.org/10.1037/ocp0000280",
+          "pmid": "34096763",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Sonnentag 2008",
+          "doi_or_url": "https://doi.org/10.1037/0021-9010.93.3.674",
+          "pmid": "18457495",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Albulescu 2022",
+          "doi_or_url": "https://doi.org/10.1371/journal.pone.0272460",
+          "pmid": "36044424",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Loy 2013",
+          "doi_or_url": "https://doi.org/10.1080/21641846.2013.843266",
+          "pmid": "",
+          "verification_tag": "[prior-notes]; [web]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Dishman 2010",
+          "doi_or_url": "https://doi.org/10.1111/j.1469-8986.2010.01014.x",
+          "pmid": "20409016",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Brooks & Lack 2006",
+          "doi_or_url": "https://doi.org/10.1093/sleep/29.6.831",
+          "pmid": "16796222",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Sonnentag 2014",
+          "doi_or_url": "https://doi.org/10.1037/a0035760",
+          "pmid": "24635737",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Detach first, then rest or breathing; 10-min nap if sleep-deprived (not 30); a short walk is for energy, fatigue relief needs easy movement for more than 20 min; add one low-effort pleasant activity because exhaustion erodes detachment unless pleasurable leisure is present.",
+      "original": {
+        "recommend_classes": [
+          "BREATHE",
+          "MOVE-LOW",
+          "SENSORY",
+          "MUSIC",
+          "REST"
+        ],
+        "follow_up_classes": [
+          "PLAN"
+        ],
+        "avoid_activity_ids": [
+          "caffeine_nap",
+          "upbeat_music_listening"
+        ],
+        "app_note": "Defer PLAN to 'later, one small step'. Music should be calm."
+      },
+      "app_note": "Detach from the stressor first (close work, mute notifications). Nap about 10 minutes if sleep-deprived, not 30. A short walk lifts energy; expect fatigue relief only from easy movement lasting more than 20 minutes. Offer one low-effort pleasant activity. Defer PLAN to 'later, one small step'. Music should be calm."
     },
     {
       "rule_id": "R11",
@@ -1250,6 +1495,7 @@
         "anxious",
         "stressed"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Stressed + anxious**",
       "condition": {
         "all": [
@@ -1311,7 +1557,8 @@
         "tai_chi",
         "qigong",
         "dance_programme",
-        "resistance_training"
+        "resistance_training",
+        "arousal_reappraisal"
       ],
       "follow_up_activity_ids": [
         "write_plan_todo",
@@ -1354,9 +1601,79 @@
           "verification_status": "verified_abstract"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+stressed",
+          "activity_id": "slow_breathing",
+          "combo_score": 0.558,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN059_s_anxious+stressed_slow_breathing"
+        },
+        {
+          "combo_key": "anxious+stressed",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.751,
+          "direct": true,
+          "n_studies": 3,
+          "best_evidence_id": "CPN064_s_anxious+stressed_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "anxious+stressed",
+          "activity_id": "mindfulness_meditation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CMX004_anxious+stressed_mindfulness_meditation"
+        },
+        {
+          "combo_key": "anxious+stressed",
+          "activity_id": "yoga",
+          "combo_score": 0.6,
+          "direct": false,
+          "n_studies": 3,
+          "best_evidence_id": "CPN047_s_anxious+stressed_yoga"
+        },
+        {
+          "combo_key": "anxious+stressed",
+          "activity_id": "arousal_reappraisal",
+          "combo_score": 0.65,
+          "direct": true,
+          "n_studies": 1,
+          "best_evidence_id": "CMX043_anxious+stressed_arousal_reappraisal"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "refine",
+      "review_verdict_text": "refine",
+      "review_text": "Mindfulness self-help helps stress more than anxiety ([Taylor 2021](https://doi.org/10.1016/j.cpr.2021.102078)), consistent with the rule. When the stress is about an upcoming evaluated task, add arousal reappraisal (\"this energy helps me\") as an option. It reduced evaluation anxiety and threat in a 339-person field RCT ([Jamieson 2022](https://doi.org/10.1037/xge0000893)).",
+      "review_citations": [
+        {
+          "citation": "Taylor 2021",
+          "doi_or_url": "https://doi.org/10.1016/j.cpr.2021.102078",
+          "pmid": "34537665",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Jamieson 2022",
+          "doi_or_url": "https://doi.org/10.1037/xge0000893",
+          "pmid": "34292050",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Mindfulness helps stress more than anxiety (consistent with the rule); when the stress is about an upcoming evaluated task, offer arousal reappraisal.",
+      "original": {
+        "extra_activity_ids": [],
+        "app_note": ""
+      },
+      "app_note": "If the stress is about an upcoming evaluated task (exam, talk, interview), offer the 'this energy helps me' arousal reappraisal as an option."
     },
     {
       "rule_id": "R12",
@@ -1366,6 +1683,7 @@
         "anxious",
         "lonely"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Anxious + lonely**",
       "condition": {
         "all": [
@@ -1382,10 +1700,14 @@
       "recommended_text": "SOCIAL in a low-demand form (text a trusted person, co-walk), BREATHE first if intensity high, KIND",
       "recommend_classes": [
         "SOCIAL",
+        "KIND",
         "BREATHE",
-        "KIND"
+        "MINDFUL"
       ],
       "follow_up_classes": [],
+      "first_activity_ids": [
+        "send_message"
+      ],
       "recommend_categories": [
         "social",
         "mind-body"
@@ -1397,15 +1719,23 @@
         "weak_tie_chat",
         "share_good_news",
         "affectionate_touch",
+        "act_of_kindness",
+        "spend_on_others",
         "slow_breathing",
         "cyclic_sighing",
         "box_breathing",
         "progressive_muscle_relaxation",
         "time_out_counting",
-        "act_of_kindness",
-        "spend_on_others",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
         "shared_meal",
-        "board_games"
+        "board_games",
+        "empathy_phone_call",
+        "reframe_social_thoughts"
       ],
       "follow_up_activity_ids": [],
       "avoid_text": "Large-group or high-stakes social tasks; isolation",
@@ -1418,12 +1748,14 @@
       "avoid_activity_ids_explicit": [
         "group_singing",
         "laughter_exercises",
-        "dwelling_on_feelings"
+        "dwelling_on_feelings",
+        "acquire_pet"
       ],
       "avoid_activity_ids": [
         "group_singing",
         "laughter_exercises",
         "dwelling_on_feelings",
+        "acquire_pet",
         "dance_programme",
         "moderate_exercise",
         "running_jogging",
@@ -1451,10 +1783,65 @@
           "verification_status": "verified_abstract"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true,
-      "app_note": "SOCIAL must be in a low-demand form (text a trusted person, co-walk). BREATHE first if intensity is high."
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+lonely",
+          "activity_id": "empathy_phone_call",
+          "combo_score": 0.85,
+          "direct": true,
+          "n_studies": 1,
+          "best_evidence_id": "CCS048_s_anxious+lonely_empathy_phone_call"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "confirm_with_additions",
+      "review_verdict_text": "confirm, with additions",
+      "review_text": "Kind acts raised PA and reduced avoidance in socially anxious adults ([Alden & Trew 2013](https://doi.org/10.1037/a0027761)). One-to-one empathic calls cut loneliness and anxiety ([Kahlon 2021](https://doi.org/10.1001/jamapsychiatry.2021.0113)). Add acceptance-based mindfulness ([Lindsay 2019](https://doi.org/10.1073/pnas.1813588116)).",
+      "review_citations": [
+        {
+          "citation": "Alden & Trew 2013",
+          "doi_or_url": "https://doi.org/10.1037/a0027761",
+          "pmid": "22642341",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Kahlon 2021",
+          "doi_or_url": "https://doi.org/10.1001/jamapsychiatry.2021.0113",
+          "pmid": "33620417",
+          "verification_tag": "[PM-full]; [PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Lindsay 2019",
+          "doi_or_url": "https://doi.org/10.1073/pnas.1813588116",
+          "pmid": "30808743",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Confirmed; add acceptance-based mindfulness, a low-exposure kind act and warm one-to-one contact (text before call).",
+      "original": {
+        "recommend_classes": [
+          "SOCIAL",
+          "BREATHE",
+          "KIND"
+        ],
+        "first_activity_ids": [],
+        "extra_activity_ids": [],
+        "avoid_activity_ids": [
+          "group_singing",
+          "laughter_exercises",
+          "dwelling_on_feelings"
+        ],
+        "app_note": "SOCIAL must be in a low-demand form (text a trusted person, co-walk). BREATHE first if intensity is high."
+      },
+      "app_note": "SOCIAL in a low-demand form (text a trusted person before a call; empathic one-to-one contact). A low-exposure kind act is directly supported in socially anxious adults. Mindfulness should be acceptance-based, not monitoring only. BREATHE first if intensity is high."
     },
     {
       "rule_id": "R13",
@@ -1464,6 +1851,7 @@
         "angry",
         "sad"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Angry + sad**",
       "condition": {
         "all": [
@@ -1480,6 +1868,7 @@
       "recommended_text": "BREATHE / MINDFUL first, then expressive journalling or REAPPRAISE, then SOCIAL (talk to a supportive person), MUSIC (match then shift)",
       "recommend_classes": [
         "BREATHE",
+        "DISTRACT",
         "MINDFUL",
         "REAPPRAISE",
         "SOCIAL",
@@ -1488,9 +1877,11 @@
       "follow_up_classes": [],
       "recommend_categories": [
         "mind-body",
+        "play",
+        "creative",
+        "rest",
         "cognitive",
-        "social",
-        "creative"
+        "social"
       ],
       "recommend_activity_ids": [
         "slow_breathing",
@@ -1498,13 +1889,22 @@
         "box_breathing",
         "progressive_muscle_relaxation",
         "time_out_counting",
+        "drawing_distraction",
+        "drawing_something_happy",
+        "colouring_structured",
+        "clay_work",
+        "free_art_making",
+        "reading_fiction",
+        "distraction_absorbing_task",
+        "challenge_matched_game",
+        "casual_video_game",
+        "watch_comedy",
         "guided_imagery",
         "mindfulness_meditation",
         "body_scan",
         "loving_kindness_meditation",
         "self_compassion_exercise",
         "grounding_54321",
-        "journaling",
         "cognitive_reappraisal",
         "perspective_taking",
         "third_person_self_talk",
@@ -1524,7 +1924,9 @@
         "group_singing",
         "shared_meal",
         "board_games",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call",
+        "distanced_journaling"
       ],
       "follow_up_activity_ids": [],
       "avoid_text": "Venting, confronting someone immediately, aggressive exercise, sad-music loops",
@@ -1538,7 +1940,9 @@
         "hiit",
         "running_jogging",
         "sad_music_listening",
-        "drawing_to_vent"
+        "drawing_to_vent",
+        "journaling",
+        "expressive_writing"
       ],
       "avoid_activity_ids": [
         "venting",
@@ -1547,9 +1951,10 @@
         "running_jogging",
         "sad_music_listening",
         "drawing_to_vent",
+        "journaling",
+        "expressive_writing",
         "upbeat_music_listening",
         "free_dancing",
-        "expressive_writing",
         "moderate_exercise",
         "stair_walking"
       ],
@@ -1573,9 +1978,59 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
-      "app_note": "Sequence matters: calm first, then journalling or reappraisal, then talk to a supportive person."
+      "review_verdict": "refine",
+      "review_verdict_text": "refine",
+      "review_text": "Specify REAPPRAISE and journalling as *self-distanced* reflection, which is tested on anger recall ([Kross 2005](https://doi.org/10.1111/j.1467-9280.2005.01600.x)) and on sadness in depression ([Kross 2012](https://doi.org/10.1037/a0028808)). Distraction before reflection, since rumination raises aggression ([Bushman 2005](https://doi.org/10.1037/0022-3514.88.6.969)). Undirected \"expressive\" writing should be dropped.",
+      "review_citations": [
+        {
+          "citation": "Kross 2005",
+          "doi_or_url": "https://doi.org/10.1111/j.1467-9280.2005.01600.x",
+          "pmid": "16137257",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Kross 2012",
+          "doi_or_url": "https://doi.org/10.1037/a0028808",
+          "pmid": "22708885",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Bushman 2005",
+          "doi_or_url": "https://doi.org/10.1037/0022-3514.88.6.969",
+          "pmid": "15982116",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Calm first, then distract, then self-distanced reflection (third person, 'why'), then talk to a supportive person; undirected expressive writing is dropped.",
+      "original": {
+        "recommend_classes": [
+          "BREATHE",
+          "MINDFUL",
+          "REAPPRAISE",
+          "SOCIAL",
+          "MUSIC"
+        ],
+        "extra_activity_ids": [],
+        "avoid_activity_ids": [
+          "venting",
+          "vigorous_exercise",
+          "hiit",
+          "running_jogging",
+          "sad_music_listening",
+          "drawing_to_vent"
+        ],
+        "app_note": "Sequence matters: calm first, then journalling or reappraisal, then talk to a supportive person."
+      },
+      "app_note": "Sequence: calm the body, distract (something absorbing or funny), then reflect from a distance (use your name or 'you', ask why), then talk to a supportive person. Undirected expressive journalling is not offered."
     },
     {
       "rule_id": "R14",
@@ -1585,6 +2040,7 @@
         "angry",
         "stressed"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Angry + stressed**",
       "condition": {
         "all": [
@@ -1602,6 +2058,7 @@
       "recommend_classes": [
         "BREATHE",
         "MOVE-LOW",
+        "DISTRACT",
         "NATURE"
       ],
       "follow_up_classes": [
@@ -1610,6 +2067,9 @@
       "recommend_categories": [
         "mind-body",
         "physical",
+        "play",
+        "creative",
+        "rest",
         "nature"
       ],
       "recommend_activity_ids": [
@@ -1623,6 +2083,16 @@
         "yoga",
         "stretching",
         "nature_walk",
+        "drawing_distraction",
+        "drawing_something_happy",
+        "colouring_structured",
+        "clay_work",
+        "free_art_making",
+        "reading_fiction",
+        "distraction_absorbing_task",
+        "challenge_matched_game",
+        "casual_video_game",
+        "watch_comedy",
         "awe_walk",
         "forest_bathing",
         "gardening",
@@ -1674,9 +2144,41 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
-      "app_note": "Keep movement easy or playful. Do not prompt sending messages while angry."
+      "review_verdict": "confirm",
+      "review_verdict_text": "confirm",
+      "review_text": "New RCT: moderate aerobic exercise done amid aversive input increased anger ([Rodrigues 2026](https://doi.org/10.1016/j.actpsy.2026.106714)). Keep movement easy and away from the trigger, and use distraction over rumination ([Bushman 2005](https://doi.org/10.1037/0022-3514.88.6.969)).",
+      "review_citations": [
+        {
+          "citation": "Rodrigues 2026",
+          "doi_or_url": "https://doi.org/10.1016/j.actpsy.2026.106714",
+          "pmid": "41875642",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Bushman 2005",
+          "doi_or_url": "https://doi.org/10.1037/0022-3514.88.6.969",
+          "pmid": "15982116",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Confirmed; keep movement easy and away from the provoking input, use distraction over rumination, and treat nature as weak for the anger part.",
+      "original": {
+        "recommend_classes": [
+          "BREATHE",
+          "MOVE-LOW",
+          "NATURE"
+        ],
+        "app_note": "Keep movement easy or playful. Do not prompt sending messages while angry."
+      },
+      "app_note": "Keep movement easy and physically away from the trigger ('step away from the screen first'): moderate exercise done while viewing upsetting images raised anger. Distraction over rumination. Nature is the weakest-supported option for the anger part. Do not prompt sending messages while angry."
     },
     {
       "rule_id": "R15",
@@ -1686,6 +2188,7 @@
         "sad",
         "tired"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Sad + tired** (calm-tiredness with low mood)",
       "condition": {
         "all": [
@@ -1701,22 +2204,28 @@
       },
       "recommended_text": "Very small PLEASANT step (5–10 min), MOVE-LOW outdoors, MUSIC, SOCIAL low-effort (voice note), REST if sleep-deprived",
       "recommend_classes": [
+        "REST",
         "PLEASANT",
         "MOVE-LOW",
         "MUSIC",
-        "SOCIAL",
-        "REST"
+        "SOCIAL"
       ],
       "follow_up_classes": [],
       "recommend_categories": [
+        "rest",
         "creative",
         "cognitive",
         "physical",
         "mind-body",
-        "social",
-        "rest"
+        "social"
       ],
       "recommend_activity_ids": [
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "caffeine_nap",
+        "micro_break",
+        "warm_bath_shower",
         "free_dancing",
         "drawing_something_happy",
         "knitting",
@@ -1724,7 +2233,6 @@
         "behavioural_activation",
         "watch_comedy",
         "brisk_walk_10min",
-        "movement_breaks",
         "yoga",
         "stretching",
         "music_listening_calming",
@@ -1736,12 +2244,8 @@
         "weak_tie_chat",
         "share_good_news",
         "affectionate_touch",
-        "nature_sitting",
-        "nap_short",
-        "caffeine_nap",
-        "micro_break",
-        "warm_bath_shower",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call"
       ],
       "follow_up_activity_ids": [],
       "avoid_text": "High-effort goals, staying in bed all day, alcohol",
@@ -1794,10 +2298,76 @@
           "verification_status": "verified_abstract"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true,
-      "app_note": "Very small step (5-10 min); low-effort social form (voice note); REST if sleep-deprived. max_typical_duration_min = 20 is this build's encoding of 'very small step'."
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "sad+tired",
+          "activity_id": "nature_sitting",
+          "combo_score": 0.398,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN001_s_sad+tired_nature_sitting"
+        },
+        {
+          "combo_key": "sad+tired",
+          "activity_id": "nap_short",
+          "combo_score": 0.281,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN071_s_sad+tired_nap_short"
+        },
+        {
+          "combo_key": "sad+tired",
+          "activity_id": "yoga",
+          "combo_score": 0.547,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN046_s_sad+tired_yoga"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "refine",
+      "review_verdict_text": "refine",
+      "review_text": "Use a walk for energy, but expect fatigue relief only from easy movement lasting more than 20 min ([Loy 2013](https://doi.org/10.1080/21641846.2013.843266), web). BA's evidence is for depression ([Jia 2025](https://doi.org/10.2196/68054)). Chronic-exercise energy effects vanished against placebo controls ([Puetz 2006](https://doi.org/10.1037/0033-2909.132.6.866)), so keep the copy modest.",
+      "review_citations": [
+        {
+          "citation": "Loy 2013",
+          "doi_or_url": "https://doi.org/10.1080/21641846.2013.843266",
+          "pmid": "",
+          "verification_tag": "[prior-notes]; [web]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Jia 2025",
+          "doi_or_url": "https://doi.org/10.2196/68054",
+          "pmid": "40526910",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Puetz 2006",
+          "doi_or_url": "https://doi.org/10.1037/0033-2909.132.6.866",
+          "pmid": "17073524",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Rest is promoted to a first-line option (rest matched exercise on negative mood in depression); a walk is for energy; keep fatigue claims modest.",
+      "original": {
+        "recommend_classes": [
+          "PLEASANT",
+          "MOVE-LOW",
+          "MUSIC",
+          "SOCIAL",
+          "REST"
+        ],
+        "app_note": "Very small step (5-10 min); low-effort social form (voice note); REST if sleep-deprived. max_typical_duration_min = 20 is this build's encoding of 'very small step'."
+      },
+      "app_note": "Very small step (5-10 min). Rest is a first-line option. A short walk tends to lift energy, but fatigue relief needs easy movement for more than 20 minutes; keep the copy modest. Low-effort social form (voice note). max_typical_duration_min = 20 is this build's encoding of 'very small step'."
     },
     {
       "rule_id": "R16",
@@ -1807,6 +2377,7 @@
         "lonely",
         "sad"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Sad + lonely**",
       "condition": {
         "all": [
@@ -1855,9 +2426,13 @@
         "shared_meal",
         "board_games",
         "laughter_exercises",
-        "volunteering"
+        "empathy_phone_call",
+        "volunteering",
+        "singing_solo"
       ],
-      "follow_up_activity_ids": [],
+      "follow_up_activity_ids": [
+        "positive_reminiscence"
+      ],
       "avoid_text": "Withdrawal, passive social-media browsing",
       "avoid_classes": [],
       "avoid_first_classes": [],
@@ -1866,12 +2441,14 @@
       "avoid_activity_ids_explicit": [
         "passive_scrolling",
         "sad_music_listening",
-        "dwelling_on_feelings"
+        "dwelling_on_feelings",
+        "acquire_pet"
       ],
       "avoid_activity_ids": [
         "passive_scrolling",
         "sad_music_listening",
         "dwelling_on_feelings",
+        "acquire_pet",
         "expressive_writing"
       ],
       "rationale": "Activation plus connection; social interaction rated helpful for bad mood",
@@ -1893,9 +2470,67 @@
           "verification_status": "verified_abstract"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "lonely+sad",
+          "activity_id": "empathy_phone_call",
+          "combo_score": 0.85,
+          "direct": true,
+          "n_studies": 1,
+          "best_evidence_id": "CCS048_s_lonely+sad_empathy_phone_call"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "confirm_with_additions",
+      "review_verdict_text": "confirm, with additions",
+      "review_text": "Directly supported by [Kahlon 2021](https://doi.org/10.1001/jamapsychiatry.2021.0113) (loneliness d = 0.48, depression d = 0.31). Add nostalgia as a no-contact option ([Zhou 2008](https://doi.org/10.1111/j.1467-9280.2008.02194.x)), framed toward connection, not loss ([Larsen 2021](https://doi.org/10.1037/emo0001011)). Do not suggest pets ([Moshfeghinia 2025](https://doi.org/10.1186/s12991-025-00600-x)).",
+      "review_citations": [
+        {
+          "citation": "Kahlon 2021",
+          "doi_or_url": "https://doi.org/10.1001/jamapsychiatry.2021.0113",
+          "pmid": "33620417",
+          "verification_tag": "[PM-full]; [PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Zhou 2008",
+          "doi_or_url": "https://doi.org/10.1111/j.1467-9280.2008.02194.x",
+          "pmid": "19000213",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Larsen 2021",
+          "doi_or_url": "https://doi.org/10.1037/emo0001011",
+          "pmid": "34591508",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Moshfeghinia 2025",
+          "doi_or_url": "https://doi.org/10.1186/s12991-025-00600-x",
+          "pmid": "41194144",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Confirmed; warm one-to-one contact is directly supported; prefer active or shared music; nostalgia only as an opt-in framed toward connection; never suggest getting a pet.",
+      "original": {
+        "extra_activity_ids": [],
+        "follow_up_extra_activity_ids": [],
+        "avoid_activity_ids": [
+          "passive_scrolling",
+          "sad_music_listening",
+          "dwelling_on_feelings"
+        ],
+        "app_note": ""
+      },
+      "app_note": "Reach out to one specific person (text before call). Prefer active or shared music over solitary sad-music loops. Nostalgia (positive_reminiscence) is a follow-up the user opts into, framed toward connection, not loss. Never suggest getting a pet. Say that loneliness eases with repeated contact; one message is a start."
     },
     {
       "rule_id": "R17",
@@ -1905,6 +2540,7 @@
         "anxious",
         "sad"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Anxious + sad** (mixed anxiety–low mood)",
       "condition": {
         "all": [
@@ -1921,8 +2557,9 @@
       "recommended_text": "MOVE-MOD self-paced, PLEASANT, MINDFUL, SOCIAL; REAPPRAISE at low intensity",
       "recommend_classes": [
         "MOVE-MOD",
-        "PLEASANT",
+        "MOVE-LOW",
         "MINDFUL",
+        "PLEASANT",
         "SOCIAL"
       ],
       "follow_up_classes": [
@@ -1930,9 +2567,9 @@
       ],
       "recommend_categories": [
         "physical",
+        "mind-body",
         "creative",
         "cognitive",
-        "mind-body",
         "social"
       ],
       "recommend_activity_ids": [
@@ -1941,6 +2578,16 @@
         "running_jogging",
         "brisk_walk_10min",
         "stair_walking",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
         "drawing_something_happy",
         "knitting",
         "cooking",
@@ -1949,12 +2596,6 @@
         "gardening",
         "behavioural_activation",
         "watch_comedy",
-        "guided_imagery",
-        "mindfulness_meditation",
-        "body_scan",
-        "loving_kindness_meditation",
-        "self_compassion_exercise",
-        "grounding_54321",
         "gratitude_letter",
         "call_friend",
         "send_message",
@@ -1963,10 +2604,13 @@
         "affectionate_touch",
         "dance_programme",
         "resistance_training",
+        "tai_chi",
+        "qigong",
         "group_singing",
         "shared_meal",
         "board_games",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call"
       ],
       "follow_up_activity_ids": [
         "journaling",
@@ -1975,7 +2619,8 @@
         "third_person_self_talk",
         "affect_labeling",
         "worry_postponement",
-        "reframe_social_thoughts"
+        "reframe_social_thoughts",
+        "distanced_journaling"
       ],
       "avoid_text": "Rumination, avoidance, withdrawal",
       "avoid_classes": [],
@@ -2012,9 +2657,122 @@
           "verification_status": "corrected"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "moderate_exercise",
+          "combo_score": 0.591,
+          "direct": false,
+          "n_studies": 3,
+          "best_evidence_id": "CPN025_s_anxious+sad_moderate_exercise"
+        },
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "yoga",
+          "combo_score": 0.823,
+          "direct": false,
+          "n_studies": 6,
+          "best_evidence_id": "CPN042_s_anxious+sad_yoga"
+        },
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "nature_walk",
+          "combo_score": 0.486,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN003_s_anxious+sad_nature_walk"
+        },
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "mindfulness_meditation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CMX003_anxious+sad_mindfulness_meditation"
+        },
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "behavioural_activation",
+          "combo_score": 0.337,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CMX010_anxious+sad_behavioural_activation"
+        },
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "laughter_exercises",
+          "combo_score": 0.78,
+          "direct": false,
+          "n_studies": 3,
+          "best_evidence_id": "CCS047_s_anxious+sad_laughter_exercises"
+        },
+        {
+          "combo_key": "anxious+sad",
+          "activity_id": "empathy_phone_call",
+          "combo_score": 0.85,
+          "direct": true,
+          "n_studies": 1,
+          "best_evidence_id": "CCS048_s_anxious+sad_empathy_phone_call"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "refine",
+      "review_verdict_text": "refine",
+      "review_text": "Physical activity, UP-style emotion regulation and mindfulness reduce both outcomes ([Singh 2023](https://doi.org/10.1136/bjsports-2022-106195); [Carlucci 2021](https://doi.org/10.1016/j.cpr.2021.101999); [Taylor 2021](https://doi.org/10.1016/j.cpr.2021.102078)). Digital BA reduced depression but not anxiety ([Jia 2025](https://doi.org/10.2196/68054)), so PLEASANT should be ranked after MOVE/MINDFUL. Single-bout anxiety effects are small ([Ensari 2015](https://doi.org/10.1002/da.22370)).",
+      "review_citations": [
+        {
+          "citation": "Singh 2023",
+          "doi_or_url": "https://doi.org/10.1136/bjsports-2022-106195",
+          "pmid": "36796860",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Carlucci 2021",
+          "doi_or_url": "https://doi.org/10.1016/j.cpr.2021.101999",
+          "pmid": "34098412",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Taylor 2021",
+          "doi_or_url": "https://doi.org/10.1016/j.cpr.2021.102078",
+          "pmid": "34537665",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Jia 2025",
+          "doi_or_url": "https://doi.org/10.2196/68054",
+          "pmid": "40526910",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Ensari 2015",
+          "doi_or_url": "https://doi.org/10.1002/da.22370",
+          "pmid": "25899389",
+          "verification_tag": "[PM-abs]; [prior-notes]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Lead with movement, yoga or mindfulness, which move both outcomes; rank PLEASANT/behavioural activation after them (digital BA lowered depression, not anxiety).",
+      "original": {
+        "recommend_classes": [
+          "MOVE-MOD",
+          "PLEASANT",
+          "MINDFUL",
+          "SOCIAL"
+        ],
+        "follow_up_extra_activity_ids": [],
+        "app_note": ""
+      },
+      "app_note": "Movement, yoga or mindfulness first; PLEASANT/behavioural activation after them. PMR alone is a weak match for the sad part. Single-session anxiety effects are small. Reflection, if any, should be self-distanced."
     },
     {
       "rule_id": "R18",
@@ -2024,6 +2782,7 @@
         "bored",
         "restless"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Bored + restless** (tense-energy without a target)",
       "condition": {
         "all": [
@@ -2110,8 +2869,25 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "no_new_evidence",
+      "review_verdict_text": "no new evidence",
+      "review_text": "No intervention trial was found. The rule rests on the MAC model only ([Westgate & Wilson 2018](https://doi.org/10.1037/rev0000097)).",
+      "review_citations": [
+        {
+          "citation": "Westgate & Wilson 2018",
+          "doi_or_url": "https://doi.org/10.1037/rev0000097",
+          "pmid": "",
+          "verification_tag": "",
+          "found_in_combination_tables": false
+        }
+      ],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Sitting meditation should not be the first option."
     },
     {
@@ -2122,6 +2898,7 @@
         "bored",
         "lonely"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Bored + lonely**",
       "condition": {
         "all": [
@@ -2168,6 +2945,7 @@
         "shared_meal",
         "board_games",
         "laughter_exercises",
+        "empathy_phone_call",
         "volunteering"
       ],
       "follow_up_activity_ids": [],
@@ -2203,9 +2981,27 @@
           "verification_status": "verified_abstract"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true,
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "bored+lonely",
+          "activity_id": "group_singing",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CCS024_s_bored+lonely_group_singing"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "no_new_evidence",
+      "review_verdict_text": "no new evidence",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Prefer one activity that supplies both engagement and connection (game with a friend, class, club)."
     },
     {
@@ -2216,6 +3012,7 @@
         "bored",
         "tired"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Bored + tired**",
       "condition": {
         "all": [
@@ -2308,9 +3105,36 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
-      "app_note": "Check whether the 'boredom' is fatigue: rest first, then light novelty. extra_activity_ids stand for the notes' 'easy creative task'."
+      "review_verdict": "refine",
+      "review_verdict_text": "refine (nap length)",
+      "review_text": "A 10-min nap is most recuperative and 30 min causes sleep inertia ([Brooks & Lack 2006](https://doi.org/10.1093/sleep/29.6.831); [Tietzel & Lack 2001](https://doi.org/10.1093/sleep/24.3.293)). The rest of the rule is unchanged.",
+      "review_citations": [
+        {
+          "citation": "Brooks & Lack 2006",
+          "doi_or_url": "https://doi.org/10.1093/sleep/29.6.831",
+          "pmid": "16796222",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Tietzel & Lack 2001",
+          "doi_or_url": "https://doi.org/10.1093/sleep/24.3.293",
+          "pmid": "11322712",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Nap length: a 10-min nap is most recuperative; 30 min causes sleep inertia.",
+      "original": {
+        "app_note": "Check whether the 'boredom' is fatigue: rest first, then light novelty. extra_activity_ids stand for the notes' 'easy creative task'."
+      },
+      "app_note": "Check whether the 'boredom' is fatigue: rest first (a 10-minute nap, not 30), then light novelty. extra_activity_ids stand for the notes' 'easy creative task'."
     },
     {
       "rule_id": "R21",
@@ -2320,6 +3144,7 @@
         "anxious",
         "tired"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Anxious + tired**",
       "condition": {
         "all": [
@@ -2426,9 +3251,82 @@
           "verification_status": "not_in_pubmed"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true,
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+tired",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN065_s_anxious+tired_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "anxious+tired",
+          "activity_id": "mindfulness_meditation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN066_s_anxious+tired_mindfulness_meditation"
+        },
+        {
+          "combo_key": "anxious+tired",
+          "activity_id": "yoga",
+          "combo_score": 0.303,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN044_s_anxious+tired_yoga"
+        },
+        {
+          "combo_key": "anxious+tired",
+          "activity_id": "nature_walk",
+          "combo_score": 0.66,
+          "direct": false,
+          "n_studies": 4,
+          "best_evidence_id": "CPN017_s_anxious+tired_nature_walk"
+        },
+        {
+          "combo_key": "anxious+tired",
+          "activity_id": "nature_sitting",
+          "combo_score": 0.398,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN001_s_anxious+tired_nature_sitting"
+        },
+        {
+          "combo_key": "anxious+tired",
+          "activity_id": "nap_short",
+          "combo_score": 0.281,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN071_s_anxious+tired_nap_short"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "confirm",
+      "review_verdict_text": "confirm (indirect)",
+      "review_text": "Evening relaxation predicts serenity and detachment predicts less fatigue ([Sonnentag 2008](https://doi.org/10.1037/0021-9010.93.3.674)). Low-intensity movement lowers fatigue in the fatigued ([Dishman 2010](https://doi.org/10.1111/j.1469-8986.2010.01014.x)). No combination trial.",
+      "review_citations": [
+        {
+          "citation": "Sonnentag 2008",
+          "doi_or_url": "https://doi.org/10.1037/0021-9010.93.3.674",
+          "pmid": "18457495",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Dishman 2010",
+          "doi_or_url": "https://doi.org/10.1111/j.1469-8986.2010.01014.x",
+          "pmid": "20409016",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Body scan / muscle relaxation; wind-down routine; calm music. PLAN is avoided here because the notes say no problem-solving in bed."
     },
     {
@@ -2439,6 +3337,7 @@
         "sad",
         "stressed"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Stressed + sad**",
       "condition": {
         "all": [
@@ -2454,6 +3353,8 @@
       },
       "recommended_text": "MOVE-MOD or NATURE walk, SOCIAL support, small PLEASANT activity, controllability question → PLAN/REAPPRAISE",
       "recommend_classes": [
+        "BREATHE",
+        "MINDFUL",
         "MOVE-MOD",
         "NATURE",
         "SOCIAL",
@@ -2473,6 +3374,7 @@
         ]
       },
       "recommend_categories": [
+        "mind-body",
         "physical",
         "nature",
         "social",
@@ -2480,6 +3382,17 @@
         "cognitive"
       ],
       "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
         "free_dancing",
         "moderate_exercise",
         "running_jogging",
@@ -2510,13 +3423,13 @@
         "group_singing",
         "shared_meal",
         "board_games",
-        "laughter_exercises"
+        "laughter_exercises",
+        "empathy_phone_call"
       ],
       "follow_up_activity_ids": [
         "write_plan_todo",
         "if_then_plan",
         "journaling",
-        "self_compassion_exercise",
         "cognitive_reappraisal",
         "perspective_taking",
         "third_person_self_talk",
@@ -2560,9 +3473,99 @@
           "verification_status": "verified_abstract"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "sad+stressed",
+          "activity_id": "slow_breathing",
+          "combo_score": 0.74,
+          "direct": true,
+          "n_studies": 3,
+          "best_evidence_id": "CPN059_s_sad+stressed_slow_breathing"
+        },
+        {
+          "combo_key": "sad+stressed",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.711,
+          "direct": true,
+          "n_studies": 2,
+          "best_evidence_id": "CPN064_s_sad+stressed_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "sad+stressed",
+          "activity_id": "moderate_exercise",
+          "combo_score": 0.432,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CMX006_sad+stressed_moderate_exercise"
+        },
+        {
+          "combo_key": "sad+stressed",
+          "activity_id": "behavioural_activation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CMX009_sad+stressed_behavioural_activation"
+        },
+        {
+          "combo_key": "sad+stressed",
+          "activity_id": "dance_programme",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN053_s_sad+stressed_dance_programme"
+        },
+        {
+          "combo_key": "sad+stressed",
+          "activity_id": "laughter_exercises",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CCS046_s_sad+stressed_laughter_exercises"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "confirm",
+      "review_verdict_text": "confirm",
+      "review_text": "Physical activity has its largest effect on distress (−0.60; [Singh 2023](https://doi.org/10.1136/bjsports-2022-106195)), BA also lowered stress ([Jia 2025](https://doi.org/10.2196/68054)), and combined strategies are rated best ([Thayer 1994](https://doi.org/10.1037//0022-3514.67.5.910)).",
+      "review_citations": [
+        {
+          "citation": "Singh 2023",
+          "doi_or_url": "https://doi.org/10.1136/bjsports-2022-106195",
+          "pmid": "36796860",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Jia 2025",
+          "doi_or_url": "https://doi.org/10.2196/68054",
+          "pmid": "40526910",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Thayer 1994",
+          "doi_or_url": "https://doi.org/10.1037//0022-3514.67.5.910",
+          "pmid": "7983582",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Confirmed (strongest pair): low-arousal options (slow breathing, mindfulness) did as well as the hormetic arms in mixed-state trials, so they join walking as first options.",
+      "original": {
+        "recommend_classes": [
+          "MOVE-MOD",
+          "NATURE",
+          "SOCIAL",
+          "PLEASANT"
+        ],
+        "app_note": ""
+      },
+      "app_note": "Slow breathing or mindfulness, or a self-paced/green walk, then a small pleasant step; dance if energy allows."
     },
     {
       "rule_id": "R23",
@@ -2572,6 +3575,7 @@
         "lonely",
         "stressed"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Stressed + lonely**",
       "condition": {
         "all": [
@@ -2619,6 +3623,7 @@
         "shared_meal",
         "board_games",
         "laughter_exercises",
+        "empathy_phone_call",
         "tai_chi",
         "qigong"
       ],
@@ -2654,9 +3659,27 @@
           "verification_status": "corrected"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true,
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "lonely+stressed",
+          "activity_id": "yoga",
+          "combo_score": 0.52,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN047_s_lonely+stressed_yoga"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "no_new_evidence",
+      "review_verdict_text": "no new evidence",
+      "review_text": "Kahlon did not measure stress. The rule remains extrapolated.",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "MOVE-LOW here stands for the notes' 'co-walk' (walk with someone)."
     },
     {
@@ -2667,6 +3690,7 @@
         "content",
         "energetic"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Happy + energetic**",
       "condition": {
         "all": [
@@ -2749,8 +3773,17 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "no_new_evidence",
+      "review_verdict_text": "no new evidence",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Nothing to avoid; do not push calming activities."
     },
     {
@@ -2761,6 +3794,7 @@
         "calm",
         "content"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Calm + content**",
       "condition": {
         "all": [
@@ -2849,8 +3883,25 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "no_new_evidence",
+      "review_verdict_text": "no new evidence",
+      "review_text": "Savouring is the dominant daily response to positive emotion ([Heiy & Cheavens 2014](https://doi.org/10.1037/a0037231)), but that is descriptive, not efficacy.",
+      "review_citations": [
+        {
+          "citation": "Heiy & Cheavens 2014",
+          "doi_or_url": "https://doi.org/10.1037/a0037231",
+          "pmid": "24999913",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": false,
+      "revision_note": "",
       "app_note": "extra_activity_ids stand for the notes' 'gentle creative hobby'. Also used as the default when no emotion is active (neutral)."
     },
     {
@@ -2861,6 +3912,7 @@
         "content",
         "tired"
       ],
+      "source": "notes_rule_table",
       "condition_text": "**Happy + tired**",
       "condition": {
         "all": [
@@ -2952,14 +4004,41 @@
           "verification_status": "not_in_pubmed"
         }
       ],
-      "evidence_basis": "extrapolated",
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
-      "is_extrapolation": true
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "content+tired",
+          "activity_id": "movement_breaks",
+          "combo_score": 0.544,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN031_s_content+tired_movement_breaks"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "no_new_evidence",
+      "review_verdict_text": "no new evidence",
+      "review_text": "Short rest and relaxation are supported for tiredness ([Albulescu 2022](https://doi.org/10.1371/journal.pone.0272460)), but nothing tests the blend.",
+      "review_citations": [
+        {
+          "citation": "Albulescu 2022",
+          "doi_or_url": "https://doi.org/10.1371/journal.pone.0272460",
+          "pmid": "36044424",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": false,
+      "revision_note": ""
     },
     {
       "rule_id": "R27",
       "rule_type": "pair_group",
       "priority": 50,
+      "source": "notes_rule_table",
       "condition_text": "**Mixed valence** (e.g. happy + sad, excited + anxious)",
       "condition": {
         "all": [
@@ -2993,8 +4072,10 @@
               }
             ]
           },
+          "first_activity_ids": [
+            "arousal_reappraisal"
+          ],
           "add_classes": [
-            "MOVE-LOW",
             "BREATHE"
           ]
         }
@@ -3011,7 +4092,8 @@
         "playing_instrument",
         "singing_solo",
         "affect_labeling",
-        "journaling"
+        "journaling",
+        "arousal_reappraisal"
       ],
       "follow_up_activity_ids": [],
       "avoid_text": "Forcing a single label; suppressing either feeling",
@@ -3047,14 +4129,97 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
-      "app_note": "Mixed valence: show both labels, never force a single one. extra_activity_ids stand for 'journalling / naming both feelings'. A specific pair rule (e.g. R26) outranks this one."
+      "review_verdict": "partly_contradict",
+      "review_verdict_text": "refine and partly contradict",
+      "review_text": "Not suppressing either feeling and accepting the mixed state are supported ([Hershfield 2013](https://doi.org/10.1177/1948550612444616); [Adler & Hershfield 2012](https://doi.org/10.1371/journal.pone.0035633); [Ford 2018](https://doi.org/10.1037/pspp0000157)). \"Naming both feelings\" has only weak support ([Eckland 2022](https://doi.org/10.1037/emo0001038); [Brown 2021](https://doi.org/10.1037/emo0000969)). For excited + anxious before a task, the evidence **contradicts** calming as the default: reappraising arousal as excitement outperformed trying to calm down ([Brooks 2014](https://doi.org/10.1037/a0035325); meta-analytic d = 0.23, [Bosshard & Gomez 2024](https://doi.org/10.1038/s41598-024-58408-w)). Offer \"get excited\" self-talk first and breathing as an alternative.",
+      "review_citations": [
+        {
+          "citation": "Hershfield 2013",
+          "doi_or_url": "https://doi.org/10.1177/1948550612444616",
+          "pmid": "24032072",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Adler & Hershfield 2012",
+          "doi_or_url": "https://doi.org/10.1371/journal.pone.0035633",
+          "pmid": "22539987",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Ford 2018",
+          "doi_or_url": "https://doi.org/10.1037/pspp0000157",
+          "pmid": "28703602",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Eckland 2022",
+          "doi_or_url": "https://doi.org/10.1037/emo0001038",
+          "pmid": "34766792",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Brown 2021",
+          "doi_or_url": "https://doi.org/10.1037/emo0000969",
+          "pmid": "33829837",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Brooks 2014",
+          "doi_or_url": "https://doi.org/10.1037/a0035325",
+          "pmid": "24364682",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        },
+        {
+          "citation": "Bosshard & Gomez 2024",
+          "doi_or_url": "https://doi.org/10.1038/s41598-024-58408-w",
+          "pmid": "38575696",
+          "verification_tag": "[PM-abs]",
+          "found_in_combination_tables": true
+        }
+      ],
+      "revised": true,
+      "revision_note": "Keep 'don't suppress either feeling' and acceptance framing; 'name both feelings' has only weak support; for excited + anxious before a task, lead with 'I'm excited' arousal reappraisal, breathing as the alternative (contradicts BREATHE-first).",
+      "original": {
+        "conditional_classes": [
+          {
+            "when": {
+              "all": [
+                {
+                  "emotion": "energetic",
+                  "gte": 0.4
+                },
+                {
+                  "emotion": "anxious",
+                  "gte": 0.4
+                }
+              ]
+            },
+            "add_classes": [
+              "MOVE-LOW",
+              "BREATHE"
+            ]
+          }
+        ],
+        "app_note": "Mixed valence: show both labels, never force a single one. extra_activity_ids stand for 'journalling / naming both feelings'. A specific pair rule (e.g. R26) outranks this one."
+      },
+      "app_note": "Mixed valence: show both labels, never force a single one, use acceptance framing ('both can be true') and keep the positive part. Naming both feelings has only weak support. For excited + anxious with an upcoming task, offer 'I'm excited' reappraisal first and slow breathing as the alternative; without a task, calming options remain reasonable. Reminiscence should be framed toward connection. A specific pair rule (e.g. R26) outranks this one."
     },
     {
       "rule_id": "R28",
       "rule_type": "modifier",
       "priority": 5,
+      "source": "notes_rule_table",
       "condition_text": "Music chosen for any negative state",
       "condition": {
         "all": [
@@ -3113,14 +4278,24 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "tested for sadness only; partly",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Iso principle: start with a track matching the current mood, move toward the target mood over 2-3 tracks; let the user choose the tracks."
     },
     {
       "rule_id": "R29",
       "rule_type": "personalisation",
       "priority": 1,
+      "source": "notes_rule_table",
       "condition_text": "Personalisation, all rules",
       "condition": {
         "always": true
@@ -3172,14 +4347,24 @@
         }
       ],
       "evidence_basis": "partly",
+      "evidence_basis_original": "partly",
       "evidence_basis_text": "partly (tested in therapy, not hobby-matched micro-activities)",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Rank inside the allowed classes by likes/hobbies and past helpfulness; filter dislikes; show 2-3 choices; rotate for variety. A preference never overrides a rule's avoid list."
     },
     {
       "rule_id": "R30",
       "rule_type": "safety_gate",
       "priority": 100,
+      "source": "notes_rule_table",
       "condition_text": "Safety gate: extreme or persistent severe negative scores, or self-harm cues",
       "condition": {
         "any": [
@@ -3233,9 +4418,1629 @@
         }
       ],
       "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
       "evidence_basis_text": "extrapolated (precautionary)",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
       "is_extrapolation": true,
+      "review_verdict": "not_reviewed",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
       "app_note": "Skip the activity list; show the supportive message and localised crisis resources (see safety.json). The grounding exercise is optional. The 0.9 threshold is an uncalibrated precaution, not a screening tool."
+    },
+    {
+      "rule_id": "R31",
+      "rule_type": "cluster",
+      "priority": 70,
+      "label": "Tense distress cluster",
+      "cluster": [
+        "stressed",
+        "anxious",
+        "angry",
+        "sad"
+      ],
+      "min_count": 3,
+      "source": "combination_notes",
+      "condition_text": "Three or more of stressed, anxious, angry, sad >= moderate",
+      "condition": {
+        "all": [
+          {
+            "count_of": [
+              "stressed",
+              "anxious",
+              "angry",
+              "sad"
+            ],
+            "min_count": 3,
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "One shared-mechanism activity (slow breathing, green walk, yoga) before any component-specific step",
+      "recommend_classes": [
+        "BREATHE",
+        "NATURE",
+        "MOVE-LOW",
+        "MINDFUL",
+        "MOVE-MOD"
+      ],
+      "follow_up_classes": [
+        "PLEASANT",
+        "REAPPRAISE",
+        "PLAN"
+      ],
+      "deprioritise_when": [
+        {
+          "emotion": "sad",
+          "activity_ids": [
+            "progressive_muscle_relaxation"
+          ],
+          "reason": "PMR improved stress and anxiety but not depression in two of four PMR studies"
+        }
+      ],
+      "recommend_categories": [
+        "mind-body",
+        "nature",
+        "physical"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "blue_space_visit",
+        "tai_chi",
+        "qigong",
+        "dance_programme",
+        "resistance_training"
+      ],
+      "follow_up_activity_ids": [
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "behavioural_activation",
+        "watch_comedy",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "write_plan_todo",
+        "if_then_plan"
+      ],
+      "avoid_text": "Rumination; stacking several cognitive tasks; PMR alone if sad is high; venting; exercising amid the trigger",
+      "avoid_classes": [],
+      "avoid_first_classes": [
+        "REAPPRAISE"
+      ],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "dwelling_on_feelings",
+        "journaling",
+        "expressive_writing",
+        "sad_music_listening"
+      ],
+      "avoid_activity_ids": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "dwelling_on_feelings",
+        "journaling",
+        "expressive_writing",
+        "sad_music_listening"
+      ],
+      "rationale": "Stressed, frustrated, worried, angry and sad load on one day-level factor (Lucas 2018) and DASS stress, anxiety and depression correlate .77-.83. Mixed-state breathing and PMR trials and same-sample forest and yoga data improved several of these together.",
+      "citation": "Lucas et al. 2018; Kakemam et al. 2022; Compr Psychoneuroendocrinol 2024; J Educ Health Promot 2018; Front Psychol 2025;16:1670804; Healthcare 2026;14:1122; Singh et al. 2023; Rodrigues et al. 2026; Kjærvik & Bushman 2024",
+      "doi_or_url": "https://doi.org/10.1080/17439760.2018.1497686; https://pubmed.ncbi.nlm.nih.gov/35078477/; https://pubmed.ncbi.nlm.nih.gov/39606690/; https://pubmed.ncbi.nlm.nih.gov/29619392/; https://pubmed.ncbi.nlm.nih.gov/41256089/; https://pubmed.ncbi.nlm.nih.gov/42121565/; https://doi.org/10.1136/bjsports-2022-106195; https://doi.org/10.1016/j.actpsy.2026.106714; https://doi.org/10.1016/j.cpr.2024.102414",
+      "citations_verification": [
+        {
+          "citation": "Lucas et al. 2018",
+          "matched_verification_record": null,
+          "pmid": "31182970",
+          "doi": "10.1080/17439760.2018.1497686",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Kakemam et al. 2022",
+          "matched_verification_record": null,
+          "pmid": "35078477",
+          "doi": "",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Compr Psychoneuroendocrinol 2024",
+          "matched_verification_record": null,
+          "pmid": "39606690",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "J Educ Health Promot 2018",
+          "matched_verification_record": null,
+          "pmid": "29619392",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Front Psychol 2025;16:1670804",
+          "matched_verification_record": null,
+          "pmid": "41256089",
+          "doi": "",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Healthcare 2026;14:1122",
+          "matched_verification_record": null,
+          "pmid": "42121565",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Singh et al. 2023",
+          "matched_verification_record": null,
+          "pmid": "36796860",
+          "doi": "10.1136/bjsports-2022-106195",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Rodrigues et al. 2026",
+          "matched_verification_record": null,
+          "pmid": "41875642",
+          "doi": "10.1016/j.actpsy.2026.106714",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Kjærvik & Bushman 2024",
+          "matched_verification_record": null,
+          "pmid": "38518585",
+          "doi": "10.1016/j.cpr.2024.102414",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        }
+      ],
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Same-sample + mixed-state trials; moderate for programmes, extrapolated for a 5-min session (reports/Emotion combination evidence map.md)",
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+sad+stressed",
+          "activity_id": "slow_breathing",
+          "combo_score": 0.558,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN059_s_anxious+sad_slow_breathing"
+        },
+        {
+          "combo_key": "anxious+sad+stressed",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.711,
+          "direct": true,
+          "n_studies": 2,
+          "best_evidence_id": "CPN064_s_anxious+sad_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "anxious+sad+stressed",
+          "activity_id": "yoga",
+          "combo_score": 0.572,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN047_s_anxious+sad_yoga"
+        },
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "nature_walk",
+          "combo_score": 0.486,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN003_s_angry+anxious_nature_walk"
+        },
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "forest_bathing",
+          "combo_score": 0.498,
+          "direct": false,
+          "n_studies": 3,
+          "best_evidence_id": "CPN012_s_angry+anxious_forest_bathing"
+        },
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "nature_sitting",
+          "combo_score": 0.398,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN001_s_angry+anxious_nature_sitting"
+        },
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "yoga",
+          "combo_score": 0.639,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN042_s_angry+anxious_yoga"
+        },
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "moderate_exercise",
+          "combo_score": 0.548,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN025_s_angry+anxious_moderate_exercise"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Lead with one activity that works on shared distress, then add one component-specific step (a small pleasant activity if sad is high). If angry is active, keep movement easy and away from the trigger."
+    },
+    {
+      "rule_id": "R32",
+      "rule_type": "triple",
+      "priority": 72,
+      "label": "Sad + anxious + tired",
+      "triple": [
+        "anxious",
+        "sad",
+        "tired"
+      ],
+      "source": "combination_notes",
+      "condition_text": "sad, anxious and tired all >= moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          },
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Rest or breathing, then an easy outdoor walk; a 10-min nap if sleep-deprived",
+      "recommend_classes": [
+        "REST",
+        "BREATHE",
+        "NATURE",
+        "MOVE-LOW",
+        "MINDFUL"
+      ],
+      "follow_up_classes": [
+        "PLEASANT"
+      ],
+      "recommend_categories": [
+        "rest",
+        "mind-body",
+        "nature",
+        "physical"
+      ],
+      "recommend_activity_ids": [
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "micro_break",
+        "warm_bath_shower",
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "daylight_exposure",
+        "brisk_walk_10min",
+        "yoga",
+        "stretching",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "blue_space_visit",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [
+        "free_dancing",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "behavioural_activation",
+        "watch_comedy"
+      ],
+      "avoid_text": "Hard or maximal exercise; demanding plans; 30-min naps",
+      "avoid_classes": [
+        "MOVE-MOD",
+        "CHALLENGE",
+        "PLAN"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap",
+        "hiit",
+        "vigorous_exercise",
+        "upbeat_music_listening",
+        "dwelling_on_feelings",
+        "sad_music_listening"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap",
+        "hiit",
+        "vigorous_exercise",
+        "upbeat_music_listening",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "dance_programme",
+        "expressive_writing",
+        "poetry",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "resistance_training",
+        "write_plan_todo",
+        "if_then_plan",
+        "mastery_challenge",
+        "volunteering",
+        "explore_while_positive"
+      ],
+      "rationale": "Fatigue was endorsed by 94.2% of comorbid GAD+MDD cases. In depression, quiet rest matched exercise on every negative POMS subscale, maximal walking raised fatigue, and forest walks, a single Hatha yoga session, tele-PMR and a nap improved anxiety, depression and fatigue in the same samples.",
+      "citation": "Zbozinek et al. 2012; Bartholomew et al. 2005, MSSE; Physiol Behav 1995;57:1; Brooks & Lack 2006, Sleep; J Sports Sci 2020; BMC Psychiatry 2026; Song et al. 2018, IJERPH 15:2804; Healthcare 2026;14:1122",
+      "doi_or_url": "https://doi.org/10.1002/da.22026; https://pubmed.ncbi.nlm.nih.gov/16331126/; https://pubmed.ncbi.nlm.nih.gov/7878100/; https://doi.org/10.1093/sleep/29.6.831; https://pubmed.ncbi.nlm.nih.gov/32734824/; https://pubmed.ncbi.nlm.nih.gov/42907791/; https://pubmed.ncbi.nlm.nih.gov/30544682/; https://pubmed.ncbi.nlm.nih.gov/42121565/",
+      "citations_verification": [
+        {
+          "citation": "Zbozinek et al. 2012",
+          "matched_verification_record": null,
+          "pmid": "23184657",
+          "doi": "10.1002/da.22026",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Bartholomew et al. 2005, MSSE",
+          "matched_verification_record": null,
+          "pmid": "16331126",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Physiol Behav 1995;57:1",
+          "matched_verification_record": null,
+          "pmid": "7878100",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Brooks & Lack 2006, Sleep",
+          "matched_verification_record": null,
+          "pmid": "16796222",
+          "doi": "10.1093/sleep/29.6.831",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md, multi_outcome_creative_social_rest.md, mixed_state_interventions.md)"
+        },
+        {
+          "citation": "J Sports Sci 2020",
+          "matched_verification_record": null,
+          "pmid": "32734824",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "BMC Psychiatry 2026",
+          "matched_verification_record": null,
+          "pmid": "42907791",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Song et al. 2018, IJERPH 15:2804",
+          "matched_verification_record": null,
+          "pmid": "30544682",
+          "doi": "",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Healthcare 2026;14:1122",
+          "matched_verification_record": null,
+          "pmid": "42121565",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        }
+      ],
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Extrapolated from R15/R17/R21 plus nap and rest data; upgraded where same-sample rows exist",
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+sad+tired",
+          "activity_id": "nature_sitting",
+          "combo_score": 0.398,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN001_s_anxious+sad_nature_sitting"
+        },
+        {
+          "combo_key": "anxious+sad+tired",
+          "activity_id": "nap_short",
+          "combo_score": 0.281,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN071_s_anxious+sad_nap_short"
+        },
+        {
+          "combo_key": "anxious+sad+tired",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN065_s_anxious+sad_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "anxious+sad+tired",
+          "activity_id": "nature_walk",
+          "combo_score": 0.486,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN003_s_anxious+sad_nature_walk"
+        },
+        {
+          "combo_key": "anxious+sad+tired",
+          "activity_id": "forest_bathing",
+          "combo_score": 0.557,
+          "direct": false,
+          "n_studies": 4,
+          "best_evidence_id": "CPN005_s_anxious+sad_forest_bathing"
+        },
+        {
+          "combo_key": "anxious+sad+tired",
+          "activity_id": "yoga",
+          "combo_score": 0.275,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN037_s_anxious+sad_yoga"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Rest is evidence-based here, not a fallback. Promise calmer, not less tired, from a short walk."
+    },
+    {
+      "rule_id": "R33",
+      "rule_type": "triple",
+      "priority": 72,
+      "label": "Sad + anxious + angry",
+      "triple": [
+        "angry",
+        "anxious",
+        "sad"
+      ],
+      "source": "combination_notes",
+      "condition_text": "sad, anxious and angry all >= moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          },
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          },
+          {
+            "emotion": "angry",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Treat as R13: arousal-lowering activity or distraction first, then self-distanced reflection",
+      "recommend_classes": [
+        "BREATHE",
+        "DISTRACT",
+        "MINDFUL",
+        "MOVE-LOW"
+      ],
+      "follow_up_classes": [
+        "REAPPRAISE",
+        "SOCIAL"
+      ],
+      "recommend_categories": [
+        "mind-body",
+        "play",
+        "creative",
+        "rest",
+        "physical"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "drawing_distraction",
+        "drawing_something_happy",
+        "colouring_structured",
+        "clay_work",
+        "free_art_making",
+        "reading_fiction",
+        "distraction_absorbing_task",
+        "challenge_matched_game",
+        "casual_video_game",
+        "watch_comedy",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "tai_chi",
+        "qigong",
+        "distanced_journaling"
+      ],
+      "follow_up_activity_ids": [
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises",
+        "empathy_phone_call"
+      ],
+      "avoid_text": "Venting; exercise amid the trigger; undirected expressive writing; rumination",
+      "avoid_classes": [],
+      "avoid_first_classes": [
+        "REAPPRAISE"
+      ],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "running_jogging",
+        "journaling",
+        "expressive_writing",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "drawing_to_vent"
+      ],
+      "avoid_activity_ids": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "running_jogging",
+        "journaling",
+        "expressive_writing",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "drawing_to_vent",
+        "upbeat_music_listening",
+        "free_dancing",
+        "moderate_exercise",
+        "stair_walking",
+        "caffeine_nap"
+      ],
+      "rationale": "Irritability was endorsed by 84.5% of comorbid GAD+MDD cases and 28.7% of highly lonely adults screened positive for depression, anxiety and anger together. Arousal-decreasing activities reduce anger; rumination raises aggression; self-distancing lowered negative affect after anger recall and in depression; exercise amid aversive input raised anger.",
+      "citation": "Zbozinek et al. 2012; Cho et al. 2025; Kjærvik & Bushman 2024; Bushman et al. 2005; Kross, Ayduk & Mischel 2005; Kross et al. 2012; Rodrigues et al. 2026",
+      "doi_or_url": "https://doi.org/10.1002/da.22026; https://doi.org/10.1136/bmjopen-2024-088590; https://doi.org/10.1016/j.cpr.2024.102414; https://doi.org/10.1037/0022-3514.88.6.969; https://doi.org/10.1111/j.1467-9280.2005.01600.x; https://doi.org/10.1037/a0028808; https://doi.org/10.1016/j.actpsy.2026.106714",
+      "citations_verification": [
+        {
+          "citation": "Zbozinek et al. 2012",
+          "matched_verification_record": null,
+          "pmid": "23184657",
+          "doi": "10.1002/da.22026",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Cho et al. 2025",
+          "matched_verification_record": null,
+          "pmid": "40633948",
+          "doi": "10.1136/bmjopen-2024-088590",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Kjærvik & Bushman 2024",
+          "matched_verification_record": null,
+          "pmid": "38518585",
+          "doi": "10.1016/j.cpr.2024.102414",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Bushman et al. 2005",
+          "matched_verification_record": null,
+          "pmid": "15982116",
+          "doi": "10.1037/0022-3514.88.6.969",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Kross, Ayduk & Mischel 2005",
+          "matched_verification_record": null,
+          "pmid": "16137257",
+          "doi": "10.1111/j.1467-9280.2005.01600.x",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Kross et al. 2012",
+          "matched_verification_record": null,
+          "pmid": "22708885",
+          "doi": "10.1037/a0028808",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Rodrigues et al. 2026",
+          "matched_verification_record": null,
+          "pmid": "41875642",
+          "doi": "10.1016/j.actpsy.2026.106714",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        }
+      ],
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Extrapolated; the anger component is the best tested",
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "yoga",
+          "combo_score": 0.639,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN042_s_angry+anxious_yoga"
+        },
+        {
+          "combo_key": "angry+anxious+sad",
+          "activity_id": "nature_walk",
+          "combo_score": 0.486,
+          "direct": false,
+          "n_studies": 2,
+          "best_evidence_id": "CPN003_s_angry+anxious_nature_walk"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Calm the body or distract first; reflect from a distance only afterwards. Step away from the trigger before any movement."
+    },
+    {
+      "rule_id": "R34",
+      "rule_type": "triple",
+      "priority": 72,
+      "label": "Lonely + sad + anxious",
+      "triple": [
+        "anxious",
+        "lonely",
+        "sad"
+      ],
+      "source": "combination_notes",
+      "condition_text": "lonely, sad and anxious all >= moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          },
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          },
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Low-demand warm contact (text first) or a kind act; acceptance framing; raise the sensitivity of the R30 safety check",
+      "recommend_classes": [
+        "SOCIAL",
+        "KIND",
+        "BREATHE",
+        "MINDFUL"
+      ],
+      "follow_up_classes": [
+        "REAPPRAISE"
+      ],
+      "first_activity_ids": [
+        "send_message"
+      ],
+      "safety_flag": "raise_r30_sensitivity",
+      "recommend_categories": [
+        "social",
+        "mind-body"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "act_of_kindness",
+        "spend_on_others",
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "shared_meal",
+        "board_games",
+        "empathy_phone_call",
+        "reframe_social_thoughts"
+      ],
+      "follow_up_activity_ids": [
+        "journaling",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement"
+      ],
+      "avoid_text": "Group or high-stakes social tasks; nostalgia by default; passive scrolling; getting a pet",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "group_singing",
+        "laughter_exercises",
+        "dance_programme",
+        "passive_scrolling",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "acquire_pet"
+      ],
+      "avoid_activity_ids": [
+        "group_singing",
+        "laughter_exercises",
+        "dance_programme",
+        "passive_scrolling",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "acquire_pet",
+        "expressive_writing",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "caffeine_nap",
+        "volunteering"
+      ],
+      "rationale": "48.1% of highly lonely adults screened positive for both depression and anxiety. Empathy-focused calls reduced loneliness, depression and anxiety together; kind acts raised PA and lowered avoidance in socially anxious adults; acceptance-based mindfulness reduced loneliness; addressing social cognition is the most effective loneliness strategy.",
+      "citation": "Cho et al. 2025; Gabarrell-Pascuet et al. 2023; Kahlon et al. 2021; Alden & Trew 2013; Lindsay et al. 2019; Masi et al. 2011; Moshfeghinia et al. 2025",
+      "doi_or_url": "https://doi.org/10.1136/bmjopen-2024-088590; https://pubmed.ncbi.nlm.nih.gov/36833463/; https://doi.org/10.1001/jamapsychiatry.2021.0113; https://doi.org/10.1037/a0027761; https://doi.org/10.1073/pnas.1813588116; https://doi.org/10.1177/1088868310377394; https://doi.org/10.1186/s12991-025-00600-x",
+      "citations_verification": [
+        {
+          "citation": "Cho et al. 2025",
+          "matched_verification_record": null,
+          "pmid": "40633948",
+          "doi": "10.1136/bmjopen-2024-088590",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Gabarrell-Pascuet et al. 2023",
+          "matched_verification_record": null,
+          "pmid": "36833463",
+          "doi": "",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Kahlon et al. 2021",
+          "matched_verification_record": null,
+          "pmid": "33620417",
+          "doi": "10.1001/jamapsychiatry.2021.0113",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-full]; [PM-abs]",
+          "source": "combination notes tables (multi_outcome_creative_social_rest.md, mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Alden & Trew 2013",
+          "matched_verification_record": null,
+          "pmid": "22642341",
+          "doi": "10.1037/a0027761",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Lindsay et al. 2019",
+          "matched_verification_record": null,
+          "pmid": "30808743",
+          "doi": "10.1073/pnas.1813588116",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Masi et al. 2011",
+          "matched_verification_record": null,
+          "pmid": "20716644",
+          "doi": "10.1177/1088868310377394",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Moshfeghinia et al. 2025",
+          "matched_verification_record": null,
+          "pmid": "41194144",
+          "doi": "10.1186/s12991-025-00600-x",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        }
+      ],
+      "evidence_basis": "direct_combination_evidence",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Direct (Kahlon; Alden & Trew) for the programme components",
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "anxious+lonely+sad",
+          "activity_id": "empathy_phone_call",
+          "combo_score": 0.85,
+          "direct": true,
+          "n_studies": 1,
+          "best_evidence_id": "CCS048_s_anxious+lonely_empathy_phone_call"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Text a trusted person before suggesting a call; offer empathy_phone_call as a plan-ahead option. Use acceptance framing. Nostalgia only if the user opts in, framed toward connection. This profile marks a high-load group: apply the R30 persistence check with extra care."
+    },
+    {
+      "rule_id": "R35",
+      "rule_type": "triple",
+      "priority": 72,
+      "label": "Lonely + bored + sad (disconnected)",
+      "triple": [
+        "bored",
+        "lonely",
+        "sad"
+      ],
+      "source": "combination_notes",
+      "condition_text": "lonely, bored and sad all >= moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          },
+          {
+            "emotion": "bored",
+            "gte": 0.4
+          },
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "A shared or group activity, then a kind act or a matched challenge",
+      "recommend_classes": [
+        "SOCIAL",
+        "KIND",
+        "CHALLENGE",
+        "PLEASANT"
+      ],
+      "follow_up_classes": [],
+      "safety_flag": "persistent_bored_sad_signal",
+      "recommend_categories": [
+        "social",
+        "play",
+        "creative",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "act_of_kindness",
+        "spend_on_others",
+        "playing_instrument",
+        "free_art_making",
+        "poetry",
+        "everyday_creative_activity",
+        "challenge_matched_game",
+        "mastery_challenge",
+        "explore_while_positive",
+        "free_dancing",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises",
+        "empathy_phone_call",
+        "volunteering"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Passive scrolling; open 'sit and reflect'; flag persistent bored + sad to R30",
+      "avoid_classes": [],
+      "avoid_first_classes": [
+        "MINDFUL",
+        "REAPPRAISE"
+      ],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "acquire_pet"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "acquire_pet",
+        "expressive_writing"
+      ],
+      "rationale": "Lonely and bored form their own day-level factor with sad cross-loading (Lucas 2018); boredom correlates .60 with depression and .53 with loneliness. Six months of community choir improved loneliness and interest in life together; boredom and sadness frequency are the emotions most tied to depression in daily diaries; reflective thinking is enjoyable only on meaningful and positive topics.",
+      "citation": "Lucas et al. 2018; Hager et al. 2026; Takayama et al. 2026; Johnson et al. 2020; Eckland et al. 2022; Westgate et al. 2021",
+      "doi_or_url": "https://doi.org/10.1080/17439760.2018.1497686; https://pubmed.ncbi.nlm.nih.gov/42541734/; https://doi.org/10.1186/s12955-026-02490-3; https://doi.org/10.1093/geronb/gby132; https://doi.org/10.1037/emo0001038; https://doi.org/10.1037/emo0000941",
+      "citations_verification": [
+        {
+          "citation": "Lucas et al. 2018",
+          "matched_verification_record": null,
+          "pmid": "31182970",
+          "doi": "10.1080/17439760.2018.1497686",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Hager et al. 2026",
+          "matched_verification_record": null,
+          "pmid": "42541734",
+          "doi": "",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Takayama et al. 2026",
+          "matched_verification_record": null,
+          "pmid": "41639676",
+          "doi": "10.1186/s12955-026-02490-3",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Johnson et al. 2020",
+          "matched_verification_record": null,
+          "pmid": "30412233",
+          "doi": "10.1093/geronb/gby132",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_creative_social_rest.md)"
+        },
+        {
+          "citation": "Eckland et al. 2022",
+          "matched_verification_record": null,
+          "pmid": "34766792",
+          "doi": "10.1037/emo0001038",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Westgate et al. 2021",
+          "matched_verification_record": null,
+          "pmid": "33661664",
+          "doi": "10.1037/emo0000941",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Same-sample (choir, programme) + diary association; momentary use extrapolated",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Prefer one activity that supplies both engagement and connection (a game with a friend, a class). If reflection is offered, use a guided positive-and-meaningful prompt. Persistent bored + sad across check-ins should feed the R30 persistence signal."
+    },
+    {
+      "rule_id": "R36",
+      "rule_type": "triple",
+      "priority": 72,
+      "label": "Stressed + tired + sad (burnout-like)",
+      "triple": [
+        "sad",
+        "stressed",
+        "tired"
+      ],
+      "source": "combination_notes",
+      "condition_text": "stressed, tired and sad all >= moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "stressed",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          },
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Detach and rest, then low-effort pleasant leisure",
+      "recommend_classes": [
+        "REST",
+        "BREATHE",
+        "SENSORY",
+        "MOVE-LOW",
+        "PLEASANT"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "rest",
+        "mind-body",
+        "physical",
+        "creative",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "micro_break",
+        "warm_bath_shower",
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "cold_face_water",
+        "lavender_aromatherapy",
+        "grounding_54321",
+        "pet_animal",
+        "brisk_walk_10min",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "'Push through'; long planning; high-effort exercise",
+      "avoid_classes": [
+        "MOVE-MOD",
+        "CHALLENGE"
+      ],
+      "avoid_first_classes": [
+        "PLAN"
+      ],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap",
+        "upbeat_music_listening",
+        "sad_music_listening",
+        "dwelling_on_feelings",
+        "hiit",
+        "vigorous_exercise",
+        "free_dancing"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap",
+        "upbeat_music_listening",
+        "sad_music_listening",
+        "dwelling_on_feelings",
+        "hiit",
+        "vigorous_exercise",
+        "free_dancing",
+        "dance_programme",
+        "expressive_writing",
+        "poetry",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "resistance_training",
+        "mastery_challenge",
+        "volunteering",
+        "explore_while_positive"
+      ],
+      "rationale": "Burnout correlates .52 with depression. Detachment interventions and pleasurable leisure protect recovery from exhaustion; PMR with music lowered stress and fatigue in stressed, fatigued nurses; quiet rest matched exercise on negative mood in depression.",
+      "citation": "Koutsimani et al. 2019; Karabinski et al. 2021; Sonnentag et al. 2014; Wendsche & Lohmann-Haislah 2016; Ozgundondu & Gok Metin 2019; Bartholomew et al. 2005, MSSE; Brooks & Lack 2006, Sleep",
+      "doi_or_url": "https://doi.org/10.3389/fpsyg.2019.00284; https://doi.org/10.1037/ocp0000280; https://doi.org/10.1037/a0035760; https://doi.org/10.3389/fpsyg.2016.02072; https://doi.org/10.1016/j.iccn.2019.07.007; https://pubmed.ncbi.nlm.nih.gov/16331126/; https://doi.org/10.1093/sleep/29.6.831",
+      "citations_verification": [
+        {
+          "citation": "Koutsimani et al. 2019",
+          "matched_verification_record": null,
+          "pmid": "30918490",
+          "doi": "10.3389/fpsyg.2019.00284",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Karabinski et al. 2021",
+          "matched_verification_record": null,
+          "pmid": "34096763",
+          "doi": "10.1037/ocp0000280",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Sonnentag et al. 2014",
+          "matched_verification_record": null,
+          "pmid": "24635737",
+          "doi": "10.1037/a0035760",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Wendsche & Lohmann-Haislah 2016",
+          "matched_verification_record": null,
+          "pmid": "28133454",
+          "doi": "10.3389/fpsyg.2016.02072",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Ozgundondu & Gok Metin 2019",
+          "matched_verification_record": null,
+          "pmid": "31371164",
+          "doi": "10.1016/j.iccn.2019.07.007",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_creative_social_rest.md)"
+        },
+        {
+          "citation": "Bartholomew et al. 2005, MSSE",
+          "matched_verification_record": null,
+          "pmid": "16331126",
+          "doi": "",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md)"
+        },
+        {
+          "citation": "Brooks & Lack 2006, Sleep",
+          "matched_verification_record": null,
+          "pmid": "16796222",
+          "doi": "10.1093/sleep/29.6.831",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_physical_nature_mindbody.md, multi_outcome_creative_social_rest.md, mixed_state_interventions.md)"
+        }
+      ],
+      "evidence_basis": "same_sample_evidence",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Correlational recovery data; extrapolated",
+      "evidence_basis_upgraded": true,
+      "combination_evidence": [
+        {
+          "combo_key": "sad+stressed+tired",
+          "activity_id": "progressive_muscle_relaxation",
+          "combo_score": 0.612,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN065_s_sad+stressed_progressive_muscle_relaxation"
+        },
+        {
+          "combo_key": "sad+stressed+tired",
+          "activity_id": "yoga",
+          "combo_score": 0.52,
+          "direct": false,
+          "n_studies": 1,
+          "best_evidence_id": "CPN046_s_sad+stressed_yoga"
+        }
+      ],
+      "is_extrapolation": false,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Detach first (close work, mute notifications). Planning, if any, is one small step for later."
+    },
+    {
+      "rule_id": "R37",
+      "rule_type": "pair",
+      "priority": 60,
+      "label": "Anxious + restless",
+      "pair": [
+        "anxious",
+        "restless"
+      ],
+      "source": "combination_notes",
+      "condition_text": "anxious and restless both >= moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          },
+          {
+            "emotion": "restless",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Slow breathing, then rhythmic easy movement (walk, gentle yoga)",
+      "recommend_classes": [
+        "BREATHE",
+        "MOVE-LOW",
+        "NATURE",
+        "MOVE-MOD",
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "nature",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo",
+        "tai_chi",
+        "qigong",
+        "blue_space_visit",
+        "dance_programme",
+        "resistance_training"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Sitting meditation as the only or first option; caffeine",
+      "avoid_classes": [],
+      "avoid_first_classes": [
+        "MINDFUL"
+      ],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap",
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap",
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "rationale": "Psychomotor agitation was endorsed by 91.6% of GAD cases. Music interventions reduced psychological stress outcomes that the authors frame as including restlessness. No study in the notes used restlessness as an outcome; the activity choice is extrapolated from R05 and the restless fallback.",
+      "citation": "Zbozinek et al. 2012; de Witte et al. 2020",
+      "doi_or_url": "https://doi.org/10.1002/da.22026; https://doi.org/10.1080/17437199.2019.1627897",
+      "citations_verification": [
+        {
+          "citation": "Zbozinek et al. 2012",
+          "matched_verification_record": null,
+          "pmid": "23184657",
+          "doi": "10.1002/da.22026",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "de Witte et al. 2020",
+          "matched_verification_record": null,
+          "pmid": "31167611",
+          "doi": "10.1080/17437199.2019.1627897",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (multi_outcome_creative_social_rest.md)"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Extrapolated",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Offer movement early; sitting still should not be the only option."
+    },
+    {
+      "rule_id": "R38",
+      "rule_type": "group_modifier",
+      "priority": 49,
+      "label": "Positive + negative blend",
+      "source": "combination_notes",
+      "condition_text": "any positive class and any negative class >= moderate",
+      "condition": {
+        "all": [
+          {
+            "group": "positive",
+            "gte": 0.4
+          },
+          {
+            "group": "negative",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Keep the positive: acceptance framing plus an activity that uses it (savour, share, easy movement)",
+      "recommend_classes": [
+        "SAVOR",
+        "SHARE",
+        "MOVE-LOW"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "cognitive",
+        "social",
+        "physical",
+        "mind-body"
+      ],
+      "recommend_activity_ids": [
+        "best_possible_self_writing",
+        "awe_walk",
+        "gratitude_list",
+        "gratitude_letter",
+        "savoring",
+        "positive_reminiscence",
+        "share_good_news",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Activities aimed at removing the positive part",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dampening_positive"
+      ],
+      "avoid_activity_ids": [
+        "dampening_positive"
+      ],
+      "rationale": "About a third of sampled moments are mixed. Frequent mixed emotions predict better health, acceptance of mental experiences predicts lower negative affect under stress, and contentment speeds recovery from anxious arousal.",
+      "citation": "Trampe et al. 2015; Hershfield et al. 2013; Ford et al. 2018; Fredrickson et al. 2000",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0145450; https://doi.org/10.1177/1948550612444616; https://doi.org/10.1037/pspp0000157; https://doi.org/10.1023/a:1010796329158",
+      "citations_verification": [
+        {
+          "citation": "Trampe et al. 2015",
+          "matched_verification_record": null,
+          "pmid": "26698124",
+          "doi": "10.1371/journal.pone.0145450",
+          "verification_status": "verified_fulltext",
+          "verification_tag": "[PM-full]",
+          "source": "combination notes tables (co_occurrence_prevalence.md)"
+        },
+        {
+          "citation": "Hershfield et al. 2013",
+          "matched_verification_record": null,
+          "pmid": "24032072",
+          "doi": "10.1177/1948550612444616",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Ford et al. 2018",
+          "matched_verification_record": null,
+          "pmid": "28703602",
+          "doi": "10.1037/pspp0000157",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        },
+        {
+          "citation": "Fredrickson et al. 2000",
+          "matched_verification_record": null,
+          "pmid": "21731120",
+          "doi": "10.1023/a:1010796329158",
+          "verification_status": "verified_abstract",
+          "verification_tag": "[PM-abs]",
+          "source": "combination notes tables (mixed_state_interventions.md)"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_original": "extrapolated",
+      "evidence_basis_text": "Correlational (mixed-emotion health links; undoing effect)",
+      "evidence_basis_upgraded": false,
+      "combination_evidence": [],
+      "is_extrapolation": true,
+      "review_verdict": "new_rule",
+      "review_verdict_text": "",
+      "review_text": "",
+      "review_citations": [],
+      "revised": false,
+      "revision_note": "",
+      "app_note": "Applied with R27 (or a mixed-valence pair rule such as R26): its classes are appended after the governing rule's classes."
     }
   ]
 }

@@ -1,0 +1,67 @@
+pair_key,emotion_a,emotion_b,prevalence_tier,best_measure,best_measure_type,best_value,best_citation,best_verification_tag,tier_basis_measure,tier_basis_value,tier_basis_citation,n_sources,n_rows,no_data,negatively_associated,clinical_only,notes_list_as_no_data,triple_rows_including_pair
+anxious+stressed,stressed,anxious,common,r (DASS-21 A–S),scale_r,.82,Kakemam et al. 2022,[PM-full],r (DASS-21 A–S),.82,Kakemam et al. 2022,1,1,false,false,false,false,2
+angry+stressed,stressed,angry,common,r (BRUMS tension–anger),scale_r,.65,Quartiroli et al. 2017,[PM-full],r (BRUMS tension–anger),.65,Quartiroli et al. 2017,1,1,false,false,false,false,1
+restless+stressed,stressed,restless,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+sad+stressed,stressed,sad,common,r (DASS-21 D–S),scale_r,.83,Kakemam et al. 2022,[PM-full],r (DASS-21 D–S),.83,Kakemam et al. 2022,2,2,false,false,false,false,1
+lonely+stressed,stressed,lonely,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+stressed+tired,stressed,tired,common,r (BRUMS tension–fatigue),scale_r,.42,Quartiroli et al. 2017,[PM-full],r (BRUMS tension–fatigue),.42,Quartiroli et al. 2017,1,1,false,false,false,false,0
+bored+stressed,stressed,bored,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+calm+stressed,stressed,calm,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+content+stressed,stressed,content,common,qualitative: among most frequent opposite-valence co-occurrences,qualitative_most_frequent,"""happy, tired, stressed""",Moeller et al. 2018,[PM-abs],qualitative: among most frequent opposite-valence co-occurrences,"""happy, tired, stressed""",Moeller et al. 2018,1,1,false,false,false,false,0
+energetic+stressed,stressed,energetic,rare_or_unknown,r (BRUMS vigor–tension),scale_r,−.11,Quartiroli et al. 2017,[PM-full],r (BRUMS vigor–tension),−.11,Quartiroli et al. 2017,1,1,false,false,false,false,0
+neutral+stressed,stressed,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+angry+anxious,anxious,angry,common,within-r (frustrated–worried),within_person_r,.40,Lucas et al. 2018,[PM-full],within-r (frustrated–worried),.40,Lucas et al. 2018,2,2,false,false,false,false,4
+anxious+restless,anxious,restless,common,% GAD endorsing psychomotor agitation,conditional_percent,91.6%,Zbozinek et al. 2012,[PM-full],% GAD endorsing psychomotor agitation,91.6%,Zbozinek et al. 2012,1,1,false,false,true,false,1
+anxious+sad,anxious,sad,common,within-r (worried–sad),within_person_r,.45,Lucas et al. 2018,[PM-full],within-r (worried–sad),.45,Lucas et al. 2018,5,6,false,false,false,false,6
+anxious+lonely,anxious,lonely,common,pooled r,pooled_r_meta,.40,Gabarrell-Pascuet et al. 2023,[PM-full],pooled r,.40,Gabarrell-Pascuet et al. 2023,3,3,false,false,false,false,3
+anxious+tired,anxious,tired,common,r (burnout–anxiety),pooled_r_meta,.46,Koutsimani et al. 2019,[PM-abs],r (burnout–anxiety),.46,Koutsimani et al. 2019,2,2,false,false,false,false,1
+anxious+bored,anxious,bored,moderate,r (boredom–social anxiety),scale_r,.42,Hager et al. 2026,[PM-full],r (boredom–social anxiety),.42,Hager et al. 2026,1,1,false,false,false,false,0
+anxious+calm,anxious,calm,rare_or_unknown,within-r (calm–worried),within_person_r,−.24,Lucas et al. 2018,[PM-full],within-r (calm–worried),−.24,Lucas et al. 2018,1,1,false,true,false,false,0
+anxious+content,anxious,content,common,within-r (happy–worried),within_person_r,−.28,Lucas et al. 2018,[PM-full],qualitative: most frequent opposite-valence co-occurrer,anxiety & love top,Trampe et al. 2015,2,2,false,true,false,false,0
+anxious+energetic,anxious,energetic,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+anxious+neutral,anxious,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+angry+restless,angry,restless,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+angry+sad,angry,sad,common,within-r (frustrated–sad),within_person_r,.30,Lucas et al. 2018,[PM-full],r (POMS dejection–anger),.754,Petrowski et al. 2021,4,4,false,false,false,false,3
+angry+lonely,angry,lonely,moderate,% anger at high loneliness,conditional_percent,31.9%,Cho et al. 2025,[PM-full],% anger at high loneliness,31.9%,Cho et al. 2025,1,1,false,false,false,false,3
+angry+tired,angry,tired,common,r (POMS),scale_r,.612,Petrowski et al. 2021,[PM-full],r (POMS),.612,Petrowski et al. 2021,2,2,false,false,false,false,0
+angry+bored,angry,bored,rare_or_unknown,experimental: induced boredom ↑ aggression,experimental_effect,"effect, no r",Pfattheicher et al. 2021,[PM-abs],experimental: induced boredom ↑ aggression,"effect, no r",Pfattheicher et al. 2021,1,1,false,false,false,false,0
+angry+calm,angry,calm,rare_or_unknown,within-r (calm–frustrated),within_person_r,−.33,Lucas et al. 2018,[PM-full],within-r (calm–frustrated),−.33,Lucas et al. 2018,1,1,false,true,false,false,0
+angry+content,angry,content,rare_or_unknown,within-r (happy–frustrated),within_person_r,−.35,Lucas et al. 2018,[PM-full],within-r (happy–frustrated),−.35,Lucas et al. 2018,1,1,false,true,false,false,0
+angry+energetic,angry,energetic,rare_or_unknown,r (POMS vigor–anger),scale_r,−.167,Petrowski et al. 2021,[PM-full],r (POMS vigor–anger),−.167,Petrowski et al. 2021,1,1,false,false,false,false,0
+angry+neutral,angry,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+restless+sad,restless,sad,moderate,% MDD endorsing psychomotor agitation/retardation,conditional_percent,84.3% (mixes agitation and slowing),Zbozinek et al. 2012,[PM-full],% MDD endorsing psychomotor agitation/retardation,84.3% (mixes agitation and slowing),Zbozinek et al. 2012,1,1,false,false,true,false,1
+lonely+restless,restless,lonely,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+restless+tired,restless,tired,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+restless,restless,bored,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+calm+restless,restless,calm,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+content+restless,restless,content,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+energetic+restless,restless,energetic,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+neutral+restless,restless,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+lonely+sad,sad,lonely,common,pooled r,pooled_r_meta,.50,Erzen & Çikrikci 2018,[PM-abs]; [web],pooled r,.50,Erzen & Çikrikci 2018,4,4,false,false,false,false,3
+sad+tired,sad,tired,common,r (burnout–depression),pooled_r_meta,.52,Koutsimani et al. 2019,[PM-abs],r (burnout–depression),.52,Koutsimani et al. 2019,5,5,false,false,false,false,1
+bored+sad,sad,bored,common,r (state boredom–PHQ-9),scale_r,.60,Hager et al. 2026,[PM-full],r (state boredom–PHQ-9),.60,Hager et al. 2026,2,2,false,false,false,false,0
+calm+sad,sad,calm,rare_or_unknown,within-r,within_person_r,−.19,Lucas et al. 2018,[PM-full],within-r,−.19,Lucas et al. 2018,1,1,false,false,false,false,0
+content+sad,sad,content,rare_or_unknown,within-r (happy–sad),within_person_r,−.28,Lucas et al. 2018,[PM-full],within-r (happy–sad),−.28,Lucas et al. 2018,1,1,false,true,false,false,0
+energetic+sad,sad,energetic,rare_or_unknown,r (POMS vigor–dejection),scale_r,−.382,Petrowski et al. 2021,[PM-full],r (POMS vigor–dejection),−.382,Petrowski et al. 2021,1,1,false,true,false,false,0
+neutral+sad,sad,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+lonely+tired,lonely,tired,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+lonely,lonely,bored,common,r (boredom proneness T1–loneliness T2),scale_r,.57,Yuan et al. 2026,[PM-full],r (boredom proneness T1–loneliness T2),.57,Yuan et al. 2026,6,6,false,false,false,false,0
+calm+lonely,lonely,calm,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+content+lonely,lonely,content,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+energetic+lonely,lonely,energetic,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+lonely+neutral,lonely,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+tired,tired,bored,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+calm+tired,tired,calm,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+content+tired,tired,content,common,qualitative: among most frequent opposite-valence co-occurrences,qualitative_most_frequent,"""happy, tired, stressed""",Moeller et al. 2018,[PM-abs],qualitative: among most frequent opposite-valence co-occurrences,"""happy, tired, stressed""",Moeller et al. 2018,1,1,false,false,false,false,0
+energetic+tired,tired,energetic,rare_or_unknown,r (BRUMS vigor–fatigue),scale_r,−.31,Quartiroli et al. 2017,[PM-full],r (BRUMS vigor–fatigue),−.31,Quartiroli et al. 2017,2,2,false,true,false,false,0
+neutral+tired,tired,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+calm,bored,calm,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+content,bored,content,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+energetic,bored,energetic,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+bored+neutral,bored,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+calm+content,calm,content,common,within-r (calm–happy),within_person_r,.44,Lucas et al. 2018,[PM-full],within-r (calm–happy),.44,Lucas et al. 2018,1,1,false,false,false,false,0
+calm+energetic,calm,energetic,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+calm+neutral,calm,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+content+energetic,content,energetic,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+content+neutral,content,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0
+energetic+neutral,energetic,neutral,rare_or_unknown,,,,,,,,,0,0,true,false,false,true,0

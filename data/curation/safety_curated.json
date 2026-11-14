@@ -10,10 +10,40 @@
   "crisis_gate": {
     "rule_id": "R30",
     "triggers": [
-      {"type": "score", "description": "any negative emotion score is extreme", "condition": {"any": [{"group": "negative", "gte": 0.9}]}},
-      {"type": "persistence", "description": "severe negative states persist across several sessions", "condition": {"signal": "persistent_severe_negative"}, "note": "The notes do not define 'several' or 'severe'; the app must choose and label its own default."},
-      {"type": "free_text", "description": "any free text mentions self-harm or hopelessness", "condition": {"signal": "self_harm_cue"}},
-      {"type": "self_report", "description": "self-report is severe (route to crisis resources)", "condition": {"signal": "severe_self_report"}}
+      {
+        "type": "score",
+        "description": "any negative emotion score is extreme",
+        "condition": {
+          "any": [
+            {
+              "group": "negative",
+              "gte": 0.9
+            }
+          ]
+        }
+      },
+      {
+        "type": "persistence",
+        "description": "severe negative states persist across several sessions",
+        "condition": {
+          "signal": "persistent_severe_negative"
+        },
+        "note": "The notes do not define 'several' or 'severe'; the app must choose and label its own default."
+      },
+      {
+        "type": "free_text",
+        "description": "any free text mentions self-harm or hopelessness",
+        "condition": {
+          "signal": "self_harm_cue"
+        }
+      },
+      {
+        "type": "self_report",
+        "description": "self-report is severe (route to crisis resources)",
+        "condition": {
+          "signal": "severe_self_report"
+        }
+      }
     ],
     "behaviour": [
       "Skip the activity list and show support information instead.",
@@ -22,9 +52,15 @@
       "Crisis numbers must be localised and checked by a human (Martinengo et al. 2019 found 6 of 69 apps gave an erroneous helpline number). This dataset deliberately contains no phone numbers."
     ],
     "text": "If you're struggling or feel unsafe, please reach out to someone you trust or a local crisis line / emergency services now.",
-    "optional_activity_ids": ["grounding_54321"],
+    "optional_activity_ids": [
+      "grounding_54321"
+    ],
     "evidence_basis": "extrapolated (precautionary)",
-    "citations": ["Linardon et al. 2024 (efficacy; adverse events)", "Barrett et al. 2019", "Martinengo et al. 2019"]
+    "citations": [
+      "Linardon et al. 2024 (efficacy; adverse events)",
+      "Barrett et al. 2019",
+      "Martinengo et al. 2019"
+    ]
   },
   "disclaimers": {
     "general": "This app offers general wellbeing suggestions. It is not a medical device and does not diagnose or treat any condition. If your low mood or anxiety lasts more than two weeks or gets in the way of daily life, talk to a health professional.",
@@ -49,9 +85,19 @@
       "Does {label_1} and {label_2} sound right?"
     ],
     "always_offer": "That's not right - let me pick",
-    "never_say": ["You are depressed", "You are anxious", "we detect your stress from your handwriting"],
-    "forbidden_output_labels": ["depression", "anxiety disorder"],
-    "state_labels_ok": ["low/sad", "anxious/worried"],
+    "never_say": [
+      "You are depressed",
+      "You are anxious",
+      "we detect your stress from your handwriting"
+    ],
+    "forbidden_output_labels": [
+      "depression",
+      "anxiety disorder"
+    ],
+    "state_labels_ok": [
+      "low/sad",
+      "anxious/worried"
+    ],
     "rule": "Never use clinical terms as output labels; 'low/sad' and 'anxious/worried' are states, not diagnoses."
   },
   "activity_safety_rules": [
@@ -71,5 +117,125 @@
     "Drawings, stroke data and emotion scores are sensitive data; process and discard images, store scores locally, and ask consent explicitly (explicit consent and minimisation before sending to third-party LLM APIs).",
     "EU AI Act (as found in the notes, November 2026; verify against the Official Journal; not legal advice): disclose the emotion inference up front (Art. 50(3)) and never sell into workplaces or schools (Art. 5(1)(f)). Plan for possible high-risk (Annex III) classification.",
     "Stay inside general wellness: no diagnostic terms, no treatment claims, a clear 'not a medical device / not a diagnosis' statement, and a route to crisis resources when self-report is severe."
+  ],
+  "combination_cautions": [
+    {
+      "id": "no_pet_acquisition",
+      "text": "Do not suggest getting a pet as a fix for low mood or loneliness. Pet ownership was not associated with lower depression (OR 1.03, n.s.; cat ownership OR 1.06). Interacting with an animal the user already has access to is a separate activity (pet_animal).",
+      "applies_to": [
+        "lonely+sad",
+        "sad",
+        "lonely"
+      ],
+      "activity_ids": [
+        "acquire_pet",
+        "pet_animal"
+      ],
+      "citation_keys": [
+        "41194144"
+      ]
+    },
+    {
+      "id": "nostalgia_framing",
+      "text": "Offer nostalgia or reminiscence only as an opt-in and frame it toward connection, not loss. Reminiscing on good times that cannot be repeated produced the most sadness, and in daily life nostalgia went with lower positive and higher negative affect, more so on lonely days.",
+      "applies_to": [
+        "lonely+sad",
+        "content+sad",
+        "content+lonely",
+        "anxious+lonely+sad"
+      ],
+      "activity_ids": [
+        "positive_reminiscence"
+      ],
+      "citation_keys": [
+        "34591508",
+        "32982886",
+        "19000213"
+      ]
+    },
+    {
+      "id": "sad_music_rumination",
+      "text": "Steer away from solitary sad-music loops when sad (especially sad + lonely) and for users prone to rumination: people with depression are more likely to 'group ruminate' with music, which can amplify negative emotion; listening to choral music raised negative affect while singing lowered it. Prefer active or shared music.",
+      "applies_to": [
+        "sad",
+        "lonely+sad"
+      ],
+      "activity_ids": [
+        "sad_music_listening",
+        "music_listening_calming"
+      ],
+      "citation_keys": [
+        "28421014",
+        "25330315",
+        "15669447"
+      ]
+    },
+    {
+      "id": "no_exercise_amid_trigger",
+      "text": "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger.",
+      "applies_to": [
+        "angry+anxious",
+        "angry+stressed",
+        "angry"
+      ],
+      "activity_ids": [
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "brisk_walk_10min"
+      ],
+      "citation_keys": [
+        "41875642"
+      ]
+    },
+    {
+      "id": "no_maximal_exercise_for_fatigue",
+      "text": "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes.",
+      "applies_to": [
+        "tired",
+        "stressed+tired",
+        "sad+tired",
+        "anxious+sad+tired"
+      ],
+      "activity_ids": [
+        "vigorous_exercise",
+        "hiit",
+        "moderate_exercise"
+      ],
+      "citation_keys": [
+        "7878100",
+        "10.1080/21641846.2013.843266"
+      ]
+    },
+    {
+      "id": "short_nap_only",
+      "text": "Suggest a nap of about 10 minutes, not 30: a 30-minute nap first impaired alertness (sleep inertia).",
+      "applies_to": [
+        "tired",
+        "stressed+tired",
+        "bored+tired"
+      ],
+      "activity_ids": [
+        "nap_short"
+      ],
+      "citation_keys": [
+        "16796222",
+        "11322712"
+      ]
+    },
+    {
+      "id": "raise_r30_sensitivity",
+      "text": "Lonely + sad + anxious and bored + sad that persists across check-ins mark high-load groups (Cho 2025; Eckland 2022). Apply the R30 persistence check with extra care for these profiles. No validated threshold exists; this is a precaution.",
+      "applies_to": [
+        "anxious+lonely+sad",
+        "bored+sad",
+        "bored+lonely+sad"
+      ],
+      "activity_ids": [],
+      "citation_keys": [
+        "40633948",
+        "34766792"
+      ]
+    }
   ]
 }

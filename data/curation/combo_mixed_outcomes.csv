@@ -1,0 +1,59 @@
+row,emotion_combination,pairs,outcome,effect_by_emotion,note
+1,anxious+sad,,both_improved,anxious=large reduction (no pooled g in abstract);;sad=large reduction (no pooled g in abstract),
+2,anxious+sad,,both_improved,anxious=combined anxiety+depression g = 0.452 (RCTs); effects did not differ across measures;;sad=combined g = 0.452 (RCTs),
+3,anxious+sad,,both_improved,anxious=g = -0.25 (not retained at follow-up);;sad=g = -0.23 (not retained at follow-up),
+4,stressed+anxious,,both_improved,stressed=g = -0.41;;anxious=g = -0.25,
+5,anxious+sad,,both_improved,anxious=median -0.42;;sad=median -0.43,77 of 97 reviews rated critically low quality (notes)
+6,stressed+sad,,both_improved,stressed=psychological distress -0.60;;sad=psychological distress -0.60,outcome is psychological distress
+7,anxious,anxious+sad,single_emotion_only,anxious=state anxiety g = 0.16 (small),linked to the anxious+sad pair through R17
+8,anxious+sad,,one_not_improved,"anxious=not significant (P = .08 at 3 mo; P = .24 at 6 mo);;sad=reduced at 2, 3 and 6 months",
+9,stressed+sad,,both_improved,stressed=reduced at 3 months;;sad=reduced,
+10,anxious+sad,,both_improved,anxious=d = 0.82 at 3 mo;;sad=d = 0.43 at 3 mo,
+11,anxious+content,,proxy_outcome,anxious=faster cardiovascular recovery after anxiety induction;;content=contentment film (induced),"outcome is cardiovascular recovery, not felt anxiety"
+12,sad+stressed,,association_only,sad=rated best general strategy for bad mood;;stressed=rated best general strategy,survey and therapist ratings; no change tested
+13,tired,stressed+tired;sad+tired,single_emotion_only,tired=fatigue delta = 0.03 (n.s.); energy delta = 0.47,linked to R10 and R15; fatigue fell only after low-moderate exercise >20 min
+14,tired,stressed+tired,single_emotion_only,tired=fatigue down after low-intensity sessions only; vigor up after both,linked to R10
+15,tired,sad+tired,single_emotion_only,tired=energy/fatigue delta = 0.37; null with placebo controls,linked to R15
+16,tired+stressed,,single_emotion_only,tired=fatigue d = .35; vigor d = .36,the notes classify this row as single_emotion_extrapolation: only fatigue and vigor were pooled
+17,tired,stressed+tired;bored+tired,single_emotion_only,tired=10-min nap best; benefits up to 155 min; 30 min causes inertia,linked to R10 and R20
+18,tired,bored+tired,single_emotion_only,tired=10 min improved alertness at once; 30 min impaired first,linked to R20
+19,stressed+tired,,proxy_outcome,"stressed=detachment improved, d = 0.36;;tired=detachment improved, d = 0.36",outcome is psychological detachment
+20,stressed+tired,,association_only,"stressed=detachment correlates with less exhaustion;;tired=detachment correlates with less fatigue, better sleep",correlational meta-analysis
+21,stressed+tired,,association_only,stressed=pleasurable leisure buffered exhaustion-driven loss of detachment;;tired=same,prospective observational; supports adding low-effort PLEASANT to R10
+22,stressed+tired,,association_only,stressed=relaxation predicted serenity; low detachment predicted negative activation;;tired=low detachment predicted next-morning fatigue,day-level diary
+23,angry+sad,,single_emotion_only,angry=reflection without reactivating hot negative affect (anger recall),linked to R13; sadness not measured
+24,angry+sad,,single_emotion_only,sad=lower negative affect and depressive thoughts in MDD; no avoidance,linked to R13 and R17; anger not measured
+25,angry+sad,,association_only,angry=shorter negative emotional episodes;;sad=shorter negative emotional episodes,daily diary association
+26,angry+stressed,,single_emotion_only,angry=rumination increased displaced aggression; distraction did not,linked to R13 and R14; stress not measured
+27,angry,angry+sad,single_emotion_only,angry=angry rumination reduced self-control and increased aggression,rumination worsens anger; linked to R13 (R03 is a single-emotion rule)
+28,angry+anxious,,one_worsened,angry=anger increased after the session (time x group p = .028);;anxious=no state-anxiety reduction,exercise done while viewing aversive images; no effects under neutral images
+29,angry,angry+sad;angry+stressed,single_emotion_only,angry=arousal-decreasing g = -0.63 vs arousal-increasing g = -0.02,linked to R13 and R14
+30,sad+angry+anxious,angry+anxious;angry+sad;anxious+sad,association_only,"sad=rumination and suppression linked to more NA, less PA; reflection to more PA;;angry=same;;anxious=same",daily-life ESM association
+31,lonely+sad+anxious,lonely+sad;anxious+lonely;anxious+sad,both_improved,lonely=UCLA d = 0.48;;sad=PHQ d = 0.31;;anxious=GAD-7 d = 0.35,
+32,lonely,lonely+sad,single_emotion_only,lonely=g = 0.43,linked to R16 (R09 is a single-emotion rule)
+33,lonely,anxious+lonely;lonely+sad,single_emotion_only,lonely=most effective strategy in randomised studies,linked to R12 and R16
+34,lonely+anxious,,single_emotion_only,lonely=daily loneliness reduced 22% (d = 0.44); social contact d = 0.47,anxiety is not reported as an outcome in the finding
+35,lonely+anxious,,proxy_outcome,anxious=kind acts raised PA and lowered social-avoidance goals in highly socially anxious adults;;lonely=relationship satisfaction rose (notes section 4),"outcomes are PA, avoidance goals and relationship satisfaction"
+36,lonely+sad,,proxy_outcome,"lonely=loneliness raised nostalgia, which raised perceived social support",outcome is perceived social support
+37,lonely,,single_emotion_only,lonely=increased social connectedness and meaning,no rule link ('new')
+38,lonely+sad,,association_only,sad=pet ownership and depression OR 1.03 (n.s.); cat OR 1.06,observational; do not suggest getting a pet
+39,bored+sad,,association_only,bored=boredom frequency most strongly tied to depression;;sad=sadness frequency most strongly tied to depression,diary association; persistent bored+sad as a safety-gate persistence signal
+40,bored+sad,,single_emotion_only,bored=thinking for pleasure enjoyable only when topics are meaningful and positive,linked to R08 in the notes; sadness not measured
+41,bored,,association_only,bored=higher anxiety and depression in high scorers,cross-sectional; no rule link
+42,anxious+energetic,,mixed,"anxious=not reduced (Brooks found more excitement rather than less anxiety, notes section 6);;energetic=felt excitement increased; performance improved",contradicts R27's BREATHE-first default before a task
+43,anxious+stressed,,both_improved,"anxious=less evaluation anxiety;;stressed=lower threat appraisals, more adaptive cortisol",
+44,anxious+energetic,,proxy_outcome,anxious=performance d = 0.23 (combined 0.45; public d = 0.34);;energetic=performance d = 0.23,outcome is performance
+45,stressed,anxious+stressed,single_emotion_only,stressed=shifted stress mindset; moderate cortisol reactivity,linked to R11 (R04 is a single-emotion rule)
+46,content+sad,,association_only,content=frequent mixed emotions linked to better health;;sad=same,10-year ESM association
+47,content+sad,,association_only,content=concurrent happiness and sadness preceded wellbeing gains;;sad=same,longitudinal association
+48,content+sad,,mixed,"content=happiness elicited;;sad=sadness elicited, most for good times that cannot be repeated",nostalgia can deepen sadness; frame reminiscence toward connection
+49,(any mix),,general_principle,,
+50,(any negative mix),,general_principle,,
+51,(any mix),,general_principle,,
+52,(any mix),,general_principle,,
+53,(any mix),,general_principle,,
+54,(any mix),,general_principle,,
+55,(any mix),,general_principle,,
+56,(any mix),,general_principle,,
+57,(any mix),,general_principle,,
+58,stressed+(any negative),,general_principle,stressed=greater negative emotion differentiation linked to less disengagement regulation,

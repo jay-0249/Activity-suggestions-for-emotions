@@ -51,5 +51,55 @@
     "matrix_probe_score": 0.6,
     "max_suggestions": 3,
     "class_order_weight": 0.1
+  },
+  "combination": {
+    "_comment": "Weights for ranking activities with combination evidence (combo_score). Uncalibrated design defaults of this build; none comes from the notes.",
+    "verification_tag": {
+      "[PM-full]": 1.0,
+      "[PM-abs]": 0.9,
+      "[prior-notes]": 0.8,
+      "[web]": 0.5,
+      "[memory]": 0.3
+    },
+    "design": {
+      "meta_analysis": 1.0,
+      "rct": 0.85,
+      "controlled_or_crossover": 0.65,
+      "quasi_experimental": 0.55,
+      "pre_post": 0.45,
+      "systematic_review": 0.4,
+      "observational": 0.3,
+      "other": 0.3
+    },
+    "evidence_basis": {
+      "directly_tested_on_combination": 1.0,
+      "same_sample_both_outcomes": 0.8,
+      "pooled_parallel_outcomes": 0.5,
+      "single_emotion_extrapolation": 0.0
+    },
+    "mapping": {
+      "exact": 1.0,
+      "close": 0.85,
+      "proxy": 0.6
+    },
+    "corroboration_bonus_per_extra_study": 0.1,
+    "tier1_min_score": 0.25,
+    "candidate_score_weight": 0.5
+  },
+  "prevalence_tiers": {
+    "_comment": "Judgement-call thresholds for prevalence_tier (see schema.md). A pair takes the highest tier reached by any of its rows.",
+    "within_r_common_gte": 0.4,
+    "within_r_moderate_gte": 0.25,
+    "r_common_gte": 0.4,
+    "r_moderate_gte": 0.25,
+    "percent_common_gte": 70,
+    "percent_moderate_gte": 30,
+    "negative_r_lte": -0.2,
+    "by_measure_type": {
+      "qualitative_most_frequent": "common",
+      "shared_factor_loading": "moderate",
+      "experimental_effect": "rare_or_unknown",
+      "percent_of_moments": "rare_or_unknown"
+    }
   }
 }

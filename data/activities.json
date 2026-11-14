@@ -1,13 +1,13 @@
 {
   "meta": {
-    "n_activities": 105,
+    "n_activities": 109,
     "suggest_mode_values": {
       "right_now": "can be suggested as an immediate 1-45 min activity",
       "plan_to": "evidence is programme-level or needs other people/booking; offer as a plan-ahead idea",
       "avoid": "never suggest; kept so the evidence for NOT suggesting it is traceable",
       "reference_only": "generic or professional-led evidence row; not a concrete suggestion"
     },
-    "note": "Instructions are plain-language paraphrases grounded in the dose tested; they are not clinical advice."
+    "note": "Instructions are plain-language paraphrases grounded in the dose tested; they are not clinical advice. Activities added from the combination notes (arousal_reappraisal, distanced_journaling, empathy_phone_call, acquire_pet) have no single-emotion evidence links; their evidence is in combination_evidence.csv."
   },
   "activities": [
     {
@@ -38,7 +38,8 @@
         "Best estimate for healthy users; small",
         "Works best when goal is relaxation (abstract); the boredom/distraction null is not stated in the abstract and was not confirmed (no open full text)",
         "Do not claim music fixes boredom. NOT CONFIRMED: this boredom finding is not in the PubMed abstract",
-        "Single study"
+        "Single study",
+        "Steer away from solitary sad-music loops when sad (especially sad + lonely) and for users prone to rumination: people with depression are more likely to 'group ruminate' with music, which can amplify negative emotion; listening to choral music raised negative affect while singing lowered it. Prefer active or shared music. (Garrido, Eerola & McFerran 2017 [PM-abs]; Taruffi & Koelsch 2014 [PM-full]; Kreutz et al. 2004 [PM-abs])"
       ],
       "contraindicated_for": [],
       "rule_classes": [
@@ -57,17 +58,25 @@
           "stressed"
         ],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [
+          "anxious+sad"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Music listening",
         "Music listening (brief)",
         "Music listening (relaxing / self-selected)",
         "Music listening (to relieve boredom)",
-        "Music listening for relaxation (daily life)"
+        "Music listening for relaxation (daily life)",
+        "music listening (daily playlist)",
+        "music therapy for depression (Cochrane)"
       ],
       "source_notes_files": [
-        "creative_arts_activities.md"
+        "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -91,7 +100,8 @@
       ],
       "cautions": [
         "Self-report only; see next row",
-        "Contraindicated for users prone to rumination/depression"
+        "Contraindicated for users prone to rumination/depression",
+        "Steer away from solitary sad-music loops when sad (especially sad + lonely) and for users prone to rumination: people with depression are more likely to 'group ruminate' with music, which can amplify negative emotion; listening to choral music raised negative affect while singing lowered it. Prefer active or shared music. (Garrido, Eerola & McFerran 2017 [PM-abs]; Taruffi & Koelsch 2014 [PM-full]; Kreutz et al. 2004 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -114,7 +124,10 @@
           "sad"
         ],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Sad music listening"
@@ -169,7 +182,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "citation_exists_number_not_confirmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Listen to upbeat music"
@@ -228,7 +244,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Dancing (free, to music)"
@@ -287,15 +306,30 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 7,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "content+sad",
+          "energetic+stressed",
+          "sad+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "African dance (single class)",
+        "Argentine tango",
         "Dance / dance movement therapy (programmes)",
         "Dancing",
-        "Dancing (programme)"
+        "Dancing (programme)",
+        "Yoga, Feldenkrais, swimming, aerobic dance (single class)",
+        "dance / dance movement therapy (meta)",
+        "dancing (online class)"
       ],
       "source_notes_files": [
         "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md",
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -338,7 +372,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Drawing (vs writing)",
@@ -386,7 +423,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Drawing something happy"
@@ -444,7 +484,10 @@
           "sad"
         ],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Drawing to vent / express feelings"
@@ -496,17 +539,27 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 5,
+        "combinations_both_improved": [
+          "anxious+content",
+          "anxious+sad",
+          "anxious+stressed",
+          "sad+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Colouring (structured)",
         "Daily colouring",
         "Free-choice colouring",
         "Mandala colouring",
-        "Mindfulness-guided mandala colouring"
+        "Mindfulness-guided mandala colouring",
+        "colouring"
       ],
       "source_notes_files": [
-        "creative_arts_activities.md"
+        "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -547,7 +600,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Clay moulding",
@@ -595,13 +651,20 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [
+          "anxious+sad"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Playing an instrument (piano)"
+        "Playing an instrument (piano)",
+        "group drumming"
       ],
       "source_notes_files": [
-        "creative_arts_activities.md"
+        "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -645,7 +708,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Singing (low-pressure, no audience)"
@@ -702,13 +768,23 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 4,
+        "combinations_both_improved": [
+          "bored+lonely",
+          "content+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Choir session",
-        "Group singing"
+        "Group singing",
+        "choir singing",
+        "choral singing",
+        "community choir"
       ],
       "source_notes_files": [
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -750,7 +826,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Free art-making (collage / clay / markers)",
@@ -794,13 +873,22 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [
+          "anxious+content",
+          "anxious+stressed",
+          "content+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Active visual art therapy (therapist-led)"
+        "Active visual art therapy (therapist-led)",
+        "art-making (open-studio art therapy)"
       ],
       "source_notes_files": [
-        "creative_arts_activities.md"
+        "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -831,7 +919,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Arts engagement (any)"
@@ -898,7 +989,10 @@
           "sad"
         ],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Expressive writing",
@@ -948,13 +1042,18 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Best possible self writing"
+        "Best possible self writing",
+        "best-possible-self writing (meta)"
       ],
       "source_notes_files": [
-        "creative_arts_activities.md"
+        "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -1000,7 +1099,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Journaling (general)",
@@ -1047,7 +1149,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_found",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Poetry reading/writing"
@@ -1099,14 +1204,21 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [
+          "calm+content"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Knitting",
-        "Knitting in a group"
+        "Knitting in a group",
+        "crochet (craft)"
       ],
       "source_notes_files": [
-        "creative_arts_activities.md"
+        "creative_arts_activities.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -1148,7 +1260,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Cooking (group interventions)"
@@ -1192,7 +1307,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Eat a meal with others / cook for someone"
@@ -1243,7 +1361,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Photography (daily happy-making photo)",
@@ -1291,7 +1412,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Creative task while feeling happy/excited",
@@ -1345,7 +1469,10 @@
           "sad"
         ],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Reading fiction (single exposure)"
@@ -1393,7 +1520,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Bibliotherapy (self-help books)"
@@ -1427,7 +1557,9 @@
         "keep intensity comfortable",
         "do not promise fatigue relief from a short hard bout",
         "small effect; floor effects",
-        "clinical sample; few trials"
+        "clinical sample; few trials",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])",
+        "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes. (Physiol Behav 1995;57:1 [PM-abs]; Loy, O'Connor & Dishman 2013 [prior-notes]; [web])"
       ],
       "contraindicated_for": [
         {
@@ -1459,15 +1591,46 @@
           "tired"
         ],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 37,
+        "combinations_both_improved": [
+          "angry+anxious",
+          "angry+energetic",
+          "angry+sad",
+          "angry+tired",
+          "anxious+energetic",
+          "anxious+sad",
+          "anxious+tired",
+          "energetic+sad",
+          "energetic+tired",
+          "sad+stressed",
+          "sad+tired"
+        ],
+        "combinations_one_worsened": [
+          "angry+anxious"
+        ]
       },
       "source_activity_labels": [
+        "30-min moderate cycling while viewing aversive images",
         "Aerobic exercise (programme)",
         "Aerobic exercise (single bout)",
         "Any physical activity",
-        "Exercise (programme)"
+        "Chronic exercise",
+        "Chronic exercise (meta)",
+        "Exercise (programme)",
+        "Low- vs moderate-intensity cycling",
+        "Physical activity programmes",
+        "Single bout of exercise",
+        "Single exercise bout",
+        "Single-bout aerobic exercise (meta)",
+        "Taekwondo class",
+        "Treadmill aerobic exercise",
+        "Treadmill walking",
+        "Walking microbouts vs single walk"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -1493,7 +1656,8 @@
       ],
       "cautions": [
         "clinical sample; low certainty",
-        "do NOT suggest running for anger"
+        "do NOT suggest running for anger",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -1525,7 +1689,10 @@
           "angry"
         ],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Running / jogging",
@@ -1558,7 +1725,8 @@
       "cautions": [
         "small sample",
         "benefit may fade within ~10 min of stopping",
-        "Older single-lab study; exercise covered in depth by other researcher"
+        "Older single-lab study; exercise covered in depth by other researcher",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
       ],
       "contraindicated_for": [],
       "rule_classes": [
@@ -1576,14 +1744,21 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [
+          "energetic+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "10-minute brisk walk",
+        "Brisk walk vs snack",
         "Brisk walking (10 min)",
         "Short walk (10–15 min)"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md",
         "social_play_and_low_arousal_states.md"
       ]
@@ -1609,7 +1784,8 @@
         "stairs"
       ],
       "cautions": [
-        "transient; small sample"
+        "transient; small sample",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -1629,12 +1805,17 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Stair walking",
         "Stair walking (10 min)"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -1676,12 +1857,20 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [
+          "content+tired",
+          "energetic+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Short movement breaks (5 min hourly)"
+        "Short movement breaks (5 min hourly)",
+        "Walking microbouts vs single walk"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -1707,7 +1896,8 @@
       ],
       "cautions": [
         "regular exercisers only; unpleasant above threshold; not within 1 h of bed",
-        "medical caution for inactive users or heart/metabolic/renal disease"
+        "medical caution for inactive users or heart/metabolic/renal disease",
+        "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes. (Physiol Behav 1995;57:1 [PM-abs]; Loy, O'Connor & Dishman 2013 [prior-notes]; [web])"
       ],
       "contraindicated_for": [
         {
@@ -1747,7 +1937,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "High-intensity interval training"
@@ -1774,7 +1967,8 @@
       "requirements": [],
       "cautions": [
         "prefer self-selected pace",
-        "suppress vigorous suggestions in last hour before bed; moderate exercise is fine"
+        "suppress vigorous suggestions in last hour before bed; moderate exercise is fine",
+        "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes. (Physiol Behav 1995;57:1 [PM-abs]; Loy, O'Connor & Dishman 2013 [prior-notes]; [web])"
       ],
       "contraindicated_for": [
         {
@@ -1808,13 +2002,21 @@
           "sleep_general"
         ],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": [
+          "anxious+energetic",
+          "anxious+tired"
+        ]
       },
       "source_activity_labels": [
+        "Maximal walking test",
         "Vigorous exercise (above ventilatory threshold)",
         "Vigorous exercise near bedtime"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -1865,12 +2067,17 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Resistance exercise (intensity/rest variants)",
         "Resistance training"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -1916,14 +2123,45 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 41,
+        "combinations_both_improved": [
+          "angry+anxious",
+          "angry+energetic",
+          "angry+sad",
+          "angry+tired",
+          "anxious+energetic",
+          "anxious+sad",
+          "anxious+stressed",
+          "anxious+tired",
+          "energetic+sad",
+          "energetic+tired",
+          "lonely+sad",
+          "lonely+stressed",
+          "sad+stressed",
+          "sad+tired",
+          "stressed+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Hatha yoga (single class)",
+        "Hatha yoga (single session)",
+        "Integrated yoga",
+        "Kripalu yoga in school PE",
+        "Kripalu yoga programme",
+        "Sitting isometric yoga",
         "Slow yoga / calming activity",
+        "Tele-yoga (synchronous)",
+        "Workplace yoga",
         "Yoga",
-        "Yoga (single session)"
+        "Yoga (single session)",
+        "Yoga (single session, MS)",
+        "Yoga vs walking (12 weeks)",
+        "Yoga, Feldenkrais, swimming, aerobic dance (single class)"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -1971,12 +2209,25 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 7,
+        "combinations_both_improved": [
+          "anxious+energetic",
+          "anxious+sad",
+          "energetic+sad",
+          "energetic+tired",
+          "sad+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Tai chi"
+        "Tai chi",
+        "Tai chi / qigong (meta)",
+        "Tai chi programme",
+        "Tai chi vs walking vs meditation vs reading"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -2022,12 +2273,23 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 5,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "anxious+stressed",
+          "sad+stressed",
+          "sad+tired",
+          "stressed+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Baduanjin qigong (meta)",
         "Qigong"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -2067,7 +2329,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Stretching (workplace, 10 min after work)"
@@ -2124,16 +2389,34 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 32,
+        "combinations_both_improved": [
+          "angry+anxious",
+          "angry+energetic",
+          "angry+sad",
+          "angry+tired",
+          "anxious+energetic",
+          "anxious+sad",
+          "anxious+tired",
+          "energetic+sad",
+          "energetic+tired",
+          "sad+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Forest walk",
         "Green exercise",
         "Green exercise (walk in green space)",
         "Nature walk",
         "Nature-based outdoor activity",
-        "Outdoor (vs indoor) exercise"
+        "Outdoor (vs indoor) exercise",
+        "Urban park walk (fall)",
+        "Urban park walk (spring)"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -2174,12 +2457,19 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [
+          "content+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Awe walk (look for vastness/novelty with fresh eyes)"
+        "Awe walk (look for vastness/novelty with fresh eyes)",
+        "awe walks"
       ],
       "source_notes_files": [
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -2224,12 +2514,37 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 70,
+        "combinations_both_improved": [
+          "angry+anxious",
+          "angry+energetic",
+          "angry+sad",
+          "angry+tired",
+          "anxious+energetic",
+          "anxious+sad",
+          "anxious+tired",
+          "bored+sad",
+          "energetic+sad",
+          "energetic+tired",
+          "sad+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Forest bathing"
+        "Forest bathing",
+        "Forest bathing day",
+        "Forest day",
+        "Forest exposure (thermally neutral)",
+        "Forest stay",
+        "Forest therapy (meta, 15–60 min)",
+        "Forest therapy (meta, European samples)",
+        "Forest therapy (meta, ≤15 min)",
+        "Forest therapy (meta, ≥60 min)",
+        "Forest walk programme"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -2269,7 +2584,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Blue space visit"
@@ -2319,13 +2637,19 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [
+          "content+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Gardening",
         "Gardening (30 min)"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -2379,10 +2703,23 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 8,
+        "combinations_both_improved": [
+          "angry+anxious",
+          "angry+sad",
+          "angry+tired",
+          "anxious+sad",
+          "anxious+tired",
+          "energetic+tired",
+          "sad+tired",
+          "stressed+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Contact with nature",
+        "Forest viewing (shinrin-yoku)",
         "Look at greenery / nature view micro-break",
         "Nature exposure for attention restoration",
         "Sitting or walking in nature",
@@ -2390,6 +2727,7 @@
         "Viewing / being in nature"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md",
         "social_play_and_low_arousal_states.md"
       ]
@@ -2432,7 +2770,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Bright light / daylight exposure",
@@ -2483,7 +2824,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Cold-water face immersion (cold face test)"
@@ -2534,13 +2878,24 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 7,
+        "combinations_both_improved": [
+          "anxious+energetic",
+          "anxious+tired",
+          "energetic+tired",
+          "sad+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Cold-water exposure (meta)",
         "Cold-water immersion",
-        "Cold-water immersion (5 min)"
+        "Cold-water immersion (5 min)",
+        "Winter swimming"
       ],
       "source_notes_files": [
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md"
       ]
     },
@@ -2568,7 +2923,8 @@
         "athlete samples; low certainty; keep <60 min",
         "low/very low certainty; late naps may affect night sleep (general guidance)",
         "Sleep inertia just after waking; benefit lasts about 2 h; lab evidence; avoid late-day naps",
-        "Set an alarm; longer naps produce inertia"
+        "Set an alarm; longer naps produce inertia",
+        "Suggest a nap of about 10 minutes, not 30: a 30-minute nap first impaired alertness (sleep inertia). (Brooks & Lack 2006, Sleep [PM-abs]; Tietzel & Lack 2001 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -2590,14 +2946,30 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 9,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "anxious+tired",
+          "energetic+tired",
+          "sad+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "10- vs 30-min nap",
+        "10-min afternoon nap after sleep restriction",
         "10-minute nap specifically",
+        "Nap (10 vs 5, 20, 30 min)",
+        "Nap (30 min)",
         "Napping",
-        "Short daytime nap"
+        "Short daytime nap",
+        "nap (10 min)"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
+        "multi_outcome_creative_social_rest.md",
+        "multi_outcome_physical_nature_mindbody.md",
         "physical_nature_activities.md",
         "social_play_and_low_arousal_states.md"
       ]
@@ -2659,7 +3031,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Caffeine nap (coffee then <15 min nap)"
@@ -2713,17 +3088,30 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 9,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "anxious+stressed",
+          "sad+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Arousal-decreasing activities (breathing, PMR, mindfulness, relaxation)",
+        "Arousal-decreasing vs arousal-increasing activities",
+        "Breathwork (meta)",
         "Breathwork (slow/paced breathing, mixed)",
         "Deep / diaphragmatic breathing",
+        "Mindfulness / slow breathing / WHM / HIIT",
         "Slow breathing",
-        "Slow-paced breathing (<10 breaths/min, about 6/min)"
+        "Slow-paced breathing (<10 breaths/min, about 6/min)",
+        "WHM breathing + cold shower vs slow breathing + warm shower"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md",
+        "multi_outcome_physical_nature_mindbody.md"
       ]
     },
     {
@@ -2764,13 +3152,20 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [
+          "anxious+energetic"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Cyclic sighing (long exhale)"
+        "Cyclic sighing (long exhale)",
+        "Cyclic sighing / breathwork vs mindfulness"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "multi_outcome_physical_nature_mindbody.md"
       ]
     },
     {
@@ -2809,7 +3204,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Box breathing"
@@ -2859,15 +3257,34 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 17,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "anxious+stressed",
+          "anxious+tired",
+          "sad+stressed",
+          "sad+tired",
+          "stressed+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Applied PMR",
         "Arousal-decreasing activities (breathing, PMR, mindfulness, relaxation)",
+        "Arousal-decreasing vs arousal-increasing activities",
+        "PMR + guided imagery",
+        "PMR + music",
+        "PMR at worksite",
         "Progressive muscle relaxation",
-        "Relaxation training (any)"
+        "Relaxation training (any)",
+        "Tele-PMR"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md",
+        "multi_outcome_creative_social_rest.md",
+        "multi_outcome_physical_nature_mindbody.md"
       ]
     },
     {
@@ -2907,7 +3324,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Guided imagery"
@@ -2950,7 +3370,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Time-out / counting to ten"
@@ -3004,7 +3427,10 @@
           "angry"
         ],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Venting / hitting / intense exercise (do NOT suggest)"
@@ -3062,16 +3488,33 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 13,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "anxious+stressed",
+          "anxious+tired",
+          "sad+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Arousal-decreasing activities (breathing, PMR, mindfulness, relaxation)",
+        "Arousal-decreasing vs arousal-increasing activities",
         "Brief mindfulness (single session to 2 weeks)",
+        "Brief mindfulness training",
+        "Brief vs sham mindfulness",
         "MBSR (incl. body scan, sitting practice)",
-        "Mindfulness meditation program"
+        "Mindfulness meditation (Balban control arm)",
+        "Mindfulness meditation (tango trial arm)",
+        "Mindfulness meditation program",
+        "Mindfulness with acceptance training (app)",
+        "Unguided mindfulness self-help"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md",
+        "multi_outcome_physical_nature_mindbody.md"
       ]
     },
     {
@@ -3116,7 +3559,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Body scan"
@@ -3163,14 +3609,21 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [
+          "content+lonely"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Kindness-based meditation",
+        "Loving-kindness (brief)",
         "Loving-kindness meditation"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "multi_outcome_physical_nature_mindbody.md"
       ]
     },
     {
@@ -3214,7 +3667,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Self-compassion exercises"
@@ -3264,15 +3720,20 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Gratitude interventions",
         "Gratitude list",
-        "Gratitude list / letter"
+        "Gratitude list / letter",
+        "gratitude (meta)"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "multi_outcome_creative_social_rest.md"
       ]
     },
     {
@@ -3316,7 +3777,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Gratitude letter",
@@ -3364,7 +3828,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Savor using varied strategies (be present, tell someone, anticipate/recall, express it)",
@@ -3381,7 +3848,7 @@
       "category": "cognitive",
       "suggest_mode": "right_now",
       "suggestable": true,
-      "instruction": "Spend ten minutes recalling a cherished memory in detail, with old photos or music if you like.",
+      "instruction": "Spend ten minutes recalling a cherished time with people you care about, with old photos or music if you like. Focus on the connection, what it says about the people in your life, rather than on what is gone.",
       "typical_duration_min": 10,
       "min_effective_dose": "Brief recall task (nostalgia); 10 min twice daily for a week (reminiscence)",
       "arousal_effect": "neutral",
@@ -3399,7 +3866,8 @@
       "cautions": [
         "Naturally occurring daily nostalgia can co-occur with negative affect (Newman 2020, U)",
         "Tested as consequence of boredom plus meaning outcome; not a boredom-reduction trial",
-        "Small student sample"
+        "Small student sample",
+        "Offer nostalgia or reminiscence only as an opt-in and frame it toward connection, not loss. Reminiscing on good times that cannot be repeated produced the most sadness, and in daily life nostalgia went with lower positive and higher negative affect, more so on lonely days. (Larsen et al. 2021 [PM-abs]; Newman & Sachs 2020 [PM-abs]; Zhou et al. 2008 [PM-abs])"
       ],
       "contraindicated_for": [],
       "rule_classes": [
@@ -3416,14 +3884,26 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 5,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": [
+          "content+lonely"
+        ]
       },
       "source_activity_labels": [
+        "Induced nostalgic memory",
+        "Nostalgia",
         "Nostalgic reflection",
         "Nostalgic reflection (recall a cherished memory, old photos/music)",
-        "Positive reminiscence with imagery or photos/memorabilia"
+        "Positive reminiscence with imagery or photos/memorabilia",
+        "Reminiscence on good times",
+        "Thinking for pleasure with meaningful, positive topics",
+        "nostalgia (daily life)"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -3459,7 +3939,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Positive psychology exercises (general)"
@@ -3507,7 +3990,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Cognitive reappraisal (reinterpret the situation)"
@@ -3555,13 +4041,20 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Perspective-taking / self-distancing"
+        "Perspective-taking / self-distancing",
+        "Self-distanced \"why\" reflection on anger recall",
+        "Self-distanced reflection in daily life",
+        "Self-distancing in depressed adults"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md"
       ]
     },
     {
@@ -3600,7 +4093,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Third-person self-talk"
@@ -3644,13 +4140,19 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "citation_exists_number_not_confirmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Affect labeling (name the feeling)"
+        "Affect labeling (name the feeling)",
+        "Emotion differentiation",
+        "Negative emotion differentiation"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md"
       ]
     },
     {
@@ -3692,14 +4194,19 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Distraction (absorbing task, puzzle, game)",
+        "Distraction vs 25-min rumination after provocation",
         "Psychological detachment activity (absorbing, unrelated to demands)"
       ],
       "source_notes_files": [
         "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -3744,14 +4251,19 @@
           "anxious"
         ],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Challenge-matched (adaptive difficulty) game, e.g., Tetris",
-        "Tetris (visuospatial game)"
+        "Tetris (visuospatial game)",
+        "casual game (adaptive Tetris, flow)"
       ],
       "source_notes_files": [
         "mind_body_cognitive_techniques.md",
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -3793,13 +4305,24 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "anxious+stressed",
+          "content+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Casual / commercial video game session",
-        "Casual video game (Bejeweled/Peggle type)"
+        "Casual video game (Bejeweled/Peggle type)",
+        "casual video game (Bejeweled II)",
+        "casual video games",
+        "commercial video games (review)"
       ],
       "source_notes_files": [
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -3838,7 +4361,10 @@
         "emotions_with_benefit_evidence": [],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Board games with others"
@@ -3906,14 +4432,19 @@
           "negative_affect_general"
         ],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Angry rumination",
         "Dwelling on feelings alone (do NOT suggest)",
         "Sitting alone with thoughts, no activity (to AVOID as boredom fix)"
       ],
       "source_notes_files": [
         "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -3952,7 +4483,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Worry postponement (scheduled worry time)"
@@ -4002,7 +4536,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "5-minute specific to-do list (brain-dump)",
@@ -4049,7 +4586,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "If-then plan for the first step (implementation intention)"
@@ -4095,13 +4635,23 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 4,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "sad+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Behavioural activation / pleasant activity scheduling"
+        "Behavioural activation / pleasant activity scheduling",
+        "Digital behavioural activation",
+        "Group behavioural activation",
+        "Pleasurable leisure experiences"
       ],
       "source_notes_files": [
-        "mind_body_cognitive_techniques.md"
+        "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md"
       ]
     },
     {
@@ -4140,15 +4690,24 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [
+          "energetic+tired"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Micro-break",
         "Micro-break (10 min or less)",
-        "Micro-break (step away, stretch, relax, look away)"
+        "Micro-break (step away, stretch, relax, look away)",
+        "Micro-breaks",
+        "Micro-breaks (meta)"
       ],
       "source_notes_files": [
         "mind_body_cognitive_techniques.md",
+        "mixed_state_interventions.md",
+        "multi_outcome_physical_nature_mindbody.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4187,14 +4746,25 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "citation_exists_number_not_confirmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 6,
+        "combinations_both_improved": [
+          "anxious+sad",
+          "sad+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Laughter exercises / humor",
-        "Laughter exercises / laughter-inducing activity"
+        "Laughter exercises / laughter-inducing activity",
+        "laughter / humour therapy (meta)",
+        "laughter therapy vs entertainment TV",
+        "laughter yoga",
+        "laughter yoga (+ music arm)"
       ],
       "source_notes_files": [
         "mind_body_cognitive_techniques.md",
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4233,12 +4803,21 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [
+          "angry+energetic"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Watch comedy / laugh"
+        "Contentment or amusement film after anxiety",
+        "Watch comedy / laugh",
+        "comedy video (humour)"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4281,7 +4860,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Hot bath (40 C)",
@@ -4331,7 +4913,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Lavender aromatherapy (inhalation)"
@@ -4371,7 +4956,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "L-theanine (supplement dose, not a cup of tea)"
@@ -4413,7 +5001,10 @@
         "emotions_with_benefit_evidence": [],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "unverified",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Grounding 5-4-3-2-1"
@@ -4465,7 +5056,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Receive/arrange regular empathy-focused phone calls",
@@ -4512,7 +5106,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Send an unexpected \"thinking of you\" message"
@@ -4565,14 +5162,21 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [
+          "content+lonely"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Brief genuine chat with barista/cashier",
         "More weak-tie interactions in the day (acquaintances, classmates)",
-        "Talk to a stranger (e.g., on commute)"
+        "Talk to a stranger (e.g., on commute)",
+        "social interaction (weak ties)"
       ],
       "source_notes_files": [
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4611,12 +5215,17 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
+        "Addressing maladaptive social cognition",
         "Programme targeting negative social thoughts (cognitive reframing of social expectations)"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4649,12 +5258,17 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_fulltext",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Any structured loneliness intervention (social skills, support, contact, cognition)"
+        "Any structured loneliness intervention (social skills, support, contact, cognition)",
+        "Psychological interventions (mostly CBT)"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4710,7 +5324,10 @@
           "sad"
         ],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Passive social media scrolling (to AVOID)"
@@ -4750,7 +5367,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Limit social media to about 30 min/day"
@@ -4802,7 +5422,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Choose an activity that is both attention-fitting and meaningful (MAC model)",
@@ -4842,12 +5465,20 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 2,
+        "combinations_both_improved": [
+          "bored+content",
+          "bored+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Self-chosen activity (control experience)"
+        "Self-chosen activity (control experience)",
+        "leisure (any)"
       ],
       "source_notes_files": [
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -4881,7 +5512,10 @@
         "emotions_with_benefit_evidence": [],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Drink water (correct dehydration)"
@@ -4921,7 +5555,10 @@
         "emotions_with_benefit_evidence": [],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Tidy / declutter a small area"
@@ -4969,14 +5606,21 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Informal, spontaneous helping",
         "Kind acts for socially anxious people",
-        "Perform an act of kindness"
+        "Kind acts vs behavioural experiments",
+        "Perform an act of kindness",
+        "acts of kindness"
       ],
       "source_notes_files": [
+        "mixed_state_interventions.md",
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
       ]
     },
@@ -5020,7 +5664,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "citation_exists_number_not_confirmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Spend a small amount of money on someone else"
@@ -5067,7 +5714,10 @@
         "emotions_with_benefit_evidence": [],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Volunteering"
@@ -5114,7 +5764,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "verified_abstract",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Share a positive experience with someone",
@@ -5169,7 +5822,10 @@
           "content"
         ],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Fault-finding, distraction, suppression during good moments (to AVOID)"
@@ -5212,7 +5868,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Positive-mood broadening (use good mood for exploring, learning, connecting)"
@@ -5266,7 +5925,10 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "corrected",
-        "any_single_session_evidence": false
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 0,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
         "Affectionate touch (hug, hand-holding, massage)",
@@ -5296,7 +5958,8 @@
         "access to a friendly animal"
       ],
       "cautions": [
-        "Requires animal access; watching/slideshow did not work as well; allergies/fear"
+        "Requires animal access; watching/slideshow did not work as well; allergies/fear",
+        "Do not suggest getting a pet as a fix for low mood or loneliness. Pet ownership was not associated with lower depression (OR 1.03, n.s.; cat ownership OR 1.06). Interacting with an animal the user already has access to is a separate activity (pet_animal). (Moshfeghinia et al. 2025 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -5316,13 +5979,221 @@
         ],
         "emotions_with_null_or_harm_evidence": [],
         "best_verification_status": "not_in_pubmed",
-        "any_single_session_evidence": true
+        "any_single_session_evidence": true,
+        "n_combination_evidence_rows": 4,
+        "combinations_both_improved": [
+          "anxious+content",
+          "content+energetic",
+          "content+stressed",
+          "energetic+stressed"
+        ],
+        "combinations_one_worsened": []
       },
       "source_activity_labels": [
-        "Pet a dog or cat"
+        "Pet a dog or cat",
+        "pet interaction (dog)",
+        "pet interaction (therapy dog)"
       ],
       "source_notes_files": [
+        "multi_outcome_creative_social_rest.md",
         "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "arousal_reappraisal",
+      "name": "Reframe the jitters as excitement",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "If something is coming up, say out loud 'I am excited' and treat the racing heart as energy that will help you. In experiments this worked better than trying to calm down; slow breathing is a fine alternative.",
+      "typical_duration_min": 1,
+      "min_effective_dose": "One sentence of self-talk ('I am excited') before a performance task (Brooks 2014); pooled performance d = 0.23 (Bosshard & Gomez 2024)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "an upcoming task or performance"
+      ],
+      "cautions": [],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "no_upcoming_task",
+          "reason": "Tested on anxiety before a performance or exam; without a task, calming options remain reasonable (mixed_state_interventions.md section 6)"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 0,
+        "n_source_rows": 0,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "none_in_evidence_links",
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 4,
+        "combinations_both_improved": [
+          "anxious+stressed"
+        ],
+        "combinations_one_worsened": []
+      },
+      "source_activity_labels": [
+        "Arousal reappraisal and stress mindset",
+        "Reappraise anxiety as excitement",
+        "Stress-arousal reappraisal before exam",
+        "Stress-is-enhancing mindset videos"
+      ],
+      "source_notes_files": [
+        "mixed_state_interventions.md"
+      ]
+    },
+    {
+      "id": "distanced_journaling",
+      "name": "Write about it from a distance",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Once you have calmed down a little, write a few lines about what happened as if describing someone else: use your name or 'you', and ask why they felt that way instead of replaying the scene.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single session of self-distanced reflection (Kross et al. 2005; Kross et al. 2012); tested as reflection, not as writing",
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "paper or notes app"
+      ],
+      "cautions": [],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Calm down or distract first; rumination after provocation increased aggression (Bushman et al. 2005)"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 0,
+        "n_source_rows": 0,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "none_in_evidence_links",
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 3,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
+      },
+      "source_activity_labels": [
+        "Self-distanced \"why\" reflection on anger recall",
+        "Self-distanced reflection in daily life",
+        "Self-distancing in depressed adults"
+      ],
+      "source_notes_files": [
+        "mixed_state_interventions.md"
+      ]
+    },
+    {
+      "id": "empathy_phone_call",
+      "name": "Set up regular calls with someone who listens",
+      "category": "social",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Arrange short, regular phone calls with a warm person who mostly listens and asks about you: a friend, a relative or a telephone befriending service. In the trial, calls were daily for five days, then at least twice a week.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Daily calls for 5 days, then at least twice a week for 4 weeks (Kahlon et al. 2021, n = 240 homebound adults)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "social",
+        "verbal"
+      ],
+      "requirements": [
+        "another person",
+        "phone"
+      ],
+      "cautions": [],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 0,
+        "n_source_rows": 0,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "none_in_evidence_links",
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 7,
+        "combinations_both_improved": [
+          "anxious+lonely",
+          "anxious+lonely+sad",
+          "anxious+sad",
+          "lonely+sad"
+        ],
+        "combinations_one_worsened": []
+      },
+      "source_activity_labels": [
+        "Empathy-focused phone calls",
+        "phone calls (empathy-focused)"
+      ],
+      "source_notes_files": [
+        "mixed_state_interventions.md",
+        "multi_outcome_creative_social_rest.md"
+      ]
+    },
+    {
+      "id": "acquire_pet",
+      "name": "Get a pet to feel better",
+      "category": "rest",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Not suggested. Owning a pet was not associated with lower depression in a meta-analysis of observational studies, so the app should not suggest getting a pet as a fix.",
+      "typical_duration_min": 0,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "high",
+      "preference_tags": [],
+      "requirements": [],
+      "cautions": [
+        "Do not suggest getting a pet as a fix for low mood or loneliness. Pet ownership was not associated with lower depression (OR 1.03, n.s.; cat ownership OR 1.06). Interacting with an animal the user already has access to is a separate activity (pet_animal). (Moshfeghinia et al. 2025 [PM-abs])"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Pet ownership and depression OR 1.03 (n.s.); cat ownership OR 1.06 (Moshfeghinia et al. 2025)"
+        },
+        {
+          "kind": "emotion",
+          "id": "lonely",
+          "reason": "Do not suggest getting a pet as a fix for loneliness (mixed_state_interventions.md section 4)"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 0,
+        "n_source_rows": 0,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "none_in_evidence_links",
+        "any_single_session_evidence": false,
+        "n_combination_evidence_rows": 1,
+        "combinations_both_improved": [],
+        "combinations_one_worsened": []
+      },
+      "source_activity_labels": [
+        "Pet ownership"
+      ],
+      "source_notes_files": [
+        "mixed_state_interventions.md"
       ]
     }
   ]

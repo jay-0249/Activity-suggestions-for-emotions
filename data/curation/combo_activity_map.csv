@@ -1,0 +1,216 @@
+raw_activity,activity_ids,note
+Forest viewing (shinrin-yoku),nature_sitting=close,15 min seated viewing of a forest
+Forest walk,nature_walk=close,about 15 min walk in a forest
+Forest bathing day,forest_bathing=exact,day-long session of slow forest walking
+Forest walk programme,forest_bathing=close,80-120 min forest walks
+Forest bathing,forest_bathing=exact,
+Forest stay,forest_bathing=proxy,7-day residential forest stay
+Forest day,forest_bathing=close,same-day forest visit
+"Forest therapy (meta, ≥60 min)",forest_bathing=close,pooled forest-therapy sessions
+"Forest therapy (meta, 15–60 min)",forest_bathing=close,pooled forest-therapy sessions
+"Forest therapy (meta, ≤15 min)",forest_bathing=close,pooled forest-therapy sessions
+"Forest therapy (meta, European samples)",forest_bathing=close,pooled forest-therapy sessions
+Forest exposure (thermally neutral),forest_bathing=close,pooled forest exposure
+Urban park walk (spring),nature_walk=exact,
+Urban park walk (fall),nature_walk=exact,
+Urban park walk (winter),nature_walk=exact,
+Green vs urban walk (day vs night),nature_walk=exact,
+Green exercise,nature_walk=close,green exercise of several kinds
+Gardening,gardening=exact,
+Horticultural activities,gardening=close,short horticultural tasks
+Treadmill aerobic exercise,moderate_exercise=exact,
+Cycling at 3 intensities,moderate_exercise=close,"light, moderate or hard cycling"
+Treadmill walking,moderate_exercise=close,20 min treadmill walking
+Maximal walking test,vigorous_exercise=close,maximal exertion
+Taekwondo class,moderate_exercise=proxy,75-min martial-arts class; no closer activity id
+HIIT competition workouts,hiit=close,
+Brisk walk vs snack,brisk_walk_10min=exact,
+Single-bout aerobic exercise (meta),moderate_exercise=exact,
+Walking microbouts vs single walk,movement_breaks=exact,
+Stair walking,stair_walking=exact,
+Chronic exercise (meta),moderate_exercise=proxy,multi-week programmes
+Resistance exercise (acute),resistance_training=exact,
+High-intensity resistance exercise,resistance_training=close,
+Resistance exercise (intensity/rest variants),resistance_training=exact,
+Hatha yoga (single session),yoga=close,60-min class
+Hatha yoga (single class),yoga=close,90-min class
+African dance (single class),dance_programme=close,single 90-min class
+"Yoga, Feldenkrais, swimming, aerobic dance (single class)",yoga=close,supported pairs are for yoga/Feldenkrais/swimming; the aerobic-dance arm is mapped separately in combo_pair_overrides.csv
+Yoga vs walking (12 weeks),yoga=close,programme
+"Yoga (single session, MS)",yoga=exact,
+Sitting isometric yoga,yoga=close,
+Kripalu yoga programme,yoga=close,programme
+Kripalu yoga in school PE,yoga=close,programme
+Workplace yoga,yoga=close,programme
+Integrated yoga,yoga=close,programme
+Tele-yoga (synchronous),yoga=close,programme
+Tai chi vs walking vs meditation vs reading,tai_chi=exact,
+Tai chi programme,tai_chi=exact,
+Baduanjin qigong (meta),qigong=exact,
+Tai chi / qigong (meta),tai_chi=close,tai chi and qigong pooled
+Argentine tango,dance_programme=exact,
+Mindfulness meditation (tango trial arm),mindfulness_meditation=close,programme arm
+Zumba (low vs moderate intensity),dance_programme=close,single Zumba sessions
+Cyclic sighing / breathwork vs mindfulness,cyclic_sighing=close,breathwork arms incl. cyclic sighing
+Mindfulness meditation (Balban control arm),mindfulness_meditation=exact,
+Breathwork (meta),slow_breathing=close,pooled breathwork
+WHM breathing + cold shower vs slow breathing + warm shower,slow_breathing=close,both arms improved equally; mapped to the gentler slow-breathing arm
+Mindfulness / slow breathing / WHM / HIIT,slow_breathing=close,four arms improved equally; mapped to the gentler slow-breathing arm
+Diaphragmatic breathing,slow_breathing=exact,
+Applied PMR,progressive_muscle_relaxation=exact,
+PMR at worksite,progressive_muscle_relaxation=exact,
+PMR + guided imagery,progressive_muscle_relaxation=close,combined with guided imagery
+Tele-PMR,progressive_muscle_relaxation=exact,
+Brief mindfulness training,mindfulness_meditation=exact,
+Brief vs sham mindfulness,mindfulness_meditation=exact,
+Loving-kindness vs breath vs gratitude,loving_kindness_meditation=close,
+Loving-kindness (brief),loving_kindness_meditation=exact,
+"Nap (10 vs 5, 20, 30 min)",nap_short=exact,
+Nap (30 min),nap_short=proxy,30-min nap; the dataset's nap_short is 10 min
+"Nap (<30 min, elderly)",nap_short=close,
+Micro-breaks (meta),micro_break=exact,
+Winter swimming,cold_water_immersion=close,
+Cold-water immersion,cold_water_immersion=exact,
+Cold-water exposure (meta),cold_water_immersion=close,
+art-making (open-studio art therapy),art_therapy_led=close,therapist-facilitated open studio
+colouring,colouring_structured=exact,
+art-making (general),free_art_making=exact,
+art-making vs art viewing,free_art_making=exact,
+clay,clay_work=exact,
+drawing (distract vs vent),drawing_distraction=exact,distraction arm
+visual art therapy (meta),art_therapy_led=exact,
+best-possible-self writing (meta),best_possible_self_writing=exact,
+best-possible-self writing,best_possible_self_writing=exact,
+gratitude (meta),gratitude_list=close,
+gratitude listing,gratitude_list=exact,
+music interventions (meta),music_listening_calming=close,pooled music interventions
+music therapy (meta),music_listening_calming=proxy,therapist-led
+music therapy for depression (Cochrane),music_listening_calming=proxy,therapist-led
+music listening (daily life),music_listening_calming=close,
+music listening (daily playlist),music_listening_calming=exact,
+PMR + music,progressive_muscle_relaxation=close,PMR with music
+music therapy (personalised listening),music_listening_calming=close,
+choir singing,group_singing=exact,
+choir singing vs listening,group_singing=exact,
+group drumming,playing_instrument=proxy,group drumming programme
+community choir,group_singing=exact,
+choral singing,group_singing=exact,
+group singing,group_singing=exact,
+playing instruments (recreational music-making),playing_instrument=close,
+dance / dance movement therapy (meta),dance_programme=exact,
+dancing (online class),dance_programme=close,single 60-min online class
+cooking (review),cooking=close,
+crochet (craft),knitting=exact,
+leisure (any),self_chosen_activity=close,
+casual video game (Bejeweled II),casual_video_game=exact,
+casual video games,casual_video_game=exact,
+"casual game (adaptive Tetris, flow)",challenge_matched_game=exact,
+casual video games (review),casual_video_game=exact,
+commercial video games (review),casual_video_game=proxy,
+video games during COVID (review),casual_video_game=proxy,
+comedy video (humour),watch_comedy=exact,
+humorous video vs music vs exercise,watch_comedy=exact,
+laughter / humour therapy (meta),laughter_exercises=close,
+laughter-inducing therapies (meta),laughter_exercises=close,
+laughter yoga,laughter_exercises=exact,
+laughter yoga (+ music arm),laughter_exercises=exact,
+laughter therapy vs entertainment TV,laughter_exercises=exact,the entertainment-TV arm improved equally
+phone calls (empathy-focused),empathy_phone_call=exact,
+social interaction (talking to strangers),weak_tie_chat=exact,
+social interaction (weak ties),weak_tie_chat=close,
+acts of kindness (prosocial),act_of_kindness=exact,
+acts of kindness,act_of_kindness=exact,
+acts of kindness (meta),act_of_kindness=exact,
+acts of kindness (children),act_of_kindness=exact,
+pet interaction (dog),pet_animal=close,20-min interaction with a dog
+pet interaction (therapy dog),pet_animal=close,drop-in therapy-dog session
+pet interaction (AAT),pet_animal=proxy,animal-assisted therapy programme
+nostalgia induction,positive_reminiscence=close,
+nostalgia (boredom),positive_reminiscence=close,
+nostalgia (daily life),positive_reminiscence=proxy,"spontaneous daily nostalgia, not a prompted activity"
+awe walks,awe_walk=exact,
+awe (priming / vista),awe_walk=proxy,
+nap (10 min),nap_short=exact,
+"nap (short, stage 2)",nap_short=exact,
+sad music listening,sad_music_listening=exact,
+sad music (group rumination),sad_music_listening=close,
+Unified Protocol (transdiagnostic ER skills),,therapist-delivered protocol; no activity id
+Unified Protocol,,therapist-delivered protocol; no activity id
+Unguided mindfulness self-help,mindfulness_meditation=close,self-help programmes
+Physical activity programmes,moderate_exercise=proxy,programmes
+Single exercise bout,moderate_exercise=exact,
+Digital behavioural activation,behavioural_activation=close,programme
+Group behavioural activation,behavioural_activation=close,group programme
+Contentment or amusement film after anxiety,watch_comedy=close,amusement film arm
+"Combined relaxation, cognitive and exercise strategies",,strategy bundle rated in a survey; no activity id
+Single bout of exercise,moderate_exercise=exact,
+Low- vs moderate-intensity cycling,moderate_exercise=proxy,fatigue fell after the low-intensity arm only
+Chronic exercise,moderate_exercise=proxy,programmes
+Micro-breaks,micro_break=exact,
+10-min afternoon nap after sleep restriction,nap_short=exact,
+10- vs 30-min nap,nap_short=exact,
+Psychological detachment interventions,,detachment programmes; no activity id
+Detachment from work (correlate),,"correlate, not an activity"
+Pleasurable leisure experiences,behavioural_activation=proxy,"observed leisure, not a prompted activity"
+"Evening relaxation, detachment, mastery",,recovery experiences in a diary study; no single activity id
+"Self-distanced ""why"" reflection on anger recall",perspective_taking=exact;distanced_journaling=proxy,tested as reflection; distanced_journaling is the written form
+Self-distancing in depressed adults,perspective_taking=exact;distanced_journaling=proxy,tested as reflection; distanced_journaling is the written form
+Self-distanced reflection in daily life,perspective_taking=exact;distanced_journaling=proxy,tested as reflection; distanced_journaling is the written form
+Distraction vs 25-min rumination after provocation,distraction_absorbing_task=close,distraction arm
+Angry rumination,dwelling_on_feelings=close,rumination (harm)
+30-min moderate cycling while viewing aversive images,moderate_exercise=close,exercise while still exposed to upsetting input
+Arousal-decreasing vs arousal-increasing activities,slow_breathing=proxy;mindfulness_meditation=proxy;progressive_muscle_relaxation=proxy,"category-level, as in activity_map.csv"
+"Daily strategies: rumination, suppression vs reflection, reappraisal",,daily strategy use; no single activity id
+Empathy-focused phone calls,empathy_phone_call=exact,
+Psychological interventions (mostly CBT),loneliness_programme=close,
+Addressing maladaptive social cognition,reframe_social_thoughts=close,
+Mindfulness with acceptance training (app),mindfulness_meditation=close,acceptance-based app programme
+Kind acts vs behavioural experiments,act_of_kindness=exact,
+Nostalgia,positive_reminiscence=close,
+Induced nostalgic memory,positive_reminiscence=close,
+Pet ownership,acquire_pet=exact,owning a pet (observational)
+Daily boredom frequency,,not an activity
+"Thinking for pleasure with meaningful, positive topics",positive_reminiscence=proxy,guided positive-meaningful thinking
+Boredom proneness,,"trait, not an activity"
+Reappraise anxiety as excitement,arousal_reappraisal=exact,
+Stress-arousal reappraisal before exam,arousal_reappraisal=close,brief reading on stress arousal
+Arousal reappraisal and stress mindset,arousal_reappraisal=exact,
+Stress-is-enhancing mindset videos,arousal_reappraisal=proxy,mindset films
+Mixed emotions over time,,not an activity
+Mixed happiness and sadness in therapy,,not an activity
+Reminiscence on good times,positive_reminiscence=exact,
+Emodiversity,,not an activity
+Habitual acceptance of emotions,,trait acceptance; no activity id
+Strategy repertoire in daily life,,not an activity
+Number and class of strategies,,not an activity
+Repertoire profiles,,not an activity
+Polyregulation within events,,not an activity
+Idiographic effective-strategy ratio,,not an activity
+"Context-strategy fit (intensity, controllability)",,not an activity
+Emotion differentiation,affect_labeling=proxy,differentiation as a skill; naming feelings is the closest activity
+Negative emotion differentiation,affect_labeling=proxy,differentiation as a skill; naming feelings is the closest activity
+Forest bathing (same-day visit),forest_bathing=close,
+Forest bathing (day session),forest_bathing=exact,
+Forest walk (15 min),nature_walk=close,
+Forest therapy (meta),forest_bathing=close,
+Forest exposure (meta),forest_bathing=close,
+Nature-based mindfulness,mindfulness_meditation=close,mindfulness outdoors
+Resistance exercise training,resistance_training=exact,
+Acute resistance exercise,resistance_training=exact,
+Acute aerobic exercise,moderate_exercise=exact,
+Acute exercise,moderate_exercise=exact,
+Single-bout exercise,moderate_exercise=exact,
+Breathwork vs mindfulness,cyclic_sighing=close,
+choir singing (1 h),group_singing=exact,
+choir (6–8 wk),group_singing=exact,
+group singing (4 mo),group_singing=exact,
+best-possible-self,best_possible_self_writing=exact,
+art therapy / colouring,art_therapy_led=close;colouring_structured=exact,
+art-making,free_art_making=exact,
+dog-assisted,pet_animal=close,
+online dance,dance_programme=close,
+sad music,sad_music_listening=exact,
+laughter therapy,laughter_exercises=exact,
+music listening (daily),music_listening_calming=close,
+laughter / humour (meta),laughter_exercises=close,
+video games (COVID),casual_video_game=proxy,

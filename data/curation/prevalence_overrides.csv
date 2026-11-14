@@ -1,0 +1,5 @@
+row,measure_startswith,field,value,reason
+42,% MDD endorsing psychomotor,tier_cap,moderate,"the value mixes psychomotor agitation and retardation, so it is not a restlessness rate"
+59,% all three at high loneliness,extra_emotion,lonely,the measure is all three outcomes among highly lonely people ('lonely as 4th')
+63,r (boredom–social anxiety),tier_cap,moderate,social anxiety is used as a proxy for anxious
+64,r (loneliness–social anxiety),tier_cap,moderate,social anxiety is used as a proxy for anxious

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "source": "emotion_models_and_matching_logic.md section 6 and handwriting_drawing_emotion_validity.md 'Recommendations for the app'",
+    "source": "emotion_models_and_matching_logic.md section 6 and handwriting_drawing_emotion_validity.md 'Recommendations for the app'; combination cautions from research_notes/Emotion combination evidence map/",
     "status": "Design recommendations derived from the notes; not trial-tested. Thresholds are uncalibrated engineering defaults."
   },
   "thresholds": {
@@ -121,6 +121,196 @@
     "EU AI Act (as found in the notes, November 2026; verify against the Official Journal; not legal advice): disclose the emotion inference up front (Art. 50(3)) and never sell into workplaces or schools (Art. 5(1)(f)). Plan for possible high-risk (Annex III) classification.",
     "Stay inside general wellness: no diagnostic terms, no treatment claims, a clear 'not a medical device / not a diagnosis' statement, and a route to crisis resources when self-report is severe."
   ],
+  "combination_cautions": [
+    {
+      "id": "no_pet_acquisition",
+      "text": "Do not suggest getting a pet as a fix for low mood or loneliness. Pet ownership was not associated with lower depression (OR 1.03, n.s.; cat ownership OR 1.06). Interacting with an animal the user already has access to is a separate activity (pet_animal).",
+      "applies_to": [
+        "lonely+sad",
+        "sad",
+        "lonely"
+      ],
+      "activity_ids": [
+        "acquire_pet",
+        "pet_animal"
+      ],
+      "citations": [
+        {
+          "citation": "Moshfeghinia et al. 2025",
+          "pmid": "41194144",
+          "doi_or_url": "https://doi.org/10.1186/s12991-025-00600-x",
+          "verification_tag": "[PM-abs]"
+        }
+      ]
+    },
+    {
+      "id": "nostalgia_framing",
+      "text": "Offer nostalgia or reminiscence only as an opt-in and frame it toward connection, not loss. Reminiscing on good times that cannot be repeated produced the most sadness, and in daily life nostalgia went with lower positive and higher negative affect, more so on lonely days.",
+      "applies_to": [
+        "lonely+sad",
+        "content+sad",
+        "content+lonely",
+        "anxious+lonely+sad"
+      ],
+      "activity_ids": [
+        "positive_reminiscence"
+      ],
+      "citations": [
+        {
+          "citation": "Larsen et al. 2021",
+          "pmid": "34591508",
+          "doi_or_url": "https://doi.org/10.1037/emo0001011",
+          "verification_tag": "[PM-abs]"
+        },
+        {
+          "citation": "Newman & Sachs 2020",
+          "pmid": "32982886",
+          "doi_or_url": "https://doi.org/10.3389/fpsyg.2020.02185",
+          "verification_tag": "[PM-abs]"
+        },
+        {
+          "citation": "Zhou et al. 2008",
+          "pmid": "19000213",
+          "doi_or_url": "https://doi.org/10.1111/j.1467-9280.2008.02194.x",
+          "verification_tag": "[PM-abs]"
+        }
+      ]
+    },
+    {
+      "id": "sad_music_rumination",
+      "text": "Steer away from solitary sad-music loops when sad (especially sad + lonely) and for users prone to rumination: people with depression are more likely to 'group ruminate' with music, which can amplify negative emotion; listening to choral music raised negative affect while singing lowered it. Prefer active or shared music.",
+      "applies_to": [
+        "sad",
+        "lonely+sad"
+      ],
+      "activity_ids": [
+        "sad_music_listening",
+        "music_listening_calming"
+      ],
+      "citations": [
+        {
+          "citation": "Garrido, Eerola & McFerran 2017",
+          "pmid": "28421014",
+          "doi_or_url": "https://doi.org/10.3389/fpsyg.2017.00490",
+          "verification_tag": "[PM-abs]"
+        },
+        {
+          "citation": "Taruffi & Koelsch 2014",
+          "pmid": "25330315",
+          "doi_or_url": "https://doi.org/10.1371/journal.pone.0110490",
+          "verification_tag": "[PM-full]"
+        },
+        {
+          "citation": "Kreutz et al. 2004",
+          "pmid": "15669447",
+          "doi_or_url": "https://doi.org/10.1007/s10865-004-0006-9",
+          "verification_tag": "[PM-abs]"
+        }
+      ]
+    },
+    {
+      "id": "no_exercise_amid_trigger",
+      "text": "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger.",
+      "applies_to": [
+        "angry+anxious",
+        "angry+stressed",
+        "angry"
+      ],
+      "activity_ids": [
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "brisk_walk_10min"
+      ],
+      "citations": [
+        {
+          "citation": "Rodrigues et al. 2026",
+          "pmid": "41875642",
+          "doi_or_url": "https://doi.org/10.1016/j.actpsy.2026.106714",
+          "verification_tag": "[PM-abs]"
+        }
+      ]
+    },
+    {
+      "id": "no_maximal_exercise_for_fatigue",
+      "text": "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes.",
+      "applies_to": [
+        "tired",
+        "stressed+tired",
+        "sad+tired",
+        "anxious+sad+tired"
+      ],
+      "activity_ids": [
+        "vigorous_exercise",
+        "hiit",
+        "moderate_exercise"
+      ],
+      "citations": [
+        {
+          "citation": "Physiol Behav 1995;57:1",
+          "pmid": "7878100",
+          "doi_or_url": "https://pubmed.ncbi.nlm.nih.gov/7878100/",
+          "verification_tag": "[PM-abs]"
+        },
+        {
+          "citation": "Loy, O'Connor & Dishman 2013",
+          "pmid": "",
+          "doi_or_url": "https://doi.org/10.1080/21641846.2013.843266",
+          "verification_tag": "[prior-notes]; [web]"
+        }
+      ]
+    },
+    {
+      "id": "short_nap_only",
+      "text": "Suggest a nap of about 10 minutes, not 30: a 30-minute nap first impaired alertness (sleep inertia).",
+      "applies_to": [
+        "tired",
+        "stressed+tired",
+        "bored+tired"
+      ],
+      "activity_ids": [
+        "nap_short"
+      ],
+      "citations": [
+        {
+          "citation": "Brooks & Lack 2006, Sleep",
+          "pmid": "16796222",
+          "doi_or_url": "https://doi.org/10.1093/sleep/29.6.831",
+          "verification_tag": "[PM-abs]"
+        },
+        {
+          "citation": "Tietzel & Lack 2001",
+          "pmid": "11322712",
+          "doi_or_url": "https://doi.org/10.1093/sleep/24.3.293",
+          "verification_tag": "[PM-abs]"
+        }
+      ]
+    },
+    {
+      "id": "raise_r30_sensitivity",
+      "text": "Lonely + sad + anxious and bored + sad that persists across check-ins mark high-load groups (Cho 2025; Eckland 2022). Apply the R30 persistence check with extra care for these profiles. No validated threshold exists; this is a precaution.",
+      "applies_to": [
+        "anxious+lonely+sad",
+        "bored+sad",
+        "bored+lonely+sad"
+      ],
+      "activity_ids": [],
+      "citations": [
+        {
+          "citation": "Cho et al. 2025",
+          "pmid": "40633948",
+          "doi_or_url": "https://doi.org/10.1136/bmjopen-2024-088590",
+          "verification_tag": "[PM-full]"
+        },
+        {
+          "citation": "Eckland et al. 2022",
+          "pmid": "34766792",
+          "doi_or_url": "https://doi.org/10.1037/emo0001038",
+          "verification_tag": "[PM-abs]"
+        }
+      ]
+    }
+  ],
   "never_suggest_activity_ids": [
     "sad_music_listening",
     "drawing_to_vent",
@@ -129,7 +319,8 @@
     "venting",
     "dwelling_on_feelings",
     "passive_scrolling",
-    "dampening_positive"
+    "dampening_positive",
+    "acquire_pet"
   ],
   "per_activity_cautions": {
     "music_listening_calming": {
@@ -140,7 +331,8 @@
         "Best estimate for healthy users; small",
         "Works best when goal is relaxation (abstract); the boredom/distraction null is not stated in the abstract and was not confirmed (no open full text)",
         "Do not claim music fixes boredom. NOT CONFIRMED: this boredom finding is not in the PubMed abstract",
-        "Single study"
+        "Single study",
+        "Steer away from solitary sad-music loops when sad (especially sad + lonely) and for users prone to rumination: people with depression are more likely to 'group ruminate' with music, which can amplify negative emotion; listening to choral music raised negative affect while singing lowered it. Prefer active or shared music. (Garrido, Eerola & McFerran 2017 [PM-abs]; Taruffi & Koelsch 2014 [PM-full]; Kreutz et al. 2004 [PM-abs])"
       ],
       "contraindicated_for": [],
       "suggest_mode": "right_now"
@@ -148,7 +340,8 @@
     "sad_music_listening": {
       "cautions": [
         "Self-report only; see next row",
-        "Contraindicated for users prone to rumination/depression"
+        "Contraindicated for users prone to rumination/depression",
+        "Steer away from solitary sad-music loops when sad (especially sad + lonely) and for users prone to rumination: people with depression are more likely to 'group ruminate' with music, which can amplify negative emotion; listening to choral music raised negative affect while singing lowered it. Prefer active or shared music. (Garrido, Eerola & McFerran 2017 [PM-abs]; Taruffi & Koelsch 2014 [PM-full]; Kreutz et al. 2004 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -459,7 +652,9 @@
         "keep intensity comfortable",
         "do not promise fatigue relief from a short hard bout",
         "small effect; floor effects",
-        "clinical sample; few trials"
+        "clinical sample; few trials",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])",
+        "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes. (Physiol Behav 1995;57:1 [PM-abs]; Loy, O'Connor & Dishman 2013 [prior-notes]; [web])"
       ],
       "contraindicated_for": [
         {
@@ -478,7 +673,8 @@
     "running_jogging": {
       "cautions": [
         "clinical sample; low certainty",
-        "do NOT suggest running for anger"
+        "do NOT suggest running for anger",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -503,14 +699,16 @@
       "cautions": [
         "small sample",
         "benefit may fade within ~10 min of stopping",
-        "Older single-lab study; exercise covered in depth by other researcher"
+        "Older single-lab study; exercise covered in depth by other researcher",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
       ],
       "contraindicated_for": [],
       "suggest_mode": "right_now"
     },
     "stair_walking": {
       "cautions": [
-        "transient; small sample"
+        "transient; small sample",
+        "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -532,7 +730,8 @@
     "hiit": {
       "cautions": [
         "regular exercisers only; unpleasant above threshold; not within 1 h of bed",
-        "medical caution for inactive users or heart/metabolic/renal disease"
+        "medical caution for inactive users or heart/metabolic/renal disease",
+        "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes. (Physiol Behav 1995;57:1 [PM-abs]; Loy, O'Connor & Dishman 2013 [prior-notes]; [web])"
       ],
       "contraindicated_for": [
         {
@@ -566,7 +765,8 @@
     "vigorous_exercise": {
       "cautions": [
         "prefer self-selected pace",
-        "suppress vigorous suggestions in last hour before bed; moderate exercise is fine"
+        "suppress vigorous suggestions in last hour before bed; moderate exercise is fine",
+        "Do not present hard or maximal exercise as fatigue relief: fatigue rose and vigor fell after a maximal walking test, and single bouts raise energy without lowering fatigue unless they are easy-to-moderate and longer than 20 minutes. (Physiol Behav 1995;57:1 [PM-abs]; Loy, O'Connor & Dishman 2013 [prior-notes]; [web])"
       ],
       "contraindicated_for": [
         {
@@ -757,7 +957,8 @@
         "athlete samples; low certainty; keep <60 min",
         "low/very low certainty; late naps may affect night sleep (general guidance)",
         "Sleep inertia just after waking; benefit lasts about 2 h; lab evidence; avoid late-day naps",
-        "Set an alarm; longer naps produce inertia"
+        "Set an alarm; longer naps produce inertia",
+        "Suggest a nap of about 10 minutes, not 30: a 30-minute nap first impaired alertness (sleep inertia). (Brooks & Lack 2006, Sleep [PM-abs]; Tietzel & Lack 2001 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -946,7 +1147,8 @@
       "cautions": [
         "Naturally occurring daily nostalgia can co-occur with negative affect (Newman 2020, U)",
         "Tested as consequence of boredom plus meaning outcome; not a boredom-reduction trial",
-        "Small student sample"
+        "Small student sample",
+        "Offer nostalgia or reminiscence only as an opt-in and frame it toward connection, not loss. Reminiscing on good times that cannot be repeated produced the most sadness, and in daily life nostalgia went with lower positive and higher negative affect, more so on lonely days. (Larsen et al. 2021 [PM-abs]; Newman & Sachs 2020 [PM-abs]; Zhou et al. 2008 [PM-abs])"
       ],
       "contraindicated_for": [],
       "suggest_mode": "right_now"
@@ -1363,7 +1565,8 @@
     },
     "pet_animal": {
       "cautions": [
-        "Requires animal access; watching/slideshow did not work as well; allergies/fear"
+        "Requires animal access; watching/slideshow did not work as well; allergies/fear",
+        "Do not suggest getting a pet as a fix for low mood or loneliness. Pet ownership was not associated with lower depression (OR 1.03, n.s.; cat ownership OR 1.06). Interacting with an animal the user already has access to is a separate activity (pet_animal). (Moshfeghinia et al. 2025 [PM-abs])"
       ],
       "contraindicated_for": [
         {
@@ -1373,6 +1576,46 @@
         }
       ],
       "suggest_mode": "right_now"
+    },
+    "arousal_reappraisal": {
+      "cautions": [],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "no_upcoming_task",
+          "reason": "Tested on anxiety before a performance or exam; without a task, calming options remain reasonable (mixed_state_interventions.md section 6)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "distanced_journaling": {
+      "cautions": [],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Calm down or distract first; rumination after provocation increased aggression (Bushman et al. 2005)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "acquire_pet": {
+      "cautions": [
+        "Do not suggest getting a pet as a fix for low mood or loneliness. Pet ownership was not associated with lower depression (OR 1.03, n.s.; cat ownership OR 1.06). Interacting with an animal the user already has access to is a separate activity (pet_animal). (Moshfeghinia et al. 2025 [PM-abs])"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Pet ownership and depression OR 1.03 (n.s.); cat ownership OR 1.06 (Moshfeghinia et al. 2025)"
+        },
+        {
+          "kind": "emotion",
+          "id": "lonely",
+          "reason": "Do not suggest getting a pet as a fix for loneliness (mixed_state_interventions.md section 4)"
+        }
+      ],
+      "suggest_mode": "avoid"
     }
   }
 }

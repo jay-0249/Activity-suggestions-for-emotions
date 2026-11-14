@@ -1,0 +1,56 @@
+source,row,field,activity_startswith,pairs,qualifier,outcome,evidence_basis,activity_ids,note
+CPN,2,supported,Forest walk,angry+anxious;anxious+sad;anxious+tired;anxious+energetic;angry+sad;angry+tired;angry+energetic;sad+tired;energetic+sad;energetic+tired,each class with energetic↑ (vigor rose); anger change smallest,,,,'all with energetic↑' read as every listed pair plus each class with energetic
+CPN,2,not_supported,Forest walk,,,,,,no unsupported pair; the cell notes that the anger change was smallest
+CPN,3,supported,Forest walk,angry+anxious;anxious+sad;anxious+tired;anxious+energetic;angry+sad;angry+tired;angry+energetic;sad+tired;energetic+sad;energetic+tired,'+energetic': vigor rose with the other subscales,,,,'+energetic' read as every listed pair plus each class with energetic
+CPN,6,not_supported,Forest walk programme,,,,,,other subscales not reported as changed; no class pair
+CPN,7,supported,Forest bathing,sad+tired,sample selected for depression/depressive tendencies; fatigue measured,both_improved,directly_tested_on_combination,,the notes (section 4) treat this as the sad+tired mixed-state evidence
+CPN,7,supported,Forest bathing,energetic+sad,,both_improved,,,
+CPN,8,supported,Forest bathing,energetic+tired,,,,,'(negative composite)+tired' dropped: composite is not a class
+CPN,9,supported,Forest stay,angry+anxious;anxious+sad;anxious+tired;angry+sad;angry+tired;sad+tired,negative subscales jointly; subscale detail not in abstract,both_improved,,,the abstract says only that negative subscales were lowered
+CPN,10,not_supported,Forest day,angry+anxious;angry+sad,hostility fell but had no environment main effect,one_not_improved,,,'angry (no env main effect)' read as the angry pairs not supported
+CPN,12,not_supported,"Forest therapy (meta, 15",anxious+tired;sad+tired;angry+tired;anxious+energetic;angry+energetic;energetic+sad;energetic+tired,,,,,'any+energetic' expanded to every measured class with energetic
+CPN,13,not_supported,"Forest therapy (meta, ≤15",angry+anxious;anxious+sad;anxious+tired;anxious+energetic;angry+sad;angry+tired;angry+energetic;sad+tired;energetic+sad;energetic+tired,only confusion and vigor significant,,,,'anxious+energetic etc.' expanded to all pairs among the POMS classes
+CPN,14,not_supported,"Forest therapy (meta, European",anxious+tired;sad+tired;anxious+energetic;angry+energetic;energetic+sad;energetic+tired,European samples,,,,'any+energetic' expanded to every measured class with energetic
+CPN,15,not_supported,Forest exposure (thermally,,effects inconsistent in cold or hot conditions,,,,"context moderator, not a class pair; see baseline_moderation.csv"
+CPN,18,supported,Urban park walk (winter),,,,,,composite outcome only
+CPN,18,not_supported,Urban park walk (winter),,,,,,subscales not reported
+CPN,19,supported,Green vs urban walk,,,,,,composite only
+CPN,20,supported,Green exercise,,,,,,composite mood + self-esteem
+CPN,21,supported,Gardening,content+stressed,"after a stressor: cortisol fell, positive mood restored",,,,'(low positive mood)' read as content (content column: positive mood fully restored)
+CPN,22,supported,Horticultural activities,,,,,,subscales not in abstract
+CPN,22,not_supported,Horticultural activities,,,,,,2 of 4 activities ns on POMS; no class pair
+CPN,23,supported,Treadmill aerobic exercise,energetic+sad;anxious+energetic,vs quiet rest: vigor rose with exercise only,,,,
+CPN,23,not_supported,Treadmill aerobic exercise,angry+anxious;anxious+sad;anxious+tired;angry+sad;angry+tired;sad+tired,"improved, but not more than quiet rest",mixed,,,"'vs rest: anxious+sad, sad+tired etc.' expanded to all pairs among the negative POMS classes"
+CPN,24,supported,Cycling at 3 intensities,,,,,,single dimension
+CPN,25,not_supported,Treadmill walking,anxious+tired;angry+tired;sad+tired;energetic+tired,fatigue had no time effect,,,,'any pair with tired' expanded
+CPN,28,supported,HIIT competition workouts,,,,,,time course only
+CPN,31,not_supported,Walking microbouts,energetic+tired,"single 30-min morning walk: energy up, fatigue not reduced",one_not_improved,,moderate_exercise=close,applies to the single-walk comparison arm
+CPN,32,not_supported,Stair walking,energetic+tired,tired-related subscales ns,one_not_improved,,,
+CPN,34,supported,Resistance exercise (acute),,,,,,single dimension (mixed-state sample)
+CPN,34,not_supported,Resistance exercise (acute),,,,,,not superior to rest; single dimension
+CPN,35,supported,High-intensity resistance,,,,,,vigor only reported
+CPN,35,not_supported,High-intensity resistance,,,,,,other subscales not reported as changed
+CPN,36,supported,Resistance exercise (intensity,anxious+energetic,"low-intensity, long-rest only, delayed: anxiety rose at 5 min and fell below baseline at 20-40 min",mixed,,,
+CPN,36,not_supported,Resistance exercise (intensity,anxious+energetic,high-intensity: PA ns,one_not_improved,,,
+CPN,38,supported,Hatha yoga (single class),,,,,,stressed+(NA): NA is not a class
+CPN,39,supported,African dance (single class),energetic+stressed,,,,,'stressed+(NA)' dropped: NA is not a class
+CPN,40,not_supported,"Yoga, Feldenkrais",anxious+sad,aerobic dance arm,neither_improved,,dance_programme=close,the unsupported pair belongs to the aerobic-dance arm
+CPN,42,not_supported,"Yoga (single session, MS)",anxious+tired;angry+tired;sad+tired;anxious+energetic;angry+energetic;energetic+sad;energetic+tired,,,,,'any pair with tired or energetic' expanded
+CPN,45,supported,Kripalu yoga in school PE,,,,,,anxious+(NA): NA is not a class
+CPN,55,supported,Zumba,,,,,,PA + NA only
+CPN,56,supported,Cyclic sighing,anxious+energetic,PA,,,,'anxious+(NA)' dropped: NA is not a class
+CPN,57,supported,Mindfulness meditation (Balban,,,,,,anxious+(NA): NA is not a class
+CPN,59,supported,WHM breathing,anxious+stressed;anxious+sad,both arms,,,,
+CPN,59,supported,WHM breathing,sad+stressed,both arms; sample recruited for high stress and high depressive symptoms,both_improved,directly_tested_on_combination,,mixed-state sample (notes section 4)
+CPN,59,not_supported,WHM breathing,,,,,,no between-arm difference
+CPN,61,supported,Diaphragmatic breathing,,,,,,stressed(cortisol)+(NA): NA is not a class
+CPN,64,supported,PMR + guided imagery,anxious+stressed;sad+stressed;anxious+sad,"sample with mild-to-moderate DASS stress, anxiety and depression",both_improved,directly_tested_on_combination,,mixed-state sample (notes section 4)
+CPN,67,not_supported,Brief vs sham mindfulness,anxious+sad;anxious+tired;angry+sad;angry+tired,anxious and angry not reported as improved,one_not_improved,,,"'anxious, angry not reported as improved' expanded to their pairs with the improved classes"
+CPN,70,not_supported,Nap (10 vs 5,,5-min nap gave few benefits,,,,"dose comparison, not a class pair"
+CPN,72,supported,Nap (<30 min,,,,,,tired+(sleepy): sleepiness is part of tired
+CCS,11,not_supported,best-possible-self writing,,,,,,content+NA: NA is not a class
+CCS,19,supported,PMR + music,stressed+tired,ICU nurses selected as stressed and fatigued,both_improved,directly_tested_on_combination,,mixed-state sample (notes section 4)
+CCS,40,supported,video games during COVID,,,,,,"narrative review, not same-sample"
+CCS,48,supported,phone calls (empathy-focused),lonely+sad;anxious+lonely;anxious+sad,homebound adults; UCLA loneliness improved (De Jong ns),both_improved,directly_tested_on_combination,,the notes (mixed_state_interventions.md) classify Kahlon 2021 as directly tested on lonely+sad+anxious
+CCS,51,supported,acts of kindness (prosocial),,,,,,content+NE: NE is not a class
+CCS,53,supported,acts of kindness,content+stressed,altruistic subgroup only,mixed,,,no whole-sample effect
