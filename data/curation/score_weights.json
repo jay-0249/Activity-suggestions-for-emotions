@@ -1,0 +1,55 @@
+{
+  "_comment": "Weights for evidence_score. All are uncalibrated design defaults chosen for this dataset build; none comes from the research notes.",
+  "evidence_level": {
+    "meta_analysis": 1.0,
+    "systematic_review": 0.8,
+    "rct": 0.8,
+    "experiment": 0.6,
+    "observational": 0.35,
+    "indirect": 0.15
+  },
+  "evidence_strength": {
+    "strong": 1.0,
+    "moderate": 0.7,
+    "preliminary": 0.4
+  },
+  "low_applicability_multiplier": 0.6,
+  "verification_status": {
+    "verified_fulltext": 1.0,
+    "verified_abstract": 0.95,
+    "corrected": 0.95,
+    "citation_exists_number_not_confirmed": 0.7,
+    "not_in_pubmed": 0.5,
+    "not_found": 0.25,
+    "unverified": 0.25
+  },
+  "row_unconfirmed_text_multiplier": 0.85,
+  "single_session_evidence": {
+    "true": 1.0,
+    "unknown": 0.8,
+    "false": 0.5
+  },
+  "mapping_type": {
+    "direct": 1.0,
+    "proxy": 0.6,
+    "aggregate": 0.4
+  },
+  "category_level_multiplier": 0.8,
+  "corroboration_bonus_per_extra_link": 0.1,
+  "plan_to_multiplier": 0.5,
+  "thin_evidence": {
+    "min_activities_with_direct_verified_benefit": 5,
+    "min_right_now_activities_with_direct_verified_single_session_benefit": 5
+  },
+  "runtime": {
+    "active_threshold": 0.4,
+    "high_intensity_threshold": 0.75,
+    "crisis_threshold": 0.9,
+    "third_emotion_margin": 0.1,
+    "rule_bonus": 0.3,
+    "preference_weight": 0.25,
+    "matrix_probe_score": 0.6,
+    "max_suggestions": 3,
+    "class_order_weight": 0.1
+  }
+}

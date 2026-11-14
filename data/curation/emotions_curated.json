@@ -1,0 +1,280 @@
+{
+  "_comment": "Hand-curated additions to the taxonomy table in emotion_models_and_matching_logic.md. Numeric valence/arousal are copied from that table; where the table gives a range or an adjustment the app value and the raw text are both kept. Synonyms are a design aid for mapping free-text LLM labels and are not validated.",
+  "emotions": {
+    "stressed": {
+      "valence": -0.56,
+      "arousal": 0.41,
+      "polarity": "negative",
+      "tension_member": true,
+      "energy_term": null,
+      "synonyms": [
+        "stress",
+        "tense",
+        "tension",
+        "overwhelmed",
+        "overwhelm",
+        "under pressure",
+        "pressured",
+        "frazzled",
+        "burned out",
+        "swamped",
+        "strained",
+        "on edge"
+      ]
+    },
+    "anxious": {
+      "valence": -0.36,
+      "arousal": 0.61,
+      "polarity": "negative",
+      "tension_member": true,
+      "energy_term": null,
+      "synonyms": [
+        "anxiety",
+        "worried",
+        "worry",
+        "nervous",
+        "fearful",
+        "afraid",
+        "scared",
+        "uneasy",
+        "apprehensive",
+        "panicky",
+        "dread"
+      ]
+    },
+    "angry": {
+      "valence": -0.62,
+      "arousal": 0.74,
+      "polarity": "negative",
+      "tension_member": true,
+      "energy_term": null,
+      "synonyms": [
+        "anger",
+        "irritated",
+        "irritable",
+        "annoyed",
+        "frustrated",
+        "mad",
+        "furious",
+        "resentful",
+        "hostile"
+      ]
+    },
+    "restless": {
+      "valence": -0.34,
+      "arousal": 0.3,
+      "arousal_norm": -0.06,
+      "polarity": "negative",
+      "tension_member": true,
+      "energy_term": null,
+      "coordinate_note": "Warriner norm arousal is -0.06; the notes suggest +0.3 by theory (an extrapolation). 'arousal' holds the suggested value, 'arousal_norm' the norm-derived one.",
+      "synonyms": [
+        "agitated",
+        "fidgety",
+        "jittery",
+        "antsy",
+        "unsettled",
+        "keyed up",
+        "cannot sit still"
+      ]
+    },
+    "sad": {
+      "valence": -0.72,
+      "arousal": -0.27,
+      "polarity": "negative",
+      "tension_member": false,
+      "energy_term": null,
+      "synonyms": [
+        "sadness",
+        "low",
+        "low mood",
+        "down",
+        "unhappy",
+        "blue",
+        "tearful",
+        "depressed",
+        "depressive symptoms",
+        "hopeless",
+        "melancholy",
+        "grief",
+        "heartbroken"
+      ]
+    },
+    "lonely": {
+      "valence": -0.58,
+      "arousal": 0.06,
+      "polarity": "negative",
+      "tension_member": false,
+      "energy_term": null,
+      "synonyms": [
+        "loneliness",
+        "isolated",
+        "alone",
+        "disconnected",
+        "left out",
+        "homesick",
+        "unloved"
+      ]
+    },
+    "tired": {
+      "valence": -0.18,
+      "arousal": -0.2,
+      "polarity": "negative",
+      "tension_member": false,
+      "energy_term": "minus tired",
+      "synonyms": [
+        "fatigue",
+        "fatigued",
+        "exhausted",
+        "drained",
+        "sleepy",
+        "low energy",
+        "worn out",
+        "weary",
+        "lethargic",
+        "sluggish"
+      ]
+    },
+    "bored": {
+      "valence": -0.51,
+      "arousal": -0.21,
+      "polarity": "negative",
+      "tension_member": false,
+      "energy_term": "minus 0.5 x bored",
+      "synonyms": [
+        "boredom",
+        "unstimulated",
+        "disengaged",
+        "listless",
+        "apathetic",
+        "uninterested",
+        "flat"
+      ]
+    },
+    "calm": {
+      "valence": 0.47,
+      "arousal": -0.94,
+      "polarity": "positive",
+      "tension_member": false,
+      "energy_term": null,
+      "synonyms": [
+        "relaxed",
+        "peaceful",
+        "serene",
+        "at ease",
+        "tranquil",
+        "settled"
+      ]
+    },
+    "content": {
+      "valence": 0.65,
+      "arousal": 0.15,
+      "polarity": "positive",
+      "tension_member": false,
+      "energy_term": null,
+      "coordinate_note": "The notes give a range (valence +0.43 to +0.87, arousal -0.39 to +0.68) spanning Warriner 'content' to 'happy' and say to use (+0.65, +0.15) as the midpoint.",
+      "synonyms": [
+        "happy",
+        "happiness",
+        "joy",
+        "joyful",
+        "pleased",
+        "satisfied",
+        "cheerful",
+        "glad",
+        "grateful",
+        "positive affect"
+      ]
+    },
+    "energetic": {
+      "valence": 0.64,
+      "arousal": 0.7,
+      "polarity": "positive",
+      "tension_member": false,
+      "energy_term": "plus energetic",
+      "synonyms": [
+        "excited",
+        "excitement",
+        "vigor",
+        "vigour",
+        "enthusiastic",
+        "lively",
+        "pumped",
+        "motivated",
+        "inspired",
+        "playful"
+      ]
+    },
+    "neutral": {
+      "valence": 0.0,
+      "arousal": 0.0,
+      "polarity": "neutral",
+      "tension_member": false,
+      "energy_term": null,
+      "coordinate_note": "Set to the origin by design (Warriner norm +0.12, -0.28).",
+      "synonyms": [
+        "fine",
+        "okay",
+        "ok",
+        "nothing in particular",
+        "indifferent",
+        "blank"
+      ]
+    }
+  },
+  "aggregate_targets": [
+    {
+      "id": "negative_affect_general",
+      "label": "Negative emotion (general, not class-specific)",
+      "applies_to": [
+        "stressed",
+        "anxious",
+        "angry",
+        "sad"
+      ],
+      "note": "Used for notes rows whose outcome is 'negative affect' or 'negative emotion (general)'. Not an LLM output class. In recommendations these links count, at the reduced 'aggregate' mapping weight, toward stressed, anxious, angry and sad only: the underlying studies induce or measure negative emotion in general (mostly lab stimuli) and say nothing specific about fatigue, boredom, loneliness or restlessness. This restriction is a judgement call of the dataset build."
+    },
+    {
+      "id": "wellbeing_general",
+      "label": "General wellbeing / life satisfaction / self-esteem",
+      "applies_to": [],
+      "note": "Used for rows whose outcome is general wellbeing, optimism, flourishing, self-esteem or overall health. Not an LLM output class and not used in per-emotion rankings."
+    },
+    {
+      "id": "sleep_general",
+      "label": "Sleep onset / sleep quality",
+      "applies_to": [],
+      "note": "Used for rows whose measured outcome is sleep. Not an LLM output class and not used in per-emotion rankings."
+    }
+  ],
+  "groups": {
+    "negative": [
+      "stressed",
+      "anxious",
+      "angry",
+      "restless",
+      "sad",
+      "lonely",
+      "tired",
+      "bored"
+    ],
+    "positive": [
+      "calm",
+      "content",
+      "energetic"
+    ],
+    "tension": [
+      "stressed",
+      "anxious",
+      "angry",
+      "restless"
+    ]
+  },
+  "derived_scores": {
+    "tension": "max(stressed, anxious, angry, restless)",
+    "energy": "energetic - max(tired, 0.5 * bored)",
+    "energy_variant_section_1": "max(energetic, 0.5 * content) - max(tired, 0.5 * bored)",
+    "intensity": "max score over all classes",
+    "note": "Design proposals from the notes, not validated scoring keys. The 'energy' formula is the one printed under the taxonomy table; Section 1 of the notes gives the variant, and the table version is used here."
+  }
+}

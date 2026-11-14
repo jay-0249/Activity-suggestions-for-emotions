@@ -1,0 +1,1378 @@
+{
+  "meta": {
+    "source": "emotion_models_and_matching_logic.md section 6 and handwriting_drawing_emotion_validity.md 'Recommendations for the app'",
+    "status": "Design recommendations derived from the notes; not trial-tested. Thresholds are uncalibrated engineering defaults."
+  },
+  "thresholds": {
+    "label": "UNCALIBRATED ENGINEERING DEFAULTS",
+    "note": "The notes state: 'Thresholds (0.4, 0.75) are arbitrary engineering defaults; no study calibrates LLM emotion scores to felt intensity' and 'No validated threshold exists for when an app-detected score warrants crisis escalation; the gate above is a precaution, not a screening tool.'",
+    "active_emotion_gte": 0.4,
+    "high_intensity_gte": 0.75,
+    "crisis_gte": 0.9
+  },
+  "crisis_gate": {
+    "rule_id": "R30",
+    "triggers": [
+      {
+        "type": "score",
+        "description": "any negative emotion score is extreme",
+        "condition": {
+          "any": [
+            {
+              "group": "negative",
+              "gte": 0.9
+            }
+          ]
+        }
+      },
+      {
+        "type": "persistence",
+        "description": "severe negative states persist across several sessions",
+        "condition": {
+          "signal": "persistent_severe_negative"
+        },
+        "note": "The notes do not define 'several' or 'severe'; the app must choose and label its own default."
+      },
+      {
+        "type": "free_text",
+        "description": "any free text mentions self-harm or hopelessness",
+        "condition": {
+          "signal": "self_harm_cue"
+        }
+      },
+      {
+        "type": "self_report",
+        "description": "self-report is severe (route to crisis resources)",
+        "condition": {
+          "signal": "severe_self_report"
+        }
+      }
+    ],
+    "behaviour": [
+      "Skip the activity list and show support information instead.",
+      "Show a supportive message, a prompt to contact a trusted person, and localised crisis resources; a grounding exercise may be offered as optional.",
+      "Do not present any 'fix it' activity list as sufficient, and do not use diagnostic wording.",
+      "Crisis numbers must be localised and checked by a human (Martinengo et al. 2019 found 6 of 69 apps gave an erroneous helpline number). This dataset deliberately contains no phone numbers."
+    ],
+    "text": "If you're struggling or feel unsafe, please reach out to someone you trust or a local crisis line / emergency services now.",
+    "optional_activity_ids": [
+      "grounding_54321"
+    ],
+    "evidence_basis": "extrapolated (precautionary)",
+    "citations": [
+      "Linardon et al. 2024 (efficacy; adverse events)",
+      "Barrett et al. 2019",
+      "Martinengo et al. 2019"
+    ]
+  },
+  "disclaimers": {
+    "general": "This app offers general wellbeing suggestions. It is not a medical device and does not diagnose or treat any condition. If your low mood or anxiety lasts more than two weeks or gets in the way of daily life, talk to a health professional.",
+    "honest_claims": "Describe benefits as \"may help\", citing small average effects.",
+    "exercise": "Stop if chest pain, dizziness or unusual breathlessness.",
+    "product_framing": "Say \"an expressive check-in that helps you notice how you feel\", never \"we detect your stress from your handwriting\".",
+    "pitch": "Drawing is how you express it, a one-tap check is how we measure it, and the AI is a mirror, not a diagnostician."
+  },
+  "self_report_drives_suggestions": {
+    "recommendation": "Make a one-tap self-report the operative input for recommendations. Use an Affect Grid or single mood/stress item every session, with PHQ-4 as an optional periodic check; let the drawing enrich, not replace, it.",
+    "user_correction_outranks_model": "A self-reported label replaces the inferred one.",
+    "ai_reading_is_a_guess": "Present the AI output as a tentative guess the user confirms or corrects. Best-case decoding of instructed emotion drawings (50.81% for the algorithm, 43% for human observers, Damiano et al. 2023) is wrong about half the time or more. Log the correction; it is your ground truth.",
+    "multi_llm_agreement": "Use multi-LLM agreement only as a suppression filter. If models disagree, show no guess and just ask the user; agreement measures reliability, not validity.",
+    "drop_decimal_scores_in_ui": "Drop decimal emotion scores from the user interface. Replace `stress: 0.72` with coarse, hedged labels plus the visible features that prompted them (colour, density, line quality). Numeric scores may be used internally for rule lookup but imply a measurement validity that does not exist.",
+    "llm_prompt_constraint": "Forbid graphological and projective-sign reasoning explicitly; ask the model to describe observable features first and relate them only to documented colour/line conventions.",
+    "validity_status": "No peer-reviewed evidence supports single-shot state detection from a short phone drawing; no validation of general-purpose vision LLMs for this task was found."
+  },
+  "tentative_label_wording": {
+    "templates": [
+      "It looks like you might be feeling {label}...",
+      "This looks intense and dense to me - does '{label}' fit, or is it something else?",
+      "Does {label_1} and {label_2} sound right?"
+    ],
+    "always_offer": "That's not right - let me pick",
+    "never_say": [
+      "You are depressed",
+      "You are anxious",
+      "we detect your stress from your handwriting"
+    ],
+    "forbidden_output_labels": [
+      "depression",
+      "anxiety disorder"
+    ],
+    "state_labels_ok": [
+      "low/sad",
+      "anxious/worried"
+    ],
+    "rule": "Never use clinical terms as output labels; 'low/sad' and 'anxious/worried' are states, not diagnoses."
+  },
+  "activity_safety_rules": [
+    "No alcohol, food-as-comfort or drug suggestions.",
+    "Exercise suggestions should be self-paced; show vigorous options only if the user reports being regularly active; suppress vigorous options in the hour before bedtime.",
+    "Breathing exercises should avoid long breath-holds; keep fast/hyperventilation-style breathwork out of a general app.",
+    "Do not suggest cold immersion to people with heart conditions.",
+    "Keep naps short and early in the day.",
+    "Frame any singing, instrument or dance suggestion as private and non-evaluative.",
+    "Do not offer expressive writing as a quick fix for acute distress; if offered, warn that feeling worse right afterwards is normal.",
+    "For anger, never suggest venting, hitting things or hard exercise.",
+    "For low mood with rumination, steer away from sad music.",
+    "Preferences rank options inside the rule-allowed set; they never override a rule's avoid list (R29). Dislikes act as a hard filter.",
+    "Always show two or three options and let the user choose."
+  ],
+  "privacy_and_regulatory": [
+    "Drawings, stroke data and emotion scores are sensitive data; process and discard images, store scores locally, and ask consent explicitly (explicit consent and minimisation before sending to third-party LLM APIs).",
+    "EU AI Act (as found in the notes, November 2026; verify against the Official Journal; not legal advice): disclose the emotion inference up front (Art. 50(3)) and never sell into workplaces or schools (Art. 5(1)(f)). Plan for possible high-risk (Annex III) classification.",
+    "Stay inside general wellness: no diagnostic terms, no treatment claims, a clear 'not a medical device / not a diagnosis' statement, and a route to crisis resources when self-report is severe."
+  ],
+  "never_suggest_activity_ids": [
+    "sad_music_listening",
+    "drawing_to_vent",
+    "vigorous_exercise",
+    "cold_water_immersion",
+    "venting",
+    "dwelling_on_feelings",
+    "passive_scrolling",
+    "dampening_positive"
+  ],
+  "per_activity_cautions": {
+    "music_listening_calming": {
+      "cautions": [
+        "Many trials in patients, not everyday stress",
+        "Non-clinical meta-analysis found physiological effect n.s. (Panteleeva 2018)",
+        "Larger than non-clinical-only estimate",
+        "Best estimate for healthy users; small",
+        "Works best when goal is relaxation (abstract); the boredom/distraction null is not stated in the abstract and was not confirmed (no open full text)",
+        "Do not claim music fixes boredom. NOT CONFIRMED: this boredom finding is not in the PubMed abstract",
+        "Single study"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "sad_music_listening": {
+      "cautions": [
+        "Self-report only; see next row",
+        "Contraindicated for users prone to rumination/depression"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Self-selected sad music increased depressed mood in people prone to rumination (Garrido & Schubert 2015; not in PubMed)"
+        },
+        {
+          "kind": "condition",
+          "id": "rumination_prone",
+          "reason": "Same finding"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "upbeat_music_listening": {
+      "cautions": [
+        "Self-report survey, not an experiment; abstract names exercise (not music) as the most effective mood-regulating behaviour"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activities do not reduce anger (Kjaervik & Bushman 2024)"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Activating"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "free_dancing": {
+      "cautions": [
+        "Single study, not in PubMed; Koch 2019 meta-analysis coded this study as a small negative effect (d = −0.17) for dance vs its controls; keep it private/non-evaluative",
+        "Cycling control did not reduce fatigue",
+        "Single study"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activity; not shown to reduce anger"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "dance_programme": {
+      "cautions": [
+        "High heterogeneity overall (I² = 72.6%) and for dance (I² = 78.0%), but DMT cluster homogeneous (I² = 3.5%); mean programme length 11.4 weeks; group, facilitated — not solo single session",
+        "high heterogeneity; possible measurement bias",
+        "inferior to other exercise for stress",
+        "very low certainty"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Evidence is programme-level (mean 11.4 weeks)"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "drawing_distraction": {
+      "cautions": [
+        "Short-term effect only; student samples",
+        "Only anger study for drawing",
+        "Small n"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "drawing_something_happy": {
+      "cautions": [
+        "Arousal unchanged"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "drawing_to_vent": {
+      "cautions": [
+        "BACKFIRE/NULL: avoid as acute mood-repair prompt"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "No benefit vs control (Dalebroux et al. 2008; not in PubMed)"
+        },
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Expressing did worse than distracting (Genuth & Drake 2021; not in PubMed)"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Null for acute mood repair"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "colouring_structured": {
+      "cautions": [
+        "Blank-page free colouring less effective",
+        "Small n; replication",
+        "Exp. 1 (n = 88): unguided colouring no better than free drawing; some participants disliked the guiding voice",
+        "Not in PubMed: design details still unverified (DOI matches the reference list of a citing PMC article); \"preliminary\" in title",
+        "Let the user choose the design"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "clay_work": {
+      "cautions": [
+        "Needs materials; single study",
+        "~14 per group"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "playing_instrument": {
+      "cautions": [
+        "Requires existing skill and instrument"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "singing_solo": {
+      "cautions": [
+        "BACKFIRE: cortisol rises when performing for an audience"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "performance_pressure",
+          "reason": "Cortisol rose when singing for an audience (Fancourt et al. 2015)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "group_singing": {
+      "cautions": [
+        "Quasi-experimental; needs a group; not right-now",
+        "Uncontrolled pre-post; special population"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "social_anxiety",
+          "reason": "Group activity"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Needs a group; not right-now"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "free_art_making": {
+      "cautions": [
+        "No control group; facilitated by an art therapist (the first author)",
+        "Only evidence covering painting/collage; cannot separate media"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "art_therapy_led": {
+      "cautions": [
+        "Improvement in 18% of outcomes, 81% no improvement; low study quality; not self-guided"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "reference_only"
+    },
+    "arts_engagement_general": {
+      "cautions": [
+        "Scoping review: no effect sizes or quality grading"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "reference_only"
+    },
+    "expressive_writing": {
+      "cautions": [
+        "Tiny effect; multi-session; the d ≈ 0.15 is a conversion from r, not a figure in the abstract",
+        "No immediate benefit; short intervals (1–3 days) between sessions gave stronger effects",
+        "Do not suggest for low mood expecting relief",
+        "BACKFIRE: short-term distress up, positive mood down"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Short-term distress goes up and positive mood down right after writing (Baikie & Wilhelm 2005)"
+        },
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Do not offer to someone highly distressed with no follow-up"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "No significant long-term effect on depressive symptoms in healthy adults (Reinhold et al. 2018; not in PubMed)"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "best_possible_self_writing": {
+      "cautions": [
+        "CORRECTED: the marginal moderator trend runs the other way — fewer total minutes of practice → larger effect (and older participants → larger effect)",
+        "Better for raising positive affect than lowering negative"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "journaling": {
+      "cautions": [
+        "High heterogeneity (I² 83.8% intervention arm); SORT level B; clinical significance unclear; not single-session",
+        "Preliminary; patient sample; vs usual care, lower anxiety and depressive symptoms were reported at 1 month"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Evidence is multi-week; small effects"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "poetry": {
+      "cautions": [
+        "Small, heterogeneous, likely publication bias; not indexed in PubMed, so authors and numbers remain unverified"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "knitting": {
+      "cautions": [
+        "Self-selected enthusiasts; cross-sectional; needs skill",
+        "Group, not solo"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "cooking": {
+      "cautions": [
+        "Not solo home cooking; authors call evidence limited",
+        "Social benefit depends on the group"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "shared_meal": {
+      "cautions": [
+        "Cross-sectional; no evidence located on cooking for others specifically"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "plan_to"
+    },
+    "photography": {
+      "cautions": [
+        "No no-photo control; small n",
+        "Requires sending the photo to someone"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "everyday_creative_activity": {
+      "cautions": [
+        "Next-day effect; no evidence it lowers negative affect",
+        "Calm/relaxed moods do not show the boost"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "reading_fiction": {
+      "cautions": [
+        "Benefit appears only after recalling/discussing"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "No immediate effect of a single reading exposure (Carney & Robertson 2022)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "bibliotherapy": {
+      "cautions": [
+        "CBT self-help books, not fiction; clinical"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Weeks-long, clinical evidence"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "moderate_exercise": {
+      "cautions": [
+        "programme-level, not single bout",
+        "programme-level",
+        "keep intensity comfortable",
+        "do not promise fatigue relief from a short hard bout",
+        "small effect; floor effects",
+        "clinical sample; few trials"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activities did not reduce anger, g = -0.02 (Kjaervik & Bushman 2024)"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Keep it moderate in the last hour before bed"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "running_jogging": {
+      "cautions": [
+        "clinical sample; low certainty",
+        "do NOT suggest running for anger"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Do not suggest running for anger: arousal-increasing activities g = -0.02 (Kjaervik & Bushman 2024)"
+        },
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Vigorous exercise ending within 1 h of bed may impair sleep"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "brisk_walk_10min": {
+      "cautions": [
+        "small sample",
+        "benefit may fade within ~10 min of stopping",
+        "Older single-lab study; exercise covered in depth by other researcher"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "stair_walking": {
+      "cautions": [
+        "transient; small sample"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "movement_breaks": {
+      "cautions": [
+        "lab setting",
+        "benefit seen at end of day, not after one break"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "hiit": {
+      "cautions": [
+        "regular exercisers only; unpleasant above threshold; not within 1 h of bed",
+        "medical caution for inactive users or heart/metabolic/renal disease"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing"
+        },
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "condition",
+          "id": "inactive_or_cardiometabolic_disease",
+          "reason": "Medical caution for inactive users or heart/metabolic/renal disease"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Not within 1 h of bed"
+        },
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Above-threshold exercise feels worse, which matters when already distressed"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "vigorous_exercise": {
+      "cautions": [
+        "prefer self-selected pace",
+        "suppress vigorous suggestions in last hour before bed; moderate exercise is fine"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activities do not reduce anger"
+        },
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Vigorous exercise ending within 1 h of bed may impair sleep (Stutz et al. 2019)"
+        },
+        {
+          "kind": "condition",
+          "id": "inactive_or_cardiometabolic_disease",
+          "reason": "Screening advised"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "resistance_training": {
+      "cautions": [
+        "programme-level; technique/injury care",
+        "smaller in blinded trials"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Programme-level evidence"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "yoga": {
+      "cautions": [
+        "only 3 low-bias RCTs",
+        "inconclusive for diagnosed disorders",
+        "citation not found in PubMed (PubMed pass) — paper identity, journal, year and numbers all unconfirmed; gentle styles work better acutely",
+        "pooled across calming activities, not yoga alone"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "tai_chi": {
+      "cautions": [
+        "mixed trial quality; no acute anxiety effect of one session",
+        "mixed trial quality; \"single session showed no effect\" comes from the unconfirmed single-session meta-analysis",
+        "mixed trial quality"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Programme-level evidence; no acute anxiety effect confirmed"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "qigong": {
+      "cautions": [
+        "few, flawed trials"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Programme-level evidence"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "stretching": {
+      "cautions": [
+        "programme-level; untreated control; no acute evidence"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "nature_walk": {
+      "cautions": [
+        "uncontrolled designs",
+        "low-quality evidence; calmness may decrease after outdoor exercise; later update found affect/enjoyment benefit only",
+        "only 90-min dose tested",
+        "anxiety estimate imprecise (upper CI −0.01); high heterogeneity for depressive mood"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "awe_walk": {
+      "cautions": [
+        "Small sample, older adults only; no change in anxiety, depression or life satisfaction"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "forest_bathing": {
+      "cautions": [
+        "anticipation effect; needs forest access",
+        "complementary only",
+        "few RCTs; no long follow-up"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "blue_space_visit": {
+      "cautions": [
+        "mostly cross-sectional; water safety"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "plan_to"
+    },
+    "gardening": {
+      "cautions": [
+        "publication bias; not all RCTs",
+        "small; experienced gardeners"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "nature_sitting": {
+      "cautions": [
+        "small sample; no control setting",
+        "mostly Japanese student samples",
+        "real nature stronger than images",
+        "small effect",
+        "not causal",
+        "cross-sectional, self-report",
+        "Single experiment",
+        "Weaker than popularly claimed"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "daylight_exposure": {
+      "cautions": [
+        "not causal; sun protection",
+        "not causal",
+        "Lab lighting, not outdoor daylight per se"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "cold_face_water": {
+      "cautions": [
+        "small; no self-report mood; avoid with heart conditions (general guidance)"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "heart_condition",
+          "reason": "Avoid with heart conditions (general guidance in notes)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "cold_water_immersion": {
+      "cautions": [
+        "no control group; RCT meta-analysis (Cain 2025) found no mood effect",
+        "not useful as an immediate stress fix; cardiac caution"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "heart_condition",
+          "reason": "Cardiac caution"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "No effect immediately or at 1 h (Cain et al. 2025)"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "nap_short": {
+      "cautions": [
+        "athlete samples; low certainty; keep <60 min",
+        "low/very low certainty; late naps may affect night sleep (general guidance)",
+        "Sleep inertia just after waking; benefit lasts about 2 h; lab evidence; avoid late-day naps",
+        "Set an alarm; longer naps produce inertia"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "late_day",
+          "reason": "Late naps may affect night sleep (general guidance)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "caffeine_nap": {
+      "cautions": [
+        "Tiny sample; avoid late afternoon/evening, caffeine-sensitive or anxious users"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "anxious",
+          "reason": "Avoid caffeine for anxious users"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Stimulant"
+        },
+        {
+          "kind": "context",
+          "id": "late_day",
+          "reason": "Avoid late afternoon or evening"
+        },
+        {
+          "kind": "condition",
+          "id": "caffeine_sensitive",
+          "reason": "Caffeine"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "slow_breathing": {
+      "cautions": [
+        "moderate risk of bias; avoid fast/hyperventilation styles",
+        "not a depression treatment",
+        "HRV change is not the same as feeling better",
+        "small heterogeneous evidence base",
+        "brief initial rise in physiological arousal",
+        "category-level effect"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "cyclic_sighing": {
+      "cautions": [
+        "single trial, no inactive control",
+        "single trial"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "box_breathing": {
+      "cautions": [
+        "one trial arm only"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "progressive_muscle_relaxation": {
+      "cautions": [
+        "older trials; abstract CI inconsistent",
+        "small sample",
+        "effects from training, not one session",
+        "category-level effect"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "guided_imagery": {
+      "cautions": [
+        "small sample"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "time_out_counting": {
+      "cautions": [
+        "time-out/counting is not named in the PubMed abstract; not independently verified"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "venting": {
+      "cautions": [
+        "contraindicated for anger"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "g = -0.02 for arousal-increasing activities (Kjaervik & Bushman 2024); hitting a bag while ruminating raised anger (Bushman 2002; not in PubMed)"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Venting"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Venting"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "mindfulness_meditation": {
+      "cautions": [
+        "category-level effect",
+        "not better than active treatments; adverse effects possible",
+        "program-level, not single session",
+        "effect may be near zero after bias correction"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "meditation_adverse_reaction",
+          "reason": "Meditation produces transient adverse effects in a minority (notes Q4)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "body_scan": {
+      "cautions": [
+        "body focus can raise distress in some"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "meditation_adverse_reaction",
+          "reason": "Body focus can raise distress in some"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "loving_kindness_meditation": {
+      "cautions": [
+        "compassion-focused variants smaller",
+        "wide CI, small trials",
+        "inference only; no loneliness outcome"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "self_compassion_exercise": {
+      "cautions": [
+        "group formats stronger than self-guided",
+        "possible publication bias",
+        "rumination estimate from few trials"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "gratitude_list": {
+      "cautions": [
+        "not all outcomes improved",
+        "modest; not a treatment for depression/anxiety",
+        "no advantage over other activities"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "gratitude_letter": {
+      "cautions": [
+        "may not suit severe low mood [U]",
+        "Expressers over-predict awkwardness"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "savoring": {
+      "cautions": [
+        "single recent meta-analysis; larger point estimates vs passive than active controls",
+        "Cross-sectional"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "positive_reminiscence": {
+      "cautions": [
+        "Naturally occurring daily nostalgia can co-occur with negative affect (Newman 2020, U)",
+        "Tested as consequence of boredom plus meaning outcome; not a boredom-reduction trial",
+        "Small student sample"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "positive_psychology_exercise": {
+      "cautions": [
+        "shrinks after bias correction (White et al. 2019)",
+        "depression effect unstable in re-analysis"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "reference_only"
+    },
+    "cognitive_reappraisal": {
+      "cautions": [
+        "less preferred at high intensity (Sheppes 2011)"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Reappraisal is a poor first choice at high emotional intensity (Sheppes et al. 2011)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "perspective_taking": {
+      "cautions": [
+        "lab stimuli"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Cognitive strategies are offered after attention-based ones at high intensity"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "third_person_self_talk": {
+      "cautions": [
+        "neural/lab outcomes"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "affect_labeling": {
+      "cautions": [
+        "mainly lab/neural evidence"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "distraction_absorbing_task": {
+      "cautions": [
+        "short-term relief only",
+        "Correlational"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "challenge_matched_game": {
+      "cautions": [
+        "trauma-specific; mechanism contested",
+        "Too easy = boring; too hard = frustrating; time-box; worry itself was not reduced in the experiment"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "casual_video_game": {
+      "cautions": [
+        "Heterogeneous designs; risk of displacement, so time-box",
+        "Reportedly industry-funded; not retrieved"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "board_games": {
+      "cautions": [
+        "Little direct mood/boredom evidence"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "plan_to"
+    },
+    "dwelling_on_feelings": {
+      "cautions": [
+        "avoid unstructured rumination prompts",
+        "Guided mindfulness differs from unguided thinking"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "bored",
+          "reason": "Many find it aversive (Wilson et al. 2014)"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "d+ = -0.26 for concentrating on feelings (Webb et al. 2012)"
+        },
+        {
+          "kind": "emotion",
+          "id": "anxious",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Same"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "worry_postponement": {
+      "cautions": [
+        "small effects, no follow-up"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "write_plan_todo": {
+      "cautions": [
+        "outcome is sleep, not felt overwhelm",
+        "Lab cognitive outcomes, not self-reported stress",
+        "No no-writing control; single night"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "if_then_plan": {
+      "cautions": [
+        "Outcome is behaviour, not emotion"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "behavioural_activation": {
+      "cautions": [
+        "mostly therapist-guided; low study quality",
+        "figure confirmed in PubMed abstract; CI not in abstract"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "micro_break": {
+      "cautions": [
+        "little performance benefit after heavy tasks",
+        "Highly depleting work may need longer than 10 min",
+        "Performance gain not significant overall (d = 0.16)"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "laughter_exercises": {
+      "cautions": [
+        "all studies high risk of bias",
+        "Low study quality"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "plan_to"
+    },
+    "watch_comedy": {
+      "cautions": [
+        "Half quasi-experimental; heterogeneous"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "warm_bath_shower": {
+      "cautions": [
+        "evidence is for sleep, not mood",
+        "clinical pilot; heat safety"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "lavender_aromatherapy": {
+      "cautions": [
+        "high heterogeneity and bias; allergies"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "allergy",
+          "reason": "Allergies"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "l_theanine_supplement": {
+      "cautions": [
+        "does not validate tea drinking; hydration evidence not found"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "reference_only"
+    },
+    "grounding_54321": {
+      "cautions": [
+        "label as practice-based, not evidence-based"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "call_friend": {
+      "cautions": [
+        "People over-predict awkwardness; offer text fallback for socially anxious users",
+        "Calls were received, not self-initiated; older/homebound sample"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "social_anxiety",
+          "reason": "Offer the text fallback"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "send_message": {
+      "cautions": [
+        "Outcome is recipient appreciation, not sender loneliness"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "weak_tie_chat": {
+      "cautions": [
+        "Not for everyone: context/safety; socially anxious users may find it aversive",
+        "Single field experiment",
+        "Within-person correlational"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "social_anxiety",
+          "reason": "May be aversive for socially anxious users; context and safety matter"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "reframe_social_thoughts": {
+      "cautions": [
+        "Not a single-session dose; high heterogeneity"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "loneliness_programme": {
+      "cautions": [
+        "Certainty low to very low. Full paper (10.1037/amp0001578, PMID 41129341) is Am Psychol 2026;81(1):36–52 (Epub 2025 Oct 23): 280 studies, 122 RCTs SMD = −0.50 (95% CI −0.60, −0.39)"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "reference_only"
+    },
+    "passive_scrolling": {
+      "cautions": [
+        "Outcome is affect, not loneliness; active use not harmful"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "lonely",
+          "reason": "Passive use lowered affective wellbeing (Verduyn et al. 2015)"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "bored",
+          "reason": "Listed to avoid in the boredom rule (R08)"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Listed to avoid in R04"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "limit_social_media": {
+      "cautions": [
+        "Single student sample"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "plan_to"
+    },
+    "mastery_challenge": {
+      "cautions": [
+        "Model, not an intervention trial",
+        "Correlational; mastery-specific estimate not retrieved"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "Demanding challenge is avoided when tired (R07, R20)"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "self_chosen_activity": {
+      "cautions": [
+        "Correlational"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "reference_only"
+    },
+    "drink_water": {
+      "cautions": [
+        "No verified evidence that extra water energises already-hydrated people"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "tidy_small_area": {
+      "cautions": [
+        "No intervention evidence; could add burden"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "act_of_kindness": {
+      "cautions": [
+        "Small effect",
+        "Mix of correlational and experimental",
+        "Not single-dose"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "spend_on_others": {
+      "cautions": [
+        "Recall version null in one replication; do not push spending on users in financial stress"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "financial_stress",
+          "reason": "Do not push spending on users in financial stress"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "volunteering": {
+      "cautions": [
+        "Not a 5–30 min activity; use as \"plan to\" suggestion"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Sustained activity; trials inconclusive for mood"
+        }
+      ],
+      "suggest_mode": "plan_to"
+    },
+    "share_good_news": {
+      "cautions": [
+        "Benefit depends on enthusiastic response; passive or negative responses backfire",
+        "Details from secondary sources"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "dampening_positive": {
+      "cautions": [
+        "Cross-sectional"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "content",
+          "reason": "Associated with lower positive affect (Quoidbach et al. 2010; not in PubMed)"
+        },
+        {
+          "kind": "emotion",
+          "id": "calm",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "energetic",
+          "reason": "Same"
+        }
+      ],
+      "suggest_mode": "avoid"
+    },
+    "explore_while_positive": {
+      "cautions": [
+        "Mixed replication record for broadening effect"
+      ],
+      "contraindicated_for": [],
+      "suggest_mode": "right_now"
+    },
+    "affectionate_touch": {
+      "cautions": [
+        "Mostly massage-type interventions; consent essential; not for users without a willing partner",
+        "Correlational; consent"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "no_willing_partner",
+          "reason": "Not for users without a willing partner; consent essential"
+        }
+      ],
+      "suggest_mode": "right_now"
+    },
+    "pet_animal": {
+      "cautions": [
+        "Requires animal access; watching/slideshow did not work as well; allergies/fear"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "allergy",
+          "reason": "Allergies or fear of animals"
+        }
+      ],
+      "suggest_mode": "right_now"
+    }
+  }
+}

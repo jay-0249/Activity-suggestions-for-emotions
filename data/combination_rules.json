@@ -1,0 +1,3241 @@
+{
+  "meta": {
+    "source": "research_notes/Emotion to activity evidence map/emotion_models_and_matching_logic.md (## Matching rules)",
+    "warning": "MOST COMBINATION RULES ARE EXTRAPOLATIONS. Of 30 rules, 18 are 'extrapolated', 9 'partly' tested and only 3 'directly_tested' (none of which is a pair rule). The notes state that no meta-analysis compares activity classes by emotion combination.",
+    "thresholds": {
+      "moderate_gte": 0.4,
+      "high_gte": 0.75,
+      "crisis_gte": 0.9,
+      "label": "uncalibrated engineering defaults"
+    },
+    "condition_grammar": {
+      "all / any": "list of sub-conditions; all must hold / at least one must hold",
+      "{emotion, gte, lt}": "score of that emotion id is >= gte and (if given) < lt",
+      "{group, gte, lt}": "max score over the emotion group (see emotions.json groups) is >= gte / < lt",
+      "{signal}": "boolean supplied by the app (persistent_severe_negative, self_harm_cue, severe_self_report)",
+      "{selected_class}": "true when the user picked an activity of that rule class",
+      "{always}": "always true"
+    },
+    "evaluation_order": "Highest priority first: R30 safety gate (100) > R01 intensity gate (90) > pair rules (60) > R27 mixed valence (50) > single-emotion rules (40) > R02 (10) > R28 (5) > R29 (1, always).",
+    "label_aliases": {
+      "happy": "content",
+      "excited": "energetic"
+    },
+    "class_definitions": {
+      "BREATHE": "slow breathing, muscle relaxation",
+      "MINDFUL": "meditation, grounding",
+      "SENSORY": "cold water, warm shower, senses-based grounding",
+      "MOVE-LOW": "stretching, gentle yoga, easy walk",
+      "MOVE-MOD": "self-paced brisk walk, run, sport, dancing",
+      "NATURE": "nature",
+      "MUSIC": "music",
+      "DISTRACT": "absorbing game, puzzle, show, hobby",
+      "PLEASANT": "planned enjoyable or mastery activity = behavioural activation",
+      "SOCIAL": "call, message, meet someone",
+      "REAPPRAISE": "perspective-taking, journalling",
+      "PLAN": "problem-solving, to-do triage",
+      "REST": "break, nap, wind-down",
+      "CHALLENGE": "creative or skill task",
+      "SAVOR": "gratitude, savouring",
+      "SHARE": "tell someone good news",
+      "KIND": "do something for someone"
+    },
+    "class_to_activity_ids": {
+      "BREATHE": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting"
+      ],
+      "MINDFUL": [
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321"
+      ],
+      "SENSORY": [
+        "cold_face_water",
+        "warm_bath_shower",
+        "lavender_aromatherapy",
+        "grounding_54321",
+        "pet_animal"
+      ],
+      "MOVE-LOW": [
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "tai_chi",
+        "qigong",
+        "stretching",
+        "nature_walk"
+      ],
+      "MOVE-MOD": [
+        "free_dancing",
+        "dance_programme",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "resistance_training"
+      ],
+      "NATURE": [
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "blue_space_visit",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure"
+      ],
+      "MUSIC": [
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo"
+      ],
+      "DISTRACT": [
+        "drawing_distraction",
+        "drawing_something_happy",
+        "colouring_structured",
+        "clay_work",
+        "free_art_making",
+        "reading_fiction",
+        "distraction_absorbing_task",
+        "challenge_matched_game",
+        "casual_video_game",
+        "watch_comedy"
+      ],
+      "PLEASANT": [
+        "free_dancing",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy"
+      ],
+      "SOCIAL": [
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "gratitude_letter",
+        "board_games",
+        "laughter_exercises",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch"
+      ],
+      "REAPPRAISE": [
+        "journaling",
+        "self_compassion_exercise",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts"
+      ],
+      "PLAN": [
+        "write_plan_todo",
+        "if_then_plan"
+      ],
+      "REST": [
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "caffeine_nap",
+        "micro_break",
+        "warm_bath_shower"
+      ],
+      "CHALLENGE": [
+        "playing_instrument",
+        "free_art_making",
+        "poetry",
+        "everyday_creative_activity",
+        "challenge_matched_game",
+        "board_games",
+        "mastery_challenge",
+        "explore_while_positive"
+      ],
+      "SAVOR": [
+        "best_possible_self_writing",
+        "awe_walk",
+        "gratitude_list",
+        "gratitude_letter",
+        "savoring",
+        "positive_reminiscence"
+      ],
+      "SHARE": [
+        "gratitude_letter",
+        "share_good_news"
+      ],
+      "KIND": [
+        "send_message",
+        "act_of_kindness",
+        "spend_on_others",
+        "volunteering"
+      ]
+    },
+    "class_to_category": {
+      "BREATHE": [
+        "mind-body"
+      ],
+      "MINDFUL": [
+        "mind-body"
+      ],
+      "SENSORY": [
+        "mind-body",
+        "rest"
+      ],
+      "MOVE-LOW": [
+        "physical",
+        "mind-body"
+      ],
+      "MOVE-MOD": [
+        "physical"
+      ],
+      "NATURE": [
+        "nature"
+      ],
+      "MUSIC": [
+        "creative"
+      ],
+      "DISTRACT": [
+        "play",
+        "creative",
+        "rest"
+      ],
+      "PLEASANT": [
+        "creative",
+        "cognitive"
+      ],
+      "SOCIAL": [
+        "social"
+      ],
+      "REAPPRAISE": [
+        "cognitive"
+      ],
+      "PLAN": [
+        "cognitive"
+      ],
+      "REST": [
+        "rest"
+      ],
+      "CHALLENGE": [
+        "play",
+        "creative"
+      ],
+      "SAVOR": [
+        "cognitive"
+      ],
+      "SHARE": [
+        "social"
+      ],
+      "KIND": [
+        "social"
+      ]
+    },
+    "pair_index": {
+      "angry+sad": "R13",
+      "angry+stressed": "R14",
+      "anxious+lonely": "R12",
+      "anxious+sad": "R17",
+      "anxious+stressed": "R11",
+      "anxious+tired": "R21",
+      "bored+lonely": "R19",
+      "bored+restless": "R18",
+      "bored+tired": "R20",
+      "calm+content": "R25",
+      "content+energetic": "R24",
+      "content+tired": "R26",
+      "lonely+sad": "R16",
+      "lonely+stressed": "R23",
+      "sad+stressed": "R22",
+      "sad+tired": "R15",
+      "stressed+tired": "R10"
+    },
+    "restless_fallback": {
+      "recommend_classes": [
+        "MOVE-LOW",
+        "BREATHE",
+        "NATURE",
+        "MOVE-MOD",
+        "DISTRACT"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "note": "The notes contain NO single-emotion rule for 'restless' and no evidence rows targeting it. This fallback is a judgement call made in this dataset build (high-arousal-negative quadrant principle plus R18's direction), marked extrapolated."
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "R01",
+      "rule_type": "intensity_modifier",
+      "priority": 90,
+      "condition_text": "Any negative emotion, high intensity",
+      "condition": {
+        "any": [
+          {
+            "group": "negative",
+            "gte": 0.75
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, SENSORY, DISTRACT, MOVE-LOW first; cognitive options offered afterwards",
+      "recommend_classes": [
+        "BREATHE",
+        "SENSORY",
+        "DISTRACT",
+        "MOVE-LOW"
+      ],
+      "follow_up_classes": [
+        "REAPPRAISE",
+        "PLAN",
+        "SOCIAL"
+      ],
+      "recommend_categories": [
+        "mind-body",
+        "rest",
+        "play",
+        "creative",
+        "physical"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "cold_face_water",
+        "warm_bath_shower",
+        "lavender_aromatherapy",
+        "grounding_54321",
+        "pet_animal",
+        "drawing_distraction",
+        "drawing_something_happy",
+        "colouring_structured",
+        "clay_work",
+        "free_art_making",
+        "reading_fiction",
+        "distraction_absorbing_task",
+        "challenge_matched_game",
+        "casual_video_game",
+        "watch_comedy",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [
+        "journaling",
+        "self_compassion_exercise",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "write_plan_todo",
+        "if_then_plan",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises"
+      ],
+      "avoid_text": "REAPPRAISE as the first step; focusing on the feeling",
+      "avoid_classes": [],
+      "avoid_first_classes": [
+        "REAPPRAISE"
+      ],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "dwelling_on_feelings"
+      ],
+      "rationale": "People choose and benefit from distraction at high intensity, reappraisal at low intensity; concentrating on feelings d+ = −0.26",
+      "citation": "Sheppes et al. 2011; Webb et al. 2012",
+      "doi_or_url": "https://doi.org/10.1177/0956797611418350 ; https://doi.org/10.1037/a0027600",
+      "citations_verification": [
+        {
+          "citation": "Sheppes et al. 2011",
+          "matched_verification_record": "Sheppes, Scheibe, Suri & Gross 2011, Psychol Sci 22(11):1391-6",
+          "pmid": "21960251",
+          "doi": "10.1177/0956797611418350",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Webb et al. 2012",
+          "matched_verification_record": "Webb, Miles & Sheeran 2012, Psychol Bull 138(4):775-808",
+          "pmid": "22582737",
+          "doi": "10.1037/a0027600",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly (lab stimuli, not real-life stress)",
+      "is_extrapolation": true,
+      "app_note": "Restricts the FIRST suggestion to these classes; cognitive or social options are offered as the follow-up."
+    },
+    {
+      "rule_id": "R02",
+      "rule_type": "intensity_modifier",
+      "priority": 10,
+      "condition_text": "Any negative emotion, low-to-moderate intensity",
+      "condition": {
+        "all": [
+          {
+            "group": "negative",
+            "gte": 0.4
+          },
+          {
+            "group": "negative",
+            "lt": 0.75
+          }
+        ]
+      },
+      "recommended_text": "REAPPRAISE (perspective-taking), PLAN, plus any class allowed by the emotion's own rule",
+      "recommend_classes": [
+        "REAPPRAISE",
+        "PLAN"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "journaling",
+        "self_compassion_exercise",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "write_plan_todo",
+        "if_then_plan"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Suppressing the feeling",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [],
+      "avoid_activity_ids": [],
+      "rationale": "Cognitive change d+ = 0.36; perspective-taking d+ = 0.45; suppressing experience d+ = −0.04",
+      "citation": "Webb et al. 2012",
+      "doi_or_url": "https://doi.org/10.1037/a0027600",
+      "citations_verification": [
+        {
+          "citation": "Webb et al. 2012",
+          "matched_verification_record": "Webb, Miles & Sheeran 2012, Psychol Bull 138(4):775-808",
+          "pmid": "22582737",
+          "doi": "10.1037/a0027600",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "directly_tested",
+      "evidence_basis_text": "tested (lab)",
+      "is_extrapolation": false,
+      "app_note": "Adds REAPPRAISE and PLAN to whatever the emotion's own rule allows. 'Suppressing the feeling' has no activity id; never prompt it."
+    },
+    {
+      "rule_id": "R03",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "angry",
+      "condition_text": "Angry (alone)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "angry",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, MINDFUL, MOVE-LOW (yoga), then REAPPRAISE",
+      "recommend_classes": [
+        "BREATHE",
+        "MINDFUL",
+        "MOVE-LOW",
+        "REAPPRAISE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "journaling",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Venting, punching, hard solo running, rumination",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "venting",
+        "running_jogging",
+        "vigorous_exercise",
+        "hiit",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "venting",
+        "running_jogging",
+        "vigorous_exercise",
+        "hiit",
+        "dwelling_on_feelings",
+        "upbeat_music_listening",
+        "free_dancing",
+        "moderate_exercise",
+        "stair_walking"
+      ],
+      "rationale": "Arousal-decreasing activities reduce anger (−0.63); arousal-increasing ones do not (−0.02); jogging tended to increase anger",
+      "citation": "Kjærvik & Bushman 2024",
+      "doi_or_url": "https://doi.org/10.1016/j.cpr.2024.102414",
+      "citations_verification": [
+        {
+          "citation": "Kjærvik & Bushman 2024",
+          "matched_verification_record": "Kjaervik & Bushman 2024, Clin Psychol Rev 109:102414",
+          "pmid": "38518585",
+          "doi": "10.1016/j.cpr.2024.102414",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "directly_tested",
+      "evidence_basis_text": "tested",
+      "is_extrapolation": false
+    },
+    {
+      "rule_id": "R04",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "stressed",
+      "condition_text": "Stressed (alone), moderate",
+      "condition": {
+        "all": [
+          {
+            "emotion": "stressed",
+            "gte": 0.4,
+            "lt": 0.75
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, MOVE-MOD or MOVE-LOW, MUSIC, NATURE; ask \"can you act on it?\" → PLAN if yes, REAPPRAISE if no",
+      "recommend_classes": [
+        "BREATHE",
+        "MOVE-MOD",
+        "MOVE-LOW",
+        "MUSIC",
+        "NATURE",
+        "PLAN",
+        "REAPPRAISE"
+      ],
+      "follow_up_classes": [],
+      "ask_user": {
+        "question": "Is this something you can do something about right now?",
+        "yes": [
+          "PLAN"
+        ],
+        "no": [
+          "REAPPRAISE"
+        ]
+      },
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "creative",
+        "nature",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "write_plan_todo",
+        "if_then_plan",
+        "journaling",
+        "self_compassion_exercise",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "dance_programme",
+        "resistance_training",
+        "tai_chi",
+        "qigong",
+        "blue_space_visit"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Passive scrolling, comfort eating, alcohol",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "caffeine_nap"
+      ],
+      "rationale": "Combination of relaxation, stress management, cognitive and exercise techniques rated best; reappraisal helps with uncontrollable stress, can hurt with controllable",
+      "citation": "Thayer et al. 1994; Troy et al. 2013",
+      "doi_or_url": "https://doi.org/10.1037/0022-3514.67.5.910 ; https://doi.org/10.1177/0956797613496434",
+      "citations_verification": [
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        },
+        {
+          "citation": "Troy et al. 2013",
+          "matched_verification_record": "Troy, Shallcross & Mauss 2013, Psychol Sci 24(12):2505-14",
+          "pmid": "24145331",
+          "doi": "10.1177/0956797613496434",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly (survey + correlational)",
+      "is_extrapolation": true,
+      "app_note": "At stressed >= 0.75 the single-emotion lookup still uses this rule, with R01 gating the first suggestion. Comfort eating and alcohol are never suggested."
+    },
+    {
+      "rule_id": "R05",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "anxious",
+      "condition_text": "Anxious (alone)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, MINDFUL, MOVE-LOW/MOD; at low intensity REAPPRAISE or a small approach step",
+      "recommend_classes": [
+        "BREATHE",
+        "MINDFUL",
+        "MOVE-LOW",
+        "MOVE-MOD",
+        "REAPPRAISE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "journaling",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "tai_chi",
+        "qigong",
+        "dance_programme",
+        "resistance_training"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Avoidance as the only option; caffeine",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap"
+      ],
+      "rationale": "Anxiety is defined by hyperarousal, so lower arousal; opposite action for fear is approach",
+      "citation": "Clark & Watson 1991; Linehan 2015 (book)",
+      "doi_or_url": "https://doi.org/10.1037/0021-843X.100.3.316",
+      "citations_verification": [
+        {
+          "citation": "Clark & Watson 1991",
+          "matched_verification_record": "Clark & Watson 1991, J Abnorm Psychol 100(3):316-36",
+          "pmid": "1918611",
+          "doi": "10.1037//0021-843x.100.3.316",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Linehan 2015 (book)",
+          "matched_verification_record": "Linehan 2015, DBT Skills Training Manual, 2nd ed. (book)",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R06",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "sad",
+      "condition_text": "Sad (alone)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "PLEASANT, MOVE-MOD (self-paced), SOCIAL, MUSIC (match mood then lift)",
+      "recommend_classes": [
+        "PLEASANT",
+        "MOVE-MOD",
+        "SOCIAL",
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "creative",
+        "cognitive",
+        "physical",
+        "social"
+      ],
+      "recommend_activity_ids": [
+        "free_dancing",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo",
+        "dance_programme",
+        "resistance_training",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Withdrawal, long passive TV, sad-only music loops, rumination",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "sad_music_listening",
+        "dwelling_on_feelings",
+        "passive_scrolling"
+      ],
+      "avoid_activity_ids": [
+        "sad_music_listening",
+        "dwelling_on_feelings",
+        "passive_scrolling",
+        "expressive_writing"
+      ],
+      "rationale": "Behavioural activation for low mood; exercise top-rated for bad mood; iso sequence sad→happy",
+      "citation": "Ekers et al. 2014; Thayer et al. 1994; Starcke et al. 2021",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0100100 ; https://doi.org/10.3390/ijerph182312486",
+      "citations_verification": [
+        {
+          "citation": "Ekers et al. 2014",
+          "matched_verification_record": "Ekers et al. 2014, PLoS One 9(6):e100100",
+          "pmid": "24936656",
+          "doi": "10.1371/journal.pone.0100100",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        },
+        {
+          "citation": "Starcke et al. 2021",
+          "matched_verification_record": "Starcke, Mayr & von Georgi 2021, Int J Environ Res Public Health 18(23):12486",
+          "pmid": "34886210",
+          "doi": "10.3390/ijerph182312486",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly (BA tested in depression, not momentary sadness)",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R07",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "tired",
+      "condition_text": "Tired (alone)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "REST, short MOVE-LOW/brisk 10-min walk, MUSIC, daylight/NATURE",
+      "recommend_classes": [
+        "REST",
+        "MOVE-LOW",
+        "MUSIC",
+        "NATURE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "rest",
+        "physical",
+        "mind-body",
+        "creative",
+        "nature"
+      ],
+      "recommend_activity_ids": [
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "caffeine_nap",
+        "micro_break",
+        "warm_bath_shower",
+        "brisk_walk_10min",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "daylight_exposure",
+        "tai_chi",
+        "qigong",
+        "blue_space_visit"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Sugar snack as energiser; high-effort tasks",
+      "avoid_classes": [
+        "CHALLENGE"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [],
+      "avoid_activity_ids": [
+        "dance_programme",
+        "poetry",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "mastery_challenge",
+        "volunteering",
+        "explore_while_positive"
+      ],
+      "rationale": "Brief walk raised energy for up to 2 h whereas sugar led to later tiredness",
+      "citation": "Thayer 1987 (PubMed-verified, PMID 3820066)",
+      "doi_or_url": "https://doi.org/10.1037/0022-3514.52.1.119",
+      "citations_verification": [
+        {
+          "citation": "Thayer 1987 (PubMed-verified, PMID 3820066)",
+          "matched_verification_record": "Thayer 1987, J Pers Soc Psychol 52(1):119-25",
+          "pmid": "3820066",
+          "doi": "10.1037//0022-3514.52.1.119",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "directly_tested",
+      "evidence_basis_text": "tested (single old study, n = 18; abstract verified in the PubMed pass)",
+      "is_extrapolation": false
+    },
+    {
+      "rule_id": "R08",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "bored",
+      "condition_text": "Bored (alone)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "bored",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "CHALLENGE, hobby from user profile, KIND, SOCIAL",
+      "recommend_classes": [
+        "CHALLENGE",
+        "KIND",
+        "SOCIAL"
+      ],
+      "follow_up_classes": [],
+      "use_user_hobbies": true,
+      "recommend_categories": [
+        "play",
+        "creative",
+        "social"
+      ],
+      "recommend_activity_ids": [
+        "playing_instrument",
+        "free_art_making",
+        "poetry",
+        "everyday_creative_activity",
+        "challenge_matched_game",
+        "mastery_challenge",
+        "explore_while_positive",
+        "send_message",
+        "act_of_kindness",
+        "spend_on_others",
+        "gratitude_letter",
+        "call_friend",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "board_games",
+        "volunteering",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "laughter_exercises"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Passive scrolling",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "rationale": "Boredom reflects an attention/meaning mismatch; fix with matched challenge or meaning",
+      "citation": "Westgate & Wilson 2018 (PubMed-verified, PMID 29963873)",
+      "doi_or_url": "https://doi.org/10.1037/rev0000097",
+      "citations_verification": [
+        {
+          "citation": "Westgate & Wilson 2018 (PubMed-verified, PMID 29963873)",
+          "matched_verification_record": "Westgate & Wilson 2018, Psychol Rev 125(5):689-713",
+          "pmid": "29963873",
+          "doi": "10.1037/rev0000097",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R09",
+      "rule_type": "single",
+      "priority": 40,
+      "single_emotion": "lonely",
+      "condition_text": "Lonely (alone)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SOCIAL (low-barrier message or call), KIND, shared-interest group, REAPPRAISE of social assumptions",
+      "recommend_classes": [
+        "SOCIAL",
+        "KIND",
+        "REAPPRAISE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "social",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "act_of_kindness",
+        "spend_on_others",
+        "journaling",
+        "self_compassion_exercise",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises",
+        "volunteering"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Passive social-media browsing",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling"
+      ],
+      "rationale": "Loneliness interventions work best when they address social cognition, not contact alone",
+      "citation": "Masi et al. 2011 (PubMed-verified, PMID 20716644)",
+      "doi_or_url": "https://doi.org/10.1177/1088868310377394",
+      "citations_verification": [
+        {
+          "citation": "Masi et al. 2011 (PubMed-verified, PMID 20716644)",
+          "matched_verification_record": "Masi, Chen, Hawkley & Cacioppo 2011, Pers Soc Psychol Rev 15(3):219-66",
+          "pmid": "20716644",
+          "doi": "10.1177/1088868310377394",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R10",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "stressed",
+        "tired"
+      ],
+      "condition_text": "**Stressed + tired** (tense-tiredness)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "stressed",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, MOVE-LOW (stretch, slow walk), SENSORY (warm shower), MUSIC (calm), REST; defer PLAN to \"later, one small step\"",
+      "recommend_classes": [
+        "BREATHE",
+        "MOVE-LOW",
+        "SENSORY",
+        "MUSIC",
+        "REST"
+      ],
+      "follow_up_classes": [
+        "PLAN"
+      ],
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "rest",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "cold_face_water",
+        "warm_bath_shower",
+        "lavender_aromatherapy",
+        "grounding_54321",
+        "pet_animal",
+        "music_listening_calming",
+        "playing_instrument",
+        "singing_solo",
+        "nature_sitting",
+        "nap_short",
+        "micro_break",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [
+        "write_plan_todo",
+        "if_then_plan"
+      ],
+      "avoid_text": "MOVE-MOD at high effort, CHALLENGE, long planning sessions, caffeine",
+      "avoid_classes": [
+        "MOVE-MOD",
+        "CHALLENGE"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap",
+        "upbeat_music_listening"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap",
+        "upbeat_music_listening",
+        "dance_programme",
+        "poetry",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "hiit",
+        "resistance_training",
+        "mastery_challenge",
+        "volunteering",
+        "explore_while_positive"
+      ],
+      "rationale": "Lower tension first, at low energy cost; low-effort interventions are best accepted",
+      "citation": "Thayer 1989 model; Howe et al. 2022",
+      "doi_or_url": "https://doi.org/10.1145/3491102.3502027",
+      "citations_verification": [
+        {
+          "citation": "Thayer 1989 model",
+          "matched_verification_record": "Thayer 1989, The Biopsychology of Mood and Arousal (book)",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        },
+        {
+          "citation": "Howe et al. 2022",
+          "matched_verification_record": "Howe et al. 2022, CHI '22",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Defer PLAN to 'later, one small step'. Music should be calm."
+    },
+    {
+      "rule_id": "R11",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "anxious",
+        "stressed"
+      ],
+      "condition_text": "**Stressed + anxious**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "stressed",
+            "gte": 0.4
+          },
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, MINDFUL, MOVE-LOW/MOD, then controllability question → PLAN or REAPPRAISE",
+      "recommend_classes": [
+        "BREATHE",
+        "MINDFUL",
+        "MOVE-LOW",
+        "MOVE-MOD"
+      ],
+      "follow_up_classes": [
+        "PLAN",
+        "REAPPRAISE"
+      ],
+      "ask_user": {
+        "question": "Is this something you can do something about right now?",
+        "yes": [
+          "PLAN"
+        ],
+        "no": [
+          "REAPPRAISE"
+        ]
+      },
+      "recommend_categories": [
+        "mind-body",
+        "physical"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "tai_chi",
+        "qigong",
+        "dance_programme",
+        "resistance_training"
+      ],
+      "follow_up_activity_ids": [
+        "write_plan_todo",
+        "if_then_plan",
+        "journaling",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts"
+      ],
+      "avoid_text": "Reassurance-seeking loops, avoidance, stimulants",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap"
+      ],
+      "rationale": "Both are high-arousal negative states sharing general distress; lower arousal, then fit strategy to controllability",
+      "citation": "Lovibond & Lovibond 1995; Troy et al. 2013",
+      "doi_or_url": "https://doi.org/10.1016/0005-7967(94)00075-U ; https://doi.org/10.1177/0956797613496434",
+      "citations_verification": [
+        {
+          "citation": "Lovibond & Lovibond 1995",
+          "matched_verification_record": "Lovibond & Lovibond 1995, Behav Res Ther 33(3):335-43 (DASS)",
+          "pmid": "7726811",
+          "doi": "10.1016/0005-7967(94)00075-u",
+          "verification_status": "citation_exists_number_not_confirmed"
+        },
+        {
+          "citation": "Troy et al. 2013",
+          "matched_verification_record": "Troy, Shallcross & Mauss 2013, Psychol Sci 24(12):2505-14",
+          "pmid": "24145331",
+          "doi": "10.1177/0956797613496434",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R12",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "anxious",
+        "lonely"
+      ],
+      "condition_text": "**Anxious + lonely**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          },
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SOCIAL in a low-demand form (text a trusted person, co-walk), BREATHE first if intensity high, KIND",
+      "recommend_classes": [
+        "SOCIAL",
+        "BREATHE",
+        "KIND"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "social",
+        "mind-body"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "act_of_kindness",
+        "spend_on_others",
+        "shared_meal",
+        "board_games"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Large-group or high-stakes social tasks; isolation",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "group_singing",
+        "laughter_exercises",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "group_singing",
+        "laughter_exercises",
+        "dwelling_on_feelings",
+        "dance_programme",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "caffeine_nap",
+        "volunteering"
+      ],
+      "rationale": "Calm the arousal, then gentle approach toward connection; social support is a recognised regulation group",
+      "citation": "Parkinson & Totterdell 1999; Masi et al. 2011",
+      "doi_or_url": "https://doi.org/10.1080/026999399379285",
+      "citations_verification": [
+        {
+          "citation": "Parkinson & Totterdell 1999",
+          "matched_verification_record": "Parkinson & Totterdell 1999, Cogn Emot 13:277-303",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        },
+        {
+          "citation": "Masi et al. 2011",
+          "matched_verification_record": "Masi, Chen, Hawkley & Cacioppo 2011, Pers Soc Psychol Rev 15(3):219-66",
+          "pmid": "20716644",
+          "doi": "10.1177/1088868310377394",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "SOCIAL must be in a low-demand form (text a trusted person, co-walk). BREATHE first if intensity is high."
+    },
+    {
+      "rule_id": "R13",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "angry",
+        "sad"
+      ],
+      "condition_text": "**Angry + sad**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "angry",
+            "gte": 0.4
+          },
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE / MINDFUL first, then expressive journalling or REAPPRAISE, then SOCIAL (talk to a supportive person), MUSIC (match then shift)",
+      "recommend_classes": [
+        "BREATHE",
+        "MINDFUL",
+        "REAPPRAISE",
+        "SOCIAL",
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "mind-body",
+        "cognitive",
+        "social",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "journaling",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "music_listening_calming",
+        "playing_instrument",
+        "singing_solo",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Venting, confronting someone immediately, aggressive exercise, sad-music loops",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "running_jogging",
+        "sad_music_listening",
+        "drawing_to_vent"
+      ],
+      "avoid_activity_ids": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "running_jogging",
+        "sad_music_listening",
+        "drawing_to_vent",
+        "upbeat_music_listening",
+        "free_dancing",
+        "expressive_writing",
+        "moderate_exercise",
+        "stair_walking"
+      ],
+      "rationale": "Treat the high-arousal component first (anger rule), then activate and connect for the sadness",
+      "citation": "Kjærvik & Bushman 2024; Ekers et al. 2014",
+      "doi_or_url": "https://doi.org/10.1016/j.cpr.2024.102414",
+      "citations_verification": [
+        {
+          "citation": "Kjærvik & Bushman 2024",
+          "matched_verification_record": "Kjaervik & Bushman 2024, Clin Psychol Rev 109:102414",
+          "pmid": "38518585",
+          "doi": "10.1016/j.cpr.2024.102414",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Ekers et al. 2014",
+          "matched_verification_record": "Ekers et al. 2014, PLoS One 9(6):e100100",
+          "pmid": "24936656",
+          "doi": "10.1371/journal.pone.0100100",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Sequence matters: calm first, then journalling or reappraisal, then talk to a supportive person."
+    },
+    {
+      "rule_id": "R14",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "angry",
+        "stressed"
+      ],
+      "condition_text": "**Angry + stressed**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "angry",
+            "gte": 0.4
+          },
+          {
+            "emotion": "stressed",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, MOVE-LOW (yoga), NATURE walk at easy pace, then PLAN for the controllable part",
+      "recommend_classes": [
+        "BREATHE",
+        "MOVE-LOW",
+        "NATURE"
+      ],
+      "follow_up_classes": [
+        "PLAN"
+      ],
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "nature"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "tai_chi",
+        "qigong",
+        "blue_space_visit"
+      ],
+      "follow_up_activity_ids": [
+        "write_plan_todo",
+        "if_then_plan"
+      ],
+      "avoid_text": "Venting, competitive or punishing workouts, sending messages while angry",
+      "avoid_classes": [
+        "MOVE-MOD"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "running_jogging"
+      ],
+      "avoid_activity_ids": [
+        "venting",
+        "vigorous_exercise",
+        "hiit",
+        "running_jogging",
+        "upbeat_music_listening",
+        "free_dancing",
+        "moderate_exercise",
+        "stair_walking",
+        "resistance_training",
+        "caffeine_nap"
+      ],
+      "rationale": "Arousal reduction is the tested route for anger; ball sports and PE reduced anger but jogging did not, so keep movement easy or playful",
+      "citation": "Kjærvik & Bushman 2024",
+      "doi_or_url": "https://doi.org/10.1016/j.cpr.2024.102414",
+      "citations_verification": [
+        {
+          "citation": "Kjærvik & Bushman 2024",
+          "matched_verification_record": "Kjaervik & Bushman 2024, Clin Psychol Rev 109:102414",
+          "pmid": "38518585",
+          "doi": "10.1016/j.cpr.2024.102414",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly",
+      "is_extrapolation": true,
+      "app_note": "Keep movement easy or playful. Do not prompt sending messages while angry."
+    },
+    {
+      "rule_id": "R15",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "sad",
+        "tired"
+      ],
+      "condition_text": "**Sad + tired** (calm-tiredness with low mood)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Very small PLEASANT step (5–10 min), MOVE-LOW outdoors, MUSIC, SOCIAL low-effort (voice note), REST if sleep-deprived",
+      "recommend_classes": [
+        "PLEASANT",
+        "MOVE-LOW",
+        "MUSIC",
+        "SOCIAL",
+        "REST"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "creative",
+        "cognitive",
+        "physical",
+        "mind-body",
+        "social",
+        "rest"
+      ],
+      "recommend_activity_ids": [
+        "free_dancing",
+        "drawing_something_happy",
+        "knitting",
+        "photography",
+        "behavioural_activation",
+        "watch_comedy",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "singing_solo",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "nature_sitting",
+        "nap_short",
+        "caffeine_nap",
+        "micro_break",
+        "warm_bath_shower",
+        "laughter_exercises"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "High-effort goals, staying in bed all day, alcohol",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "max_typical_duration_min": 20,
+      "avoid_activity_ids_explicit": [
+        "sad_music_listening",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "sad_music_listening",
+        "dwelling_on_feelings",
+        "dance_programme",
+        "expressive_writing",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "mastery_challenge",
+        "volunteering"
+      ],
+      "rationale": "Behavioural activation works by small scheduled steps; a brief walk raises energy",
+      "citation": "Ekers et al. 2014; Mazzucchelli et al. 2010; Thayer 1987",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0100100 ; https://doi.org/10.1080/17439760903569154",
+      "citations_verification": [
+        {
+          "citation": "Ekers et al. 2014",
+          "matched_verification_record": "Ekers et al. 2014, PLoS One 9(6):e100100",
+          "pmid": "24936656",
+          "doi": "10.1371/journal.pone.0100100",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Mazzucchelli et al. 2010",
+          "matched_verification_record": "Mazzucchelli, Kane & Rees 2010, J Posit Psychol 5(2):105-121",
+          "pmid": "20539837",
+          "doi": "10.1080/17439760903569154",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Thayer 1987",
+          "matched_verification_record": "Thayer 1987, J Pers Soc Psychol 52(1):119-25",
+          "pmid": "3820066",
+          "doi": "10.1037//0022-3514.52.1.119",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Very small step (5-10 min); low-effort social form (voice note); REST if sleep-deprived. max_typical_duration_min = 20 is this build's encoding of 'very small step'."
+    },
+    {
+      "rule_id": "R16",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "lonely",
+        "sad"
+      ],
+      "condition_text": "**Sad + lonely**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          },
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SOCIAL (reach out to one specific person), KIND, shared activity or hobby group, PLEASANT",
+      "recommend_classes": [
+        "SOCIAL",
+        "KIND",
+        "PLEASANT"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "social",
+        "creative",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "act_of_kindness",
+        "spend_on_others",
+        "free_dancing",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises",
+        "volunteering"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Withdrawal, passive social-media browsing",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling",
+        "sad_music_listening",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "sad_music_listening",
+        "dwelling_on_feelings",
+        "expressive_writing"
+      ],
+      "rationale": "Activation plus connection; social interaction rated helpful for bad mood",
+      "citation": "Thayer et al. 1994; Masi et al. 2011",
+      "doi_or_url": "https://doi.org/10.1037/0022-3514.67.5.910",
+      "citations_verification": [
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        },
+        {
+          "citation": "Masi et al. 2011",
+          "matched_verification_record": "Masi, Chen, Hawkley & Cacioppo 2011, Pers Soc Psychol Rev 15(3):219-66",
+          "pmid": "20716644",
+          "doi": "10.1177/1088868310377394",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R17",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "anxious",
+        "sad"
+      ],
+      "condition_text": "**Anxious + sad** (mixed anxiety–low mood)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          },
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "MOVE-MOD self-paced, PLEASANT, MINDFUL, SOCIAL; REAPPRAISE at low intensity",
+      "recommend_classes": [
+        "MOVE-MOD",
+        "PLEASANT",
+        "MINDFUL",
+        "SOCIAL"
+      ],
+      "follow_up_classes": [
+        "REAPPRAISE"
+      ],
+      "recommend_categories": [
+        "physical",
+        "creative",
+        "cognitive",
+        "mind-body",
+        "social"
+      ],
+      "recommend_activity_ids": [
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "gardening",
+        "behavioural_activation",
+        "watch_comedy",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "dance_programme",
+        "resistance_training",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises"
+      ],
+      "follow_up_activity_ids": [
+        "journaling",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts"
+      ],
+      "avoid_text": "Rumination, avoidance, withdrawal",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "caffeine_nap"
+      ],
+      "avoid_activity_ids": [
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "caffeine_nap",
+        "expressive_writing"
+      ],
+      "rationale": "Shared negative affect plus low positive affect: lower arousal and raise positive affect together; exercise top-rated across mood, energy, tension",
+      "citation": "Clark & Watson 1991; Thayer et al. 1994",
+      "doi_or_url": "https://doi.org/10.1037/0021-843X.100.3.316",
+      "citations_verification": [
+        {
+          "citation": "Clark & Watson 1991",
+          "matched_verification_record": "Clark & Watson 1991, J Abnorm Psychol 100(3):316-36",
+          "pmid": "1918611",
+          "doi": "10.1037//0021-843x.100.3.316",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R18",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "bored",
+        "restless"
+      ],
+      "condition_text": "**Bored + restless** (tense-energy without a target)",
+      "condition": {
+        "all": [
+          {
+            "emotion": "bored",
+            "gte": 0.4
+          },
+          {
+            "emotion": "restless",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "MOVE-MOD (sport, dance, brisk walk), CHALLENGE, hands-on hobby, NATURE",
+      "recommend_classes": [
+        "MOVE-MOD",
+        "CHALLENGE",
+        "NATURE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "physical",
+        "play",
+        "creative",
+        "nature"
+      ],
+      "recommend_activity_ids": [
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "playing_instrument",
+        "free_art_making",
+        "poetry",
+        "everyday_creative_activity",
+        "challenge_matched_game",
+        "mastery_challenge",
+        "explore_while_positive",
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "dance_programme",
+        "resistance_training",
+        "board_games",
+        "blue_space_visit"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Sedentary passive media, sitting meditation as first option",
+      "avoid_classes": [],
+      "avoid_first_classes": [
+        "MINDFUL"
+      ],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "rationale": "Surplus energy plus lack of engagement: channel into active, absorbing tasks; ball sports reduced arousal-related anger",
+      "citation": "Westgate & Wilson 2018; Kjærvik & Bushman 2024",
+      "doi_or_url": "https://doi.org/10.1037/rev0000097",
+      "citations_verification": [
+        {
+          "citation": "Westgate & Wilson 2018",
+          "matched_verification_record": "Westgate & Wilson 2018, Psychol Rev 125(5):689-713",
+          "pmid": "29963873",
+          "doi": "10.1037/rev0000097",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Kjærvik & Bushman 2024",
+          "matched_verification_record": "Kjaervik & Bushman 2024, Clin Psychol Rev 109:102414",
+          "pmid": "38518585",
+          "doi": "10.1016/j.cpr.2024.102414",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Sitting meditation should not be the first option."
+    },
+    {
+      "rule_id": "R19",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "bored",
+        "lonely"
+      ],
+      "condition_text": "**Bored + lonely**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "bored",
+            "gte": 0.4
+          },
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SOCIAL around a shared activity (game with a friend, class, club), KIND, CHALLENGE with others",
+      "recommend_classes": [
+        "SOCIAL",
+        "KIND",
+        "CHALLENGE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "social",
+        "play",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "act_of_kindness",
+        "spend_on_others",
+        "playing_instrument",
+        "free_art_making",
+        "poetry",
+        "everyday_creative_activity",
+        "challenge_matched_game",
+        "mastery_challenge",
+        "explore_while_positive",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises",
+        "volunteering"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Passive scrolling",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "dwelling_on_feelings"
+      ],
+      "rationale": "One activity can supply both engagement and connection",
+      "citation": "Eastwood et al. 2012; Masi et al. 2011",
+      "doi_or_url": "https://doi.org/10.1177/1745691612456044",
+      "citations_verification": [
+        {
+          "citation": "Eastwood et al. 2012",
+          "matched_verification_record": "Eastwood, Frischen, Fenske & Smilek 2012, Perspect Psychol Sci 7(5):482-95",
+          "pmid": "26168505",
+          "doi": "10.1177/1745691612456044",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Masi et al. 2011",
+          "matched_verification_record": "Masi, Chen, Hawkley & Cacioppo 2011, Pers Soc Psychol Rev 15(3):219-66",
+          "pmid": "20716644",
+          "doi": "10.1177/1088868310377394",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Prefer one activity that supplies both engagement and connection (game with a friend, class, club)."
+    },
+    {
+      "rule_id": "R20",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "bored",
+        "tired"
+      ],
+      "condition_text": "**Bored + tired**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "bored",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "REST or short nap first, then light novelty: MUSIC, short MOVE-LOW, easy creative task",
+      "recommend_classes": [
+        "REST",
+        "MUSIC",
+        "MOVE-LOW"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "rest",
+        "creative",
+        "physical",
+        "mind-body"
+      ],
+      "recommend_activity_ids": [
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "micro_break",
+        "warm_bath_shower",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo",
+        "brisk_walk_10min",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "tai_chi",
+        "qigong",
+        "colouring_structured",
+        "drawing_something_happy"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Demanding CHALLENGE; sugar or caffeine late in the day",
+      "avoid_classes": [
+        "CHALLENGE"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap",
+        "passive_scrolling"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap",
+        "passive_scrolling",
+        "dance_programme",
+        "poetry",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "mastery_challenge",
+        "volunteering",
+        "explore_while_positive"
+      ],
+      "rationale": "Check whether \"boredom\" is fatigue; restore energy before adding challenge",
+      "citation": "Thayer 1987; Thayer et al. 1994",
+      "doi_or_url": "https://doi.org/10.1037/0022-3514.52.1.119",
+      "citations_verification": [
+        {
+          "citation": "Thayer 1987",
+          "matched_verification_record": "Thayer 1987, J Pers Soc Psychol 52(1):119-25",
+          "pmid": "3820066",
+          "doi": "10.1037//0022-3514.52.1.119",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Check whether the 'boredom' is fatigue: rest first, then light novelty. extra_activity_ids stand for the notes' 'easy creative task'."
+    },
+    {
+      "rule_id": "R21",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "anxious",
+        "tired"
+      ],
+      "condition_text": "**Anxious + tired**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "anxious",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "BREATHE, body-scan / muscle relaxation, MOVE-LOW, wind-down REST routine, calm MUSIC",
+      "recommend_classes": [
+        "BREATHE",
+        "MINDFUL",
+        "MOVE-LOW",
+        "REST",
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "mind-body",
+        "physical",
+        "rest",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "nature_sitting",
+        "nap_short",
+        "micro_break",
+        "warm_bath_shower",
+        "music_listening_calming",
+        "playing_instrument",
+        "singing_solo",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Stimulants, intense exercise late, problem-solving in bed",
+      "avoid_classes": [
+        "MOVE-MOD",
+        "PLAN"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "caffeine_nap",
+        "hiit",
+        "vigorous_exercise",
+        "upbeat_music_listening"
+      ],
+      "avoid_activity_ids": [
+        "caffeine_nap",
+        "hiit",
+        "vigorous_exercise",
+        "upbeat_music_listening",
+        "dance_programme",
+        "moderate_exercise",
+        "running_jogging",
+        "stair_walking",
+        "resistance_training",
+        "write_plan_todo",
+        "if_then_plan",
+        "mastery_challenge",
+        "volunteering"
+      ],
+      "rationale": "Tense-tiredness: reduce tension with minimal effort; breathing practices reduce stress",
+      "citation": "Fincham et al. 2023 (PubMed-verified, PMID 36624160; breathwork in general, g = −0.35 for stress); Thayer 1989",
+      "doi_or_url": "https://doi.org/10.1038/s41598-022-27247-y",
+      "citations_verification": [
+        {
+          "citation": "Fincham et al. 2023 (PubMed-verified, PMID 36624160; breathwork in general, g = −0.35 for stress)",
+          "matched_verification_record": "Fincham, Strauss, Montero-Marin & Cavanagh 2023, Sci Rep 13(1):432",
+          "pmid": "36624160",
+          "doi": "10.1038/s41598-022-27247-y",
+          "verification_status": "corrected"
+        },
+        {
+          "citation": "Thayer 1989",
+          "matched_verification_record": "Thayer 1989, The Biopsychology of Mood and Arousal (book)",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Body scan / muscle relaxation; wind-down routine; calm music. PLAN is avoided here because the notes say no problem-solving in bed."
+    },
+    {
+      "rule_id": "R22",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "sad",
+        "stressed"
+      ],
+      "condition_text": "**Stressed + sad**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "stressed",
+            "gte": 0.4
+          },
+          {
+            "emotion": "sad",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "MOVE-MOD or NATURE walk, SOCIAL support, small PLEASANT activity, controllability question → PLAN/REAPPRAISE",
+      "recommend_classes": [
+        "MOVE-MOD",
+        "NATURE",
+        "SOCIAL",
+        "PLEASANT"
+      ],
+      "follow_up_classes": [
+        "PLAN",
+        "REAPPRAISE"
+      ],
+      "ask_user": {
+        "question": "Is this something you can do something about right now?",
+        "yes": [
+          "PLAN"
+        ],
+        "no": [
+          "REAPPRAISE"
+        ]
+      },
+      "recommend_categories": [
+        "physical",
+        "nature",
+        "social",
+        "creative",
+        "cognitive"
+      ],
+      "recommend_activity_ids": [
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "nature_walk",
+        "awe_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "drawing_something_happy",
+        "knitting",
+        "cooking",
+        "photography",
+        "everyday_creative_activity",
+        "behavioural_activation",
+        "watch_comedy",
+        "dance_programme",
+        "resistance_training",
+        "blue_space_visit",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises"
+      ],
+      "follow_up_activity_ids": [
+        "write_plan_todo",
+        "if_then_plan",
+        "journaling",
+        "self_compassion_exercise",
+        "cognitive_reappraisal",
+        "perspective_taking",
+        "third_person_self_talk",
+        "affect_labeling",
+        "worry_postponement",
+        "reframe_social_thoughts"
+      ],
+      "avoid_text": "Withdrawal, overwork to \"push through\", alcohol",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "passive_scrolling"
+      ],
+      "avoid_activity_ids": [
+        "dwelling_on_feelings",
+        "sad_music_listening",
+        "passive_scrolling",
+        "expressive_writing",
+        "caffeine_nap"
+      ],
+      "rationale": "Combined relaxation + cognitive + exercise approach rated best for bad mood; add activation for sadness",
+      "citation": "Thayer et al. 1994; Troy et al. 2013",
+      "doi_or_url": "https://doi.org/10.1037/0022-3514.67.5.910",
+      "citations_verification": [
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        },
+        {
+          "citation": "Troy et al. 2013",
+          "matched_verification_record": "Troy, Shallcross & Mauss 2013, Psychol Sci 24(12):2505-14",
+          "pmid": "24145331",
+          "doi": "10.1177/0956797613496434",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R23",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "lonely",
+        "stressed"
+      ],
+      "condition_text": "**Stressed + lonely**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "stressed",
+            "gte": 0.4
+          },
+          {
+            "emotion": "lonely",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SOCIAL support (talk it through with someone), co-walk, BREATHE",
+      "recommend_classes": [
+        "SOCIAL",
+        "MOVE-LOW",
+        "BREATHE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "social",
+        "physical",
+        "mind-body"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "call_friend",
+        "send_message",
+        "weak_tie_chat",
+        "share_good_news",
+        "affectionate_touch",
+        "brisk_walk_10min",
+        "movement_breaks",
+        "yoga",
+        "stretching",
+        "nature_walk",
+        "slow_breathing",
+        "cyclic_sighing",
+        "box_breathing",
+        "progressive_muscle_relaxation",
+        "time_out_counting",
+        "dance_programme",
+        "group_singing",
+        "shared_meal",
+        "board_games",
+        "laughter_exercises",
+        "tai_chi",
+        "qigong"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Isolating to \"get things done\"",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "passive_scrolling"
+      ],
+      "avoid_activity_ids": [
+        "passive_scrolling",
+        "caffeine_nap"
+      ],
+      "rationale": "Seeking social support is a core engagement strategy and was rated helpful for mood and tension",
+      "citation": "Parkinson & Totterdell 1999; Thayer et al. 1994",
+      "doi_or_url": "https://doi.org/10.1080/026999399379285",
+      "citations_verification": [
+        {
+          "citation": "Parkinson & Totterdell 1999",
+          "matched_verification_record": "Parkinson & Totterdell 1999, Cogn Emot 13:277-303",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        },
+        {
+          "citation": "Thayer et al. 1994",
+          "matched_verification_record": "Thayer, Newman & McClain 1994, J Pers Soc Psychol 67(5):910-25",
+          "pmid": "7983582",
+          "doi": "10.1037//0022-3514.67.5.910",
+          "verification_status": "corrected"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "MOVE-LOW here stands for the notes' 'co-walk' (walk with someone)."
+    },
+    {
+      "rule_id": "R24",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "content",
+        "energetic"
+      ],
+      "condition_text": "**Happy + energetic**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "content",
+            "gte": 0.4
+          },
+          {
+            "emotion": "energetic",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "CHALLENGE, MOVE-MOD, SHARE, KIND, start a valued goal",
+      "recommend_classes": [
+        "CHALLENGE",
+        "MOVE-MOD",
+        "SHARE",
+        "KIND"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "play",
+        "creative",
+        "physical",
+        "social"
+      ],
+      "recommend_activity_ids": [
+        "playing_instrument",
+        "free_art_making",
+        "poetry",
+        "everyday_creative_activity",
+        "challenge_matched_game",
+        "mastery_challenge",
+        "explore_while_positive",
+        "free_dancing",
+        "moderate_exercise",
+        "running_jogging",
+        "brisk_walk_10min",
+        "stair_walking",
+        "gratitude_letter",
+        "share_good_news",
+        "send_message",
+        "act_of_kindness",
+        "spend_on_others",
+        "board_games",
+        "dance_programme",
+        "resistance_training",
+        "volunteering"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Nothing to avoid; do not push calming",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dampening_positive"
+      ],
+      "avoid_activity_ids": [
+        "dampening_positive"
+      ],
+      "rationale": "Positive states broaden and build resources; sharing good news adds to positive affect",
+      "citation": "Fredrickson 2001; Gable et al. 2004 (both PubMed-verified, PMIDs 11315248 and 15301629)",
+      "doi_or_url": "https://doi.org/10.1037/0003-066X.56.3.218 ; https://doi.org/10.1037/0022-3514.87.2.228",
+      "citations_verification": [
+        {
+          "citation": "Fredrickson 2001",
+          "matched_verification_record": "Fredrickson 2001, Am Psychol 56(3):218-26",
+          "pmid": "11315248",
+          "doi": "10.1037//0003-066x.56.3.218",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Gable et al. 2004 (both PubMed-verified, PMIDs 11315248 and 15301629)",
+          "matched_verification_record": "Gable, Reis, Impett & Asher 2004, J Pers Soc Psychol 87(2):228-45",
+          "pmid": "15301629",
+          "doi": "10.1037/0022-3514.87.2.228",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly",
+      "is_extrapolation": true,
+      "app_note": "Nothing to avoid; do not push calming activities."
+    },
+    {
+      "rule_id": "R25",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "calm",
+        "content"
+      ],
+      "condition_text": "**Calm + content**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "calm",
+            "gte": 0.4
+          },
+          {
+            "emotion": "content",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SAVOR, gratitude note, MINDFUL, NATURE, gentle creative hobby",
+      "recommend_classes": [
+        "SAVOR",
+        "MINDFUL",
+        "NATURE"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "cognitive",
+        "mind-body",
+        "nature"
+      ],
+      "recommend_activity_ids": [
+        "best_possible_self_writing",
+        "awe_walk",
+        "gratitude_list",
+        "gratitude_letter",
+        "savoring",
+        "positive_reminiscence",
+        "guided_imagery",
+        "mindfulness_meditation",
+        "body_scan",
+        "loving_kindness_meditation",
+        "self_compassion_exercise",
+        "grounding_54321",
+        "nature_walk",
+        "forest_bathing",
+        "gardening",
+        "nature_sitting",
+        "daylight_exposure",
+        "blue_space_visit",
+        "colouring_structured",
+        "knitting",
+        "drawing_something_happy"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Over-stimulating tasks if the user wants to stay calm",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dampening_positive"
+      ],
+      "avoid_activity_ids": [
+        "dampening_positive",
+        "dance_programme",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "volunteering"
+      ],
+      "rationale": "Maintain and savour; positive activities raise wellbeing when they fit the person",
+      "citation": "Lyubomirsky & Layous 2013; Sin & Lyubomirsky 2009",
+      "doi_or_url": "https://doi.org/10.1177/0963721412469809 ; https://doi.org/10.1002/jclp.20593",
+      "citations_verification": [
+        {
+          "citation": "Lyubomirsky & Layous 2013",
+          "matched_verification_record": "Lyubomirsky & Layous 2013, Curr Dir Psychol Sci 22:57-62",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        },
+        {
+          "citation": "Sin & Lyubomirsky 2009",
+          "matched_verification_record": "Sin & Lyubomirsky 2009, J Clin Psychol 65(5):467-87",
+          "pmid": "19301241",
+          "doi": "10.1002/jclp.20593",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly",
+      "is_extrapolation": true,
+      "app_note": "extra_activity_ids stand for the notes' 'gentle creative hobby'. Also used as the default when no emotion is active (neutral)."
+    },
+    {
+      "rule_id": "R26",
+      "rule_type": "pair",
+      "priority": 60,
+      "pair": [
+        "content",
+        "tired"
+      ],
+      "condition_text": "**Happy + tired**",
+      "condition": {
+        "all": [
+          {
+            "emotion": "content",
+            "gte": 0.4
+          },
+          {
+            "emotion": "tired",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "SAVOR, SHARE, REST, calm MUSIC",
+      "recommend_classes": [
+        "SAVOR",
+        "SHARE",
+        "REST",
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "cognitive",
+        "social",
+        "rest",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "best_possible_self_writing",
+        "awe_walk",
+        "gratitude_list",
+        "gratitude_letter",
+        "savoring",
+        "positive_reminiscence",
+        "share_good_news",
+        "movement_breaks",
+        "nature_sitting",
+        "nap_short",
+        "caffeine_nap",
+        "micro_break",
+        "warm_bath_shower",
+        "music_listening_calming",
+        "playing_instrument",
+        "singing_solo"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "High-effort CHALLENGE",
+      "avoid_classes": [
+        "CHALLENGE"
+      ],
+      "avoid_first_classes": [],
+      "avoid_effort": [
+        "high"
+      ],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dampening_positive",
+        "upbeat_music_listening"
+      ],
+      "avoid_activity_ids": [
+        "dampening_positive",
+        "upbeat_music_listening",
+        "dance_programme",
+        "poetry",
+        "moderate_exercise",
+        "running_jogging",
+        "hiit",
+        "resistance_training",
+        "mastery_challenge",
+        "volunteering",
+        "explore_while_positive"
+      ],
+      "rationale": "Keep the positive state at low energy cost",
+      "citation": "Gable et al. 2004; Howe et al. 2022",
+      "doi_or_url": "https://doi.org/10.1145/3491102.3502027",
+      "citations_verification": [
+        {
+          "citation": "Gable et al. 2004",
+          "matched_verification_record": "Gable, Reis, Impett & Asher 2004, J Pers Soc Psychol 87(2):228-45",
+          "pmid": "15301629",
+          "doi": "10.1037/0022-3514.87.2.228",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Howe et al. 2022",
+          "matched_verification_record": "Howe et al. 2022, CHI '22",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true
+    },
+    {
+      "rule_id": "R27",
+      "rule_type": "pair_group",
+      "priority": 50,
+      "condition_text": "**Mixed valence** (e.g. happy + sad, excited + anxious)",
+      "condition": {
+        "all": [
+          {
+            "group": "positive",
+            "gte": 0.4
+          },
+          {
+            "group": "negative",
+            "gte": 0.4
+          }
+        ]
+      },
+      "recommended_text": "Journalling / naming both feelings, SHARE with someone, MUSIC; for excited + anxious, light MOVE and BREATHE",
+      "recommend_classes": [
+        "SHARE",
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "conditional_classes": [
+        {
+          "when": {
+            "all": [
+              {
+                "emotion": "energetic",
+                "gte": 0.4
+              },
+              {
+                "emotion": "anxious",
+                "gte": 0.4
+              }
+            ]
+          },
+          "add_classes": [
+            "MOVE-LOW",
+            "BREATHE"
+          ]
+        }
+      ],
+      "recommend_categories": [
+        "social",
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "gratitude_letter",
+        "share_good_news",
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo",
+        "affect_labeling",
+        "journaling"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Forcing a single label; suppressing either feeling",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "dampening_positive",
+        "dwelling_on_feelings"
+      ],
+      "avoid_activity_ids": [
+        "dampening_positive",
+        "dwelling_on_feelings"
+      ],
+      "rationale": "Mixed emotions are a genuine, common state; differentiating feelings is linked to better regulation",
+      "citation": "Berrios et al. 2015; Kashdan et al. 2015",
+      "doi_or_url": "https://doi.org/10.3389/fpsyg.2015.00428 ; https://doi.org/10.1177/0963721414550708",
+      "citations_verification": [
+        {
+          "citation": "Berrios et al. 2015",
+          "matched_verification_record": "Berrios, Totterdell & Kellett 2015, Front Psychol 6:428",
+          "pmid": "25926805",
+          "doi": "10.3389/fpsyg.2015.00428",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Kashdan et al. 2015",
+          "matched_verification_record": "Kashdan, Barrett & McKnight 2015, Curr Dir Psychol Sci 24:10-16",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated",
+      "is_extrapolation": true,
+      "app_note": "Mixed valence: show both labels, never force a single one. extra_activity_ids stand for 'journalling / naming both feelings'. A specific pair rule (e.g. R26) outranks this one."
+    },
+    {
+      "rule_id": "R28",
+      "rule_type": "modifier",
+      "priority": 5,
+      "condition_text": "Music chosen for any negative state",
+      "condition": {
+        "all": [
+          {
+            "group": "negative",
+            "gte": 0.4
+          },
+          {
+            "selected_class": "MUSIC"
+          }
+        ]
+      },
+      "recommended_text": "Start with a track matching current mood, move toward the target mood over 2–3 tracks; let the user choose the tracks",
+      "recommend_classes": [
+        "MUSIC"
+      ],
+      "follow_up_classes": [],
+      "recommend_categories": [
+        "creative"
+      ],
+      "recommend_activity_ids": [
+        "music_listening_calming",
+        "upbeat_music_listening",
+        "playing_instrument",
+        "singing_solo"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Jumping straight to very upbeat music when sad; staying on sad music",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [
+        "sad_music_listening"
+      ],
+      "avoid_activity_ids": [
+        "sad_music_listening"
+      ],
+      "rationale": "Iso principle; order of music affected mood after sadness induction (not all contrasts significant)",
+      "citation": "Heiderscheit & Madson 2015; Starcke et al. 2021",
+      "doi_or_url": "https://doi.org/10.1093/mtp/miu042 ; https://doi.org/10.3390/ijerph182312486",
+      "citations_verification": [
+        {
+          "citation": "Heiderscheit & Madson 2015",
+          "matched_verification_record": "Heiderscheit & Madson 2015, Music Ther Perspect 33:45-52",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        },
+        {
+          "citation": "Starcke et al. 2021",
+          "matched_verification_record": "Starcke, Mayr & von Georgi 2021, Int J Environ Res Public Health 18(23):12486",
+          "pmid": "34886210",
+          "doi": "10.3390/ijerph182312486",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "tested for sadness only; partly",
+      "is_extrapolation": true,
+      "app_note": "Iso principle: start with a track matching the current mood, move toward the target mood over 2-3 tracks; let the user choose the tracks."
+    },
+    {
+      "rule_id": "R29",
+      "rule_type": "personalisation",
+      "priority": 1,
+      "condition_text": "Personalisation, all rules",
+      "condition": {
+        "always": true
+      },
+      "recommended_text": "Rank options inside the allowed classes by likes/hobbies and past helpfulness; filter dislikes; show 2–3 choices; rotate for variety",
+      "recommend_classes": [],
+      "follow_up_classes": [],
+      "recommend_categories": [],
+      "recommend_activity_ids": [],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Overriding the rule's \"avoid\" list because of a preference",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [],
+      "avoid_activity_ids": [],
+      "rationale": "Preference accommodation: outcome d = .15 to 0.28 and fewer dropouts (OR = 1.79); fit and variety moderate benefit; users want control",
+      "citation": "Lindhiem et al. 2014; Swift et al. 2018; Lyubomirsky & Layous 2013; Howe et al. 2022",
+      "doi_or_url": "https://doi.org/10.1016/j.cpr.2014.06.002 ; https://pubmed.ncbi.nlm.nih.gov/30091140/",
+      "citations_verification": [
+        {
+          "citation": "Lindhiem et al. 2014",
+          "matched_verification_record": "Lindhiem, Bennett, Trentacosta & McLear 2014, Clin Psychol Rev 34(6):506-17",
+          "pmid": "25189522",
+          "doi": "10.1016/j.cpr.2014.06.002",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Swift et al. 2018",
+          "matched_verification_record": "Swift, Callahan, Cooper & Parkin 2018, J Clin Psychol 74(11):1924-1937",
+          "pmid": "30091140",
+          "doi": "10.1002/jclp.22680",
+          "verification_status": "corrected"
+        },
+        {
+          "citation": "Lyubomirsky & Layous 2013",
+          "matched_verification_record": "Lyubomirsky & Layous 2013, Curr Dir Psychol Sci 22:57-62",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        },
+        {
+          "citation": "Howe et al. 2022",
+          "matched_verification_record": "Howe et al. 2022, CHI '22",
+          "pmid": "",
+          "doi": "",
+          "verification_status": "not_in_pubmed"
+        }
+      ],
+      "evidence_basis": "partly",
+      "evidence_basis_text": "partly (tested in therapy, not hobby-matched micro-activities)",
+      "is_extrapolation": true,
+      "app_note": "Rank inside the allowed classes by likes/hobbies and past helpfulness; filter dislikes; show 2-3 choices; rotate for variety. A preference never overrides a rule's avoid list."
+    },
+    {
+      "rule_id": "R30",
+      "rule_type": "safety_gate",
+      "priority": 100,
+      "condition_text": "Safety gate: extreme or persistent severe negative scores, or self-harm cues",
+      "condition": {
+        "any": [
+          {
+            "group": "negative",
+            "gte": 0.9
+          },
+          {
+            "signal": "persistent_severe_negative"
+          },
+          {
+            "signal": "self_harm_cue"
+          },
+          {
+            "signal": "severe_self_report"
+          }
+        ]
+      },
+      "recommended_text": "Supportive message, trusted-person prompt, localised crisis resources; optional grounding exercise",
+      "recommend_classes": [],
+      "follow_up_classes": [],
+      "recommend_categories": [],
+      "recommend_activity_ids": [
+        "grounding_54321"
+      ],
+      "follow_up_activity_ids": [],
+      "avoid_text": "Any \"fix it\" activity list presented as sufficient; diagnostic wording",
+      "avoid_classes": [],
+      "avoid_first_classes": [],
+      "avoid_effort": [],
+      "avoid_categories": [],
+      "avoid_activity_ids_explicit": [],
+      "avoid_activity_ids": [],
+      "rationale": "App effects are small and harms under-reported; face-based emotion inference is unreliable, so escalate cautiously and let the user correct",
+      "citation": "Linardon et al. 2024 (efficacy; adverse events); Barrett et al. 2019",
+      "doi_or_url": "https://doi.org/10.1038/s41746-024-01388-y ; https://doi.org/10.1177/1529100619832930",
+      "citations_verification": [
+        {
+          "citation": "Linardon et al. 2024 (efficacy; adverse events)",
+          "matched_verification_record": "Linardon et al. 2024, NPJ Digit Med 7(1):363",
+          "pmid": "39695173",
+          "doi": "10.1038/s41746-024-01388-y",
+          "verification_status": "verified_abstract"
+        },
+        {
+          "citation": "Barrett et al. 2019",
+          "matched_verification_record": "Barrett, Adolphs, Marsella, Martinez & Pollak 2019, Psychol Sci Public Interest 20(1):1-68",
+          "pmid": "31313636",
+          "doi": "10.1177/1529100619832930",
+          "verification_status": "verified_abstract"
+        }
+      ],
+      "evidence_basis": "extrapolated",
+      "evidence_basis_text": "extrapolated (precautionary)",
+      "is_extrapolation": true,
+      "app_note": "Skip the activity list; show the supportive message and localised crisis resources (see safety.json). The grounding exercise is optional. The 0.9 threshold is an uncalibrated precaution, not a screening tool."
+    }
+  ]
+}

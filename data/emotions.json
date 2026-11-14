@@ -1,0 +1,1440 @@
+{
+  "meta": {
+    "source": "research_notes/Emotion to activity evidence map/emotion_models_and_matching_logic.md (## Proposed emotion taxonomy)",
+    "coordinate_formula": "valence = (V - 5) / 4; arousal = clip((A - 4.21) / 2.70, -1, 1) from Warriner et al. 2013 word norms (1-9 scales)",
+    "caveats": [
+      "No peer-reviewed study validates this exact 12-class set, nor vision-LLM output against DASS/POMS/PANAS.",
+      "Coordinates are ratings of words, not of felt states.",
+      "Synonym lists are a design aid for mapping free-text labels; they are not validated."
+    ]
+  },
+  "derived_scores": {
+    "tension": "max(stressed, anxious, angry, restless)",
+    "energy": "energetic - max(tired, 0.5 * bored)",
+    "energy_variant_section_1": "max(energetic, 0.5 * content) - max(tired, 0.5 * bored)",
+    "intensity": "max score over all classes",
+    "note": "Design proposals from the notes, not validated scoring keys. The 'energy' formula is the one printed under the taxonomy table; Section 1 of the notes gives the variant, and the table version is used here."
+  },
+  "groups": {
+    "negative": [
+      "stressed",
+      "anxious",
+      "angry",
+      "restless",
+      "sad",
+      "lonely",
+      "tired",
+      "bored"
+    ],
+    "positive": [
+      "calm",
+      "content",
+      "energetic"
+    ],
+    "tension": [
+      "stressed",
+      "anxious",
+      "angry",
+      "restless"
+    ]
+  },
+  "emotions": [
+    {
+      "id": "stressed",
+      "label": "Stressed / tense",
+      "valence": -0.56,
+      "arousal": 0.41,
+      "valence_text": "-0.56",
+      "arousal_text": "+0.41",
+      "tension": 1,
+      "tension_note": "member of the max() in the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "negative",
+      "quadrant": "negative, high arousal",
+      "closest_validated_construct": "DASS-21 Stress; POMS Tension; Thayer tense arousal",
+      "source": "Warriner \"tense\" (noun \"stress\": −0.80, +0.19); Lovibond & Lovibond 1995",
+      "synonyms": [
+        "stress",
+        "tense",
+        "tension",
+        "overwhelmed",
+        "overwhelm",
+        "under pressure",
+        "pressured",
+        "frazzled",
+        "burned out",
+        "swamped",
+        "strained",
+        "on edge"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "anger / depression / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "anger / tension / low energy",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / overwhelm",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / social stress (anger not mentioned in either abstract)",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, sadness / low mood, stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "boredom / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "cortisol / physiological stress",
+          "mapping": "proxy"
+        },
+        {
+          "label": "cortisol / stress",
+          "mapping": "proxy"
+        },
+        {
+          "label": "cortisol, anxiety",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low energy / overwhelm",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low energy / tension",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative affect (sadness, tension)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm (intrusive task thoughts)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm / bedtime worry (sleep onset)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm / boredom / low mood",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm / fatigue",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm / racing mind at bedtime",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "overwhelm / stuck",
+          "mapping": "proxy"
+        },
+        {
+          "label": "physiological arousal",
+          "mapping": "proxy"
+        },
+        {
+          "label": "physiological arousal (HRV)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "poor sleep / evening tension",
+          "mapping": "proxy"
+        },
+        {
+          "label": "psychological distress",
+          "mapping": "proxy"
+        },
+        {
+          "label": "stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress (acute, physiological)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "stress (cortisol)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "stress (physiological)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "stress (psychological)",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / anxiety / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / calm, loneliness (connection)",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / calm, positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / low vigor",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / physiological arousal",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / psychological distress",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / tension",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress, anxiety, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress, cortisol",
+          "mapping": "direct"
+        },
+        {
+          "label": "tension (low relaxation)",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "anxious",
+      "label": "Anxious / worried",
+      "valence": -0.36,
+      "arousal": 0.61,
+      "valence_text": "-0.36",
+      "arousal_text": "+0.61",
+      "tension": 1,
+      "tension_note": "member of the max() in the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "negative",
+      "quadrant": "negative, high arousal",
+      "closest_validated_construct": "DASS-21 Anxiety; tripartite hyperarousal",
+      "source": "Warriner mean of \"anxious\", \"nervous\", \"worried\"; Clark & Watson 1991",
+      "synonyms": [
+        "anxiety",
+        "worried",
+        "worry",
+        "nervous",
+        "fearful",
+        "afraid",
+        "scared",
+        "uneasy",
+        "apprehensive",
+        "panicky",
+        "dread"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety (diagnosed)",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety (self-reported)",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety (state)",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / exhaustion",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / overwhelm",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / social stress (anger not mentioned in either abstract)",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, anger, low vigor",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, sadness / low mood, stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "boredom / worry",
+          "mapping": "direct"
+        },
+        {
+          "label": "cortisol, anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / anxiety / mood (pooled psychological outcomes)",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / anxiety / positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "overwhelm / bedtime worry (sleep onset)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "rumination",
+          "mapping": "proxy"
+        },
+        {
+          "label": "rumination / self-criticism",
+          "mapping": "proxy"
+        },
+        {
+          "label": "sadness / low mood, anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood, anxiety (health outcomes overall)",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness and anxiety symptoms",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / anxiety / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress, anxiety, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "worry / rumination",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "angry",
+      "label": "Angry / irritated",
+      "valence": -0.62,
+      "arousal": 0.74,
+      "valence_text": "-0.62",
+      "arousal_text": "+0.74",
+      "tension": 1,
+      "tension_note": "member of the max() in the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "negative",
+      "quadrant": "negative, high arousal",
+      "closest_validated_construct": "POMS Anger-Hostility; Ekman anger",
+      "source": "Warriner \"angry\"; McNair et al. 1971",
+      "synonyms": [
+        "anger",
+        "irritated",
+        "irritable",
+        "annoyed",
+        "frustrated",
+        "mad",
+        "furious",
+        "resentful",
+        "hostile"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "anger",
+          "mapping": "direct"
+        },
+        {
+          "label": "anger / depression / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "anger / tension / low energy",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, anger, low vigor",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "restless",
+      "label": "Restless / agitated",
+      "valence": -0.34,
+      "arousal": 0.3,
+      "arousal_norm": -0.06,
+      "valence_text": "-0.34",
+      "arousal_text": "-0.06 (norm); suggest +0.3 by theory",
+      "coordinate_note": "Warriner norm arousal is -0.06; the notes suggest +0.3 by theory (an extrapolation). 'arousal' holds the suggested value, 'arousal_norm' the norm-derived one.",
+      "tension": 1,
+      "tension_note": "member of the max() in the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "negative",
+      "quadrant": "negative, mid-to-high arousal",
+      "closest_validated_construct": "Thayer tense-energy; DASS Stress agitation items",
+      "source": "Warriner \"restless\"; adjustment is an extrapolation",
+      "synonyms": [
+        "agitated",
+        "fidgety",
+        "jittery",
+        "antsy",
+        "unsettled",
+        "keyed up",
+        "cannot sit still"
+      ],
+      "notes_target_labels": []
+    },
+    {
+      "id": "sad",
+      "label": "Sad / low",
+      "valence": -0.72,
+      "arousal": -0.27,
+      "valence_text": "-0.72",
+      "arousal_text": "-0.27",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "negative",
+      "quadrant": "negative, low arousal",
+      "closest_validated_construct": "DASS-21 Depression; POMS Depression; low PANAS PA",
+      "source": "Warriner \"sad\"; Lovibond & Lovibond 1995",
+      "synonyms": [
+        "sadness",
+        "low",
+        "low mood",
+        "down",
+        "unhappy",
+        "blue",
+        "tearful",
+        "depressed",
+        "depressive symptoms",
+        "hopeless",
+        "melancholy",
+        "grief",
+        "heartbroken"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "anger / depression / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / mood",
+          "mapping": "proxy"
+        },
+        {
+          "label": "anxiety, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, sadness / low mood, stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "boredom / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "contentment / low mood",
+          "mapping": "proxy"
+        },
+        {
+          "label": "depression / anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / anxiety / mood (pooled psychological outcomes)",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / anxiety / positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / low positive affect",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood (total mood disturbance)",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / disconnection",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / general well-being",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / meaning",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / sustaining joy",
+          "mapping": "direct"
+        },
+        {
+          "label": "low positive affect",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low positive affect / positive states",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low well-being",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low well-being / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative affect (sadness, tension)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "negative affect, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "overwhelm / boredom / low mood",
+          "mapping": "proxy"
+        },
+        {
+          "label": "positive affect",
+          "mapping": "proxy"
+        },
+        {
+          "label": "positive affect (hedonic tone), mindfulness",
+          "mapping": "proxy"
+        },
+        {
+          "label": "positive affect / mood",
+          "mapping": "proxy"
+        },
+        {
+          "label": "rumination",
+          "mapping": "proxy"
+        },
+        {
+          "label": "rumination / self-criticism",
+          "mapping": "proxy"
+        },
+        {
+          "label": "sadness / conflict distress",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / depression",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / depressive symptoms",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood (depressive symptoms)",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood (ruminators)",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood, anxiety",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood, anxiety (health outcomes overall)",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / negative affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness and anxiety symptoms",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / anxiety / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress, anxiety, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "worry / rumination",
+          "mapping": "proxy"
+        }
+      ]
+    },
+    {
+      "id": "lonely",
+      "label": "Lonely",
+      "valence": -0.58,
+      "arousal": 0.06,
+      "valence_text": "-0.58",
+      "arousal_text": "+0.06",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "negative",
+      "quadrant": "negative, mid arousal",
+      "closest_validated_construct": "UCLA Loneliness Scale (construct only; not opened)",
+      "source": "Warriner \"lonely\"",
+      "synonyms": [
+        "loneliness",
+        "isolated",
+        "alone",
+        "disconnected",
+        "left out",
+        "homesick",
+        "unloved"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "joy / loneliness",
+          "mapping": "proxy"
+        },
+        {
+          "label": "loneliness",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / contentment",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / low belonging",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / low positive affect",
+          "mapping": "proxy"
+        },
+        {
+          "label": "loneliness / social contact, positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / socialisation, self-esteem",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / disconnection",
+          "mapping": "proxy"
+        },
+        {
+          "label": "stress / calm, loneliness (connection)",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "tired",
+      "label": "Tired / fatigued",
+      "valence": -0.18,
+      "arousal": -0.2,
+      "valence_text": "-0.18",
+      "arousal_text": "-0.20",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": -1.0,
+      "energy_note": "minus tired",
+      "polarity": "negative",
+      "quadrant": "mildly negative, low arousal",
+      "closest_validated_construct": "POMS Fatigue-Inertia; Thayer tiredness",
+      "source": "Warriner \"tired\" (\"fatigued\": −0.53, −0.16)",
+      "synonyms": [
+        "fatigue",
+        "fatigued",
+        "exhausted",
+        "drained",
+        "sleepy",
+        "low energy",
+        "worn out",
+        "weary",
+        "lethargic",
+        "sluggish"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "anger / tension / low energy",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety / exhaustion",
+          "mapping": "direct"
+        },
+        {
+          "label": "anxiety, anger, low vigor",
+          "mapping": "direct"
+        },
+        {
+          "label": "fatigue",
+          "mapping": "direct"
+        },
+        {
+          "label": "fatigue (frequent tiredness)",
+          "mapping": "direct"
+        },
+        {
+          "label": "fatigue / low energy",
+          "mapping": "direct"
+        },
+        {
+          "label": "fatigue / poor focus",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low energy",
+          "mapping": "direct"
+        },
+        {
+          "label": "low energy (vigor)",
+          "mapping": "direct"
+        },
+        {
+          "label": "low energy / low vigor",
+          "mapping": "direct"
+        },
+        {
+          "label": "low energy / overwhelm",
+          "mapping": "direct"
+        },
+        {
+          "label": "low energy / sleepiness",
+          "mapping": "direct"
+        },
+        {
+          "label": "low energy / tension",
+          "mapping": "direct"
+        },
+        {
+          "label": "mental fatigue",
+          "mapping": "proxy"
+        },
+        {
+          "label": "mental fatigue (attention)",
+          "mapping": "proxy"
+        },
+        {
+          "label": "overwhelm / fatigue",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / activation",
+          "mapping": "proxy"
+        },
+        {
+          "label": "positive affect / vigor",
+          "mapping": "proxy"
+        },
+        {
+          "label": "sleepiness",
+          "mapping": "direct"
+        },
+        {
+          "label": "sleepiness / fatigue",
+          "mapping": "direct"
+        },
+        {
+          "label": "sleepiness / low alertness",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / low vigor",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "bored",
+      "label": "Bored",
+      "valence": -0.51,
+      "arousal": -0.21,
+      "valence_text": "-0.51",
+      "arousal_text": "-0.21",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": -0.5,
+      "energy_note": "minus 0.5 x bored",
+      "polarity": "negative",
+      "quadrant": "negative, low arousal",
+      "closest_validated_construct": "Boredom (Eastwood et al. 2012 definition)",
+      "source": "Warriner \"bored\"",
+      "synonyms": [
+        "boredom",
+        "unstimulated",
+        "disengaged",
+        "listless",
+        "apathetic",
+        "uninterested",
+        "flat"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "boredom",
+          "mapping": "direct"
+        },
+        {
+          "label": "boredom / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "boredom / stress",
+          "mapping": "direct"
+        },
+        {
+          "label": "boredom / worry",
+          "mapping": "direct"
+        },
+        {
+          "label": "overwhelm / boredom / low mood",
+          "mapping": "proxy"
+        }
+      ]
+    },
+    {
+      "id": "calm",
+      "label": "Calm / relaxed",
+      "valence": 0.47,
+      "arousal": -0.94,
+      "valence_text": "+0.47",
+      "arousal_text": "-0.94",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "positive",
+      "quadrant": "positive, low arousal",
+      "closest_validated_construct": "Thayer calmness; low DASS Stress",
+      "source": "Warriner \"calm\" (\"relaxed\": +0.56, −0.64)",
+      "synonyms": [
+        "relaxed",
+        "peaceful",
+        "serene",
+        "at ease",
+        "tranquil",
+        "settled"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "joy / calm / prosocial positive emotion",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / calm, loneliness (connection)",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / calm, positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / low vigor",
+          "mapping": "direct"
+        },
+        {
+          "label": "tension (low relaxation)",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "label": "Content / happy",
+      "valence": 0.65,
+      "arousal": 0.15,
+      "valence_text": "+0.43 to +0.87",
+      "arousal_text": "-0.39 to +0.68",
+      "coordinate_note": "The notes give a range (valence +0.43 to +0.87, arousal -0.39 to +0.68) spanning Warriner 'content' to 'happy' and say to use (+0.65, +0.15) as the midpoint.",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "positive",
+      "quadrant": "positive, mid arousal",
+      "closest_validated_construct": "PANAS PA (partly); Russell pleasure",
+      "source": "Warriner \"content\" (low end) and \"happy\" (high end); use (+0.65, +0.15) as midpoint",
+      "synonyms": [
+        "happy",
+        "happiness",
+        "joy",
+        "joyful",
+        "pleased",
+        "satisfied",
+        "cheerful",
+        "glad",
+        "grateful",
+        "positive affect"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "contentment / joy",
+          "mapping": "direct"
+        },
+        {
+          "label": "contentment / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "contentment / meaning",
+          "mapping": "direct"
+        },
+        {
+          "label": "depression / anxiety / positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / calm / prosocial positive emotion",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / contentment",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / excitement",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / excitement (channeling)",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / happiness",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / loneliness",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / contentment",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / low positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / social contact, positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / sustaining joy",
+          "mapping": "direct"
+        },
+        {
+          "label": "low positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "low positive affect / positive states",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect (during)",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect (hedonic tone), mindfulness",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect (next day), flourishing",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / activation",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / vigor",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / well-being",
+          "mapping": "direct"
+        },
+        {
+          "label": "stress / calm, positive affect",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "energetic",
+      "label": "Energetic / excited",
+      "valence": 0.64,
+      "arousal": 0.7,
+      "valence_text": "+0.64",
+      "arousal_text": "+0.70",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": 1.0,
+      "energy_note": "plus energetic",
+      "polarity": "positive",
+      "quadrant": "positive, high arousal",
+      "closest_validated_construct": "POMS Vigor-Activity; PANAS PA; Thayer energy",
+      "source": "Warriner \"energetic\" (\"excited\": +0.78, +0.82)",
+      "synonyms": [
+        "excited",
+        "excitement",
+        "vigor",
+        "vigour",
+        "enthusiastic",
+        "lively",
+        "pumped",
+        "motivated",
+        "inspired",
+        "playful"
+      ],
+      "notes_target_labels": [
+        {
+          "label": "joy / excitement",
+          "mapping": "direct"
+        },
+        {
+          "label": "joy / excitement (channeling)",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / activation",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / vigor",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "neutral",
+      "label": "Neutral",
+      "valence": 0.0,
+      "arousal": 0.0,
+      "valence_text": "0.00 (norm +0.12)",
+      "arousal_text": "0.00 (norm -0.28)",
+      "coordinate_note": "Set to the origin by design (Warriner norm +0.12, -0.28).",
+      "tension": 0,
+      "tension_note": "not part of the derived tension score",
+      "energy": null,
+      "energy_note": "not part of the derived energy score",
+      "polarity": "neutral",
+      "quadrant": "centre",
+      "closest_validated_construct": "none (reference point)",
+      "source": "Warriner \"neutral\"; set to origin by design",
+      "synonyms": [
+        "fine",
+        "okay",
+        "ok",
+        "nothing in particular",
+        "indifferent",
+        "blank"
+      ],
+      "notes_target_labels": []
+    }
+  ],
+  "aggregate_targets": [
+    {
+      "id": "negative_affect_general",
+      "label": "Negative emotion (general, not class-specific)",
+      "applies_to": [
+        "stressed",
+        "anxious",
+        "angry",
+        "sad"
+      ],
+      "note": "Used for notes rows whose outcome is 'negative affect' or 'negative emotion (general)'. Not an LLM output class. In recommendations these links count, at the reduced 'aggregate' mapping weight, toward stressed, anxious, angry and sad only: the underlying studies induce or measure negative emotion in general (mostly lab stimuli) and say nothing specific about fatigue, boredom, loneliness or restlessness. This restriction is a judgement call of the dataset build.",
+      "kind": "aggregate",
+      "llm_class": false,
+      "notes_target_labels": [
+        {
+          "label": "intrusive distressing images",
+          "mapping": "proxy"
+        },
+        {
+          "label": "low mood (total mood disturbance)",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative affect",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative affect (immediately after)",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative affect (sadness, tension)",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative affect, sadness / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative emotion",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative emotion (general)",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative emotion (general), high intensity",
+          "mapping": "direct"
+        },
+        {
+          "label": "negative emotional reactivity",
+          "mapping": "direct"
+        },
+        {
+          "label": "psychological distress",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / conflict distress",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / negative affect",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "wellbeing_general",
+      "label": "General wellbeing / life satisfaction / self-esteem",
+      "applies_to": [],
+      "note": "Used for rows whose outcome is general wellbeing, optimism, flourishing, self-esteem or overall health. Not an LLM output class and not used in per-emotion rankings.",
+      "kind": "aggregate",
+      "llm_class": false,
+      "notes_target_labels": [
+        {
+          "label": "contentment / meaning",
+          "mapping": "direct"
+        },
+        {
+          "label": "general well-being",
+          "mapping": "direct"
+        },
+        {
+          "label": "loneliness / socialisation, self-esteem",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / general well-being",
+          "mapping": "direct"
+        },
+        {
+          "label": "low mood / meaning",
+          "mapping": "direct"
+        },
+        {
+          "label": "low self-esteem",
+          "mapping": "direct"
+        },
+        {
+          "label": "low well-being",
+          "mapping": "direct"
+        },
+        {
+          "label": "low well-being / low mood",
+          "mapping": "direct"
+        },
+        {
+          "label": "optimism / wellbeing",
+          "mapping": "direct"
+        },
+        {
+          "label": "overall psychological/physical health",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect (next day), flourishing",
+          "mapping": "direct"
+        },
+        {
+          "label": "positive affect / well-being",
+          "mapping": "direct"
+        },
+        {
+          "label": "sadness / low mood, anxiety (health outcomes overall)",
+          "mapping": "direct"
+        },
+        {
+          "label": "wellbeing (general)",
+          "mapping": "direct"
+        }
+      ]
+    },
+    {
+      "id": "sleep_general",
+      "label": "Sleep onset / sleep quality",
+      "applies_to": [],
+      "note": "Used for rows whose measured outcome is sleep. Not an LLM output class and not used in per-emotion rankings.",
+      "kind": "aggregate",
+      "llm_class": false,
+      "notes_target_labels": [
+        {
+          "label": "(safety) sleep",
+          "mapping": "direct"
+        },
+        {
+          "label": "overwhelm / bedtime worry (sleep onset)",
+          "mapping": "direct"
+        },
+        {
+          "label": "overwhelm / racing mind at bedtime",
+          "mapping": "direct"
+        },
+        {
+          "label": "poor sleep / evening tension",
+          "mapping": "direct"
+        }
+      ]
+    }
+  ],
+  "synonym_index": {
+    "afraid": "anxious",
+    "agitated": "restless",
+    "alone": "lonely",
+    "anger": "angry",
+    "angry": "angry",
+    "annoyed": "angry",
+    "antsy": "restless",
+    "anxiety": "anxious",
+    "anxious": "anxious",
+    "apathetic": "bored",
+    "apprehensive": "anxious",
+    "at ease": "calm",
+    "blank": "neutral",
+    "blue": "sad",
+    "bored": "bored",
+    "boredom": "bored",
+    "burned out": "stressed",
+    "calm": "calm",
+    "cannot sit still": "restless",
+    "cheerful": "content",
+    "content": "content",
+    "depressed": "sad",
+    "depressive symptoms": "sad",
+    "disconnected": "lonely",
+    "disengaged": "bored",
+    "down": "sad",
+    "drained": "tired",
+    "dread": "anxious",
+    "energetic": "energetic",
+    "enthusiastic": "energetic",
+    "excited": "energetic",
+    "excitement": "energetic",
+    "exhausted": "tired",
+    "fatigue": "tired",
+    "fatigued": "tired",
+    "fearful": "anxious",
+    "fidgety": "restless",
+    "fine": "neutral",
+    "flat": "bored",
+    "frazzled": "stressed",
+    "frustrated": "angry",
+    "furious": "angry",
+    "glad": "content",
+    "grateful": "content",
+    "grief": "sad",
+    "happiness": "content",
+    "happy": "content",
+    "heartbroken": "sad",
+    "homesick": "lonely",
+    "hopeless": "sad",
+    "hostile": "angry",
+    "indifferent": "neutral",
+    "inspired": "energetic",
+    "irritable": "angry",
+    "irritated": "angry",
+    "isolated": "lonely",
+    "jittery": "restless",
+    "joy": "content",
+    "joyful": "content",
+    "keyed up": "restless",
+    "left out": "lonely",
+    "lethargic": "tired",
+    "listless": "bored",
+    "lively": "energetic",
+    "loneliness": "lonely",
+    "lonely": "lonely",
+    "low": "sad",
+    "low energy": "tired",
+    "low mood": "sad",
+    "mad": "angry",
+    "melancholy": "sad",
+    "motivated": "energetic",
+    "nervous": "anxious",
+    "neutral": "neutral",
+    "nothing in particular": "neutral",
+    "ok": "neutral",
+    "okay": "neutral",
+    "on edge": "stressed",
+    "overwhelm": "stressed",
+    "overwhelmed": "stressed",
+    "panicky": "anxious",
+    "peaceful": "calm",
+    "playful": "energetic",
+    "pleased": "content",
+    "positive affect": "content",
+    "pressured": "stressed",
+    "pumped": "energetic",
+    "relaxed": "calm",
+    "resentful": "angry",
+    "restless": "restless",
+    "sad": "sad",
+    "sadness": "sad",
+    "satisfied": "content",
+    "scared": "anxious",
+    "serene": "calm",
+    "settled": "calm",
+    "sleepy": "tired",
+    "sluggish": "tired",
+    "strained": "stressed",
+    "stress": "stressed",
+    "stressed": "stressed",
+    "swamped": "stressed",
+    "tearful": "sad",
+    "tense": "stressed",
+    "tension": "stressed",
+    "tired": "tired",
+    "tranquil": "calm",
+    "under pressure": "stressed",
+    "uneasy": "anxious",
+    "unhappy": "sad",
+    "uninterested": "bored",
+    "unloved": "lonely",
+    "unsettled": "restless",
+    "unstimulated": "bored",
+    "vigor": "energetic",
+    "vigour": "energetic",
+    "weary": "tired",
+    "worn out": "tired",
+    "worried": "anxious",
+    "worry": "anxious"
+  }
+}

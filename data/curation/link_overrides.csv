@@ -1,0 +1,22 @@
+source,row,activity_startswith,emotion_id,field,value,reason
+MBC,54,Grounding,,verification_status,unverified,Row cites no direct trial; the DOI is the indirect Webb 2012 distraction source
+MBC,54,Grounding,,pmid,,No direct citation
+MBC,54,Grounding,,doi,,No direct citation
+PHY,55,Cold-water immersion,,direction_class,mixed_or_unclear,Effect only at 12 h; none immediately or at 1 h
+PHY,59,Short movement breaks,,single_session_evidence,true,Single-day protocol (6 x 5 min over 6 h)
+PHY,60,Short movement breaks,,single_session_evidence,true,Single-day protocol (6 x 5 min); benefit seen at end of day
+SOC,2,Send an unexpected,,evidence_level_class,indirect,Outcome is recipient appreciation not sender loneliness
+SOC,12,Nostalgic reflection,,emotion_mapping,proxy,Meaning outcome after boredom; not a boredom-reduction trial
+SOC,13,Challenge-matched,anxious,direction_class,null,The manipulation did NOT reduce worry
+SOC,28,Drink water,,direction_class,mixed_or_unclear,Evidence is that dehydration impairs cognition; benefit of drinking is presumed
+SOC,36,Tidy,,direction_class,mixed_or_unclear,Observational clutter correlate; no intervention evidence
+SOC,44,Send a gratitude,,evidence_level_class,indirect,Measured outcome is recipients' reaction; expresser-mood benefit only stated as background
+SOC,48,Creative task,,emotion_mapping,proxy,Outcome is creativity given a positive activated mood (channeling) not a mood change
+SOC,54,Laughter exercises,anxious,direction_class,mixed_or_unclear,Anxiety effect not stated in abstract (not confirmed)
+CRE,35,Expressive writing (Pennebaker),,effect_size_value,0.075,Reported value is r = .075; the d of about 0.15 is a conversion
+CRE,35,Expressive writing (Pennebaker),,effect_metric,r,Reported value is r = .075
+MBC,13,Relaxation training,,effect_size_value,0.51,Between-group d (0.57 is the within-group value)
+MBC,19,MBSR,,effect_size_value,,g = 0.53 pools all outcomes; no stress-specific value in abstract
+MBC,19,MBSR,,effect_metric,multiple_values_see_text,g = 0.53 pools all outcomes; no stress-specific value in abstract
+PHY,43,Gardening,,effect_size_value,,Hedges' d = 0.42 pools ALL health outcomes; no depression- or anxiety-specific value confirmed
+PHY,43,Gardening,,effect_metric,multiple_values_see_text,Pooled across all health outcomes

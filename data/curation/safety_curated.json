@@ -1,0 +1,75 @@
+{
+  "_comment": "Guardrails transcribed from emotion_models_and_matching_logic.md section 6 and handwriting_drawing_emotion_validity.md 'Recommendations for the app'. Wording in 'text' fields is quoted from the notes. These are design recommendations, not trial-tested.",
+  "thresholds": {
+    "label": "UNCALIBRATED ENGINEERING DEFAULTS",
+    "note": "The notes state: 'Thresholds (0.4, 0.75) are arbitrary engineering defaults; no study calibrates LLM emotion scores to felt intensity' and 'No validated threshold exists for when an app-detected score warrants crisis escalation; the gate above is a precaution, not a screening tool.'",
+    "active_emotion_gte": 0.4,
+    "high_intensity_gte": 0.75,
+    "crisis_gte": 0.9
+  },
+  "crisis_gate": {
+    "rule_id": "R30",
+    "triggers": [
+      {"type": "score", "description": "any negative emotion score is extreme", "condition": {"any": [{"group": "negative", "gte": 0.9}]}},
+      {"type": "persistence", "description": "severe negative states persist across several sessions", "condition": {"signal": "persistent_severe_negative"}, "note": "The notes do not define 'several' or 'severe'; the app must choose and label its own default."},
+      {"type": "free_text", "description": "any free text mentions self-harm or hopelessness", "condition": {"signal": "self_harm_cue"}},
+      {"type": "self_report", "description": "self-report is severe (route to crisis resources)", "condition": {"signal": "severe_self_report"}}
+    ],
+    "behaviour": [
+      "Skip the activity list and show support information instead.",
+      "Show a supportive message, a prompt to contact a trusted person, and localised crisis resources; a grounding exercise may be offered as optional.",
+      "Do not present any 'fix it' activity list as sufficient, and do not use diagnostic wording.",
+      "Crisis numbers must be localised and checked by a human (Martinengo et al. 2019 found 6 of 69 apps gave an erroneous helpline number). This dataset deliberately contains no phone numbers."
+    ],
+    "text": "If you're struggling or feel unsafe, please reach out to someone you trust or a local crisis line / emergency services now.",
+    "optional_activity_ids": ["grounding_54321"],
+    "evidence_basis": "extrapolated (precautionary)",
+    "citations": ["Linardon et al. 2024 (efficacy; adverse events)", "Barrett et al. 2019", "Martinengo et al. 2019"]
+  },
+  "disclaimers": {
+    "general": "This app offers general wellbeing suggestions. It is not a medical device and does not diagnose or treat any condition. If your low mood or anxiety lasts more than two weeks or gets in the way of daily life, talk to a health professional.",
+    "honest_claims": "Describe benefits as \"may help\", citing small average effects.",
+    "exercise": "Stop if chest pain, dizziness or unusual breathlessness.",
+    "product_framing": "Say \"an expressive check-in that helps you notice how you feel\", never \"we detect your stress from your handwriting\".",
+    "pitch": "Drawing is how you express it, a one-tap check is how we measure it, and the AI is a mirror, not a diagnostician."
+  },
+  "self_report_drives_suggestions": {
+    "recommendation": "Make a one-tap self-report the operative input for recommendations. Use an Affect Grid or single mood/stress item every session, with PHQ-4 as an optional periodic check; let the drawing enrich, not replace, it.",
+    "user_correction_outranks_model": "A self-reported label replaces the inferred one.",
+    "ai_reading_is_a_guess": "Present the AI output as a tentative guess the user confirms or corrects. Best-case decoding of instructed emotion drawings (50.81% for the algorithm, 43% for human observers, Damiano et al. 2023) is wrong about half the time or more. Log the correction; it is your ground truth.",
+    "multi_llm_agreement": "Use multi-LLM agreement only as a suppression filter. If models disagree, show no guess and just ask the user; agreement measures reliability, not validity.",
+    "drop_decimal_scores_in_ui": "Drop decimal emotion scores from the user interface. Replace `stress: 0.72` with coarse, hedged labels plus the visible features that prompted them (colour, density, line quality). Numeric scores may be used internally for rule lookup but imply a measurement validity that does not exist.",
+    "llm_prompt_constraint": "Forbid graphological and projective-sign reasoning explicitly; ask the model to describe observable features first and relate them only to documented colour/line conventions.",
+    "validity_status": "No peer-reviewed evidence supports single-shot state detection from a short phone drawing; no validation of general-purpose vision LLMs for this task was found."
+  },
+  "tentative_label_wording": {
+    "templates": [
+      "It looks like you might be feeling {label}...",
+      "This looks intense and dense to me - does '{label}' fit, or is it something else?",
+      "Does {label_1} and {label_2} sound right?"
+    ],
+    "always_offer": "That's not right - let me pick",
+    "never_say": ["You are depressed", "You are anxious", "we detect your stress from your handwriting"],
+    "forbidden_output_labels": ["depression", "anxiety disorder"],
+    "state_labels_ok": ["low/sad", "anxious/worried"],
+    "rule": "Never use clinical terms as output labels; 'low/sad' and 'anxious/worried' are states, not diagnoses."
+  },
+  "activity_safety_rules": [
+    "No alcohol, food-as-comfort or drug suggestions.",
+    "Exercise suggestions should be self-paced; show vigorous options only if the user reports being regularly active; suppress vigorous options in the hour before bedtime.",
+    "Breathing exercises should avoid long breath-holds; keep fast/hyperventilation-style breathwork out of a general app.",
+    "Do not suggest cold immersion to people with heart conditions.",
+    "Keep naps short and early in the day.",
+    "Frame any singing, instrument or dance suggestion as private and non-evaluative.",
+    "Do not offer expressive writing as a quick fix for acute distress; if offered, warn that feeling worse right afterwards is normal.",
+    "For anger, never suggest venting, hitting things or hard exercise.",
+    "For low mood with rumination, steer away from sad music.",
+    "Preferences rank options inside the rule-allowed set; they never override a rule's avoid list (R29). Dislikes act as a hard filter.",
+    "Always show two or three options and let the user choose."
+  ],
+  "privacy_and_regulatory": [
+    "Drawings, stroke data and emotion scores are sensitive data; process and discard images, store scores locally, and ask consent explicitly (explicit consent and minimisation before sending to third-party LLM APIs).",
+    "EU AI Act (as found in the notes, November 2026; verify against the Official Journal; not legal advice): disclose the emotion inference up front (Art. 50(3)) and never sell into workplaces or schools (Art. 5(1)(f)). Plan for possible high-risk (Annex III) classification.",
+    "Stay inside general wellness: no diagnostic terms, no treatment claims, a clear 'not a medical device / not a diagnosis' statement, and a route to crisis resources when self-report is severe."
+  ]
+}

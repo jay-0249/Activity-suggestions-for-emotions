@@ -1,0 +1,5329 @@
+{
+  "meta": {
+    "n_activities": 105,
+    "suggest_mode_values": {
+      "right_now": "can be suggested as an immediate 1-45 min activity",
+      "plan_to": "evidence is programme-level or needs other people/booking; offer as a plan-ahead idea",
+      "avoid": "never suggest; kept so the evidence for NOT suggesting it is traceable",
+      "reference_only": "generic or professional-led evidence row; not a concrete suggestion"
+    },
+    "note": "Instructions are plain-language paraphrases grounded in the dose tested; they are not clinical advice."
+  },
+  "activities": [
+    {
+      "id": "music_listening_calming",
+      "name": "Listen to calming music you choose",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Put on music you find relaxing and simply listen for a while. Choosing the tracks yourself and listening in order to relax is what the evidence supports.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "Single listening session (minutes not stated in the meta-analysis abstract; ~20-30 min unconfirmed)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "musical",
+        "solo"
+      ],
+      "requirements": [
+        "headphones or speaker"
+      ],
+      "cautions": [
+        "Many trials in patients, not everyday stress",
+        "Non-clinical meta-analysis found physiological effect n.s. (Panteleeva 2018)",
+        "Larger than non-clinical-only estimate",
+        "Best estimate for healthy users; small",
+        "Works best when goal is relaxation (abstract); the boredom/distraction null is not stated in the abstract and was not confirmed (no open full text)",
+        "Do not claim music fixes boredom. NOT CONFIRMED: this boredom finding is not in the PubMed abstract",
+        "Single study"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MUSIC"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 8,
+        "n_source_rows": 7,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [
+          "bored",
+          "stressed"
+        ],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Music listening",
+        "Music listening (brief)",
+        "Music listening (relaxing / self-selected)",
+        "Music listening (to relieve boredom)",
+        "Music listening for relaxation (daily life)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "sad_music_listening",
+      "name": "Stay on sad music",
+      "category": "creative",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Not suggested on its own. If music is chosen while sad, start with a track that matches the mood and move toward a brighter one over two or three tracks.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "musical",
+        "solo"
+      ],
+      "requirements": [
+        "headphones or speaker"
+      ],
+      "cautions": [
+        "Self-report only; see next row",
+        "Contraindicated for users prone to rumination/depression"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Self-selected sad music increased depressed mood in people prone to rumination (Garrido & Schubert 2015; not in PubMed)"
+        },
+        {
+          "kind": "condition",
+          "id": "rumination_prone",
+          "reason": "Same finding"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "sad"
+        ],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Sad music listening"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "upbeat_music_listening",
+      "name": "Listen to upbeat music",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Play a few upbeat songs you like. People report this helps raise energy, but the evidence is a self-report survey only.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "musical",
+        "solo"
+      ],
+      "requirements": [
+        "headphones or speaker"
+      ],
+      "cautions": [
+        "Self-report survey, not an experiment; abstract names exercise (not music) as the most effective mood-regulating behaviour"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activities do not reduce anger (Kjaervik & Bushman 2024)"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Activating"
+        }
+      ],
+      "rule_classes": [
+        "MUSIC"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "citation_exists_number_not_confirmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Listen to upbeat music"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "free_dancing",
+      "name": "Dance freely to a song",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Put on a song and move however you like for about five minutes, in private, with nobody watching or judging.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "5 min single session (Campion & Levita 2014, via Koch 2019 full text; single small study)",
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "creative",
+        "high-energy",
+        "indoor",
+        "musical",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "music",
+        "private space"
+      ],
+      "cautions": [
+        "Single study, not in PubMed; Koch 2019 meta-analysis coded this study as a small negative effect (d = −0.17) for dance vs its controls; keep it private/non-evaluative",
+        "Cycling control did not reduce fatigue",
+        "Single study"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activity; not shown to reduce anger"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-MOD",
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "negative_affect_general",
+          "sad",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Dancing (free, to music)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "dance_programme",
+      "name": "Join a dance class or dance regularly",
+      "category": "physical",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Plan a regular dance class or session. The evidence is for multi-week group programmes, not a single dance.",
+      "typical_duration_min": 60,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "creative",
+        "high-energy",
+        "musical",
+        "physical",
+        "social"
+      ],
+      "requirements": [
+        "class or group",
+        "music"
+      ],
+      "cautions": [
+        "High heterogeneity overall (I² = 72.6%) and for dance (I² = 78.0%), but DMT cluster homogeneous (I² = 3.5%); mean programme length 11.4 weeks; group, facilitated — not solo single session",
+        "high heterogeneity; possible measurement bias",
+        "inferior to other exercise for stress",
+        "very low certainty"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Evidence is programme-level (mean 11.4 weeks)"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-MOD",
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 7,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "negative_affect_general",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Dance / dance movement therapy (programmes)",
+        "Dancing",
+        "Dancing (programme)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md",
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "drawing_distraction",
+      "name": "Draw something you can see",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Pick an object nearby and draw it for about ten minutes. Focus on the object, not on how you feel.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single short session after a mood induction (minutes not checkable)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "paper and pen"
+      ],
+      "cautions": [
+        "Short-term effect only; student samples",
+        "Only anger study for drawing",
+        "Small n"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Drawing (vs writing)",
+        "Drawing to distract",
+        "Drawing to distract (neutral subject)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "drawing_something_happy",
+      "name": "Draw something that makes you happy",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Draw something that makes you happy for about ten minutes. Skill does not matter.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single session (minutes not checkable)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "paper and pen"
+      ],
+      "cautions": [
+        "Arousal unchanged"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLEASANT",
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "negative_affect_general",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Drawing something happy"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "drawing_to_vent",
+      "name": "Draw to vent your feelings",
+      "category": "creative",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Not suggested: drawing to vent gave no mood benefit over a control task and did worse than distracting or positive drawing.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "solo"
+      ],
+      "requirements": [
+        "paper and pen"
+      ],
+      "cautions": [
+        "BACKFIRE/NULL: avoid as acute mood-repair prompt"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "No benefit vs control (Dalebroux et al. 2008; not in PubMed)"
+        },
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Expressing did worse than distracting (Genuth & Drake 2021; not in PubMed)"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Null for acute mood repair"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "negative_affect_general",
+          "sad"
+        ],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Drawing to vent / express feelings"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "colouring_structured",
+      "name": "Colour a mandala or patterned design",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Choose a mandala or patterned design you like and colour it for about twenty minutes. A structured design works better than a blank page.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "Single session (~20 min, unverified)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "colouring page and pens (or a colouring app)"
+      ],
+      "cautions": [
+        "Blank-page free colouring less effective",
+        "Small n; replication",
+        "Exp. 1 (n = 88): unguided colouring no better than free drawing; some participants disliked the guiding voice",
+        "Not in PubMed: design details still unverified (DOI matches the reference list of a citing PMC article); \"preliminary\" in title",
+        "Let the user choose the design"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 9,
+        "n_source_rows": 7,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "content",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Colouring (structured)",
+        "Daily colouring",
+        "Free-choice colouring",
+        "Mandala colouring",
+        "Mindfulness-guided mandala colouring"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "clay_work",
+      "name": "Shape clay or modelling dough",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Knead and shape a piece of clay or modelling dough for a while, making anything you like.",
+      "typical_duration_min": 30,
+      "min_effective_dose": "Single short session after a mood induction; 30 min in one small study",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "indoor",
+        "solo"
+      ],
+      "requirements": [
+        "clay or modelling dough"
+      ],
+      "cautions": [
+        "Needs materials; single study",
+        "~14 per group"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "negative_affect_general",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Clay moulding",
+        "Clay work"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "playing_instrument",
+      "name": "Play an instrument you already play",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Play an instrument you already know for around half an hour, just for yourself with no audience.",
+      "typical_duration_min": 30,
+      "min_effective_dose": "30 min (single small study; not checkable in PubMed)",
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "musical",
+        "solo"
+      ],
+      "requirements": [
+        "instrument",
+        "existing skill"
+      ],
+      "cautions": [
+        "Requires existing skill and instrument"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MUSIC",
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Playing an instrument (piano)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "singing_solo",
+      "name": "Sing with no audience",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Sing along to something you like, on your own and with no one listening or judging.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "One low-pressure session (15 professional singers)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "musical",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "private space"
+      ],
+      "cautions": [
+        "BACKFIRE: cortisol rises when performing for an audience"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "performance_pressure",
+          "reason": "Cortisol rose when singing for an audience (Fancourt et al. 2015)"
+        }
+      ],
+      "rule_classes": [
+        "MUSIC"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Singing (low-pressure, no audience)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "group_singing",
+      "name": "Sing with a group or choir",
+      "category": "social",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Plan to join a choir or group sing. This is a plan-ahead suggestion, not something to do right now.",
+      "typical_duration_min": 60,
+      "min_effective_dose": "Single one-hour choir session (uncontrolled, special population)",
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "high-energy",
+        "musical",
+        "social"
+      ],
+      "requirements": [
+        "a group or choir"
+      ],
+      "cautions": [
+        "Quasi-experimental; needs a group; not right-now",
+        "Uncontrolled pre-post; special population"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "social_anxiety",
+          "reason": "Group activity"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Needs a group; not right-now"
+        }
+      ],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "lonely",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Choir session",
+        "Group singing"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "free_art_making",
+      "name": "Make free art (collage, markers, paint)",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Spend up to 45 minutes making anything you like with collage, markers, paint or clay. There is no right result.",
+      "typical_duration_min": 45,
+      "min_effective_dose": "45 min (uncontrolled study, 39 adults)",
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "indoor",
+        "solo"
+      ],
+      "requirements": [
+        "art materials"
+      ],
+      "cautions": [
+        "No control group; facilitated by an art therapist (the first author)",
+        "Only evidence covering painting/collage; cannot separate media"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT",
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Free art-making (collage / clay / markers)",
+        "Mixed art-making (painting, collage, drawing, clay, mandala)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "art_therapy_led",
+      "name": "Therapist-led art therapy",
+      "category": "creative",
+      "suggest_mode": "reference_only",
+      "suggestable": false,
+      "instruction": "Reference only: evidence is for multi-session therapist-led art therapy, not a self-guided activity.",
+      "typical_duration_min": 60,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "high",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "social"
+      ],
+      "requirements": [
+        "art therapist"
+      ],
+      "cautions": [
+        "Improvement in 18% of outcomes, 81% no improvement; low study quality; not self-guided"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Active visual art therapy (therapist-led)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "arts_engagement_general",
+      "name": "Arts engagement (any)",
+      "category": "creative",
+      "suggest_mode": "reference_only",
+      "suggestable": false,
+      "instruction": "Reference only: scoping-review evidence that arts engagement relates to wellbeing; no effect sizes.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "creative"
+      ],
+      "requirements": [],
+      "cautions": [
+        "Scoping review: no effect sizes or quality grading"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Arts engagement (any)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "expressive_writing",
+      "name": "Expressive writing about a difficult experience",
+      "category": "cognitive",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Over three or four days, write for 15-20 minutes about your deepest thoughts and feelings on something difficult. Expect to feel a bit worse right afterwards; any benefit is small and shows up weeks later.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "paper or notes app"
+      ],
+      "cautions": [
+        "Tiny effect; multi-session; the d ≈ 0.15 is a conversion from r, not a figure in the abstract",
+        "No immediate benefit; short intervals (1–3 days) between sessions gave stronger effects",
+        "Do not suggest for low mood expecting relief",
+        "BACKFIRE: short-term distress up, positive mood down"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Short-term distress goes up and positive mood down right after writing (Baikie & Wilhelm 2005)"
+        },
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Do not offer to someone highly distressed with no follow-up"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "No significant long-term effect on depressive symptoms in healthy adults (Reinhold et al. 2018; not in PubMed)"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 6,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [
+          "negative_affect_general",
+          "sad"
+        ],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Expressive writing",
+        "Expressive writing (Pennebaker)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "best_possible_self_writing",
+      "name": "Write about your best possible self",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Imagine a future in which everything has gone as well as it could, and write about it for up to twenty minutes.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "Single 20-min session in several included studies (Carrillo et al. 2019, Table 1)",
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "creative",
+        "indoor",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "paper or notes app"
+      ],
+      "cautions": [
+        "CORRECTED: the marginal moderator trend runs the other way — fewer total minutes of practice → larger effect (and older participants → larger effect)",
+        "Better for raising positive affect than lowering negative"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SAVOR"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "negative_affect_general",
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Best possible self writing"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "journaling",
+      "name": "Journal for a few minutes",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Write for about fifteen minutes about what is on your mind, including anything that went well. The evidence is for journaling repeated over weeks, so treat one session as a start.",
+      "typical_duration_min": 15,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "paper or notes app"
+      ],
+      "cautions": [
+        "High heterogeneity (I² 83.8% intervention arm); SORT level B; clinical significance unclear; not single-session",
+        "Preliminary; patient sample; vs usual care, lower anxiety and depressive symptoms were reported at 1 month"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Evidence is multi-week; small effects"
+        }
+      ],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Journaling (general)",
+        "Positive affect journaling"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "poetry",
+      "name": "Read or write a poem",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Read a poem you like, or write a few lines of your own. Evidence is preliminary and from group programmes.",
+      "typical_duration_min": 15,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "creative",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "poem or paper"
+      ],
+      "cautions": [
+        "Small, heterogeneous, likely publication bias; not indexed in PubMed, so authors and numbers remain unverified"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_found",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Poetry reading/writing"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "knitting",
+      "name": "Knit or crochet",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "If you already knit or crochet, pick it up for a while. Evidence comes from a survey of existing knitters.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "indoor",
+        "low-effort",
+        "mindful",
+        "social",
+        "solo"
+      ],
+      "requirements": [
+        "yarn and needles",
+        "existing skill"
+      ],
+      "cautions": [
+        "Self-selected enthusiasts; cross-sectional; needs skill",
+        "Group, not solo"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "calm",
+          "content",
+          "lonely",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Knitting",
+        "Knitting in a group"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "cooking",
+      "name": "Cook or bake something",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Cook or bake something simple you enjoy. The evidence is for group cooking classes, so cooking with or for someone is closest to what was studied.",
+      "typical_duration_min": 40,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "creative",
+        "hands-on",
+        "indoor",
+        "social"
+      ],
+      "requirements": [
+        "kitchen and ingredients"
+      ],
+      "cautions": [
+        "Not solo home cooking; authors call evidence limited",
+        "Social benefit depends on the group"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "lonely",
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Cooking (group interventions)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "shared_meal",
+      "name": "Eat a meal with someone",
+      "category": "social",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Arrange to eat a meal with someone. Evidence is a cross-sectional survey of habitual social eating.",
+      "typical_duration_min": 45,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "hands-on",
+        "indoor",
+        "social"
+      ],
+      "requirements": [
+        "another person"
+      ],
+      "cautions": [
+        "Cross-sectional; no evidence located on cooking for others specifically"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Eat a meal with others / cook for someone"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "photography",
+      "name": "Take a photo of something that makes you (or someone else) happy",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Take one photo of something that makes you smile, or one you think would make someone else happy and send it to them.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "1 photo/day; effect seen after 3 weeks",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "low-effort",
+        "mindful",
+        "outdoor",
+        "social",
+        "solo"
+      ],
+      "requirements": [
+        "phone camera"
+      ],
+      "cautions": [
+        "No no-photo control; small n",
+        "Requires sending the photo to someone"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "calm",
+          "content",
+          "lonely",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Photography (daily happy-making photo)",
+        "Photography (photo to make someone else happy)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "everyday_creative_activity",
+      "name": "Do a small creative project",
+      "category": "creative",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Spend some time on any creative hobby you enjoy. This suits a good or energetic mood especially well.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "creative",
+        "solo"
+      ],
+      "requirements": [
+        "materials for your hobby"
+      ],
+      "cautions": [
+        "Next-day effect; no evidence it lowers negative affect",
+        "Calm/relaxed moods do not show the boost"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "CHALLENGE",
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "energetic",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Creative task while feeling happy/excited",
+        "Everyday creative activity (any)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "reading_fiction",
+      "name": "Read fiction",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Read a story for a while as a break. Do not expect an instant mood lift: benefit showed up only after recalling or discussing what was read.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "book"
+      ],
+      "cautions": [
+        "Benefit appears only after recalling/discussing"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "No immediate effect of a single reading exposure (Carney & Robertson 2022)"
+        }
+      ],
+      "rule_classes": [
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "content",
+          "sad"
+        ],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Reading fiction (single exposure)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "bibliotherapy",
+      "name": "Work through a self-help book",
+      "category": "cognitive",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Plan-ahead only: structured CBT-style self-help books over weeks reduced depressive symptoms in adults with depression.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "self-help book"
+      ],
+      "cautions": [
+        "CBT self-help books, not fiction; clinical"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Weeks-long, clinical evidence"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Bibliotherapy (self-help books)"
+      ],
+      "source_notes_files": [
+        "creative_arts_activities.md"
+      ]
+    },
+    {
+      "id": "moderate_exercise",
+      "name": "Self-paced moderate exercise",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Do 20-40 minutes of any movement you like at a comfortable, self-chosen pace: cycling, swimming, a fast walk. Stop if you get chest pain, dizziness or unusual breathlessness.",
+      "typical_duration_min": 30,
+      "min_effective_dose": "Single bout; fatigue falls only if >20 min low-to-moderate (Loy et al. 2013; not re-confirmed); most single-bout studies 21-40 min",
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "high-energy",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "none (comfortable clothes)"
+      ],
+      "cautions": [
+        "programme-level, not single bout",
+        "programme-level",
+        "keep intensity comfortable",
+        "do not promise fatigue relief from a short hard bout",
+        "small effect; floor effects",
+        "clinical sample; few trials"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activities did not reduce anger, g = -0.02 (Kjaervik & Bushman 2024)"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Keep it moderate in the last hour before bed"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-MOD"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 11,
+        "n_source_rows": 9,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "content",
+          "energetic",
+          "sad",
+          "stressed",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [
+          "tired"
+        ],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Aerobic exercise (programme)",
+        "Aerobic exercise (single bout)",
+        "Any physical activity",
+        "Exercise (programme)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "running_jogging",
+      "name": "Go for a jog or run",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Jog at an easy, self-chosen pace. The low-mood evidence is for regular jogging or walking over weeks.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "high-energy",
+        "outdoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors or treadmill"
+      ],
+      "cautions": [
+        "clinical sample; low certainty",
+        "do NOT suggest running for anger"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Do not suggest running for anger: arousal-increasing activities g = -0.02 (Kjaervik & Bushman 2024)"
+        },
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Vigorous exercise ending within 1 h of bed may impair sleep"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-MOD"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [
+          "angry"
+        ],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Running / jogging",
+        "Walking or jogging (programme)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "brisk_walk_10min",
+      "name": "Take a brisk 10-minute walk",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Walk briskly for ten minutes, outdoors if you can. In one small study this raised energy and lowered tension for up to two hours.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "10 min (Thayer 1987, n = 18; energy up and tension down for up to 2 h)",
+      "arousal_effect": "activating",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "outdoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "somewhere to walk"
+      ],
+      "cautions": [
+        "small sample",
+        "benefit may fade within ~10 min of stopping",
+        "Older single-lab study; exercise covered in depth by other researcher"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MOVE-LOW",
+        "MOVE-MOD"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 7,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "energetic",
+          "stressed",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "10-minute brisk walk",
+        "Brisk walking (10 min)",
+        "Short walk (10–15 min)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "stair_walking",
+      "name": "Walk the stairs for 10 minutes",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Walk up and down stairs at an easy-to-moderate pace for ten minutes.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "10 min low-to-moderate (18 college women; transient)",
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "high-energy",
+        "indoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "stairs"
+      ],
+      "cautions": [
+        "transient; small sample"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-MOD"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Stair walking (10 min)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "movement_breaks",
+      "name": "Take 5-minute movement breaks each hour",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Get up and walk for five minutes now, and repeat roughly every hour for the rest of your sitting day.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "6 x 5 min moderate walking across a 6-h day (benefit seen at end of day, not after one break)",
+      "arousal_effect": "activating",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "lab setting",
+        "benefit seen at end of day, not after one break"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MOVE-LOW",
+        "REST"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "sad",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Short movement breaks (5 min hourly)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "hiit",
+      "name": "High-intensity interval training",
+      "category": "physical",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Only for people who already exercise regularly: a short interval workout. Evidence is for programmes, and hard intervals feel unpleasant while you do them.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "high-energy",
+        "indoor",
+        "physical"
+      ],
+      "requirements": [
+        "regular exerciser",
+        "no heart, metabolic or kidney disease"
+      ],
+      "cautions": [
+        "regular exercisers only; unpleasant above threshold; not within 1 h of bed",
+        "medical caution for inactive users or heart/metabolic/renal disease"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing"
+        },
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "condition",
+          "id": "inactive_or_cardiometabolic_disease",
+          "reason": "Medical caution for inactive users or heart/metabolic/renal disease"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Not within 1 h of bed"
+        },
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Above-threshold exercise feels worse, which matters when already distressed"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "High-intensity interval training"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "vigorous_exercise",
+      "name": "Very hard exercise (above your comfortable pace)",
+      "category": "physical",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Not suggested as a mood fix: above the ventilatory threshold exercise reliably feels unpleasant. Prefer a self-selected comfortable pace.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "high-energy",
+        "physical"
+      ],
+      "requirements": [],
+      "cautions": [
+        "prefer self-selected pace",
+        "suppress vigorous suggestions in last hour before bed; moderate exercise is fine"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Arousal-increasing activities do not reduce anger"
+        },
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "context",
+          "id": "near_bedtime",
+          "reason": "Vigorous exercise ending within 1 h of bed may impair sleep (Stutz et al. 2019)"
+        },
+        {
+          "kind": "condition",
+          "id": "inactive_or_cardiometabolic_disease",
+          "reason": "Screening advised"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "content",
+          "sleep_general"
+        ],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Vigorous exercise (above ventilatory threshold)",
+        "Vigorous exercise near bedtime"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "resistance_training",
+      "name": "Strength training",
+      "category": "physical",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Do a strength session with good technique. The anxiety and low-mood evidence is for regular training over weeks.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "indoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "weights or body-weight routine"
+      ],
+      "cautions": [
+        "programme-level; technique/injury care",
+        "smaller in blinded trials"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "High effort"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Programme-level evidence"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-MOD"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Resistance training"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "yoga",
+      "name": "Gentle yoga",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Do a gentle, slow yoga sequence. Slower meditative styles calm more in the moment than power styles.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "One session (single-session meta-analysis not found in PubMed; unconfirmed)",
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "mat or floor space"
+      ],
+      "cautions": [
+        "only 3 low-bias RCTs",
+        "inconclusive for diagnosed disorders",
+        "citation not found in PubMed (PubMed pass) — paper identity, journal, year and numbers all unconfirmed; gentle styles work better acutely",
+        "pooled across calming activities, not yoga alone"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MOVE-LOW"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 5,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Slow yoga / calming activity",
+        "Yoga",
+        "Yoga (single session)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "tai_chi",
+      "name": "Tai chi",
+      "category": "mind-body",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Practise tai chi regularly. The evidence is for regular practice over weeks to months, not one session.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "low-effort",
+        "mindful",
+        "physical"
+      ],
+      "requirements": [
+        "instruction or video"
+      ],
+      "cautions": [
+        "mixed trial quality; no acute anxiety effect of one session",
+        "mixed trial quality; \"single session showed no effect\" comes from the unconfirmed single-session meta-analysis",
+        "mixed trial quality"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Programme-level evidence; no acute anxiety effect confirmed"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-LOW"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Tai chi"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "qigong",
+      "name": "Qigong",
+      "category": "mind-body",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Practise qigong regularly. Evidence is from a few flawed trials of 1-3 months of practice.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "mindful",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "instruction or video"
+      ],
+      "cautions": [
+        "few, flawed trials"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Programme-level evidence"
+        }
+      ],
+      "rule_classes": [
+        "MOVE-LOW"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Qigong"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "stretching",
+      "name": "10 minutes of stretching",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Stretch gently through your neck, shoulders, back and legs for ten minutes.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "10 min after work, repeated over 3 months (no single-session evidence)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "programme-level; untreated control; no acute evidence"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MOVE-LOW"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Stretching (workplace, 10 min after work)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "nature_walk",
+      "name": "Walk in a green space",
+      "category": "nature",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Walk at an easy pace in a park or other green space. Even a short walk is associated with better mood; the rumination study used 90 minutes.",
+      "typical_duration_min": 30,
+      "min_effective_dose": "Short engagements give benefits (\"first 5 min\" not in abstract); rumination evidence only at 90 min",
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "low-effort",
+        "mindful",
+        "outdoor",
+        "physical",
+        "social",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors",
+        "green space"
+      ],
+      "cautions": [
+        "uncontrolled designs",
+        "low-quality evidence; calmness may decrease after outdoor exercise; later update found affect/enjoyment benefit only",
+        "only 90-min dose tested",
+        "anxiety estimate imprecise (upper CI −0.01); high heterogeneity for depressive mood"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE",
+        "MOVE-LOW"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 10,
+        "n_source_rows": 5,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "anxious",
+          "content",
+          "sad",
+          "stressed",
+          "tired",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Green exercise",
+        "Green exercise (walk in green space)",
+        "Nature walk",
+        "Nature-based outdoor activity",
+        "Outdoor (vs indoor) exercise"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "awe_walk",
+      "name": "Take an awe walk",
+      "category": "nature",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Walk for fifteen minutes somewhere new or wide-open and look for things that feel vast or surprising, as if seeing them for the first time.",
+      "typical_duration_min": 15,
+      "min_effective_dose": "15 min weekly for 8 weeks (older adults only)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "mindful",
+        "outdoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors"
+      ],
+      "cautions": [
+        "Small sample, older adults only; no change in anxiety, depression or life satisfaction"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE",
+        "SAVOR"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "calm",
+          "content"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Awe walk (look for vastness/novelty with fresh eyes)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "forest_bathing",
+      "name": "Spend slow time among trees",
+      "category": "nature",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "If you can reach a wood or forest, walk or sit there slowly and take in the sights, sounds and smells.",
+      "typical_duration_min": 30,
+      "min_effective_dose": "Short forest visits",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "mindful",
+        "outdoor",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors",
+        "woodland access"
+      ],
+      "cautions": [
+        "anticipation effect; needs forest access",
+        "complementary only",
+        "few RCTs; no long follow-up"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Forest bathing"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "blue_space_visit",
+      "name": "Visit water (river, lake, sea)",
+      "category": "nature",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Spend some time beside a river, lake or the sea. Evidence is mostly cross-sectional. Take care near water.",
+      "typical_duration_min": 30,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "outdoor",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors",
+        "access to water"
+      ],
+      "cautions": [
+        "mostly cross-sectional; water safety"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Blue space visit"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "gardening",
+      "name": "Do some gardening",
+      "category": "nature",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Spend half an hour gardening or tending plants.",
+      "typical_duration_min": 30,
+      "min_effective_dose": "30 min after a stressor (30 experienced allotment gardeners)",
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "hands-on",
+        "low-effort",
+        "outdoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors",
+        "garden or plants"
+      ],
+      "cautions": [
+        "publication bias; not all RCTs",
+        "small; experienced gardeners"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE",
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Gardening",
+        "Gardening (30 min)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "nature_sitting",
+      "name": "Sit or stroll in nature for 10-20 minutes",
+      "category": "nature",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Sit or stroll somewhere with trees or greenery for ten to twenty minutes. If you cannot get outside, look out at something green.",
+      "typical_duration_min": 20,
+      "min_effective_dose": ">=10 min; most efficient 20-30 min for cortisol (Hunter et al. 2019); a 40-second green view sustained attention in one experiment (not in PubMed)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "mindful",
+        "outdoor",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors or a window view of greenery"
+      ],
+      "cautions": [
+        "small sample; no control setting",
+        "mostly Japanese student samples",
+        "real nature stronger than images",
+        "small effect",
+        "not causal",
+        "cross-sectional, self-report",
+        "Single experiment",
+        "Weaker than popularly claimed"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE",
+        "REST"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 13,
+        "n_source_rows": 8,
+        "emotions_with_benefit_evidence": [
+          "calm",
+          "content",
+          "lonely",
+          "negative_affect_general",
+          "sad",
+          "stressed",
+          "tired",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Contact with nature",
+        "Look at greenery / nature view micro-break",
+        "Nature exposure for attention restoration",
+        "Sitting or walking in nature",
+        "Time in nature (weekly)",
+        "Viewing / being in nature"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "daylight_exposure",
+      "name": "Get outside into daylight",
+      "category": "nature",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Step outside into daylight for a while. Evidence is observational (more daily hours outdoors go with less low mood and tiredness). Use sun protection.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "outdoor",
+        "solo"
+      ],
+      "requirements": [
+        "outdoors (daytime)"
+      ],
+      "cautions": [
+        "not causal; sun protection",
+        "not causal",
+        "Lab lighting, not outdoor daylight per se"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "NATURE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "sad",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Bright light / daylight exposure",
+        "Daylight / time outdoors"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "cold_face_water",
+      "name": "Splash cold water on your face",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Splash cold water on your face or hold a cool cloth to it for a few moments. Skip this if you have a heart condition.",
+      "typical_duration_min": 1,
+      "min_effective_dose": "Cold stimulus to the face during a stressor (28 adults; physiological outcomes only)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "cold water"
+      ],
+      "cautions": [
+        "small; no self-report mood; avoid with heart conditions (general guidance)"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "heart_condition",
+          "reason": "Avoid with heart conditions (general guidance in notes)"
+        }
+      ],
+      "rule_classes": [
+        "SENSORY"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Cold-water face immersion (cold face test)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "cold_water_immersion",
+      "name": "Cold-water immersion",
+      "category": "physical",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Not suggested: an RCT meta-analysis found no immediate stress or mood effect, and cold immersion carries cardiac caution.",
+      "typical_duration_min": 5,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "high-energy",
+        "solo"
+      ],
+      "requirements": [],
+      "cautions": [
+        "no control group; RCT meta-analysis (Cain 2025) found no mood effect",
+        "not useful as an immediate stress fix; cardiac caution"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "heart_condition",
+          "reason": "Cardiac caution"
+        },
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "No effect immediately or at 1 h (Cain et al. 2025)"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Cold-water immersion",
+        "Cold-water immersion (5 min)"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md"
+      ]
+    },
+    {
+      "id": "nap_short",
+      "name": "Take a short nap (set an alarm)",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Set an alarm and nap for about ten minutes, ideally early afternoon. Longer naps can leave you groggy.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "10 min of sleep (Brooks & Lack 2006, n = 24, sleep-restricted); 5 min gave few benefits; 30 min caused sleep inertia",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "somewhere to lie down",
+        "alarm"
+      ],
+      "cautions": [
+        "athlete samples; low certainty; keep <60 min",
+        "low/very low certainty; late naps may affect night sleep (general guidance)",
+        "Sleep inertia just after waking; benefit lasts about 2 h; lab evidence; avoid late-day naps",
+        "Set an alarm; longer naps produce inertia"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "late_day",
+          "reason": "Late naps may affect night sleep (general guidance)"
+        }
+      ],
+      "rule_classes": [
+        "REST"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "negative_affect_general",
+          "sad",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "10-minute nap specifically",
+        "Napping",
+        "Short daytime nap"
+      ],
+      "source_notes_files": [
+        "physical_nature_activities.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "caffeine_nap",
+      "name": "Coffee then a short nap",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Drink a coffee, then immediately rest for under fifteen minutes with an alarm set. Tested only in a tiny driving-simulator study.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "200 mg caffeine + <15 min nap in a 30-min break (12 sleepy drivers)",
+      "arousal_effect": "activating",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "coffee",
+        "somewhere to rest",
+        "alarm"
+      ],
+      "cautions": [
+        "Tiny sample; avoid late afternoon/evening, caffeine-sensitive or anxious users"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "anxious",
+          "reason": "Avoid caffeine for anxious users"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Stimulant"
+        },
+        {
+          "kind": "context",
+          "id": "late_day",
+          "reason": "Avoid late afternoon or evening"
+        },
+        {
+          "kind": "condition",
+          "id": "caffeine_sensitive",
+          "reason": "Caffeine"
+        }
+      ],
+      "rule_classes": [
+        "REST"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Caffeine nap (coffee then <15 min nap)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "slow_breathing",
+      "name": "Slow paced breathing",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Breathe slowly and gently, at roughly six breaths a minute, for five minutes or more. Do not hold your breath for long or breathe fast.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "One 20-min audio session raised relaxation (Toussaint et al. 2021); HRV rises during and right after one session (Laborde et al. 2022)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "moderate risk of bias; avoid fast/hyperventilation styles",
+        "not a depression treatment",
+        "HRV change is not the same as feeling better",
+        "small heterogeneous evidence base",
+        "brief initial rise in physiological arousal",
+        "category-level effect"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "BREATHE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 10,
+        "n_source_rows": 7,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "anxious",
+          "calm",
+          "sad",
+          "stressed",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Arousal-decreasing activities (breathing, PMR, mindfulness, relaxation)",
+        "Breathwork (slow/paced breathing, mixed)",
+        "Deep / diaphragmatic breathing",
+        "Slow breathing",
+        "Slow-paced breathing (<10 breaths/min, about 6/min)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "cyclic_sighing",
+      "name": "Cyclic sighing (long exhale)",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Inhale through the nose, top up with a second short inhale, then exhale slowly through the mouth. Repeat for five minutes.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "5 min/day for 28 days (single trial)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "single trial, no inactive control",
+        "single trial"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "BREATHE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Cyclic sighing (long exhale)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "box_breathing",
+      "name": "Box breathing",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Breathe in, hold, breathe out and hold again for an equal, comfortable count. Repeat for five minutes; keep the holds short.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "5 min/day for 28 days (one trial arm; not superior to mindfulness)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "one trial arm only"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "BREATHE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Box breathing"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "progressive_muscle_relaxation",
+      "name": "Progressive muscle relaxation",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Working from feet to face, tense each muscle group for a few seconds and then release it, for about twenty minutes.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "One 20-min audio session (60 undergraduates)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "quiet place"
+      ],
+      "cautions": [
+        "older trials; abstract CI inconsistent",
+        "small sample",
+        "effects from training, not one session",
+        "category-level effect"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "BREATHE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Arousal-decreasing activities (breathing, PMR, mindfulness, relaxation)",
+        "Progressive muscle relaxation",
+        "Relaxation training (any)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "guided_imagery",
+      "name": "Guided imagery",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Close your eyes and imagine a calm, pleasant place in detail for about twenty minutes, ideally following an audio guide.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "One 20-min audio session (60 undergraduates)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "quiet place",
+        "audio guide optional"
+      ],
+      "cautions": [
+        "small sample"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MINDFUL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Guided imagery"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "time_out_counting",
+      "name": "Take a time-out and count to ten",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Step away from the situation and count slowly to ten before you respond. This is inferred from calming-activity evidence, not tested on its own.",
+      "typical_duration_min": 1,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "time-out/counting is not named in the PubMed abstract; not independently verified"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "BREATHE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "angry"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Time-out / counting to ten"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "venting",
+      "name": "Venting, hitting things or 'blowing off steam'",
+      "category": "physical",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Never suggested: venting and arousal-raising activities do not reduce anger and can increase it.",
+      "typical_duration_min": 5,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "high",
+      "preference_tags": [
+        "high-energy",
+        "physical"
+      ],
+      "requirements": [],
+      "cautions": [
+        "contraindicated for anger"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "g = -0.02 for arousal-increasing activities (Kjaervik & Bushman 2024); hitting a bag while ruminating raised anger (Bushman 2002; not in PubMed)"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Venting"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Venting"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "angry"
+        ],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Venting / hitting / intense exercise (do NOT suggest)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "mindfulness_meditation",
+      "name": "Mindfulness meditation",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Sit comfortably and rest your attention on your breathing for ten minutes, gently returning to it whenever your mind wanders. Stop if it makes you feel worse.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single session to ~2 weeks gave g = 0.21 on negative affect (0.04 after bias correction)",
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "quiet place",
+        "audio guide optional"
+      ],
+      "cautions": [
+        "category-level effect",
+        "not better than active treatments; adverse effects possible",
+        "program-level, not single session",
+        "effect may be near zero after bias correction"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "meditation_adverse_reaction",
+          "reason": "Meditation produces transient adverse effects in a minority (notes Q4)"
+        }
+      ],
+      "rule_classes": [
+        "MINDFUL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 5,
+        "emotions_with_benefit_evidence": [
+          "angry",
+          "anxious",
+          "negative_affect_general",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Arousal-decreasing activities (breathing, PMR, mindfulness, relaxation)",
+        "Brief mindfulness (single session to 2 weeks)",
+        "MBSR (incl. body scan, sitting practice)",
+        "Mindfulness meditation program"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "body_scan",
+      "name": "Body scan",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Lie or sit still and slowly move your attention through your body from toes to head. Stop if focusing on the body makes you more uneasy.",
+      "typical_duration_min": 15,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "quiet place"
+      ],
+      "cautions": [
+        "body focus can raise distress in some"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "meditation_adverse_reaction",
+          "reason": "Body focus can raise distress in some"
+        }
+      ],
+      "rule_classes": [
+        "MINDFUL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Body scan"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "loving_kindness_meditation",
+      "name": "Loving-kindness meditation",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Silently wish yourself and then other people well ('may you be happy, may you be safe') for about ten minutes.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single session to weeks (immediate effect not significant vs neutral visualisation)",
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "indoor",
+        "mindful",
+        "social",
+        "solo"
+      ],
+      "requirements": [
+        "quiet place"
+      ],
+      "cautions": [
+        "compassion-focused variants smaller",
+        "wide CI, small trials",
+        "inference only; no loneliness outcome"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MINDFUL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Kindness-based meditation",
+        "Loving-kindness meditation"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "self_compassion_exercise",
+      "name": "Self-compassion exercise",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Write or say to yourself what you would say to a good friend in the same situation. Evidence is mostly from multi-session programmes.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "mindful",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "group formats stronger than self-guided",
+        "possible publication bias",
+        "rumination estimate from few trials"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "MINDFUL",
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Self-compassion exercises"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "gratitude_list",
+      "name": "Write a short gratitude list",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Write down three to five things you are grateful for today. Effects are small and no better than other positive activities.",
+      "typical_duration_min": 5,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "paper or notes app"
+      ],
+      "cautions": [
+        "not all outcomes improved",
+        "modest; not a treatment for depression/anxiety",
+        "no advantage over other activities"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SAVOR"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 6,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "content",
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Gratitude interventions",
+        "Gratitude list",
+        "Gratitude list / letter"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "gratitude_letter",
+      "name": "Send a thank-you message",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Write a short message thanking someone for something specific and send it. People usually underestimate how good it feels to receive.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "One gratitude letter (8-10 min writing)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "creative",
+        "indoor",
+        "low-effort",
+        "social",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "someone to thank"
+      ],
+      "cautions": [
+        "may not suit severe low mood [U]",
+        "Expressers over-predict awkwardness"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SHARE",
+        "SAVOR",
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Gratitude letter",
+        "Send a gratitude message/letter"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "savoring",
+      "name": "Savour a good moment",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Pause on something good that is happening or happened today: notice the details, tell someone, or let yourself show it.",
+      "typical_duration_min": 5,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "single recent meta-analysis; larger point estimates vs passive than active controls",
+        "Cross-sectional"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SAVOR"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Savor using varied strategies (be present, tell someone, anticipate/recall, express it)",
+        "Savoring"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "positive_reminiscence",
+      "name": "Revisit a happy memory",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Spend ten minutes recalling a cherished memory in detail, with old photos or music if you like.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Brief recall task (nostalgia); 10 min twice daily for a week (reminiscence)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "photos or keepsakes optional"
+      ],
+      "cautions": [
+        "Naturally occurring daily nostalgia can co-occur with negative affect (Newman 2020, U)",
+        "Tested as consequence of boredom plus meaning outcome; not a boredom-reduction trial",
+        "Small student sample"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SAVOR"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "bored",
+          "content",
+          "lonely",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Nostalgic reflection",
+        "Nostalgic reflection (recall a cherished memory, old photos/music)",
+        "Positive reminiscence with imagery or photos/memorabilia"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "positive_psychology_exercise",
+      "name": "Positive psychology exercises (general)",
+      "category": "cognitive",
+      "suggest_mode": "reference_only",
+      "suggestable": false,
+      "instruction": "Reference only: pooled evidence across positive psychology exercises.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [],
+      "cautions": [
+        "shrinks after bias correction (White et al. 2019)",
+        "depression effect unstable in re-analysis"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Positive psychology exercises (general)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "cognitive_reappraisal",
+      "name": "Look at the situation another way",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Ask yourself: what is another way to read this situation, and what might I think about it in a month? Best when feelings are mild to moderate.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "Single instructed use (lab)",
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "less preferred at high intensity (Sheppes 2011)"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Reappraisal is a poor first choice at high emotional intensity (Sheppes et al. 2011)"
+        }
+      ],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "negative_affect_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Cognitive reappraisal (reinterpret the situation)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "perspective_taking",
+      "name": "Take a step back (self-distancing)",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Picture the situation as if you were watching it happen to someone else, or as a fly on the wall, and describe what you see.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "Single instructed use (lab)",
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "lab stimuli"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "high_intensity",
+          "reason": "Cognitive strategies are offered after attention-based ones at high intensity"
+        }
+      ],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "negative_affect_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Perspective-taking / self-distancing"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "third_person_self_talk",
+      "name": "Talk to yourself by name",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Silently coach yourself using your own name or 'you' instead of 'I' ('Sam, you have handled this before').",
+      "typical_duration_min": 3,
+      "min_effective_dose": "Seconds to 3 min (durations not stated in abstracts)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "neural/lab outcomes"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Third-person self-talk"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "affect_labeling",
+      "name": "Name the feeling",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Put a precise word on what you feel right now (for example 'tense' or 'disappointed'). If two feelings are present, name both.",
+      "typical_duration_min": 1,
+      "min_effective_dose": "Seconds per label (lab/neural evidence)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "mainly lab/neural evidence"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "negative_affect_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "citation_exists_number_not_confirmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Affect labeling (name the feeling)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "distraction_absorbing_task",
+      "name": "Do an absorbing task for a few minutes",
+      "category": "play",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Do something that fully occupies your attention for ten minutes: a puzzle, a game or a hands-on task unrelated to what is bothering you.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single use (lab)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "hands-on",
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "puzzle, game or task of your choice"
+      ],
+      "cautions": [
+        "short-term relief only",
+        "Correlational"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "negative_affect_general",
+          "stressed",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Distraction (absorbing task, puzzle, game)",
+        "Psychological detachment activity (absorbing, unrelated to demands)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "challenge_matched_game",
+      "name": "Play a challenge-matched game (e.g. Tetris)",
+      "category": "play",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Play a game such as Tetris at a level that is neither too easy nor too hard, for about ten minutes. Set a timer.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Adaptive Tetris session (about 10 min; not confirmed in abstract)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "hands-on",
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "phone or computer game"
+      ],
+      "cautions": [
+        "trauma-specific; mechanism contested",
+        "Too easy = boring; too hard = frustrating; time-box; worry itself was not reduced in the experiment"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT",
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "bored",
+          "negative_affect_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [
+          "anxious"
+        ],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Challenge-matched (adaptive difficulty) game, e.g., Tetris",
+        "Tetris (visuospatial game)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "casual_video_game",
+      "name": "Play a casual video game",
+      "category": "play",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Play a casual game for up to twenty minutes, then stop. Set a timer so it does not crowd out other things.",
+      "typical_duration_min": 20,
+      "min_effective_dose": "Single short sessions (about 20 min; not confirmed)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "phone or computer game"
+      ],
+      "cautions": [
+        "Heterogeneous designs; risk of displacement, so time-box",
+        "Reportedly industry-funded; not retrieved"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Casual / commercial video game session",
+        "Casual video game (Bejeweled/Peggle type)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "board_games",
+      "name": "Play a board game with someone",
+      "category": "play",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Play a board or card game with someone. There is little direct evidence for mood or boredom.",
+      "typical_duration_min": 45,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "hands-on",
+        "indoor",
+        "social"
+      ],
+      "requirements": [
+        "another person",
+        "a game"
+      ],
+      "cautions": [
+        "Little direct mood/boredom evidence"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SOCIAL",
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Board games with others"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "dwelling_on_feelings",
+      "name": "Sitting alone dwelling on the feeling",
+      "category": "cognitive",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Never suggested: concentrating on the feeling made negative emotion worse, and many people find sitting alone with their thoughts aversive.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [],
+      "cautions": [
+        "avoid unstructured rumination prompts",
+        "Guided mindfulness differs from unguided thinking"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "bored",
+          "reason": "Many find it aversive (Wilson et al. 2014)"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "d+ = -0.26 for concentrating on feelings (Webb et al. 2012)"
+        },
+        {
+          "kind": "emotion",
+          "id": "anxious",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "angry",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Same"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "bored",
+          "negative_affect_general"
+        ],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Dwelling on feelings alone (do NOT suggest)",
+        "Sitting alone with thoughts, no activity (to AVOID as boredom fix)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "worry_postponement",
+      "name": "Postpone worry to a set time",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Note the worry down and tell yourself you will think it through later, in one fixed 30-minute slot today.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "One 30-min window/day for about a week (not in PubMed)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "small effects, no follow-up"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Worry postponement (scheduled worry time)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "write_plan_todo",
+      "name": "Write a specific to-do list or plan",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Spend five minutes writing down everything unfinished, then note when and how you will do each item. You do not need to do them now.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "5 min writing (Scullin et al. 2018, n = 57; outcome was sleep onset)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "hands-on",
+        "indoor",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "paper or notes app"
+      ],
+      "cautions": [
+        "outcome is sleep, not felt overwhelm",
+        "Lab cognitive outcomes, not self-reported stress",
+        "No no-writing control; single night"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLAN"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 6,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "sleep_general",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "5-minute specific to-do list (brain-dump)",
+        "To-do list writing",
+        "Write a specific plan for unfinished tasks"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "if_then_plan",
+      "name": "Make an if-then plan for the first step",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Pick the smallest first step and write it as 'If it is [time/place], then I will [action]'.",
+      "typical_duration_min": 3,
+      "min_effective_dose": "One-off plan formation (outcome is goal attainment, not emotion)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "low-effort",
+        "solo",
+        "verbal"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "Outcome is behaviour, not emotion"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLAN"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "If-then plan for the first step (implementation intention)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "behavioural_activation",
+      "name": "Do one small pleasant or meaningful activity",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Choose one small thing you usually enjoy or that matters to you, schedule it, and do it for five to ten minutes even if you do not feel like it.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "hands-on",
+        "outdoor",
+        "physical",
+        "social"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "mostly therapist-guided; low study quality",
+        "figure confirmed in PubMed abstract; CI not in abstract"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Behavioural activation / pleasant activity scheduling"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "micro_break",
+      "name": "Take a micro-break",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Step away from what you are doing for up to ten minutes: stand, stretch, look out of the window or simply rest.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "<=10 min (Albulescu et al. 2022)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "little performance benefit after heavy tasks",
+        "Highly depleting work may need longer than 10 min",
+        "Performance gain not significant overall (d = 0.16)"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "REST"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 4,
+        "emotions_with_benefit_evidence": [
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Micro-break",
+        "Micro-break (10 min or less)",
+        "Micro-break (step away, stretch, relax, look away)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "laughter_exercises",
+      "name": "Laughter exercises",
+      "category": "social",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Try a laughter-yoga style session with others or a video. Evidence is from multi-session programmes at high risk of bias.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "high-energy",
+        "physical",
+        "social"
+      ],
+      "requirements": [
+        "group or video guide"
+      ],
+      "cautions": [
+        "all studies high risk of bias",
+        "Low study quality"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "citation_exists_number_not_confirmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Laughter exercises / humor",
+        "Laughter exercises / laughter-inducing activity"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md",
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "watch_comedy",
+      "name": "Watch something funny",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Watch a comedy clip or show that reliably makes you laugh.",
+      "typical_duration_min": 15,
+      "min_effective_dose": "Single session of about 9-60 min",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "screen"
+      ],
+      "cautions": [
+        "Half quasi-experimental; heterogeneous"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "DISTRACT",
+        "PLEASANT"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Watch comedy / laugh"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "warm_bath_shower",
+      "name": "Take a warm bath or shower",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Take a warm bath or shower for ten minutes or more. The evidence is for falling asleep faster when done one to two hours before bed.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "10+ min at 40-42.5 C, 1-2 h before bed (sleep-onset evidence)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "bath or shower"
+      ],
+      "cautions": [
+        "evidence is for sleep, not mood",
+        "clinical pilot; heat safety"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SENSORY",
+        "REST"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 3,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "sad",
+          "sleep_general",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Hot bath (40 C)",
+        "Warm bath or shower"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "lavender_aromatherapy",
+      "name": "Smell lavender",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "If you like the scent and have no allergy, inhale lavender oil from a tissue or diffuser for a few minutes.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "Often a single exposure (many medical settings; high heterogeneity)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "lavender oil"
+      ],
+      "cautions": [
+        "high heterogeneity and bias; allergies"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "allergy",
+          "reason": "Allergies"
+        }
+      ],
+      "rule_classes": [
+        "SENSORY"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Lavender aromatherapy (inhalation)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "l_theanine_supplement",
+      "name": "L-theanine supplement",
+      "category": "rest",
+      "suggest_mode": "reference_only",
+      "suggestable": false,
+      "instruction": "Reference only: the app should not suggest supplements. The evidence does not validate tea drinking.",
+      "typical_duration_min": 0,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [],
+      "cautions": [
+        "does not validate tea drinking; hydration evidence not found"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "L-theanine (supplement dose, not a cup of tea)"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "grounding_54321",
+      "name": "5-4-3-2-1 grounding",
+      "category": "mind-body",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Name five things you can see, four you can touch, three you can hear, two you can smell and one you can taste. This is practice-based, not evidence-based.",
+      "typical_duration_min": 3,
+      "min_effective_dose": null,
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "label as practice-based, not evidence-based"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SENSORY",
+        "MINDFUL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "unverified",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Grounding 5-4-3-2-1"
+      ],
+      "source_notes_files": [
+        "mind_body_cognitive_techniques.md"
+      ]
+    },
+    {
+      "id": "call_friend",
+      "name": "Call someone instead of texting",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Call or video-call a friend or family member for a few minutes. It usually feels less awkward than people expect; a text is fine if a call feels like too much.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Single conversation",
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "social",
+        "verbal"
+      ],
+      "requirements": [
+        "another person",
+        "phone"
+      ],
+      "cautions": [
+        "People over-predict awkwardness; offer text fallback for socially anxious users",
+        "Calls were received, not self-initiated; older/homebound sample"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "social_anxiety",
+          "reason": "Offer the text fallback"
+        }
+      ],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Receive/arrange regular empathy-focused phone calls",
+        "Voice or video call a friend/family member (instead of texting)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "send_message",
+      "name": "Send a 'thinking of you' message",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Send a short, unexpected message to someone you have not spoken to for a while. People appreciate it more than senders expect.",
+      "typical_duration_min": 2,
+      "min_effective_dose": "Single message (outcome is recipient appreciation)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "social",
+        "verbal"
+      ],
+      "requirements": [
+        "another person",
+        "phone"
+      ],
+      "cautions": [
+        "Outcome is recipient appreciation, not sender loneliness"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SOCIAL",
+        "KIND"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Send an unexpected \"thinking of you\" message"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "weak_tie_chat",
+      "name": "Have a brief friendly chat",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Exchange a few genuine words with a barista, neighbour, classmate or colleague.",
+      "typical_duration_min": 2,
+      "min_effective_dose": "About 1 minute interaction (single field experiment; not in PubMed)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "outdoor",
+        "social",
+        "verbal"
+      ],
+      "requirements": [
+        "another person nearby"
+      ],
+      "cautions": [
+        "Not for everyone: context/safety; socially anxious users may find it aversive",
+        "Single field experiment",
+        "Within-person correlational"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "social_anxiety",
+          "reason": "May be aversive for socially anxious users; context and safety matter"
+        }
+      ],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "lonely",
+          "sad"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Brief genuine chat with barista/cashier",
+        "More weak-tie interactions in the day (acquaintances, classmates)",
+        "Talk to a stranger (e.g., on commute)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "reframe_social_thoughts",
+      "name": "Question a negative social assumption",
+      "category": "cognitive",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Notice one negative assumption about how others see you ('they would not want to hear from me') and write down the evidence for and against it. Evidence is for multi-session programmes.",
+      "typical_duration_min": 5,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "indoor",
+        "mindful",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "Not a single-session dose; high heterogeneity"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "REAPPRAISE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Programme targeting negative social thoughts (cognitive reframing of social expectations)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "loneliness_programme",
+      "name": "Structured loneliness programme",
+      "category": "social",
+      "suggest_mode": "reference_only",
+      "suggestable": false,
+      "instruction": "Reference only: pooled evidence across structured loneliness interventions.",
+      "typical_duration_min": 60,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "high",
+      "preference_tags": [
+        "cognitive",
+        "social"
+      ],
+      "requirements": [],
+      "cautions": [
+        "Certainty low to very low. Full paper (10.1037/amp0001578, PMID 41129341) is Am Psychol 2026;81(1):36–52 (Epub 2025 Oct 23): 280 studies, 122 RCTs SMD = −0.50 (95% CI −0.60, −0.39)"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_fulltext",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Any structured loneliness intervention (social skills, support, contact, cognition)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "passive_scrolling",
+      "name": "Passive social media scrolling",
+      "category": "rest",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Never suggested: passive scrolling lowered affective wellbeing through envy.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [],
+      "cautions": [
+        "Outcome is affect, not loneliness; active use not harmful"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "lonely",
+          "reason": "Passive use lowered affective wellbeing (Verduyn et al. 2015)"
+        },
+        {
+          "kind": "emotion",
+          "id": "sad",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "bored",
+          "reason": "Listed to avoid in the boredom rule (R08)"
+        },
+        {
+          "kind": "emotion",
+          "id": "stressed",
+          "reason": "Listed to avoid in R04"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "lonely",
+          "sad"
+        ],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Passive social media scrolling (to AVOID)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "limit_social_media",
+      "name": "Cap social media at about 30 minutes today",
+      "category": "rest",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Set a 30-minute daily limit on social media apps. Tested over three weeks in one student sample.",
+      "typical_duration_min": 0,
+      "min_effective_dose": "About 30 min/day for 3 weeks (single student sample; not in PubMed)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "phone settings"
+      ],
+      "cautions": [
+        "Single student sample"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Limit social media to about 30 min/day"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "mastery_challenge",
+      "name": "Learn or try something slightly challenging",
+      "category": "play",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Pick something that interests you and is a little challenging but doable: a new skill, a small project, a lesson. Boredom usually means the current activity is too easy, too hard or not meaningful.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "hands-on",
+        "solo"
+      ],
+      "requirements": [
+        "a hobby or learning resource"
+      ],
+      "cautions": [
+        "Model, not an intervention trial",
+        "Correlational; mastery-specific estimate not retrieved"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "tired",
+          "reason": "Demanding challenge is avoided when tired (R07, R20)"
+        }
+      ],
+      "rule_classes": [
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "bored",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Choose an activity that is both attention-fitting and meaningful (MAC model)",
+        "Mastery activity (learn something new, small challenge)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "self_chosen_activity",
+      "name": "Do something entirely of your own choosing",
+      "category": "rest",
+      "suggest_mode": "reference_only",
+      "suggestable": false,
+      "instruction": "Reference only: having control over off-job time is associated with vigour (correlational). Supports letting the user pick.",
+      "typical_duration_min": 15,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [],
+      "cautions": [
+        "Correlational"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed",
+          "tired"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Self-chosen activity (control experience)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "drink_water",
+      "name": "Drink a glass of water",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Drink a glass of water if you have not had much today. Evidence is only that dehydration impairs thinking, not that extra water energises.",
+      "typical_duration_min": 1,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "solo"
+      ],
+      "requirements": [
+        "water"
+      ],
+      "cautions": [
+        "No verified evidence that extra water energises already-hydrated people"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Drink water (correct dehydration)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "tidy_small_area",
+      "name": "Tidy one small area",
+      "category": "physical",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Clear one small surface or corner for ten minutes. There is no intervention evidence; skip it if it feels like one more chore.",
+      "typical_duration_min": 10,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "hands-on",
+        "indoor",
+        "physical",
+        "solo"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "No intervention evidence; could add burden"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Tidy / declutter a small area"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "act_of_kindness",
+      "name": "Do a small act of kindness",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Do one small kind thing for someone today: help, a compliment, a favour.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "Varied (single act to weeks)",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "hands-on",
+        "low-effort",
+        "social"
+      ],
+      "requirements": [
+        "another person"
+      ],
+      "cautions": [
+        "Small effect",
+        "Mix of correlational and experimental",
+        "Not single-dose"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "KIND"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 7,
+        "n_source_rows": 3,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "lonely",
+          "sad",
+          "wellbeing_general"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Informal, spontaneous helping",
+        "Kind acts for socially anxious people",
+        "Perform an act of kindness"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "spend_on_others",
+      "name": "Spend a little on someone else",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "If money is not tight, buy a small treat or gift for someone else.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "One purchase for someone else",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "social"
+      ],
+      "requirements": [
+        "another person",
+        "a small amount of money"
+      ],
+      "cautions": [
+        "Recall version null in one replication; do not push spending on users in financial stress"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "financial_stress",
+          "reason": "Do not push spending on users in financial stress"
+        }
+      ],
+      "rule_classes": [
+        "KIND"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "content"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "citation_exists_number_not_confirmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Spend a small amount of money on someone else"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "volunteering",
+      "name": "Plan to volunteer",
+      "category": "social",
+      "suggest_mode": "plan_to",
+      "suggestable": true,
+      "instruction": "Look for a volunteering opportunity for the coming weeks. This is a plan-ahead suggestion, not a 5-30 minute activity.",
+      "typical_duration_min": 120,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "high",
+      "preference_tags": [
+        "hands-on",
+        "outdoor",
+        "social"
+      ],
+      "requirements": [
+        "an organisation"
+      ],
+      "cautions": [
+        "Not a 5–30 min activity; use as \"plan to\" suggestion"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "quick_mood_lift_needed",
+          "reason": "Sustained activity; trials inconclusive for mood"
+        }
+      ],
+      "rule_classes": [
+        "KIND"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 2,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Volunteering"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "share_good_news",
+      "name": "Share good news with someone",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Tell someone who is likely to be pleased for you about something good that happened.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "Single disclosures",
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "low-effort",
+        "social",
+        "verbal"
+      ],
+      "requirements": [
+        "a responsive person"
+      ],
+      "cautions": [
+        "Benefit depends on enthusiastic response; passive or negative responses backfire",
+        "Details from secondary sources"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "SHARE",
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 4,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "content",
+          "energetic",
+          "lonely"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "verified_abstract",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Share a positive experience with someone",
+        "Share good news with a responsive person (capitalization)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "dampening_positive",
+      "name": "Fault-finding or suppressing a good moment",
+      "category": "cognitive",
+      "suggest_mode": "avoid",
+      "suggestable": false,
+      "instruction": "Never suggested: dampening strategies go with lower positive affect.",
+      "typical_duration_min": 0,
+      "min_effective_dose": null,
+      "arousal_effect": "neutral",
+      "effort": "low",
+      "preference_tags": [
+        "cognitive",
+        "solo"
+      ],
+      "requirements": [],
+      "cautions": [
+        "Cross-sectional"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "emotion",
+          "id": "content",
+          "reason": "Associated with lower positive affect (Quoidbach et al. 2010; not in PubMed)"
+        },
+        {
+          "kind": "emotion",
+          "id": "calm",
+          "reason": "Same"
+        },
+        {
+          "kind": "emotion",
+          "id": "energetic",
+          "reason": "Same"
+        }
+      ],
+      "rule_classes": [],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [],
+        "emotions_with_null_or_harm_evidence": [
+          "content"
+        ],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Fault-finding, distraction, suppression during good moments (to AVOID)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "explore_while_positive",
+      "name": "Use a good mood to explore or learn",
+      "category": "play",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "While you feel good, try something new, learn something or reach out to someone.",
+      "typical_duration_min": 20,
+      "min_effective_dose": null,
+      "arousal_effect": "activating",
+      "effort": "medium",
+      "preference_tags": [
+        "cognitive",
+        "creative",
+        "social"
+      ],
+      "requirements": [
+        "none"
+      ],
+      "cautions": [
+        "Mixed replication record for broadening effect"
+      ],
+      "contraindicated_for": [],
+      "rule_classes": [
+        "CHALLENGE"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "content"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Positive-mood broadening (use good mood for exploring, learning, connecting)"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "affectionate_touch",
+      "name": "Share a hug or affectionate touch",
+      "category": "social",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Ask someone close to you for a hug, or hold hands for a while. Only with their clear consent.",
+      "typical_duration_min": 5,
+      "min_effective_dose": "Adult sessions median 20 min (mostly massage-type interventions)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "indoor",
+        "low-effort",
+        "physical",
+        "social"
+      ],
+      "requirements": [
+        "a willing partner, friend or family member"
+      ],
+      "cautions": [
+        "Mostly massage-type interventions; consent essential; not for users without a willing partner",
+        "Correlational; consent"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "context",
+          "id": "no_willing_partner",
+          "reason": "Not for users without a willing partner; consent essential"
+        }
+      ],
+      "rule_classes": [
+        "SOCIAL"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 5,
+        "n_source_rows": 2,
+        "emotions_with_benefit_evidence": [
+          "anxious",
+          "negative_affect_general",
+          "sad",
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "corrected",
+        "any_single_session_evidence": false
+      },
+      "source_activity_labels": [
+        "Affectionate touch (hug, hand-holding, massage)",
+        "Hug someone on a hard day"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    },
+    {
+      "id": "pet_animal",
+      "name": "Pet a dog or cat",
+      "category": "rest",
+      "suggest_mode": "right_now",
+      "suggestable": true,
+      "instruction": "Spend ten minutes stroking a friendly dog or cat.",
+      "typical_duration_min": 10,
+      "min_effective_dose": "10 min hands-on (not in PubMed)",
+      "arousal_effect": "calming",
+      "effort": "low",
+      "preference_tags": [
+        "hands-on",
+        "indoor",
+        "low-effort"
+      ],
+      "requirements": [
+        "access to a friendly animal"
+      ],
+      "cautions": [
+        "Requires animal access; watching/slideshow did not work as well; allergies/fear"
+      ],
+      "contraindicated_for": [
+        {
+          "kind": "condition",
+          "id": "allergy",
+          "reason": "Allergies or fear of animals"
+        }
+      ],
+      "rule_classes": [
+        "SENSORY"
+      ],
+      "evidence_summary": {
+        "n_evidence_links": 1,
+        "n_source_rows": 1,
+        "emotions_with_benefit_evidence": [
+          "stressed"
+        ],
+        "emotions_with_null_or_harm_evidence": [],
+        "best_verification_status": "not_in_pubmed",
+        "any_single_session_evidence": true
+      },
+      "source_activity_labels": [
+        "Pet a dog or cat"
+      ],
+      "source_notes_files": [
+        "social_play_and_low_arousal_states.md"
+      ]
+    }
+  ]
+}
