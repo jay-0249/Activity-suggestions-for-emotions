@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reflection.schema.json",
+  "title": "Reflective check-in: vision-model output",
+  "description": "Output of one vision-model turn. Guesses pre-fill the feeling chips only; the person's confirmed chips drive activity suggestions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["turn", "observations", "reflection", "feeling_guesses", "insufficient_signal", "question", "safety_concern"],
+  "properties": {
+    "turn": { "type": "integer", "enum": [1, 2], "description": "1 = drawing only; 2 = after the person replied in words." },
+    "observations": {
+      "type": "array",
+      "description": "Concrete things visible in the drawing (turn 1) or said by the person (turn 2).",
+      "items": { "type": "string", "maxLength": 120 },
+      "maxItems": 4
+    },
+    "written_content": {
+      "type": "array",
+      "description": "Words, letters or symbols the person wrote or drew on purpose, transcribed as seen.",
+      "items": { "type": "string", "maxLength": 60 },
+      "maxItems": 6
+    },
+    "reflection": { "type": "string", "maxLength": 400, "description": "2 or 3 warm, tentative sentences. No diagnosis, no 'you are <feeling>'." },
+    "feeling_guesses": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["feeling", "basis"],
+        "properties": {
+          "feeling": { "type": "string", "enum": ["stressed", "anxious", "angry", "restless", "sad", "lonely", "tired", "bored", "calm", "content", "energetic", "neutral"] },
+          "basis": { "type": "string", "maxLength": 120, "description": "The visible feature or the person's words this guess rests on." }
+        }
+      },
+      "description": "At most 2 on turn 1, at most 3 on turn 2. Empty when insufficient_signal is true."
+    },
+    "insufficient_signal": { "type": "boolean", "description": "True when nothing emotionally specific is visible or said. Expected for most plain scribbles." },
+    "question": { "type": "string", "maxLength": 160, "description": "One open, non-leading question inviting the person to say how they feel." },
+    "safety_concern": { "type": "boolean", "description": "True only if the person's words mention self-harm, suicide or not being able to stay safe." }
+  }
+}
