@@ -150,7 +150,7 @@ function rank(data, ids, avoid, feelingIds, input, { highIntensity, limit }) {
     const a = data.activities.get(id);
     if (!a || !a.suggestable || a.suggest_mode !== 'right_now') return;
     if (never.has(id) || avoid.has(id)) return;
-    if ((a.contraindicated_for || []).some(c => feelings.has(c))) return;
+    if ((a.contraindicated_for || []).some(c => c.kind === 'emotion' && feelings.has(c.id))) return;
     if (!ctx.otherPersonAvailable && needsPerson(a)) return;
     if (!ctx.canGoOutside && needsOutdoors(a)) return;
     let s = 1 - idx * 0.04;                       // evidence order from the dataset

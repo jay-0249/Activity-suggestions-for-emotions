@@ -105,3 +105,13 @@ test('every suggestion is a right-now activity and never on the never-suggest li
     }
   }
 });
+
+test('activities contraindicated for a confirmed feeling are never suggested', () => {
+  for (const [id, a] of data.activities) {
+    for (const c of a.contraindicated_for || []) {
+      if (c.kind !== 'emotion' || !data.recs[c.id]) continue;
+      const r = decide(data, { feelings: [{ id: c.id, level: 2 }] });
+      assert.ok(!r.suggestions.some(s => s.id === id), `${id} suggested for ${c.id}`);
+    }
+  }
+});

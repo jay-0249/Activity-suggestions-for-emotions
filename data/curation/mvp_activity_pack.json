@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "purpose": "Hand-curated app content for the MVP's five sketch classes. scripts/build_mvp_activity_pack.py joins this with data/evidence_links.json, data/activities.json and data/recommendations.json to produce data/exports/mvp_activity_pack.json.",
+    "class_to_dataset_emotions": {
+      "stress": [
+        "stressed"
+      ],
+      "anxiety": [
+        "anxious"
+      ],
+      "mental_fatigue": [
+        "tired"
+      ],
+      "calm_flow": [
+        "calm",
+        "content"
+      ],
+      "radiant_joy": [
+        "content",
+        "energetic"
+      ]
+    },
+    "fallback_aggregate_targets": {
+      "stress": [
+        "negative_affect_general"
+      ],
+      "anxiety": [
+        "negative_affect_general"
+      ],
+      "mental_fatigue": [],
+      "calm_flow": [
+        "wellbeing_general"
+      ],
+      "radiant_joy": [
+        "wellbeing_general"
+      ]
+    },
+    "interaction_types": {
+      "breath_pacer": "Animated in/out pacer with configurable inhale, exhale and optional hold seconds",
+      "guided_steps": "Sequence of short timed instruction cards",
+      "text_prompt": "One prompt with a free-text box (nothing is sent anywhere unless the user chooses)",
+      "checklist": "Prompt plus a short list the user fills in",
+      "drawing_canvas": "Canvas with an optional template (e.g. a mandala outline)",
+      "audio_player": "Plays a calm or upbeat track the user picks; timer runs alongside",
+      "timer": "Countdown with a single instruction",
+      "offscreen_card": "Suggestion to do something away from the screen, with an optional timer and a 'done' button"
+    },
+    "duration_note": "duration_seconds is the recommended in-app length. short_version_seconds (<= 90 s) fits the current MVP format but is shorter than any tested dose for most activities; evidence_dose gives what studies actually used."
+  },
+  "classes": {
+    "stress": {
+      "framing": "Ease tension",
+      "activities": [
+        {
+          "activity_id": "slow_breathing",
+          "title": "Slow breathing",
+          "subtitle": "Breathe in for 4, out for 6",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "pacer": {
+            "inhale_s": 4,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "steps": [
+            "Sit comfortably and let your shoulders drop.",
+            "Breathe in gently through your nose for 4 seconds.",
+            "Breathe out slowly for 6 seconds.",
+            "Keep it soft. No need to hold your breath."
+          ]
+        },
+        {
+          "activity_id": "progressive_muscle_relaxation",
+          "title": "Tense and release",
+          "subtitle": "Let go of tension, one area at a time",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Make fists for 5 seconds, then let go for 10.",
+            "Lift your shoulders to your ears for 5 seconds, then drop them.",
+            "Scrunch your face for 5 seconds, then relax it.",
+            "Notice the difference between tense and relaxed."
+          ]
+        },
+        {
+          "activity_id": "music_listening_calming",
+          "title": "Calm music break",
+          "subtitle": "Five minutes of music you find soothing",
+          "interaction_type": "audio_player",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a calm track you like.",
+            "Close your eyes or look somewhere soft.",
+            "Just listen until the timer ends."
+          ]
+        },
+        {
+          "activity_id": "cyclic_sighing",
+          "title": "Physiological sigh",
+          "subtitle": "Double inhale, long slow exhale",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "pacer": {
+            "inhale_s": 2,
+            "second_inhale_s": 1,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "steps": [
+            "Breathe in through your nose.",
+            "Take a second, short sip of air on top.",
+            "Breathe out slowly and fully through your mouth.",
+            "Repeat at a comfortable pace."
+          ]
+        },
+        {
+          "activity_id": "third_person_self_talk",
+          "title": "Talk to yourself like a friend",
+          "subtitle": "Use your own name to get some distance",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Think about what's stressing you.",
+            "Write two sentences about it using your name instead of 'I', e.g. 'Sam is worried because…'.",
+            "Add one sentence of advice you'd give a friend in Sam's place."
+          ]
+        },
+        {
+          "activity_id": "self_compassion_exercise",
+          "title": "Kind words to yourself",
+          "subtitle": "A short self-compassion pause",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice: 'This is a hard moment.'",
+            "Remember: 'Lots of people feel this way.'",
+            "Offer yourself one kind sentence, the way you would to a friend."
+          ]
+        },
+        {
+          "activity_id": "write_plan_todo",
+          "title": "Get it out of your head",
+          "subtitle": "List what's on your plate and the very next step",
+          "interaction_type": "checklist",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "List the things on your mind.",
+            "For one of them, write the very next small step and when you'll do it.",
+            "Let the list hold the rest for now."
+          ]
+        },
+        {
+          "activity_id": "guided_imagery",
+          "title": "Picture a calm place",
+          "subtitle": "A short guided visualisation",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Close your eyes and picture a place where you feel at ease.",
+            "Notice what you can see, hear and feel there.",
+            "Stay with it for a few slow breaths."
+          ]
+        },
+        {
+          "activity_id": "watch_comedy",
+          "title": "Something funny",
+          "subtitle": "A few minutes of comedy you enjoy",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Watch or listen to something that usually makes you laugh.",
+            "Come back and tap done when you're finished."
+          ]
+        },
+        {
+          "activity_id": "brisk_walk_10min",
+          "title": "Ten-minute walk",
+          "subtitle": "A brisk walk at your own pace",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Head outside or walk around indoors.",
+            "Pick a pace that feels brisk but comfortable.",
+            "Tap done when you're back."
+          ]
+        }
+      ]
+    },
+    "anxiety": {
+      "framing": "Settle your body, then your thoughts",
+      "activities": [
+        {
+          "activity_id": "slow_breathing",
+          "title": "Slow breathing",
+          "subtitle": "Breathe in for 4, out for 6",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "pacer": {
+            "inhale_s": 4,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "steps": [
+            "Sit comfortably and let your shoulders drop.",
+            "Breathe in gently through your nose for 4 seconds.",
+            "Breathe out slowly for 6 seconds.",
+            "Keep it soft. No need to hold your breath."
+          ]
+        },
+        {
+          "activity_id": "progressive_muscle_relaxation",
+          "title": "Tense and release",
+          "subtitle": "Let go of tension, one area at a time",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Make fists for 5 seconds, then let go for 10.",
+            "Lift your shoulders to your ears for 5 seconds, then drop them.",
+            "Scrunch your face for 5 seconds, then relax it.",
+            "Notice the difference between tense and relaxed."
+          ]
+        },
+        {
+          "activity_id": "colouring_structured",
+          "title": "Colour a mandala",
+          "subtitle": "Fill in a pattern, no skill needed",
+          "interaction_type": "drawing_canvas",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "canvas_template": "mandala",
+          "steps": [
+            "Pick any colours you like.",
+            "Fill in the shapes at your own pace.",
+            "There's no right or wrong way."
+          ]
+        },
+        {
+          "activity_id": "worry_postponement",
+          "title": "Park the worry",
+          "subtitle": "Write it down and set a time to think about it later",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Write the worry in one line.",
+            "Pick a 15-minute 'worry time' later today.",
+            "Until then, when it comes back, remind yourself it's parked."
+          ]
+        },
+        {
+          "activity_id": "self_compassion_exercise",
+          "title": "Kind words to yourself",
+          "subtitle": "A short self-compassion pause",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice: 'This is a hard moment.'",
+            "Remember: 'Lots of people feel this way.'",
+            "Offer yourself one kind sentence, the way you would to a friend."
+          ]
+        },
+        {
+          "activity_id": "third_person_self_talk",
+          "title": "Talk to yourself like a friend",
+          "subtitle": "Use your own name to get some distance",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Think about what's worrying you.",
+            "Write two sentences about it using your name instead of 'I'.",
+            "Add one sentence of advice you'd give a friend in your place."
+          ]
+        },
+        {
+          "activity_id": "write_plan_todo",
+          "title": "Next small step",
+          "subtitle": "Turn one worry into a plan",
+          "interaction_type": "checklist",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Write what you're worried might happen.",
+            "Write one small thing you can do about it, and when.",
+            "If there's nothing to do, note that too and let it rest."
+          ]
+        },
+        {
+          "activity_id": "music_listening_calming",
+          "title": "Calm music break",
+          "subtitle": "Five minutes of music you find soothing",
+          "interaction_type": "audio_player",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a calm track you like.",
+            "Close your eyes or look somewhere soft.",
+            "Just listen until the timer ends."
+          ]
+        },
+        {
+          "activity_id": "moderate_exercise",
+          "title": "Get moving",
+          "subtitle": "20 minutes of exercise you enjoy, at a comfortable pace",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 1200,
+          "short_version_seconds": null,
+          "steps": [
+            "Pick something you enjoy: a brisk walk, cycling, a home workout.",
+            "Keep the pace comfortable; you should still be able to talk.",
+            "Stop if you feel chest pain, dizziness or unusual breathlessness.",
+            "Tap done when you're back."
+          ]
+        }
+      ]
+    },
+    "mental_fatigue": {
+      "framing": "Recharge your focus",
+      "activities": [
+        {
+          "activity_id": "micro_break",
+          "title": "Proper micro-break",
+          "subtitle": "Step away from the screen for a few minutes",
+          "interaction_type": "timer",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Look away from your screen.",
+            "Stretch, get a drink or look out of a window.",
+            "Come back when the timer ends."
+          ]
+        },
+        {
+          "activity_id": "movement_breaks",
+          "title": "Stand up and move",
+          "subtitle": "A few minutes of light movement",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Stand up and roll your shoulders.",
+            "Walk around the room or march on the spot.",
+            "Reach up high, then shake out your arms."
+          ]
+        },
+        {
+          "activity_id": "brisk_walk_10min",
+          "title": "Ten-minute walk",
+          "subtitle": "A brisk walk for a lift in energy",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Head outside if you can.",
+            "Walk briskly but comfortably.",
+            "Tap done when you're back."
+          ]
+        },
+        {
+          "activity_id": "nap_short",
+          "title": "Short power nap",
+          "subtitle": "Ten minutes, set an alarm",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Find somewhere you can lie down or rest your head.",
+            "Set an alarm for 10 minutes.",
+            "Not in the late afternoon or evening if it affects your sleep."
+          ]
+        },
+        {
+          "activity_id": "nature_sitting",
+          "title": "Green view",
+          "subtitle": "Sit somewhere green, or look at trees through a window",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Find a green spot or a window with a view of trees or plants.",
+            "Let your eyes rest on it without your phone.",
+            "Tap done when you're ready."
+          ]
+        },
+        {
+          "activity_id": "daylight_exposure",
+          "title": "Get some daylight",
+          "subtitle": "Spend a few minutes in bright daylight",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 900,
+          "short_version_seconds": null,
+          "steps": [
+            "Step outside or sit by a bright window during the day.",
+            "Stay for a few minutes.",
+            "Tap done when you're back."
+          ]
+        },
+        {
+          "activity_id": "stair_walking",
+          "title": "Take the stairs",
+          "subtitle": "Ten minutes of easy stair walking",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Walk up and down a flight of stairs at a gentle pace.",
+            "Hold the rail and stop if you feel unwell.",
+            "Tap done when you're finished."
+          ]
+        },
+        {
+          "activity_id": "free_dancing",
+          "title": "Dance it out",
+          "subtitle": "One upbeat song, move however you like",
+          "interaction_type": "audio_player",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a song you like.",
+            "Move however feels good.",
+            "No one's watching."
+          ]
+        }
+      ]
+    },
+    "calm_flow": {
+      "framing": "Make the most of feeling settled",
+      "activities": [
+        {
+          "activity_id": "savoring",
+          "title": "Savour this moment",
+          "subtitle": "Notice what feels good right now",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice one thing you can see, hear or feel that you're enjoying.",
+            "Stay with it for a few breaths.",
+            "Write a word or two about it if you like."
+          ]
+        },
+        {
+          "activity_id": "nature_sitting",
+          "title": "Green view",
+          "subtitle": "Sit somewhere green for a few minutes",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Find a green spot or a window with a view of trees or plants.",
+            "Let your eyes rest on it without your phone.",
+            "Tap done when you're ready."
+          ]
+        },
+        {
+          "activity_id": "loving_kindness_meditation",
+          "title": "Kindness meditation",
+          "subtitle": "Send warm wishes to yourself and others",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Silently wish yourself: 'May I be well.'",
+            "Picture someone you care about and wish them the same.",
+            "Extend it to someone you barely know."
+          ]
+        },
+        {
+          "activity_id": "photography",
+          "title": "Three good photos",
+          "subtitle": "Photograph three things you like around you",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 300,
+          "short_version_seconds": null,
+          "steps": [
+            "Look around for things that make you smile.",
+            "Take three photos.",
+            "Look back at them later today."
+          ]
+        },
+        {
+          "activity_id": "gratitude_list",
+          "title": "Three good things",
+          "subtitle": "Note what's going well",
+          "interaction_type": "checklist",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Write three things that went well or you're glad about.",
+            "For one of them, add why it happened."
+          ]
+        },
+        {
+          "activity_id": "colouring_structured",
+          "title": "Colour a mandala",
+          "subtitle": "Keep the calm going with colour",
+          "interaction_type": "drawing_canvas",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "canvas_template": "mandala",
+          "steps": [
+            "Pick colours you like.",
+            "Fill in the shapes at your own pace."
+          ]
+        },
+        {
+          "activity_id": "awe_walk",
+          "title": "Awe walk",
+          "subtitle": "A walk looking for things that amaze you",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 900,
+          "short_version_seconds": null,
+          "steps": [
+            "Go for a short walk somewhere new or familiar.",
+            "Look for things that feel vast or surprising: sky, trees, buildings, details.",
+            "Tap done when you're back."
+          ]
+        },
+        {
+          "activity_id": "slow_breathing",
+          "title": "Slow breathing",
+          "subtitle": "Stay in the calm",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "pacer": {
+            "inhale_s": 4,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "steps": [
+            "Breathe in for 4 seconds.",
+            "Breathe out for 6 seconds.",
+            "Enjoy the stillness."
+          ]
+        }
+      ]
+    },
+    "radiant_joy": {
+      "framing": "Share it and build on it",
+      "activities": [
+        {
+          "activity_id": "savoring",
+          "title": "Savour this moment",
+          "subtitle": "Stay with the good feeling a bit longer",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice what you're enjoying right now.",
+            "Replay the best part in your mind.",
+            "Write a word or two about it if you like."
+          ]
+        },
+        {
+          "activity_id": "act_of_kindness",
+          "title": "Small kind act",
+          "subtitle": "Do one small thing for someone else",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 300,
+          "short_version_seconds": null,
+          "steps": [
+            "Pick one small kind thing: a compliment, a thank-you, a helping hand.",
+            "Do it today.",
+            "Tap done when you have."
+          ]
+        },
+        {
+          "activity_id": "share_good_news",
+          "title": "Share the good news",
+          "subtitle": "Tell someone what went well",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Think of someone who'd be happy for you.",
+            "Send a message or call to tell them what went well."
+          ]
+        },
+        {
+          "activity_id": "best_possible_self_writing",
+          "title": "Best possible future",
+          "subtitle": "Write about life going really well",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 600,
+          "short_version_seconds": 90,
+          "steps": [
+            "Imagine a future where things have gone as well as they could.",
+            "Write about what it looks like.",
+            "Keep it realistic and specific."
+          ]
+        },
+        {
+          "activity_id": "gratitude_letter",
+          "title": "Thank-you note",
+          "subtitle": "Write to someone who helped you",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Think of someone you never properly thanked.",
+            "Write them a short note about what they did and why it mattered.",
+            "Send it if you'd like to."
+          ]
+        },
+        {
+          "activity_id": "explore_while_positive",
+          "title": "Try something new",
+          "subtitle": "Use the good mood to explore",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Pick something small you've wanted to try: a new route, recipe or idea.",
+            "Give it a go for ten minutes."
+          ]
+        },
+        {
+          "activity_id": "free_dancing",
+          "title": "Dance it out",
+          "subtitle": "One upbeat song, move however you like",
+          "interaction_type": "audio_player",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a song you love.",
+            "Move however feels good."
+          ]
+        },
+        {
+          "activity_id": "everyday_creative_activity",
+          "title": "Make something",
+          "subtitle": "Draw, write or build anything for fun",
+          "interaction_type": "drawing_canvas",
+          "duration_seconds": 600,
+          "short_version_seconds": 90,
+          "canvas_template": "blank",
+          "steps": [
+            "Make anything you like: a doodle, a short poem, a little design.",
+            "Play, don't judge."
+          ]
+        }
+      ]
+    }
+  },
+  "existing_mvp_activity_notes": [
+    {
+      "existing": "4-7-8 breath orb",
+      "finding": "No evidence for the 4-7-8 pattern itself was found in this research. The nearest evidence is for slow breathing at about 6 breaths a minute and for cyclic sighing (Balban et al. 2023; Fincham et al. 2023). The dataset's breathing guidance avoids long breath holds and fast breathing; no peer-reviewed source on breath-hold cautions was retrieved.",
+      "suggestion": "Keep the orb but offer a no-hold preset (in 4 s, out 6 s), or label 4-7-8 as a variation without its own evidence."
+    },
+    {
+      "existing": "pendulum pacer",
+      "finding": "Not reviewed: the research did not cover pendulum or bilateral-tracking exercises.",
+      "suggestion": "Treat as unsupported until a source is found; do not add a citation for it."
+    }
+  ]
+}

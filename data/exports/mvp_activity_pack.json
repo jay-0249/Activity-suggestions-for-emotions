@@ -1,0 +1,3169 @@
+{
+  "meta": {
+    "title": "MVP activity pack: evidence-backed activities for the five sketch classes",
+    "generated_by": "scripts/build_mvp_activity_pack.py",
+    "sources": [
+      "data/curation/mvp_activity_pack.json",
+      "data/evidence_links.json",
+      "data/activities.json",
+      "data/recommendations.json",
+      "data/safety.json"
+    ],
+    "classes": [
+      "stress",
+      "anxiety",
+      "mental_fatigue",
+      "calm_flow",
+      "radiant_joy"
+    ],
+    "class_to_dataset_emotions": {
+      "stress": [
+        "stressed"
+      ],
+      "anxiety": [
+        "anxious"
+      ],
+      "mental_fatigue": [
+        "tired"
+      ],
+      "calm_flow": [
+        "calm",
+        "content"
+      ],
+      "radiant_joy": [
+        "content",
+        "energetic"
+      ]
+    },
+    "counts": {
+      "class_activity_rows": 43,
+      "unique_activities": 31
+    },
+    "how_to_use": [
+      "Each class lists activities in recommended order; the first three (default_three) are the suggested replacement for the current fixed list.",
+      "Show title, subtitle and duration; render steps with the given interaction_type; show citations[0].citation_short behind a 'Why this?' link.",
+      "Do not suggest any activity whose contraindicated_classes contains the sketch's class (none do in this pack) or any id in never_suggest_activity_ids.",
+      "Citations are copied from the research dataset. verification_status says how far each was checked: verified_fulltext/verified_abstract/corrected were confirmed against PubMed; others were not."
+    ],
+    "evidence_grade_definition": "A = at least one meta-analysis, systematic review or RCT confirmed against PubMed; B = other confirmed evidence, or an unconfirmed meta-analysis/RCT; C = preliminary, unconfirmed or indirect only.",
+    "important_caveats": [
+      "Most tested doses are 5-30 minutes. The 60-90 second MVP format is shorter than any tested dose for most activities; treat short versions as tasters.",
+      "calm_flow and radiant_joy are positive states: the activities help savour or share them, not fix anything. Make them optional.",
+      "The sketch scores are not a validated measure of emotion. Use these activities as suggestions the person can decline.",
+      "Not medical advice. Crisis and blocked results must still skip activities."
+    ],
+    "interaction_types": {
+      "breath_pacer": "Animated in/out pacer with configurable inhale, exhale and optional hold seconds",
+      "guided_steps": "Sequence of short timed instruction cards",
+      "text_prompt": "One prompt with a free-text box (nothing is sent anywhere unless the user chooses)",
+      "checklist": "Prompt plus a short list the user fills in",
+      "drawing_canvas": "Canvas with an optional template (e.g. a mandala outline)",
+      "audio_player": "Plays a calm or upbeat track the user picks; timer runs alongside",
+      "timer": "Countdown with a single instruction",
+      "offscreen_card": "Suggestion to do something away from the screen, with an optional timer and a 'done' button"
+    },
+    "duration_note": "duration_seconds is the recommended in-app length. short_version_seconds (<= 90 s) fits the current MVP format but is shorter than any tested dose for most activities; evidence_dose gives what studies actually used."
+  },
+  "never_suggest_activity_ids": [
+    "acquire_pet",
+    "cold_water_immersion",
+    "dampening_positive",
+    "drawing_to_vent",
+    "dwelling_on_feelings",
+    "passive_scrolling",
+    "sad_music_listening",
+    "venting",
+    "vigorous_exercise"
+  ],
+  "existing_mvp_activity_notes": [
+    {
+      "existing": "4-7-8 breath orb",
+      "finding": "No evidence for the 4-7-8 pattern itself was found in this research. The nearest evidence is for slow breathing at about 6 breaths a minute and for cyclic sighing (Balban et al. 2023; Fincham et al. 2023). The dataset's breathing guidance avoids long breath holds and fast breathing; no peer-reviewed source on breath-hold cautions was retrieved.",
+      "suggestion": "Keep the orb but offer a no-hold preset (in 4 s, out 6 s), or label 4-7-8 as a variation without its own evidence."
+    },
+    {
+      "existing": "pendulum pacer",
+      "finding": "Not reviewed: the research did not cover pendulum or bilateral-tracking exercises.",
+      "suggestion": "Treat as unsupported until a source is found; do not add a citation for it."
+    }
+  ],
+  "classes": {
+    "stress": {
+      "framing": "Ease tension",
+      "dataset_emotions": [
+        "stressed"
+      ],
+      "activities": [
+        {
+          "id": "slow_breathing",
+          "class": "stress",
+          "rank_in_class": 1,
+          "default_three": true,
+          "title": "Slow breathing",
+          "subtitle": "Breathe in for 4, out for 6",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Sit comfortably and let your shoulders drop.",
+            "Breathe in gently through your nose for 4 seconds.",
+            "Breathe out slowly for 6 seconds.",
+            "Keep it soft. No need to hold your breath."
+          ],
+          "pacer": {
+            "inhale_s": 4,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.485,
+            "evidence_dose": "One 20-min audio session raised relaxation (Toussaint et al. 2021); HRV rises during and right after one session (Laborde et al. 2022)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Fincham et al., 2023, Scientific Reports",
+                "citation_short": "Fincham et al., 2023",
+                "doi": "10.1038/s41598-022-27247-y",
+                "pmid": "36624160",
+                "url": "https://doi.org/10.1038/s41598-022-27247-y",
+                "verification_status": "corrected",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "stress",
+                "effect_size": "g = -0.35 (CI -0.55, -0.14), k=12, N=785 [P]",
+                "dose_tested": "varied, multi-session",
+                "population": "adults, mostly non-clinical",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC001_slow_breathing_stressed"
+              },
+              {
+                "citation": "Toussaint et al., 2021, Evid-Based Complement Altern Med",
+                "citation_short": "Toussaint et al., 2021",
+                "doi": "10.1155/2021/5924040",
+                "pmid": "34306146",
+                "url": "https://doi.org/10.1155/2021/5924040",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "tension (low relaxation)",
+                "effect_size": "significant vs control [P]; four-group difference in relaxation change F = 2.81, p = .048, eta2 = .14 [F]",
+                "dose_tested": "one 20-min audio session",
+                "population": "60 healthy undergraduates",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC009_slow_breathing_stressed"
+              },
+              {
+                "citation": "Laborde et al., 2022, Neuroscience & Biobehavioral Reviews",
+                "citation_short": "Laborde et al., 2022",
+                "doi": "10.1016/j.neubiorev.2022.104711",
+                "pmid": "35623448",
+                "url": "https://doi.org/10.1016/j.neubiorev.2022.104711",
+                "verification_status": "citation_exists_number_not_confirmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "physiological arousal (HRV)",
+                "effect_size": "positive during, right after one session, and after training [P]; pooled values not in abstract, no PMC full text",
+                "dose_tested": "single session and multi-session",
+                "population": "mixed adults, 223 studies",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC007_slow_breathing_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety",
+            "mental_fatigue",
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "moderate risk of bias; avoid fast/hyperventilation styles",
+            "not a depression treatment",
+            "HRV change is not the same as feeling better"
+          ]
+        },
+        {
+          "id": "progressive_muscle_relaxation",
+          "class": "stress",
+          "rank_in_class": 2,
+          "default_three": true,
+          "title": "Tense and release",
+          "subtitle": "Let go of tension, one area at a time",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Make fists for 5 seconds, then let go for 10.",
+            "Lift your shoulders to your ears for 5 seconds, then drop them.",
+            "Scrunch your face for 5 seconds, then relax it.",
+            "Notice the difference between tense and relaxed."
+          ],
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "quiet place"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.56,
+            "evidence_dose": "One 20-min audio session (60 undergraduates)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Toussaint et al., 2021, Evid-Based Complement Altern Med",
+                "citation_short": "Toussaint et al., 2021",
+                "doi": "10.1155/2021/5924040",
+                "pmid": "34306146",
+                "url": "https://doi.org/10.1155/2021/5924040",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "moderate",
+                "outcome_measured": "stress / physiological arousal",
+                "effect_size": "significant vs control [P]; four-group difference in relaxation change F = 2.81, p = .048, eta2 = .14 [F]",
+                "dose_tested": "one 20-min audio session",
+                "population": "60 healthy undergraduates",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC011_progressive_muscle_relaxation_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "older trials; abstract CI inconsistent",
+            "small sample",
+            "effects from training, not one session"
+          ]
+        },
+        {
+          "id": "music_listening_calming",
+          "class": "stress",
+          "rank_in_class": 3,
+          "default_three": true,
+          "title": "Calm music break",
+          "subtitle": "Five minutes of music you find soothing",
+          "interaction_type": "audio_player",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a calm track you like.",
+            "Close your eyes or look somewhere soft.",
+            "Just listen until the timer ends."
+          ],
+          "category": "creative",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "musical",
+            "solo"
+          ],
+          "requirements": [
+            "headphones or speaker"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.816,
+            "evidence_dose": "Single listening session (minutes not stated in the meta-analysis abstract; ~20-30 min unconfirmed)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "de Witte, Spruit, van Hooren, Moonen & Stams, 2020, Health Psychology Review",
+                "citation_short": "de Witte et al., 2020",
+                "doi": "10.1080/17437199.2019.1627897",
+                "pmid": "31167611",
+                "url": "https://doi.org/10.1080/17437199.2019.1627897",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "stress (psychological)",
+                "effect_size": "d = 0.545",
+                "dose_tested": "single or repeated sessions (typical minutes not stated in abstract; ~20–30 min unconfirmed)",
+                "population": "104 RCTs, 327 effect sizes, 9,617 participants; many medical settings",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE001_music_listening_calming_stressed"
+              },
+              {
+                "citation": "Linnemann, Ditzen, Strahler, Doerr & Nater, 2015, Psychoneuroendocrinology",
+                "citation_short": "Linnemann et al., 2015",
+                "doi": "10.1016/j.psyneuen.2015.06.008",
+                "pmid": "26142566",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/26142566/",
+                "verification_status": "citation_exists_number_not_confirmed",
+                "evidence_level": "observational",
+                "evidence_strength": "moderate",
+                "outcome_measured": "stress, cortisol",
+                "effect_size": "n.r. (subjective stress p = .010; when reason = relaxation, subjective stress and cortisol both p ≤ .001)",
+                "dose_tested": "everyday listening, EMA 4×/day over two 5-day weeks (term and exam)",
+                "population": "55 healthy university students; cortisol subsample n = 25",
+                "single_session_evidence": "false",
+                "source_link_id": "CRE005_music_listening_calming_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety",
+            "mental_fatigue"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Many trials in patients, not everyday stress",
+            "Non-clinical meta-analysis found physiological effect n.s. (Panteleeva 2018)",
+            "Larger than non-clinical-only estimate"
+          ]
+        },
+        {
+          "id": "cyclic_sighing",
+          "class": "stress",
+          "rank_in_class": 4,
+          "default_three": false,
+          "title": "Physiological sigh",
+          "subtitle": "Double inhale, long slow exhale",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Breathe in through your nose.",
+            "Take a second, short sip of air on top.",
+            "Breathe out slowly and fully through your mouth.",
+            "Repeat at a comfortable pace."
+          ],
+          "pacer": {
+            "inhale_s": 2,
+            "second_inhale_s": 1,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.096,
+            "evidence_dose": "5 min/day for 28 days (single trial)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Balban et al., 2023, Cell Reports Medicine",
+                "citation_short": "Balban et al., 2023",
+                "doi": "10.1016/j.xcrm.2022.100895",
+                "pmid": "36630953",
+                "url": "https://doi.org/10.1016/j.xcrm.2022.100895",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "physiological arousal",
+                "effect_size": "greater reduction than mindfulness (p < 0.05); no HR/HRV difference [F]",
+                "dose_tested": "5 min/day, 28 days",
+                "population": "108 healthy adults",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC005_cyclic_sighing_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "single trial, no inactive control",
+            "single trial"
+          ]
+        },
+        {
+          "id": "third_person_self_talk",
+          "class": "stress",
+          "rank_in_class": 5,
+          "default_three": false,
+          "title": "Talk to yourself like a friend",
+          "subtitle": "Use your own name to get some distance",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Think about what's stressing you.",
+            "Write two sentences about it using your name instead of 'I', e.g. 'Sam is worried because…'.",
+            "Add one sentence of advice you'd give a friend in Sam's place."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "low-effort",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.228,
+            "evidence_dose": "Seconds to 3 min (durations not stated in abstracts)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 3 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Kross et al., 2014, J Pers Soc Psychol; Moser et al., 2017, Scientific Reports",
+                "citation_short": "Kross et al., 2014",
+                "doi": "10.1037/a0035173",
+                "pmid": "24467424",
+                "url": "https://doi.org/10.1037/a0035173 ; https://doi.org/10.1038/s41598-017-04047-3",
+                "verification_status": "corrected",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "anxiety / social stress (anger not mentioned in either abstract)",
+                "effect_size": "direction confirmed [P]; ES not in abstracts",
+                "dose_tested": "seconds to 3 min (not stated in abstracts)",
+                "population": "7 studies, total N=585 (Kross); ERP and fMRI samples (Moser)",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC038_third_person_self_talk_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "neural/lab outcomes"
+          ]
+        },
+        {
+          "id": "self_compassion_exercise",
+          "class": "stress",
+          "rank_in_class": 6,
+          "default_three": false,
+          "title": "Kind words to yourself",
+          "subtitle": "A short self-compassion pause",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice: 'This is a hard moment.'",
+            "Remember: 'Lots of people feel this way.'",
+            "Offer yourself one kind sentence, the way you would to a friend."
+          ],
+          "category": "cognitive",
+          "effort": "medium",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "cognitive",
+            "indoor",
+            "mindful",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.25,
+            "evidence_dose": null,
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 10 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Ferrari et al., 2019, Mindfulness",
+                "citation_short": "Ferrari et al., 2019",
+                "doi": "10.1007/s12671-019-01134-6 (not from PubMed)",
+                "pmid": null,
+                "url": "https://doi.org/10.1007/s12671-019-01134-6",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "stress",
+                "effect_size": "g = 0.67 [A; not in PubMed, not re-verified]",
+                "dose_tested": "mostly multi-session",
+                "population": "27 RCTs",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC025_self_compassion_exercise_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "group formats stronger than self-guided",
+            "possible publication bias",
+            "rumination estimate from few trials"
+          ]
+        },
+        {
+          "id": "write_plan_todo",
+          "class": "stress",
+          "rank_in_class": 7,
+          "default_three": false,
+          "title": "Get it out of your head",
+          "subtitle": "List what's on your plate and the very next step",
+          "interaction_type": "checklist",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "List the things on your mind.",
+            "For one of them, write the very next small step and when you'll do it.",
+            "Let the list hold the rest for now."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "hands-on",
+            "indoor",
+            "low-effort",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [
+            "paper or notes app"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.36,
+            "evidence_dose": "5 min writing (Scullin et al. 2018, n = 57; outcome was sleep onset)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Scullin et al., 2018, JEP: General (PubMed/PMC full-text-verified, PMID 29058942; PMC5758411)",
+                "citation_short": "Scullin et al., 2018",
+                "doi": "10.1037/xge0000374",
+                "pmid": "29058942",
+                "url": "https://doi.org/10.1037/xge0000374",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "moderate",
+                "outcome_measured": "overwhelm / racing mind at bedtime",
+                "effect_size": "about 9.3 min faster sleep onset (15.8 vs 25.1 min); d = 0.63",
+                "dose_tested": "5 min writing",
+                "population": "healthy adults 18–30 (N=57)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC031_write_plan_todo_stressed"
+              },
+              {
+                "citation": "Masicampo & Baumeister, 2011, JPSP (PubMed abstract-verified, PMID 21688924)",
+                "citation_short": "Masicampo & Baumeister, 2011",
+                "doi": "10.1037/a0024192",
+                "pmid": "21688924",
+                "url": "https://doi.org/10.1037/a0024192",
+                "verification_status": "verified_abstract",
+                "evidence_level": "experiment",
+                "evidence_strength": "moderate",
+                "outcome_measured": "overwhelm (intrusive task thoughts)",
+                "effect_size": "n.r.",
+                "dose_tested": "a few minutes of plan-making",
+                "population": "lab participants, several studies (US undergraduates not stated in abstract)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC030_write_plan_todo_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "outcome is sleep, not felt overwhelm",
+            "Lab cognitive outcomes, not self-reported stress",
+            "No no-writing control; single night"
+          ]
+        },
+        {
+          "id": "guided_imagery",
+          "class": "stress",
+          "rank_in_class": 8,
+          "default_three": false,
+          "title": "Picture a calm place",
+          "subtitle": "A short guided visualisation",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Close your eyes and picture a place where you feel at ease.",
+            "Notice what you can see, hear and feel there.",
+            "Stay with it for a few slow breaths."
+          ],
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "creative",
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [
+            "quiet place",
+            "audio guide optional"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.32,
+            "evidence_dose": "One 20-min audio session (60 undergraduates)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Toussaint et al., 2021, Evid-Based Complement Altern Med",
+                "citation_short": "Toussaint et al., 2021",
+                "doi": "10.1155/2021/5924040",
+                "pmid": "34306146",
+                "url": "https://doi.org/10.1155/2021/5924040",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "stress / physiological arousal",
+                "effect_size": "significant vs control [P]; four-group difference in relaxation change F = 2.81, p = .048, eta2 = .14 [F]",
+                "dose_tested": "one 20-min audio session",
+                "population": "60 healthy undergraduates",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC012_guided_imagery_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "small sample"
+          ]
+        },
+        {
+          "id": "watch_comedy",
+          "class": "stress",
+          "rank_in_class": 9,
+          "default_three": false,
+          "title": "Something funny",
+          "subtitle": "A few minutes of comedy you enjoy",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Watch or listen to something that usually makes you laugh.",
+            "Come back and tap done when you're finished."
+          ],
+          "category": "rest",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "solo"
+          ],
+          "requirements": [
+            "screen"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.7,
+            "evidence_dose": "Single session of about 9-60 min",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Kramer & Leitao, 2023, PLoS ONE (PubMed/PMC full-text-verified, PMID 37220157; PMC10204943)",
+                "citation_short": "Kramer & Leitao, 2023",
+                "doi": "10.1371/journal.pone.0286260",
+                "pmid": "37220157",
+                "url": "https://doi.org/10.1371/journal.pone.0286260",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "stress",
+                "effect_size": "−31.9% cortisol (95% CI −47.7 to −16.3); single session −36.7% (95% CI −52.5 to −20.8); RCTs only −37.2%",
+                "dose_tested": "single session about 9–60 min",
+                "population": "adults, mean age 38.6, 8 studies n=315",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC053_watch_comedy_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Half quasi-experimental; heterogeneous"
+          ]
+        },
+        {
+          "id": "brisk_walk_10min",
+          "class": "stress",
+          "rank_in_class": 10,
+          "default_three": false,
+          "title": "Ten-minute walk",
+          "subtitle": "A brisk walk at your own pace",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Head outside or walk around indoors.",
+            "Pick a pace that feels brisk but comfortable.",
+            "Tap done when you're back."
+          ],
+          "category": "physical",
+          "effort": "low",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "low-effort",
+            "outdoor",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "somewhere to walk"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.399,
+            "evidence_dose": "10 min (Thayer 1987, n = 18; energy up and tension down for up to 2 h)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Thayer, 1987, J Pers Soc Psychol",
+                "citation_short": "Thayer, 1987",
+                "doi": "10.1037//0022-3514.52.1.119",
+                "pmid": "3820066",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/3820066/",
+                "verification_status": "verified_abstract",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "stress / tension",
+                "effect_size": "significant; no ES in abstract",
+                "dose_tested": "10 min brisk walk",
+                "population": "18 volunteers",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY005_brisk_walk_10min_stressed"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "mental_fatigue",
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "small sample",
+            "benefit may fade within ~10 min of stopping",
+            "Older single-lab study; exercise covered in depth by other researcher"
+          ]
+        }
+      ]
+    },
+    "anxiety": {
+      "framing": "Settle your body, then your thoughts",
+      "dataset_emotions": [
+        "anxious"
+      ],
+      "activities": [
+        {
+          "id": "slow_breathing",
+          "class": "anxiety",
+          "rank_in_class": 1,
+          "default_three": true,
+          "title": "Slow breathing",
+          "subtitle": "Breathe in for 4, out for 6",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Sit comfortably and let your shoulders drop.",
+            "Breathe in gently through your nose for 4 seconds.",
+            "Breathe out slowly for 6 seconds.",
+            "Keep it soft. No need to hold your breath."
+          ],
+          "pacer": {
+            "inhale_s": 4,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.556,
+            "evidence_dose": "One 20-min audio session raised relaxation (Toussaint et al. 2021); HRV rises during and right after one session (Laborde et al. 2022)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Fincham et al., 2023, Scientific Reports",
+                "citation_short": "Fincham et al., 2023",
+                "doi": "10.1038/s41598-022-27247-y",
+                "pmid": "36624160",
+                "url": "https://doi.org/10.1038/s41598-022-27247-y",
+                "verification_status": "corrected",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "anxiety",
+                "effect_size": "g = -0.32, k=20 [P]",
+                "dose_tested": "varied",
+                "population": "adults",
+                "single_session_evidence": "unknown",
+                "source_link_id": "MBC002_slow_breathing_anxious"
+              },
+              {
+                "citation": "Zaccaro et al., 2018, Frontiers in Human Neuroscience",
+                "citation_short": "Zaccaro et al., 2018",
+                "doi": "10.3389/fnhum.2018.00353",
+                "pmid": "30245619",
+                "url": "https://doi.org/10.3389/fnhum.2018.00353",
+                "verification_status": "verified_abstract",
+                "evidence_level": "systematic_review",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "anxiety, anger, low vigor",
+                "effect_size": "qualitative, no pooled ES",
+                "dose_tested": "varied",
+                "population": "healthy adults, 15 studies",
+                "single_session_evidence": "unknown",
+                "source_link_id": "MBC008_slow_breathing_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "mental_fatigue",
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "moderate risk of bias; avoid fast/hyperventilation styles",
+            "not a depression treatment",
+            "HRV change is not the same as feeling better"
+          ]
+        },
+        {
+          "id": "progressive_muscle_relaxation",
+          "class": "anxiety",
+          "rank_in_class": 2,
+          "default_three": true,
+          "title": "Tense and release",
+          "subtitle": "Let go of tension, one area at a time",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Make fists for 5 seconds, then let go for 10.",
+            "Lift your shoulders to your ears for 5 seconds, then drop them.",
+            "Scrunch your face for 5 seconds, then relax it.",
+            "Notice the difference between tense and relaxed."
+          ],
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "quiet place"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.5,
+            "evidence_dose": "One 20-min audio session (60 undergraduates)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Manzoni et al., 2008, BMC Psychiatry",
+                "citation_short": "Manzoni et al., 2008",
+                "doi": "10.1186/1471-244X-8-41",
+                "pmid": "18518981",
+                "url": "https://doi.org/10.1186/1471-244X-8-41",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "anxiety",
+                "effect_size": "progressive relaxation d = 0.82 within-group, 0.55 between-group [F]; relaxation overall d = 0.51 between [P]",
+                "dose_tested": "multi-session training",
+                "population": "mixed clinical and non-clinical",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC010_progressive_muscle_relaxation_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "older trials; abstract CI inconsistent",
+            "small sample",
+            "effects from training, not one session"
+          ]
+        },
+        {
+          "id": "colouring_structured",
+          "class": "anxiety",
+          "rank_in_class": 3,
+          "default_three": true,
+          "title": "Colour a mandala",
+          "subtitle": "Fill in a pattern, no skill needed",
+          "interaction_type": "drawing_canvas",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick any colours you like.",
+            "Fill in the shapes at your own pace.",
+            "There's no right or wrong way."
+          ],
+          "canvas_template": "mandala",
+          "category": "creative",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "creative",
+            "hands-on",
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [
+            "colouring page and pens (or a colouring app)"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.377,
+            "evidence_dose": "Single session (~20 min, unverified)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Mantzios & Giannou, 2018, Frontiers in Psychology",
+                "citation_short": "Mantzios & Giannou, 2018",
+                "doi": "10.3389/fpsyg.2018.00056",
+                "pmid": "29441038",
+                "url": "https://doi.org/10.3389/fpsyg.2018.00056",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "anxiety",
+                "effect_size": "Exp. 2 Time × Group interaction on state anxiety: F(1,70) = 9.82, p = .003, partial η² = 0.13",
+                "dose_tested": "single session",
+                "population": "72 university students (Exp. 2); Exp. 1 n = 88",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE024_colouring_structured_anxious"
+              },
+              {
+                "citation": "Eaton & Tieber, 2017, Art Therapy",
+                "citation_short": "Eaton & Tieber, 2017",
+                "doi": "10.1080/07421656.2016.1277113",
+                "pmid": null,
+                "url": "https://doi.org/10.1080/07421656.2016.1277113",
+                "verification_status": "corrected",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "anxiety",
+                "effect_size": "n.r.",
+                "dose_tested": "single session",
+                "population": "undergraduates",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE026_colouring_structured_anxious"
+              },
+              {
+                "citation": "Holt, Furbert & Sweetingham, 2019, Art Therapy",
+                "citation_short": "Holt et al., 2019",
+                "doi": "10.1080/07421656.2019.1645498",
+                "pmid": null,
+                "url": "https://doi.org/10.1080/07421656.2019.1645498",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "rct",
+                "evidence_strength": "moderate",
+                "outcome_measured": "anxiety",
+                "effect_size": "n.r.",
+                "dose_tested": "single session (~20 min, unverified), crossover",
+                "population": "UK adults/students, two studies",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE022_colouring_structured_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Blank-page free colouring less effective",
+            "Small n; replication",
+            "Exp. 1 (n = 88): unguided colouring no better than free drawing; some participants disliked the guiding voice"
+          ]
+        },
+        {
+          "id": "worry_postponement",
+          "class": "anxiety",
+          "rank_in_class": 4,
+          "default_three": false,
+          "title": "Park the worry",
+          "subtitle": "Write it down and set a time to think about it later",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Write the worry in one line.",
+            "Pick a 15-minute 'worry time' later today.",
+            "Until then, when it comes back, remind yourself it's parked."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.175,
+            "evidence_dose": "One 30-min window/day for about a week (not in PubMed)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Dippel, Brosschot & Verkuil, c. 2023-24 (journal unconfirmed)",
+                "citation_short": "Dippel et al., 2023",
+                "doi": null,
+                "pmid": null,
+                "url": "https://scholarlypublications.universiteitleiden.nl/access/item%3A4105123/download",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "worry / rumination",
+                "effect_size": "d = 0.31 duration, 0.19 frequency [A; not in PubMed, not re-verified]",
+                "dose_tested": "one 30-min window/day, about 1 week",
+                "population": "7 RCTs, N=999, non-clinical",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC043_worry_postponement_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "small effects, no follow-up"
+          ]
+        },
+        {
+          "id": "self_compassion_exercise",
+          "class": "anxiety",
+          "rank_in_class": 5,
+          "default_three": false,
+          "title": "Kind words to yourself",
+          "subtitle": "A short self-compassion pause",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice: 'This is a hard moment.'",
+            "Remember: 'Lots of people feel this way.'",
+            "Offer yourself one kind sentence, the way you would to a friend."
+          ],
+          "category": "cognitive",
+          "effort": "medium",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "cognitive",
+            "indoor",
+            "mindful",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.25,
+            "evidence_dose": null,
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 10 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Ferrari et al., 2019, Mindfulness",
+                "citation_short": "Ferrari et al., 2019",
+                "doi": "10.1007/s12671-019-01134-6 (not from PubMed)",
+                "pmid": null,
+                "url": "https://doi.org/10.1007/s12671-019-01134-6",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "anxiety",
+                "effect_size": "g = 0.57 [A; not in PubMed, not re-verified]",
+                "dose_tested": "mostly multi-session",
+                "population": "27 RCTs",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC027_self_compassion_exercise_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "group formats stronger than self-guided",
+            "possible publication bias",
+            "rumination estimate from few trials"
+          ]
+        },
+        {
+          "id": "third_person_self_talk",
+          "class": "anxiety",
+          "rank_in_class": 6,
+          "default_three": false,
+          "title": "Talk to yourself like a friend",
+          "subtitle": "Use your own name to get some distance",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Think about what's worrying you.",
+            "Write two sentences about it using your name instead of 'I'.",
+            "Add one sentence of advice you'd give a friend in your place."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "low-effort",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.228,
+            "evidence_dose": "Seconds to 3 min (durations not stated in abstracts)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 3 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Kross et al., 2014, J Pers Soc Psychol; Moser et al., 2017, Scientific Reports",
+                "citation_short": "Kross et al., 2014",
+                "doi": "10.1037/a0035173",
+                "pmid": "24467424",
+                "url": "https://doi.org/10.1037/a0035173 ; https://doi.org/10.1038/s41598-017-04047-3",
+                "verification_status": "corrected",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "anxiety / social stress (anger not mentioned in either abstract)",
+                "effect_size": "direction confirmed [P]; ES not in abstracts",
+                "dose_tested": "seconds to 3 min (not stated in abstracts)",
+                "population": "7 studies, total N=585 (Kross); ERP and fMRI samples (Moser)",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC038_third_person_self_talk_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "neural/lab outcomes"
+          ]
+        },
+        {
+          "id": "write_plan_todo",
+          "class": "anxiety",
+          "rank_in_class": 7,
+          "default_three": false,
+          "title": "Next small step",
+          "subtitle": "Turn one worry into a plan",
+          "interaction_type": "checklist",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Write what you're worried might happen.",
+            "Write one small thing you can do about it, and when.",
+            "If there's nothing to do, note that too and let it rest."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "hands-on",
+            "indoor",
+            "low-effort",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [
+            "paper or notes app"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.144,
+            "evidence_dose": "5 min writing (Scullin et al. 2018, n = 57; outcome was sleep onset)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Scullin et al., 2018, J Exp Psychol: General",
+                "citation_short": "Scullin et al., 2018",
+                "doi": "10.1037/xge0000374",
+                "pmid": "29058942",
+                "url": "https://doi.org/10.1037/xge0000374",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "overwhelm / bedtime worry (sleep onset)",
+                "effect_size": "sleep onset latency 15.8 min (to-do list) vs 25.1 min (completed list), about 9.3 min faster, d = 0.63, p = .02 [F]",
+                "dose_tested": "5 min writing",
+                "population": "57 healthy young adults aged 18-30",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC044_write_plan_todo_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "outcome is sleep, not felt overwhelm",
+            "Lab cognitive outcomes, not self-reported stress",
+            "No no-writing control; single night"
+          ]
+        },
+        {
+          "id": "music_listening_calming",
+          "class": "anxiety",
+          "rank_in_class": 8,
+          "default_three": false,
+          "title": "Calm music break",
+          "subtitle": "Five minutes of music you find soothing",
+          "interaction_type": "audio_player",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a calm track you like.",
+            "Close your eyes or look somewhere soft.",
+            "Just listen until the timer ends."
+          ],
+          "category": "creative",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "musical",
+            "solo"
+          ],
+          "requirements": [
+            "headphones or speaker"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.535,
+            "evidence_dose": "Single listening session (minutes not stated in the meta-analysis abstract; ~20-30 min unconfirmed)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Harney, Johnson, Bailes & Havelka, 2023, Musicae Scientiae",
+                "citation_short": "Harney et al., 2023",
+                "doi": "10.1177/10298649211046979",
+                "pmid": null,
+                "url": "https://eprints.whiterose.ac.uk/id/eprint/182421/",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "anxiety (state)",
+                "effect_size": "d = −0.77",
+                "dose_tested": "single listening sessions",
+                "population": "21 controlled studies, mixed groups",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE003_music_listening_calming_anxious"
+              },
+              {
+                "citation": "Panteleeva, Ceschi, Glowinski, Courvoisier & Grandjean, 2018, Psychology of Music",
+                "citation_short": "Panteleeva et al., 2018",
+                "doi": "10.1177/0305735617712424",
+                "pmid": null,
+                "url": "https://archive-ouverte.unige.ch/unige:109589",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "anxiety (self-reported)",
+                "effect_size": "d = −0.30 (95% CI −0.55, −0.04)",
+                "dose_tested": "single sessions",
+                "population": "non-clinical adults",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE004_music_listening_calming_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "mental_fatigue"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Many trials in patients, not everyday stress",
+            "Non-clinical meta-analysis found physiological effect n.s. (Panteleeva 2018)",
+            "Larger than non-clinical-only estimate"
+          ]
+        },
+        {
+          "id": "moderate_exercise",
+          "class": "anxiety",
+          "rank_in_class": 9,
+          "default_three": false,
+          "title": "Get moving",
+          "subtitle": "20 minutes of exercise you enjoy, at a comfortable pace",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 1200,
+          "short_version_seconds": null,
+          "steps": [
+            "Pick something you enjoy: a brisk walk, cycling, a home workout.",
+            "Keep the pace comfortable; you should still be able to talk.",
+            "Stop if you feel chest pain, dizziness or unusual breathlessness.",
+            "Tap done when you're back."
+          ],
+          "category": "physical",
+          "effort": "high",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "high-energy",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "none (comfortable clothes)"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.737,
+            "evidence_dose": "Single bout; fatigue falls only if >20 min low-to-moderate (Loy et al. 2013; not re-confirmed); most single-bout studies 21-40 min",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Ensari, Greenlee, Motl & Petruzzello, 2015, Depress Anxiety",
+                "citation_short": "Ensari et al., 2015",
+                "doi": "10.1002/da.22370",
+                "pmid": "25899389",
+                "url": "https://doi.org/10.1002/da.22370",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "anxiety (state)",
+                "effect_size": "Hedges g = 0.16 (SE 0.06)",
+                "dose_tested": "single bout, varied",
+                "population": "36 RCTs, mostly non-anxious adults",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY011_moderate_exercise_anxious"
+              },
+              {
+                "citation": "Singh et al., 2023, Br J Sports Med",
+                "citation_short": "Singh et al., 2023",
+                "doi": "10.1136/bjsports-2022-106195",
+                "pmid": "36796860",
+                "url": "https://www.pubmed.gov/36796860/",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "anxiety",
+                "effect_size": "median ES −0.42 (IQR −0.66 to −0.26)",
+                "dose_tested": "programmes, varied",
+                "population": "adults, healthy + clinical",
+                "single_session_evidence": "false",
+                "source_link_id": "PHY002_moderate_exercise_anxious"
+              },
+              {
+                "citation": "Stubbs et al., 2017, Psychiatry Res",
+                "citation_short": "Stubbs et al., 2017",
+                "doi": "10.1016/j.psychres.2016.12.020",
+                "pmid": "28088704",
+                "url": "https://doi.org/10.1016/j.psychres.2016.12.020",
+                "verification_status": "citation_exists_number_not_confirmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "anxiety (diagnosed)",
+                "effect_size": "SMD −0.582, p=0.02 (PubMed abstract prints 95% CI as \"−1.0 to −0.76\", which cannot contain the point estimate; true CI not confirmed)",
+                "dose_tested": "programmes",
+                "population": "6 RCTs, 262 adults with anxiety/stress disorders",
+                "single_session_evidence": "false",
+                "source_link_id": "PHY012_moderate_exercise_anxious"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "mental_fatigue",
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "programme-level, not single bout",
+            "programme-level",
+            "keep intensity comfortable"
+          ]
+        }
+      ]
+    },
+    "mental_fatigue": {
+      "framing": "Recharge your focus",
+      "dataset_emotions": [
+        "tired"
+      ],
+      "activities": [
+        {
+          "id": "micro_break",
+          "class": "mental_fatigue",
+          "rank_in_class": 1,
+          "default_three": true,
+          "title": "Proper micro-break",
+          "subtitle": "Step away from the screen for a few minutes",
+          "interaction_type": "timer",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Look away from your screen.",
+            "Stretch, get a drink or look out of a window.",
+            "Come back when the timer ends."
+          ],
+          "category": "rest",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.95,
+            "evidence_dose": "<=10 min (Albulescu et al. 2022)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 10 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Albulescu et al., 2022, PLoS ONE (PubMed abstract-verified, PMID 36044424)",
+                "citation_short": "Albulescu et al., 2022",
+                "doi": "10.1371/journal.pone.0272460",
+                "pmid": "36044424",
+                "url": "https://doi.org/10.1371/journal.pone.0272460",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "fatigue",
+                "effect_size": "d = 0.35",
+                "dose_tested": "≤10 min",
+                "population": "22 samples N=2,335 overall (k=9, n=803 for fatigue)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC019_micro_break_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "little performance benefit after heavy tasks",
+            "Highly depleting work may need longer than 10 min",
+            "Performance gain not significant overall (d = 0.16)"
+          ]
+        },
+        {
+          "id": "movement_breaks",
+          "class": "mental_fatigue",
+          "rank_in_class": 2,
+          "default_three": true,
+          "title": "Stand up and move",
+          "subtitle": "A few minutes of light movement",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Stand up and roll your shoulders.",
+            "Walk around the room or march on the spot.",
+            "Reach up high, then shake out your arms."
+          ],
+          "category": "physical",
+          "effort": "low",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "physical",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.532,
+            "evidence_dose": "6 x 5 min moderate walking across a 6-h day (benefit seen at end of day, not after one break)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Bergouignan et al., 2016, Int J Behav Nutr Phys Act",
+                "citation_short": "Bergouignan et al., 2016",
+                "doi": "10.1186/s12966-016-0437-z",
+                "pmid": "27809874",
+                "url": "https://doi.org/10.1186/s12966-016-0437-z",
+                "verification_status": "verified_abstract",
+                "evidence_level": "rct",
+                "evidence_strength": "moderate",
+                "outcome_measured": "fatigue / low energy",
+                "effect_size": "p<0.05; ES not captured",
+                "dose_tested": "6 × 5 min moderate walking over 6 h",
+                "population": "30 sedentary adults",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY059_movement_breaks_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "lab setting",
+            "benefit seen at end of day, not after one break"
+          ]
+        },
+        {
+          "id": "brisk_walk_10min",
+          "class": "mental_fatigue",
+          "rank_in_class": 3,
+          "default_three": true,
+          "title": "Ten-minute walk",
+          "subtitle": "A brisk walk for a lift in energy",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Head outside if you can.",
+            "Walk briskly but comfortably.",
+            "Tap done when you're back."
+          ],
+          "category": "physical",
+          "effort": "low",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "low-effort",
+            "outdoor",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "somewhere to walk"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.423,
+            "evidence_dose": "10 min (Thayer 1987, n = 18; energy up and tension down for up to 2 h)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Thayer, 1987, J Pers Soc Psychol",
+                "citation_short": "Thayer, 1987",
+                "doi": "10.1037//0022-3514.52.1.119",
+                "pmid": "3820066",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/3820066/",
+                "verification_status": "verified_abstract",
+                "evidence_level": "experiment",
+                "evidence_strength": "moderate",
+                "outcome_measured": "fatigue / low energy",
+                "effect_size": "significant; no ES in abstract",
+                "dose_tested": "10 min brisk walk; effect up to 2 h",
+                "population": "18 volunteers, within-subject",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY004_brisk_walk_10min_tired"
+              },
+              {
+                "citation": "Ekkekakis, Hall, VanLanduyt & Petruzzello, 2000, J Behav Med",
+                "citation_short": "Ekkekakis et al., 2000",
+                "doi": "10.1023/a:1005558025163",
+                "pmid": "10863677",
+                "url": "https://pubmed.ncbi.nlm.nih.gov/10863677/",
+                "verification_status": "verified_abstract",
+                "evidence_level": "experiment",
+                "evidence_strength": "moderate",
+                "outcome_measured": "positive affect / activation",
+                "effect_size": "consistent across 4 experiments; no pooled ES",
+                "dose_tested": "10–15 min walk",
+                "population": "healthy adults",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY006_brisk_walk_10min_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "small sample",
+            "benefit may fade within ~10 min of stopping",
+            "Older single-lab study; exercise covered in depth by other researcher"
+          ]
+        },
+        {
+          "id": "nap_short",
+          "class": "mental_fatigue",
+          "rank_in_class": 4,
+          "default_three": false,
+          "title": "Short power nap",
+          "subtitle": "Ten minutes, set an alarm",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Find somewhere you can lie down or rest your head.",
+            "Set an alarm for 10 minutes.",
+            "Not in the late afternoon or evening if it affects your sleep."
+          ],
+          "category": "rest",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "solo"
+          ],
+          "requirements": [
+            "somewhere to lie down",
+            "alarm"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 1.0,
+            "evidence_dose": "10 min of sleep (Brooks & Lack 2006, n = 24, sleep-restricted); 5 min gave few benefits; 30 min caused sleep inertia",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Boukhris et al., 2026, Biol Sport (43:149–163; online Aug 2025)",
+                "citation_short": "Boukhris et al., 2026",
+                "doi": "10.5114/biolsport.2026.153310",
+                "pmid": "41668951",
+                "url": "https://doi.org/10.5114/biolsport.2026.153310",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "fatigue",
+                "effect_size": "SMD 0.91",
+                "dose_tested": "daytime nap after normal sleep",
+                "population": "physically active adults / athletes; 35 studies, 489 participants",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY056_nap_short_tired"
+              },
+              {
+                "citation": "Dutheil et al., 2021, IJERPH (PubMed abstract-verified, PMID 34639511)",
+                "citation_short": "Dutheil et al., 2021",
+                "doi": "10.3390/ijerph181910212",
+                "pmid": "34639511",
+                "url": "https://doi.org/10.3390/ijerph181910212",
+                "verification_status": "corrected",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "sleepiness / low alertness",
+                "effect_size": "alertness ES = 0.29; overall 0.18",
+                "dose_tested": "mean nap duration 55.4 ± 29.4 min, lab (nap duration did not moderate effect; NOT a 10–30 min nap finding)",
+                "population": "working-aged adults, 11 studies n=381",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC021_nap_short_tired"
+              },
+              {
+                "citation": "Brooks & Lack, 2006, Sleep (PubMed abstract-verified, PMID 16796222)",
+                "citation_short": "Brooks & Lack, 2006",
+                "doi": "10.1093/sleep/29.6.831",
+                "pmid": "16796222",
+                "url": "https://doi.org/10.1093/sleep/29.6.831",
+                "verification_status": "verified_abstract",
+                "evidence_level": "experiment",
+                "evidence_strength": "moderate",
+                "outcome_measured": "sleepiness / fatigue",
+                "effect_size": "n.r.",
+                "dose_tested": "10 min sleep at 3 pm after ~5 h night sleep (5 min few benefits; 20 min benefits delayed 35 min; 30 min sleep inertia)",
+                "population": "24 healthy young adults, sleep-restricted, within-subject",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC022_nap_short_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "athlete samples; low certainty; keep <60 min",
+            "low/very low certainty; late naps may affect night sleep (general guidance)",
+            "Sleep inertia just after waking; benefit lasts about 2 h; lab evidence; avoid late-day naps"
+          ]
+        },
+        {
+          "id": "nature_sitting",
+          "class": "mental_fatigue",
+          "rank_in_class": 5,
+          "default_three": false,
+          "title": "Green view",
+          "subtitle": "Sit somewhere green, or look at trees through a window",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Find a green spot or a window with a view of trees or plants.",
+            "Let your eyes rest on it without your phone.",
+            "Tap done when you're ready."
+          ],
+          "category": "nature",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "low-effort",
+            "mindful",
+            "outdoor",
+            "solo"
+          ],
+          "requirements": [
+            "outdoors or a window view of greenery"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.327,
+            "evidence_dose": ">=10 min; most efficient 20-30 min for cortisol (Hunter et al. 2019); a 40-second green view sustained attention in one experiment (not in PubMed)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Meredith et al., 2020, Front Psychol",
+                "citation_short": "Meredith et al., 2020",
+                "doi": "10.3389/fpsyg.2019.02942",
+                "pmid": "31993007",
+                "url": "https://doi.org/10.3389/fpsyg.2019.02942",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "systematic_review",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "stress / low vigor",
+                "effect_size": "not pooled",
+                "dose_tested": "10–50 min",
+                "population": "14 studies, college-aged",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY046_nature_sitting_tired"
+              },
+              {
+                "citation": "Lee et al., 2015, J. Environmental Psychology (not indexed in PubMed; not verifiable in PubMed pass)",
+                "citation_short": "Lee et al., 2015",
+                "doi": "10.1016/j.jenvp.2015.04.003",
+                "pmid": null,
+                "url": "https://doi.org/10.1016/j.jenvp.2015.04.003",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "mental fatigue (attention)",
+                "effect_size": "n.r.",
+                "dose_tested": "40 seconds",
+                "population": "Australian students (N=150)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC025_nature_sitting_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "small sample; no control setting",
+            "mostly Japanese student samples",
+            "real nature stronger than images"
+          ]
+        },
+        {
+          "id": "daylight_exposure",
+          "class": "mental_fatigue",
+          "rank_in_class": 6,
+          "default_three": false,
+          "title": "Get some daylight",
+          "subtitle": "Spend a few minutes in bright daylight",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 900,
+          "short_version_seconds": null,
+          "steps": [
+            "Step outside or sit by a bright window during the day.",
+            "Stay for a few minutes.",
+            "Tap done when you're back."
+          ],
+          "category": "nature",
+          "effort": "low",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "outdoor",
+            "solo"
+          ],
+          "requirements": [
+            "outdoors (daytime)"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.235,
+            "evidence_dose": null,
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Smolders, de Kort & Cluitmans, 2012, Physiology & Behavior (PubMed abstract-verified, PMID 22564492)",
+                "citation_short": "Smolders et al., 2012",
+                "doi": "10.1016/j.physbeh.2012.04.028",
+                "pmid": "22564492",
+                "url": "https://doi.org/10.1016/j.physbeh.2012.04.028",
+                "verification_status": "verified_abstract",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "low energy / sleepiness",
+                "effect_size": "n.r.",
+                "dose_tested": "1 h at 1000 lux vs 200 lux",
+                "population": "N=32 (Dutch students not stated in abstract)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC027_daylight_exposure_tired"
+              },
+              {
+                "citation": "Burns et al., 2021, J Affect Disord",
+                "citation_short": "Burns et al., 2021",
+                "doi": "10.1016/j.jad.2021.08.056",
+                "pmid": "34488088",
+                "url": "https://doi.org/10.1016/j.jad.2021.08.056",
+                "verification_status": "verified_abstract",
+                "evidence_level": "observational",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "fatigue (frequent tiredness)",
+                "effect_size": "OR 0.80–0.82 (95% CI) per extra hour/day",
+                "dose_tested": "hours/day outdoors",
+                "population": "UK Biobank adults, n = 502,000 per abstract (title: \"over 400,000\")",
+                "single_session_evidence": "false",
+                "source_link_id": "PHY052_daylight_exposure_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "not causal; sun protection",
+            "not causal",
+            "Lab lighting, not outdoor daylight per se"
+          ]
+        },
+        {
+          "id": "stair_walking",
+          "class": "mental_fatigue",
+          "rank_in_class": 7,
+          "default_three": false,
+          "title": "Take the stairs",
+          "subtitle": "Ten minutes of easy stair walking",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Walk up and down a flight of stairs at a gentle pace.",
+            "Hold the rail and stop if you feel unwell.",
+            "Tap done when you're finished."
+          ],
+          "category": "physical",
+          "effort": "medium",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "high-energy",
+            "indoor",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "stairs"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.304,
+            "evidence_dose": "10 min low-to-moderate (18 college women; transient)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Randolph & O'Connor, 2017, Physiol Behav",
+                "citation_short": "Randolph & O'Connor, 2017",
+                "doi": "10.1016/j.physbeh.2017.03.013",
+                "pmid": "28302573",
+                "url": "https://doi.org/10.1016/j.physbeh.2017.03.013",
+                "verification_status": "verified_abstract",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "fatigue / low energy",
+                "effect_size": "POMS vigor higher immediately post vs both 50 mg caffeine and placebo; ES not in abstract",
+                "dose_tested": "10 min low-to-moderate",
+                "population": "18 college women (18–23 y) with chronic insufficient sleep",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY058_stair_walking_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [],
+          "contraindicated_classes": [],
+          "cautions": [
+            "transient; small sample",
+            "For any angry or anxious blend (especially angry + stressed and angry + anxious), keep movement easy and away from the provoking input ('step away from the screen first'): 30 min of moderate cycling while viewing aversive images did not reduce anxiety and increased anger. (Rodrigues et al. 2026 [PM-abs])"
+          ]
+        },
+        {
+          "id": "free_dancing",
+          "class": "mental_fatigue",
+          "rank_in_class": 8,
+          "default_three": false,
+          "title": "Dance it out",
+          "subtitle": "One upbeat song, move however you like",
+          "interaction_type": "audio_player",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a song you like.",
+            "Move however feels good.",
+            "No one's watching."
+          ],
+          "category": "physical",
+          "effort": "medium",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "creative",
+            "high-energy",
+            "indoor",
+            "musical",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "music",
+            "private space"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "C",
+            "dataset_evidence_score": 0.12,
+            "evidence_dose": "5 min single session (Campion & Levita 2014, via Koch 2019 full text; single small study)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Campion & Levita, 2014, Journal of Positive Psychology",
+                "citation_short": "Campion & Levita, 2014",
+                "doi": "10.1080/17439760.2013.848376",
+                "pmid": null,
+                "url": "https://www.instituteofcoaching.org/resources/enhancing-positive-affect-and-divergent-thinking-abilities-play-some-music-and-dance",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "fatigue",
+                "effect_size": "n.r.",
+                "dose_tested": "short single session",
+                "population": "young non-clinical adults",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE011_free_dancing_tired"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Single study, not in PubMed; Koch 2019 meta-analysis coded this study as a small negative effect (d = −0.17) for dance vs its controls; keep it private/non-evaluative",
+            "Cycling control did not reduce fatigue",
+            "Single study"
+          ]
+        }
+      ]
+    },
+    "calm_flow": {
+      "framing": "Make the most of feeling settled",
+      "dataset_emotions": [
+        "calm",
+        "content"
+      ],
+      "activities": [
+        {
+          "id": "savoring",
+          "class": "calm_flow",
+          "rank_in_class": 1,
+          "default_three": true,
+          "title": "Savour this moment",
+          "subtitle": "Notice what feels good right now",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice one thing you can see, hear or feel that you're enjoying.",
+            "Stay with it for a few breaths.",
+            "Write a word or two about it if you like."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.31,
+            "evidence_dose": null,
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Chen, Tung, Wu & Sie, 2026, Applied Psychology: Health and Well-Being",
+                "citation_short": "Chen et al., 2026",
+                "doi": "10.1111/aphw.70134",
+                "pmid": "41797412",
+                "url": "https://doi.org/10.1111/aphw.70134",
+                "verification_status": "corrected",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "low positive affect / positive states",
+                "effect_size": "g = 0.50 (CI 0.24, 0.75) positive psychological states; overall g = 0.51 (CI 0.26, 0.77) [P]",
+                "dose_tested": "varied",
+                "population": "20 RCTs, N=4,805",
+                "single_session_evidence": "unknown",
+                "source_link_id": "MBC033_savoring_content"
+              },
+              {
+                "citation": "Quoidbach, Berry, Hansenne & Mikolajczak, 2010, Personality and Individual Differences (not indexed in PubMed; not verifiable in PubMed pass)",
+                "citation_short": "Quoidbach et al., 2010",
+                "doi": "10.1016/j.paid.2010.03.048",
+                "pmid": null,
+                "url": "https://doi.org/10.1016/j.paid.2010.03.048",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "observational",
+                "evidence_strength": "moderate",
+                "outcome_measured": "joy / contentment",
+                "effect_size": "n.r.",
+                "dose_tested": "trait strategy use",
+                "population": "Belgian adults (N=282)",
+                "single_session_evidence": "false",
+                "source_link_id": "SOC045_savoring_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "single recent meta-analysis; larger point estimates vs passive than active controls",
+            "Cross-sectional"
+          ]
+        },
+        {
+          "id": "nature_sitting",
+          "class": "calm_flow",
+          "rank_in_class": 2,
+          "default_three": true,
+          "title": "Green view",
+          "subtitle": "Sit somewhere green for a few minutes",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Find a green spot or a window with a view of trees or plants.",
+            "Let your eyes rest on it without your phone.",
+            "Tap done when you're ready."
+          ],
+          "category": "nature",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "low-effort",
+            "mindful",
+            "outdoor",
+            "solo"
+          ],
+          "requirements": [
+            "outdoors or a window view of greenery"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.5,
+            "evidence_dose": ">=10 min; most efficient 20-30 min for cortisol (Hunter et al. 2019); a 40-second green view sustained attention in one experiment (not in PubMed)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Meredith et al., 2020, Front Psychol",
+                "citation_short": "Meredith et al., 2020",
+                "doi": "10.3389/fpsyg.2019.02942",
+                "pmid": "31993007",
+                "url": "https://doi.org/10.3389/fpsyg.2019.02942",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "systematic_review",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "stress / low vigor",
+                "effect_size": "not pooled",
+                "dose_tested": "10–50 min",
+                "population": "14 studies, college-aged",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY046_nature_sitting_calm"
+              },
+              {
+                "citation": "McMahan & Estes, 2015, J Posit Psychol",
+                "citation_short": "McMahan & Estes, 2015",
+                "doi": "10.1080/17439760.2014.994224 (from notes; not confirmed in PubMed)",
+                "pmid": null,
+                "url": "https://doi.org/10.1080/17439760.2014.994224",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "positive affect",
+                "effect_size": "moderate (r ≈ 0.31 [unverified — paper not indexed in PubMed])",
+                "dose_tested": "brief exposures, real or simulated",
+                "population": "32 studies, 2,356 participants",
+                "single_session_evidence": "true",
+                "source_link_id": "PHY047_nature_sitting_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "mental_fatigue",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "small sample; no control setting",
+            "mostly Japanese student samples",
+            "real nature stronger than images"
+          ]
+        },
+        {
+          "id": "loving_kindness_meditation",
+          "class": "calm_flow",
+          "rank_in_class": 3,
+          "default_three": true,
+          "title": "Kindness meditation",
+          "subtitle": "Send warm wishes to yourself and others",
+          "interaction_type": "guided_steps",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Silently wish yourself: 'May I be well.'",
+            "Picture someone you care about and wish them the same.",
+            "Extend it to someone you barely know."
+          ],
+          "category": "mind-body",
+          "effort": "medium",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "mindful",
+            "social",
+            "solo"
+          ],
+          "requirements": [
+            "quiet place"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.7,
+            "evidence_dose": "Single session to weeks (immediate effect not significant vs neutral visualisation)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 10 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Zeng et al., 2015, Frontiers in Psychology",
+                "citation_short": "Zeng et al., 2015",
+                "doi": "10.3389/fpsyg.2015.01693",
+                "pmid": "26579061",
+                "url": "https://doi.org/10.3389/fpsyg.2015.01693",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "low positive affect",
+                "effect_size": "daily positive emotions vs wait-list g = 0.39 (CI 0.25, 0.53; 8 RCTs); loving-kindness-focused 0.42, compassion-focused 0.27-0.29 (CI includes 0); immediate effect of practice 0.36-0.40 (ns) vs neutral visualization, 0.93 vs memory training [F]",
+                "dose_tested": "single session to weeks",
+                "population": "24 studies, N=1,759",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC022_loving_kindness_meditation_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "compassion-focused variants smaller",
+            "wide CI, small trials",
+            "inference only; no loneliness outcome"
+          ]
+        },
+        {
+          "id": "photography",
+          "class": "calm_flow",
+          "rank_in_class": 4,
+          "default_three": false,
+          "title": "Three good photos",
+          "subtitle": "Photograph three things you like around you",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 300,
+          "short_version_seconds": null,
+          "steps": [
+            "Look around for things that make you smile.",
+            "Take three photos.",
+            "Look back at them later today."
+          ],
+          "category": "creative",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "creative",
+            "low-effort",
+            "mindful",
+            "outdoor",
+            "social",
+            "solo"
+          ],
+          "requirements": [
+            "phone camera"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.12,
+            "evidence_dose": "1 photo/day; effect seen after 3 weeks",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Chen, Mark & Ali, 2016, Psychology of Well-Being",
+                "citation_short": "Chen et al., 2016",
+                "doi": "10.1186/s13612-016-0044-4",
+                "pmid": "27441169",
+                "url": "https://doi.org/10.1186/s13612-016-0044-4",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "positive affect",
+                "effect_size": "n.r.",
+                "dose_tested": "1 photo/day; 4-week study, effect after 3 weeks",
+                "population": "41 undergraduate/graduate students aged 18–36",
+                "single_session_evidence": "false",
+                "source_link_id": "CRE049_photography_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "No no-photo control; small n",
+            "Requires sending the photo to someone"
+          ]
+        },
+        {
+          "id": "gratitude_list",
+          "class": "calm_flow",
+          "rank_in_class": 5,
+          "default_three": false,
+          "title": "Three good things",
+          "subtitle": "Note what's going well",
+          "interaction_type": "checklist",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Write three things that went well or you're glad about.",
+            "For one of them, add why it happened."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "indoor",
+            "low-effort",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [
+            "paper or notes app"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.196,
+            "evidence_dose": null,
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Emmons & McCullough, 2003, J Pers Soc Psychol",
+                "citation_short": "Emmons & McCullough, 2003",
+                "doi": "10.1037//0022-3514.84.2.377",
+                "pmid": "12585811",
+                "url": "https://doi.org/10.1037//0022-3514.84.2.377",
+                "verification_status": "citation_exists_number_not_confirmed",
+                "evidence_level": "rct",
+                "evidence_strength": "moderate",
+                "outcome_measured": "low positive affect",
+                "effect_size": "most robust outcome [P]; ES not in abstract",
+                "dose_tested": "weekly (Study 1) or daily (Study 2) records; durations not stated in abstract",
+                "population": "students; adults with neuromuscular disease",
+                "single_session_evidence": "false",
+                "source_link_id": "MBC029_gratitude_list_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "not all outcomes improved",
+            "modest; not a treatment for depression/anxiety",
+            "no advantage over other activities"
+          ]
+        },
+        {
+          "id": "colouring_structured",
+          "class": "calm_flow",
+          "rank_in_class": 6,
+          "default_three": false,
+          "title": "Colour a mandala",
+          "subtitle": "Keep the calm going with colour",
+          "interaction_type": "drawing_canvas",
+          "duration_seconds": 300,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick colours you like.",
+            "Fill in the shapes at your own pace."
+          ],
+          "canvas_template": "mandala",
+          "category": "creative",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "creative",
+            "hands-on",
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [
+            "colouring page and pens (or a colouring app)"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.28,
+            "evidence_dose": "Single session (~20 min, unverified)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Holt, Furbert & Sweetingham, 2019, Art Therapy",
+                "citation_short": "Holt et al., 2019",
+                "doi": "10.1080/07421656.2019.1645498",
+                "pmid": null,
+                "url": "https://uwe-repository.worktribe.com/output/848019",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "rct",
+                "evidence_strength": "moderate",
+                "outcome_measured": "positive affect (hedonic tone), mindfulness",
+                "effect_size": "n.r.",
+                "dose_tested": "single session, crossover",
+                "population": "UK adults/students, two studies",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE023_colouring_structured_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "anxiety",
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Blank-page free colouring less effective",
+            "Small n; replication",
+            "Exp. 1 (n = 88): unguided colouring no better than free drawing; some participants disliked the guiding voice"
+          ]
+        },
+        {
+          "id": "awe_walk",
+          "class": "calm_flow",
+          "rank_in_class": 7,
+          "default_three": false,
+          "title": "Awe walk",
+          "subtitle": "A walk looking for things that amaze you",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 900,
+          "short_version_seconds": null,
+          "steps": [
+            "Go for a short walk somewhere new or familiar.",
+            "Look for things that feel vast or surprising: sky, trees, buildings, details.",
+            "Tap done when you're back."
+          ],
+          "category": "nature",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "mindful",
+            "outdoor",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "outdoors"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.16,
+            "evidence_dose": "15 min weekly for 8 weeks (older adults only)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Sturm et al., 2022, Emotion (PubMed/PMC full-text-verified, PMID 32955293; PMC8034841)",
+                "citation_short": "Sturm et al., 2022",
+                "doi": "10.1037/emo0000876",
+                "pmid": "32955293",
+                "url": "https://doi.org/10.1037/emo0000876",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "joy / calm / prosocial positive emotion",
+                "effect_size": "n.r.",
+                "dose_tested": "15 min weekly for 8 weeks",
+                "population": "healthy older adults (60 randomized; 52 analysed: 24 awe, 28 control)",
+                "single_session_evidence": "false",
+                "source_link_id": "SOC049_awe_walk_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "radiant_joy"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Small sample, older adults only; no change in anxiety, depression or life satisfaction"
+          ]
+        },
+        {
+          "id": "slow_breathing",
+          "class": "calm_flow",
+          "rank_in_class": 8,
+          "default_three": false,
+          "title": "Slow breathing",
+          "subtitle": "Stay in the calm",
+          "interaction_type": "breath_pacer",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Breathe in for 4 seconds.",
+            "Breathe out for 6 seconds.",
+            "Enjoy the stillness."
+          ],
+          "pacer": {
+            "inhale_s": 4,
+            "hold_s": 0,
+            "exhale_s": 6
+          },
+          "category": "mind-body",
+          "effort": "low",
+          "arousal_effect": "calming",
+          "preference_tags": [
+            "indoor",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.32,
+            "evidence_dose": "One 20-min audio session raised relaxation (Toussaint et al. 2021); HRV rises during and right after one session (Laborde et al. 2022)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Toussaint et al., 2021, Evid-Based Complement Altern Med",
+                "citation_short": "Toussaint et al., 2021",
+                "doi": "10.1155/2021/5924040",
+                "pmid": "34306146",
+                "url": "https://doi.org/10.1155/2021/5924040",
+                "verification_status": "verified_fulltext",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "tension (low relaxation)",
+                "effect_size": "significant vs control [P]; four-group difference in relaxation change F = 2.81, p = .048, eta2 = .14 [F]",
+                "dose_tested": "one 20-min audio session",
+                "population": "60 healthy undergraduates",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC009_slow_breathing_calm"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "stress",
+            "anxiety",
+            "mental_fatigue"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "moderate risk of bias; avoid fast/hyperventilation styles",
+            "not a depression treatment",
+            "HRV change is not the same as feeling better"
+          ]
+        }
+      ]
+    },
+    "radiant_joy": {
+      "framing": "Share it and build on it",
+      "dataset_emotions": [
+        "content",
+        "energetic"
+      ],
+      "activities": [
+        {
+          "id": "savoring",
+          "class": "radiant_joy",
+          "rank_in_class": 1,
+          "default_three": true,
+          "title": "Savour this moment",
+          "subtitle": "Stay with the good feeling a bit longer",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Notice what you're enjoying right now.",
+            "Replay the best part in your mind.",
+            "Write a word or two about it if you like."
+          ],
+          "category": "cognitive",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "low-effort",
+            "mindful",
+            "solo"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.31,
+            "evidence_dose": null,
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Chen, Tung, Wu & Sie, 2026, Applied Psychology: Health and Well-Being",
+                "citation_short": "Chen et al., 2026",
+                "doi": "10.1111/aphw.70134",
+                "pmid": "41797412",
+                "url": "https://doi.org/10.1111/aphw.70134",
+                "verification_status": "corrected",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "low positive affect / positive states",
+                "effect_size": "g = 0.50 (CI 0.24, 0.75) positive psychological states; overall g = 0.51 (CI 0.26, 0.77) [P]",
+                "dose_tested": "varied",
+                "population": "20 RCTs, N=4,805",
+                "single_session_evidence": "unknown",
+                "source_link_id": "MBC033_savoring_content"
+              },
+              {
+                "citation": "Quoidbach, Berry, Hansenne & Mikolajczak, 2010, Personality and Individual Differences (not indexed in PubMed; not verifiable in PubMed pass)",
+                "citation_short": "Quoidbach et al., 2010",
+                "doi": "10.1016/j.paid.2010.03.048",
+                "pmid": null,
+                "url": "https://doi.org/10.1016/j.paid.2010.03.048",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "observational",
+                "evidence_strength": "moderate",
+                "outcome_measured": "joy / contentment",
+                "effect_size": "n.r.",
+                "dose_tested": "trait strategy use",
+                "population": "Belgian adults (N=282)",
+                "single_session_evidence": "false",
+                "source_link_id": "SOC045_savoring_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "single recent meta-analysis; larger point estimates vs passive than active controls",
+            "Cross-sectional"
+          ]
+        },
+        {
+          "id": "act_of_kindness",
+          "class": "radiant_joy",
+          "rank_in_class": 2,
+          "default_three": true,
+          "title": "Small kind act",
+          "subtitle": "Do one small thing for someone else",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 300,
+          "short_version_seconds": null,
+          "steps": [
+            "Pick one small kind thing: a compliment, a thank-you, a helping hand.",
+            "Do it today.",
+            "Tap done when you have."
+          ],
+          "category": "social",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "hands-on",
+            "low-effort",
+            "social"
+          ],
+          "requirements": [
+            "another person"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.825,
+            "evidence_dose": "Varied (single act to weeks)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Hui et al., 2020, Psychological Bulletin (PubMed abstract-verified, PMID 32881540)",
+                "citation_short": "Hui et al., 2020",
+                "doi": "10.1037/bul0000298",
+                "pmid": "32881540",
+                "url": "https://doi.org/10.1037/bul0000298",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "contentment / meaning",
+                "effect_size": "r = .13 overall; larger for informal helping",
+                "dose_tested": "varied",
+                "population": "K=201, N=198,213",
+                "single_session_evidence": "unknown",
+                "source_link_id": "SOC038_act_of_kindness_content"
+              },
+              {
+                "citation": "Alden & Trew, 2013, Emotion (PubMed abstract-verified, PMID 22642341)",
+                "citation_short": "Alden & Trew, 2013",
+                "doi": "10.1037/a0027761",
+                "pmid": "22642341",
+                "url": "https://doi.org/10.1037/a0027761",
+                "verification_status": "verified_abstract",
+                "evidence_level": "rct",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "loneliness / low positive affect",
+                "effect_size": "n.r.",
+                "dose_tested": "kind acts over 4 weeks",
+                "population": "highly socially anxious individuals (N=142; undergraduate status not stated in abstract)",
+                "single_session_evidence": "false",
+                "source_link_id": "SOC040_act_of_kindness_content"
+              },
+              {
+                "citation": "Curry et al., 2018, J. Experimental Social Psychology (not indexed in PubMed; not verifiable in PubMed pass)",
+                "citation_short": "Curry et al., 2018",
+                "doi": "10.1016/j.jesp.2018.02.014",
+                "pmid": null,
+                "url": "https://doi.org/10.1016/j.jesp.2018.02.014",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "low mood / sustaining joy",
+                "effect_size": "δ = 0.28",
+                "dose_tested": "varied (single act to weeks)",
+                "population": "mixed, 27 studies N=4,045",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC037_act_of_kindness_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Small effect",
+            "Mix of correlational and experimental",
+            "Not single-dose"
+          ]
+        },
+        {
+          "id": "share_good_news",
+          "class": "radiant_joy",
+          "rank_in_class": 3,
+          "default_three": true,
+          "title": "Share the good news",
+          "subtitle": "Tell someone what went well",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 120,
+          "short_version_seconds": 90,
+          "steps": [
+            "Think of someone who'd be happy for you.",
+            "Send a message or call to tell them what went well."
+          ],
+          "category": "social",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "low-effort",
+            "social",
+            "verbal"
+          ],
+          "requirements": [
+            "a responsive person"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.254,
+            "evidence_dose": "Single disclosures",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Gable, Reis, Impett & Asher, 2004, JPSP (PubMed abstract-verified, PMID 15301629)",
+                "citation_short": "Gable et al., 2004",
+                "doi": "10.1037/0022-3514.87.2.228",
+                "pmid": "15301629",
+                "url": "https://doi.org/10.1037/0022-3514.87.2.228",
+                "verification_status": "verified_abstract",
+                "evidence_level": "observational",
+                "evidence_strength": "moderate",
+                "outcome_measured": "joy / excitement",
+                "effect_size": "n.r.",
+                "dose_tested": "daily diary; single disclosures",
+                "population": "four studies (US students and couples not stated in abstract)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC042_share_good_news_content"
+              },
+              {
+                "citation": "Lambert et al., 2013, J. Social and Personal Relationships (not indexed in PubMed; not verifiable in PubMed pass)",
+                "citation_short": "Lambert et al., 2013",
+                "doi": "10.1177/0265407512449400",
+                "pmid": null,
+                "url": "https://doi.org/10.1177/0265407512449400",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "experiment",
+                "evidence_strength": "moderate",
+                "outcome_measured": "joy / loneliness",
+                "effect_size": "n.r.",
+                "dose_tested": "brief sharing",
+                "population": "US students",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC043_share_good_news_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Benefit depends on enthusiastic response; passive or negative responses backfire",
+            "Details from secondary sources"
+          ]
+        },
+        {
+          "id": "best_possible_self_writing",
+          "class": "radiant_joy",
+          "rank_in_class": 4,
+          "default_three": false,
+          "title": "Best possible future",
+          "subtitle": "Write about life going really well",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 600,
+          "short_version_seconds": 90,
+          "steps": [
+            "Imagine a future where things have gone as well as they could.",
+            "Write about what it looks like.",
+            "Keep it realistic and specific."
+          ],
+          "category": "cognitive",
+          "effort": "medium",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "cognitive",
+            "creative",
+            "indoor",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [
+            "paper or notes app"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.95,
+            "evidence_dose": "Single 20-min session in several included studies (Carrillo et al. 2019, Table 1)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 20 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Carrillo et al., 2019, PLOS ONE",
+                "citation_short": "Carrillo et al., 2019",
+                "doi": "10.1371/journal.pone.0222386",
+                "pmid": "31545815",
+                "url": "https://doi.org/10.1371/journal.pone.0222386",
+                "verification_status": "corrected",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "strong",
+                "outcome_measured": "positive affect",
+                "effect_size": "d+ = 0.511",
+                "dose_tested": "single or repeated writing/imagery sessions (e.g. single 20-min sessions in several included studies, per Table 1)",
+                "population": "29 studies (in 26 articles), 2,909 participants, mostly non-clinical",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE039_best_possible_self_writing_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "CORRECTED: the marginal moderator trend runs the other way — fewer total minutes of practice → larger effect (and older participants → larger effect)",
+            "Better for raising positive affect than lowering negative"
+          ]
+        },
+        {
+          "id": "gratitude_letter",
+          "class": "radiant_joy",
+          "rank_in_class": 5,
+          "default_three": false,
+          "title": "Thank-you note",
+          "subtitle": "Write to someone who helped you",
+          "interaction_type": "text_prompt",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Think of someone you never properly thanked.",
+            "Write them a short note about what they did and why it mattered.",
+            "Send it if you'd like to."
+          ],
+          "category": "social",
+          "effort": "low",
+          "arousal_effect": "neutral",
+          "preference_tags": [
+            "creative",
+            "indoor",
+            "low-effort",
+            "social",
+            "solo",
+            "verbal"
+          ],
+          "requirements": [
+            "someone to thank"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.105,
+            "evidence_dose": "One gratitude letter (8-10 min writing)",
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Kumar & Epley, 2018, Psychological Science (PubMed abstract-verified, PMID 29949445)",
+                "citation_short": "Kumar & Epley, 2018",
+                "doi": "10.1177/0956797618772506",
+                "pmid": "29949445",
+                "url": "https://doi.org/10.1177/0956797618772506",
+                "verification_status": "verified_abstract",
+                "evidence_level": "indirect",
+                "evidence_strength": "moderate",
+                "outcome_measured": "contentment / joy",
+                "effect_size": "n.r.",
+                "dose_tested": "one gratitude letter (about 5 min not stated in abstract)",
+                "population": "three experiments (sample type not stated in abstract)",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC044_gratitude_letter_content"
+              },
+              {
+                "citation": "Bolier et al., 2013, BMC Public Health",
+                "citation_short": "Bolier et al., 2013",
+                "doi": "10.1186/1471-2458-13-119",
+                "pmid": "23390882",
+                "url": "https://doi.org/10.1186/1471-2458-13-119",
+                "verification_status": "verified_abstract",
+                "evidence_level": "indirect",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "low positive affect",
+                "effect_size": "see PPI row; letter-specific ES not retrieved",
+                "dose_tested": "8-10 min writing",
+                "population": "adults",
+                "single_session_evidence": "true",
+                "source_link_id": "MBC032_gratitude_letter_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "may not suit severe low mood [U]",
+            "Expressers over-predict awkwardness"
+          ]
+        },
+        {
+          "id": "explore_while_positive",
+          "class": "radiant_joy",
+          "rank_in_class": 6,
+          "default_three": false,
+          "title": "Try something new",
+          "subtitle": "Use the good mood to explore",
+          "interaction_type": "offscreen_card",
+          "duration_seconds": 600,
+          "short_version_seconds": null,
+          "steps": [
+            "Pick something small you've wanted to try: a new route, recipe or idea.",
+            "Give it a go for ten minutes."
+          ],
+          "category": "play",
+          "effort": "medium",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "cognitive",
+            "creative",
+            "social"
+          ],
+          "requirements": [],
+          "evidence": {
+            "basis": "direct",
+            "grade": "B",
+            "dataset_evidence_score": 0.228,
+            "evidence_dose": null,
+            "dose_gap_note": null,
+            "citations": [
+              {
+                "citation": "Fredrickson & Branigan, 2005, Cognition and Emotion (PubMed abstract-verified, PMID 21852891)",
+                "citation_short": "Fredrickson & Branigan, 2005",
+                "doi": "10.1080/02699930441000238",
+                "pmid": "21852891",
+                "url": "https://doi.org/10.1080/02699930441000238",
+                "verification_status": "corrected",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "joy / contentment",
+                "effect_size": "n.r.",
+                "dose_tested": "brief film mood induction",
+                "population": "104 college students, two experiments",
+                "single_session_evidence": "true",
+                "source_link_id": "SOC058_explore_while_positive_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Mixed replication record for broadening effect"
+          ]
+        },
+        {
+          "id": "free_dancing",
+          "class": "radiant_joy",
+          "rank_in_class": 7,
+          "default_three": false,
+          "title": "Dance it out",
+          "subtitle": "One upbeat song, move however you like",
+          "interaction_type": "audio_player",
+          "duration_seconds": 180,
+          "short_version_seconds": 90,
+          "steps": [
+            "Pick a song you love.",
+            "Move however feels good."
+          ],
+          "category": "physical",
+          "effort": "medium",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "creative",
+            "high-energy",
+            "indoor",
+            "musical",
+            "physical",
+            "solo"
+          ],
+          "requirements": [
+            "music",
+            "private space"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "C",
+            "dataset_evidence_score": 0.12,
+            "evidence_dose": "5 min single session (Campion & Levita 2014, via Koch 2019 full text; single small study)",
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 5 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Campion & Levita, 2014, Journal of Positive Psychology",
+                "citation_short": "Campion & Levita, 2014",
+                "doi": "10.1080/17439760.2013.848376",
+                "pmid": null,
+                "url": "https://www.instituteofcoaching.org/resources/enhancing-positive-affect-and-divergent-thinking-abilities-play-some-music-and-dance",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "experiment",
+                "evidence_strength": "preliminary",
+                "outcome_measured": "positive affect",
+                "effect_size": "n.r.",
+                "dose_tested": "single 5-min session (confirmed via Koch 2019 full text, not the paper itself)",
+                "population": "56 young adults aged 18–23, UK, no diagnosis (per Koch 2019 Table; paper itself not in PubMed)",
+                "single_session_evidence": "true",
+                "source_link_id": "CRE010_free_dancing_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "mental_fatigue",
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Single study, not in PubMed; Koch 2019 meta-analysis coded this study as a small negative effect (d = −0.17) for dance vs its controls; keep it private/non-evaluative",
+            "Cycling control did not reduce fatigue",
+            "Single study"
+          ]
+        },
+        {
+          "id": "everyday_creative_activity",
+          "class": "radiant_joy",
+          "rank_in_class": 8,
+          "default_three": false,
+          "title": "Make something",
+          "subtitle": "Draw, write or build anything for fun",
+          "interaction_type": "drawing_canvas",
+          "duration_seconds": 600,
+          "short_version_seconds": 90,
+          "steps": [
+            "Make anything you like: a doodle, a short poem, a little design.",
+            "Play, don't judge."
+          ],
+          "canvas_template": "blank",
+          "category": "creative",
+          "effort": "medium",
+          "arousal_effect": "activating",
+          "preference_tags": [
+            "cognitive",
+            "creative",
+            "solo"
+          ],
+          "requirements": [
+            "materials for your hobby"
+          ],
+          "evidence": {
+            "basis": "direct",
+            "grade": "A",
+            "dataset_evidence_score": 0.325,
+            "evidence_dose": null,
+            "dose_gap_note": "The 90-second version is shorter than the tested dose (typical 30 min); present it as a taster.",
+            "citations": [
+              {
+                "citation": "Baas, De Dreu & Nijstad, 2008, Psychological Bulletin (PubMed abstract-verified, PMID 18954157)",
+                "citation_short": "Baas et al., 2008",
+                "doi": "10.1037/a0012815",
+                "pmid": "18954157",
+                "url": "https://doi.org/10.1037/a0012815",
+                "verification_status": "verified_abstract",
+                "evidence_level": "meta_analysis",
+                "evidence_strength": "moderate",
+                "outcome_measured": "joy / excitement (channeling)",
+                "effect_size": "r = .15 vs neutral (102 effect sizes)",
+                "dose_tested": "mood inductions",
+                "population": "students and general adults (results generalized across populations)",
+                "single_session_evidence": "unknown",
+                "source_link_id": "SOC048_everyday_creative_activity_content"
+              },
+              {
+                "citation": "Conner, DeYoung & Silvia, 2018, Journal of Positive Psychology",
+                "citation_short": "Conner et al., 2018",
+                "doi": "10.1080/17439760.2016.1257049",
+                "pmid": null,
+                "url": "https://doi.org/10.1080/17439760.2016.1257049",
+                "verification_status": "not_in_pubmed",
+                "evidence_level": "observational",
+                "evidence_strength": "moderate",
+                "outcome_measured": "positive affect (next day), flourishing",
+                "effect_size": "n.r.",
+                "dose_tested": "self-reported daily creative time, 13 days",
+                "population": "658 young adults (students)",
+                "single_session_evidence": "false",
+                "source_link_id": "CRE051_everyday_creative_activity_content"
+              }
+            ]
+          },
+          "also_supports_classes": [
+            "calm_flow"
+          ],
+          "contraindicated_classes": [],
+          "cautions": [
+            "Next-day effect; no evidence it lowers negative affect",
+            "Calm/relaxed moods do not show the boost"
+          ]
+        }
+      ]
+    }
+  }
+}

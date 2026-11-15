@@ -8,6 +8,7 @@ Research-backed mapping from emotions (and emotion combinations) to suggested ac
 |---|---|
 | `reports/Emotion to activity evidence map.md` | The written report: findings, per-emotion and combination tables, validity of the drawing signal, guardrails |
 | `reports/Emotion combination evidence map.md` | The combination report: which emotions co-occur, same-sample and mixed-state evidence, rule review, new cluster rules |
+| `data/exports/mvp_activity_pack.json` | Activities with citations for the MVP's five sketch classes (stress, anxiety, mental_fatigue, calm_flow, radiant_joy); hand-off guide in `data/exports/MVP_ACTIVITY_PACK.md`; rebuild with `python3 scripts/build_mvp_activity_pack.py` |
 | `checkin/` | Reflective check-in design: flow, vision-model system prompt, output schema, and a tested reference decision engine over `data/` |
 | `data/schema.md` | Data dictionary, evidence-score and combo-score formulas, prevalence tiers, decision pseudo-code, two worked examples |
 | `data/emotions.json` | 12 emotion classes with valence/arousal and label synonyms |
